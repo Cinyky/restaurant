@@ -67,9 +67,12 @@
                     <!--<text class="mr10">赞{{gitem.yt_com_grade}}</text>-->
                     <text class="mr10"></text>
                   </view>
+                  <!--
                   <view class="ress-price f18 red" bindtap="goods_info_bind" id="{{prod.id}}">
                     <text style="color: {{main_color}};">￥{{prod.spec[0].price}}</text>
                   </view>
+                  -->
+                  
                   <view class="count-spec tc" bindtap="guige_select_bind" id="{{prod.id}}" data-idx="{{prodIdx}}">
                     <text class="count-spec-c" style="background: {{main_color}}">{{prod.num==-1?'∞':prod.num}}</text>
                     <text>选择规格</text>
@@ -93,12 +96,14 @@
               </view>
             </view>
             <view class="float-price sub">
+              <!--
               <view class="price-count f20 red" style="color: {{main_color}};">
                 <text>￥{{cart_price}}</text>
               </view>
+              -->
             </view>
             <view class="float-btn">
-              <button class="float-btn-s" type="primary" bindtap="bind_submit_order" disabled="{{dish_button_status}}" style="background-color: {{main_color}};">下单</button>
+              <button class="float-btn-s" type="primary" bindtap="formSubmit" disabled="{{dish_button_status}}" style="background-color: {{main_color}};">下单</button>
             </view>
           </view>
         </block>
