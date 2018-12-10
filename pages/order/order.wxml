@@ -1,0 +1,54 @@
+<form bindsubmit="add">
+<view class='bj_img'>
+  <image src="{{data.pic}}" mode="aspectFill"  />
+</view>
+<view class='tx_img'>
+  <image src="{{data.pic}}" mode="aspectFill"  />
+</view>
+<view class="mune">
+  <view class='mune_s'>{{data.name}}</view>
+</view>
+<view class='bai'>
+  <view class='bai_s'>
+    <input type='text' placeholder='请输入姓名' name="names"></input>
+  </view>
+  <view class='bai_s'>
+    <input type='text' placeholder='请输入电话号码' name="telephone" maxlength='11'></input>
+  </view>
+</view>
+<view class='bai' style='margin-top:40rpx;'>
+  <view class='bai_s'>
+    <picker bindchange="bindPickerChange" value="{{index[key]}}"  range="{{index}}">
+      <view class='fw_t'>服务选项</view>
+      <view class='xz_t'>{{index[key]}} ></view>
+    </picker>
+  </view>
+  <view class='bai_s'>
+    <picker value="{{num[num_i]}}"  name="number" bindchange="num" range="{{num}}">
+      <view class='fw_t'>预约人数</view>
+      <view class='xz_t'>{{num[num_i]}} ></view>
+    </picker>
+  </view>
+</view>
+
+<view class='bai' style='margin-top:40rpx;'>
+  <view class='date'>
+    <picker value="" mode="date" name="date"  bindchange="date" start="{{time}}">
+      <view style='color:#989898; font-size: 30rpx;margin-top:60rpx;'>请选择预约日期</view>
+      <view>{{time}}</view>
+    </picker>
+  </view>
+  <view class='time'>
+    <picker value="" mode="time" name="time" bindchange="hour"  start="09:00" end="21:00">
+      <view style='color:#989898; font-size: 30rpx;margin-top:60rpx;'>请选择预约时间</view>
+      <view>{{hour}}</view>
+    </picker>
+  </view>
+</view>
+
+<view class='ljzf'>
+  <button  class='text-save' formType="submit" style="background: {{__wechat_main_color}};color:#FFFFFF;">立即预约</button>
+</view>
+</form>
+
+

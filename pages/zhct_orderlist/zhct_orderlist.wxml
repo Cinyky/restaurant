@@ -1,0 +1,75 @@
+<view class="top-select flex tc mb10">
+  <view class="sub {{this_group_val == '-1' ? 'active':''}}" bindtap="select_status_show" data-val='-1' id='0'>全部</view>
+  <view class="sub {{this_group_val == '0' ? 'active':''}}" bindtap="select_status_show" data-val='0' id='3'>未确认</view>
+  <view class="sub {{this_group_val == '1' ? 'active':''}}" bindtap="select_status_show" data-val='1' id='2'>已确认</view>
+  <view class="sub {{this_group_val == '2' ? 'active':''}}" bindtap="select_status_show" data-val='2' id='1'>已完成</view>
+</view>
+<block wx:if="{{orderList.length ==0}}">
+  <!--暂无内容提示 start-->
+  <view class="no-content tc">
+    <text class="no-content-icon iconfont icon-yemianwuneirong"></text>
+    <view class="no-content-font">暂无订单信息</view>
+  </view>
+  <!--暂无内容提示 end-->
+</block>
+<block wx:else>
+  <view class="r-o">
+    <block wx:for="{{orderList}}" wx:key="{{item.id}}">
+      <view class="ro-item gridXb flex">
+        <!--<view class="r-logo" bindtap="user_orderinfo_bind" id="{{item.yt_ord_id}}">-->
+        <!--<image src="{{item.yt_str_log}}" class="r-logo-img" mode="aspectFill"></image>-->
+        <!--</view>-->
+        <view class="r-info sub">
+          <view class="lineText r-i-name" bindtap="user_orderinfo_bind" data-id="{{item.id}}" wx:if="{{item.type==0}}">
+            <text class="fr">{{item.state.text}}</text>
+            <text class="f18 r-i-n">{{editData_h.diancan}}</text>
+          </view>
+          <view class="lineText r-i-name" bindtap="user_orderinfo_bind" data-id="{{item.id}}" wx:else>
+            <text class="fr">{{item.state.text}}</text>
+            <text class="f18 r-i-n">{{editData_h.waimai}}【{{item.address.userName}}（{{item.address.provinceName}}{{item.address.cityName}}{{item.address.countyName}}{{item.address.detailInfo}}）】</text>
+          </view>
+          <view class="f14 grey mt5" bindtap="user_orderinfo_bind" data-id="{{item.id}}">
+            <view>下单时间：{{item.ctime}}</view>
+            <view>总价：￥{{item.total_price}}</view>
+          </view>
+          <view class="tr r-info-b">
+            <block wx:if="{{item.state.show_cancel}}">
+              <button type="default" class="r-i-b mr10 red" bindtap="bind_order_cancel" data-id="{{item.id}}" style="color: {{main_color}};border:1prx solid {{main_color}};">取消</button>
+            </block>
+            <block wx:if="{{item.state.show_ok}}">
+              <button type="default" class="r-i-b mr10 red" bindtap="bind_order_ok" data-id="{{item.id}}" style="color: {{main_color}};border:1prx solid {{main_color}};">确认</button>
+            </block>
+            <block wx:if="{{item.state.show_pay}}">
+              <button type="default" class="r-i-b mr10 red" data-id="{{item.id}}" bindtap='show_payMethod' style="color: {{main_color}};border:1prx solid {{main_color}};">支付</button>
+            </block>
+            <block wx:if="{{item.state.show_comment}}">
+              <button type="default" class="r-i-b mr10 red" bindtap="order_go_comment_bind" data-id="{{item.id}}" style="color: {{main_color}};border:1prx solid {{main_color}};">评价</button>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="m20 tc grey loading" wx:if="{{showLoading}}">
+      <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+      <text>正在加载...</text>
+    </view>
+  </view>
+</block>
+
+<!-- 支付方式 -->
+<view class='order_fixed_payMethod_container' wx:if="{{show_payMethod}}" bindtap='hide_payMethod'>
+  <view class='order_fixed_payMethod_content'>
+    <view class='order_payMethod_money_content' wx:if="{{pay_ye==1}}">
+      <form bindsubmit="payMethod_Submit" report-submit="{{true}}" data-id="{{orderid_h}}">
+        <button hover-class='button-hover-bg-h' type="default" formType="submit">余额支付</button>
+        <!-- <text class='order_payMethod_money_text' bindtap='payMethod_Submit'></text> -->
+      </form>
+    </view>
+    <view class='order_payMethod_wechat_content' wx:if="{{pay_wx==1 || pay_ye!=1 && pay_wx!=1}}">
+      <form report-submit="{{true}}" bindsubmit="bind_order_pay" data-id="{{orderid_h}}">
+        <button hover-class='button-hover-bg-h' type="default" formType="submit">微信支付</button>
+      </form>
+    </view>
+  </view>
+</view>
+

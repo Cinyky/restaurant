@@ -1,0 +1,16 @@
+<template name="groupbuy">
+  <view class="m-coupon-items" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <image src="{{setData.pic}}" style="flex:1;height:100%;display:inline-block"></image>
+    <view class="coupon-item-right">
+      <view class="item-title">{{setData.goodsName}}【{{setData.num}}人团】</view>
+      <view class="item-middle">
+        <lable class="item-time">￥{{setData.gprice}}</lable>
+        <navigator class="item-usenow" url="/pages/groupbuydetail/groupbuydetail?id={{setData.groupId}}">立即拼团</navigator>
+      </view>
+      <view class="item-desc">
+        <text>单买价格：￥{{setData.price||'暂无填写'}}</text>
+        <text style='margin-left:15rpx'>商品原价：￥{{setData.oprice||'暂无填写'}}</text>
+      </view>
+    </view>
+  </view>
+</template>

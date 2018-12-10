@@ -1,0 +1,22 @@
+.title-containerr{clear:both}
+.title-01 .title-inner{height: 35px;display: flex; flex-direction: row; background: #fff;   margin: 0 14rpx;padding: 0 10rpx; border-bottom: 1px solid #ececec;  justify-content:space-between;align-items:center }
+.title-01 .title-inner .tit{font-size: 13px; color: #333;}
+.title-01 .title-inner .more{font-size: 13px; color: #999;}
+.title-02 .title-inner{height: 35px;display: flex; flex-direction: row; background: #f1f1f1;  padding: 0 24rpx;   justify-content:space-between;align-items:center }
+.title-02 .title-inner .tit{font-size: 13px; color: #333;}
+.title-02 .title-inner .more{font-size: 13px; color: #999;}
+.title-03 {position: relative;clear:both}
+.title-03 .title-inner{height: 35px;display: flex; flex-direction: row; background: #fff;  padding: 0 24rpx;   justify-content:center;align-items:center }
+.title-03 .title-inner .tit{font-size: 13px; position: relative; z-index: 2; background: #fff; display: inline-block;padding: 0 10px;}
+.title-03 .tline{height: 1px; background: #b2b2b2; position: absolute; top: 16px; left: 10px; right: 10px;}
+
+.title-04{background: #f1f1f1; overflow: hidden;clear:both}
+.title-04 .title-inner{height: 35px;display: flex; flex-direction: row;  border-bottom: 1px solid #b2b2b2; margin: 0 10px 5px 10px;  justify-content:space-between;align-items:center }
+.title-04 .title-inner .tit{font-size: 13px; color: #333;padding: 0 10px; background: url("/assets/title-04titbg.png") no-repeat center bottom; line-height: 38px; background-size: 80px 5px;}
+.title-04 .title-inner .more{font-size: 13px; color: #999;}
+
+.title-05 .title-inner{height: 35px;display: flex; flex-direction: row; background: #52bb9a; padding: 0 24rpx;   justify-content:space-between;align-items:center }
+.title-05 .title-inner .tit{font-size: 13px; color: #f0f0f0;}
+.title-05 .title-inner .more{font-size: 13px; color: #f0f0f0;}
+
+.tipss{font-size: 12px;  color: #999}

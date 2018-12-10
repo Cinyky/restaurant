@@ -1,0 +1,30 @@
+@import "../../../__wuBaseWxss__/2.wxss";
+
+@import "../../../__wuBaseWxss__/0.wxss";
+
+.shop-info {
+    padding: 10rpx 30rpx;
+    background-color: #fff;
+}
+
+.shop-name {
+    font-size: 36rpx;
+    font-weight: 900;
+}
+
+.shop-tel .icon-dianhua1 {
+    font-size: 32rpx;
+}
+
+.shop-name,.shop-tel,.shop-address-detail {
+    padding: 20rpx 0;
+}
+
+.shop-tel {
+    white-space: nowrap;
+}
+
+.do-type-box {
+    background-color: #fff;
+    margin-top: 20rpx;
+}

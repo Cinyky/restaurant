@@ -1,0 +1,26 @@
+.sub-more,.sub-pos,.sub-house-style,.sub-price {
+    display: none;
+}
+
+.pur-rent-panel-bg-shade {
+}
+
+.panel-middle.sub {
+    overflow-y: auto;
+}
+
+@import "../../../__wuBaseWxss__/2.wxss";
+
+@import "../../../__wuBaseWxss__/0.wxss";
+
+.estate-list {
+    margin-top: 8vh;
+}
+
+.price-cou-unt {
+    float: none;
+}
+
+.estate-item {
+    position: relative;
+}

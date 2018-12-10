@@ -1,0 +1,42 @@
+@import "../../utils/weui.wxss";
+page{
+	height: 100%;
+	background: #fff;
+	font-size: 30rpx;
+	color: #000;
+}
+.page_wrapper{
+	margin: 20rpx;
+}
+
+.notice{
+	border:10rpx solid #e6e6e6;
+	padding: 15rpx;
+}
+.label_required::after{
+	content: '*';
+	color: red;
+}
+.notice_lxfs{
+	color: #b2b2b2;
+}
+
+.notice text{
+	display: block;
+}
+
+/*提交按钮*/
+.sub{
+	background:#464356;
+	width:90%;
+	margin:5%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 80rpx;
+	border-radius: 40rpx;
+	color: white;
+}
+.weui-cells{
+	font-size: 30rpx;
+}

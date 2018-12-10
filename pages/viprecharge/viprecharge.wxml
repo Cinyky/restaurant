@@ -1,0 +1,33 @@
+<view>
+  <view>
+    <view class="brand" style="background: {{__wechat_main_color}};">
+      <view class="brand_title_box">
+        <text class="brand_title">会员充值</text>
+      </view>
+    </view>
+    <view class="vip_info" style="background: #fff">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">充值金额：</view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{recharge_money}}" bindinput="inputMoney"/>
+        </view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">赠送金额：</view>
+        <view class="weui-cell__bd">{{ext_money}}</view>
+        <view class="weui-cell__ft">元</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">赠送积分：</view>
+        <view class="weui-cell__bd">{{ext_point}}</view>
+        <view class="weui-cell__ft">分</view>
+      </view>
+    </view>
+    <view class="recharge_box">
+      <form bindsubmit="rechargeWrap" report-submit="{{true}}"><button class="weui-btn" type="warn" formType="submit" style="background: {{__wechat_main_color}};">立即充值</button></form>
+    </view>
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

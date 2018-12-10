@@ -1,0 +1,98 @@
+<view class="top gridXb">
+  <view class="flex">
+    <!--头像-->
+    <image class="user-img" src="{{msg.user.headimg}}" catchtap="onNavigateTap" data-url="" mode="aspectFill"></image>
+    <view class="sub ml10">
+      <!--用户信息-->
+      <view class="user-msg flex">
+        <view class="sub blue">{{msg.user.name}}</view>
+        <view class="grey f12">{{msg.ctime}}</view>
+      </view>
+    </view>
+  </view>
+  <!--地址-->
+  <view class="flex blue mt10">
+    <text class="mr5 iconfont icon-locationfill"></text>
+    <view class="f14 sub lineText" catchtap="onOpenMapTap">{{msg.address}}</view>
+    <view class="grey ml10">离您{{distance}}公里</view>
+  </view>
+</view>
+
+<view class="content f16" >
+
+  <!--<rich-text nodes="{{msg.content}}" wx:if="{{richText}}" style="{{style}}" />-->
+
+  <text>{{msg.content}}</text>
+
+  <image class="artic-img mt10" catchtap="bindPreviewImg" src="{{item}}" data-url="{{item}}" mode="widthFix" wx:for="{{msg.img}}" wx:key="*this"></image>
+
+  <view class="grey flex mt10" style="line-height:60rpx;">
+    <!--评论点赞-->
+    <view class="f16 linght sub flex">
+      <view class="mr15" wx:if="{{setting.show_read==1}}">
+        <text class="iconfont icon-attentionfill"></text>
+        <text>{{msg.read_num}}</text>
+      </view>
+      <view class="mr15" wx:if="{{setting.show_comment==1}}" catchtap="onShowCommentTap" data-index="{{index}}" data-id="{{msg.id}}">
+        <text class="iconfont icon-commentfill"></text>
+        <text>{{msg.comment_num}}</text>
+      </view>
+      <view class="mr15 {{msg.is_up?'green':''}}" catchtap="onGoodTap" data-index="{{index}}" data-id="{{msg.id}}" wx:if="{{setting.show_up==1}}">
+        <text class="iconfont icon-appreciatefill {{msg.is_up==1?'green':''}}"></text>
+        <text>{{msg.up_num}}</text>
+      </view>
+      <view catchtap="bindFav" data-index="{{index}}" data-id="{{msg.id}}">
+        <text class="iconfont icon-favor{{msg.is_fav==1?'fill':''}}"></text>
+        <!--<text>{{info.fav}}</text>-->
+      </view>
+    </view>
+    <!--更多-->
+    <!--<view>-->
+      <!--<view class="aside-more" catchtap="onToggleShowActionMenuTap">-->
+        <!--<text class="iconfont icon-more"></text>-->
+      <!--</view>-->
+      <!--<view class="aside-more-content f12 transition-duration-500" hidden="{{!isShowActionMenu}}">-->
+        <!--<text wx:if="{{currentUid==uid || is_admin}}" catchtap="onDeleteTap">删除</text>-->
+        <!--<text wx:if="{{is_admin && status==0}}" catchtap="onCheckTap">审核</text>-->
+        <!--<text wx:if="{{is_admin && currentUid!=uid}}" catchtap="onPullBlackTap">拉黑</text>-->
+        <!--<text wx:if="{{is_admin}}" catchtap="{{is_top>0?'onToggleTopTap':'onShowTopTap'}}">{{is_top!=0?'取消置顶':'置顶'}}</text>-->
+        <!--<text catchtap="onNavigateTap" data-url="jubao?id={{id}}">举报</text>-->
+      <!--</view>-->
+    <!--</view>-->
+  </view>
+  <!--评论内容-->
+  <view class="comment f14 mt10" wx:if="{{msg.comment.length && setting.show_comment==1}}" catchtap="onShowCommentTap" data-index="{{index}}" data-id="{{msg.id}}">
+    <view wx:for="{{msg.comment}}" wx:key="*this" data-id="{{msg.id}}" data-index="{{index}}">
+      <text class="blue" >{{item.user.name}}:</text>
+      <text>{{item.content}}</text>
+    </view>
+  </view>
+</view>
+
+<!--评论输入框-->
+<view class="popup" wx:if="{{show_comment}}" catchtap="onHideCommentTap">
+  <form report-submit="true" bindsubmit="onCommentSubmit">
+    <view class="pinglun-input" catchtap="onEmptyTap">
+      <input class="mr10" name="content" focus="true" placeholder="{{comment_placeholder}}"/>
+      <button form-type="submit">发送</button>
+    </view>
+  </form>
+</view>
+<!--置顶弹出层-->
+<!--<view class="popup" hidden="{{!isShowTop}}">-->
+  <!--<view class="zhiding-choose mid">-->
+    <!--<view class="f16 tc">选择置顶时间</view>-->
+    <!--<view class="mt15 tc grey">-->
+      <!--<picker mode="selector" range="{{['永久',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]}}" bindchange="onTopDayChange">{{top_day==0?'永久':top_day+'天'}}</picker>-->
+    <!--</view>-->
+    <!--<view class="flex tc mt20 zhiding-btn">-->
+      <!--<view class="sub green" catchtap="onToggleTopTap">确定</view>-->
+      <!--<view class="sub" catchtap="onHideTopTap">取消</view>-->
+    <!--</view>-->
+  <!--</view>-->
+<!--</view>-->
+
+<!--联系ta-->
+<view class="contact-box">
+  <button class="contact-user f16" type="primary" catchtap="onCallTap" disabled="{{msg.user.tel==''}}" data-tel="{{msg.user.tel}}">联系Ta</button>
+</view>

@@ -1,0 +1,10 @@
+/************ color **************/
+.green,.ress-nav-active,.ress-side-active,.filter-item-active,.sp-item-i.active{ color:#009a12;}
+.ress-nav-active::before{ border-bottom-color: #009a12;}
+.sp-item-i.active::before{ border-color:#009aff;}
+.count-btn,.cart-circle,.comm-name-score,.other-msg text,.my-code,button[type="primary"]{ background:#009a12;}
+
+.red{color:#009a12;}
+.counts,.count-spec-c{ background:#FF6B6C;}
+
+.ruzhu,.go_home{background-color: #009a12}

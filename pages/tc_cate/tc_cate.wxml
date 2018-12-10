@@ -1,0 +1,10 @@
+<import src="../tc_head/tc_head.wxml" />
+<template is="tc_head" data="{{__wechat_main_color:__wechat_main_color,active:'2'}}"></template>
+<view class="fenlei tc">
+    <view style="display: flex;flex-direction: row;flex-wrap: wrap;">
+      <view class="classify-list" wx:for="{{cateList}}" wx:key="*this" wx:for-item="cate" catchtap="onNavigateTap" data-id="{{cate.id}}">
+        <image class="list-img mb5" src="{{cate.img}}" mode="aspectFill"></image>
+        <view class="lineText">{{cate.name}}</view>
+      </view>
+    </view>
+</view>

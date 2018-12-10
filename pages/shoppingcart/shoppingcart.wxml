@@ -1,0 +1,77 @@
+<block wx:if="{{isdata}}">
+	<view class="m-product-all">
+		<view class="m-product-list">
+			<block wx:for="{{cartlist.VendorList}}" wx:for-item="items">
+				<view wx:for="{{items.ShoppingCartList}}" wx:for-item="item" class="m-product-item" bindtouchstart="removestart" bindtouchmove="removeload" bindtouchend="removeend" data-id="{{item.Id}}">
+					<view class="m-item-c {{(item.Id==T_Id)?'del':''}}">
+						<view class="m-cart-ck" catchtap="ckitem" data-id="{{item.Id}}" data-isck="{{item.IsCheck}}">
+							<icon type="{{item.IsCheck?'success':'circle'}} " color="{{item.IsCheck?'#DB384C':'#d5d5d5'}}" />
+						</view>
+						<navigator url="/pages/goods/goods?id={{item.ProductId}}" class="m-product-img">
+							<image src="{{item.ProductPic}}" />
+						</navigator>
+						<view class="m-product-info">
+							<navigator url="/pages/goods/goods?id={{item.ProductId}}">
+								<view class="m-product-name">
+									<label>{{item.ProductSaleName}}</label>
+									<label class="m-min-name" style="overflow:hiddentext-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">{{item.speStr==null?"":item.speStr}}</label>
+								</view>
+								<view class="m-product-price">
+									<label>¥</label>{{item.SalePrice}}
+								</view>
+							</navigator>
+							<block wx:if="{{item.IsCheck}}">
+								<view class="u-cart-num">
+									<view class="u-num-btn" catchtap="sub" data-num="{{item.Amount}}" data-stock="{{item.Stock}}" data-cid="{{item.Id}}">-</view>
+									<input type="number" value="{{item.Amount}}" bindblur="writenum" data-stock="{{item.Stock}}" data-cid="{{item.Id}}" />
+									<view class="u-num-btn" catchtap="add" data-num="{{item.Amount}}" data-stock="{{item.Stock}}" data-cid="{{item.Id}}">+</view>
+								</view>
+							</block>
+							<block wx:else>
+								<view class="u-cart-num">
+									<view class="u-num-btn">-</view>
+									<input type="text" value="{{item.Amount}}" />
+									<view class="u-num-btn">+</view>
+								</view>
+							</block>
+						</view>
+						<view class="u-del" data-id="{{item.Id}}" catchtap="delcart">
+							删除
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+	<view class="u-cleanbox"></view>
+	<view class="m-footer-btn">
+		<view class="m-footer-btn-list">
+			<view class="m-footer-btn-item">
+				<view class="m-cart-ck" bindtap="ckall" data-isck="{{isckall}}">
+					<icon type="{{isckall?'success':'circle'}}" color="{{isckall?'#DB384C':'#d5d5d5'}}" />
+				</view>
+				<view class="m-cart-del" bindtap="delAll">
+					<label class="iconfont icon-delete"></label>
+				</view>
+			</view>
+			<view class="m-footer-btn-item m-cart-total">
+				<view>合计：<label>¥</label><text>{{cartlist.TotalPrice}}</text></view>
+				<view>不含运费</view>
+			</view>
+		</view>
+		<view class="m-footer-btn-main" bindtap="submitorder">
+			结算({{cartlist.Total}})
+		</view>
+	</view>
+</block>
+<navigator url="/pages/index/index" open-type="switchTab" class="m-nullpage" wx:else>
+	<view class="m-nullpage-middle">
+		<label class="iconfont icon-konggouwuche"></label>
+		<view class="m-null-tip">
+			<text>购物车空空如也</text>
+			<text>去挑几件中意的商品吧</text>
+		</view>
+	</view>
+</navigator>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

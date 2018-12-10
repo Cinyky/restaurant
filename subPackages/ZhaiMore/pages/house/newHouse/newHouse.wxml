@@ -1,0 +1,31 @@
+<view catchtap="searchFocus" class="topBox tc f14">
+    <input bindblur="searchBlur" bindfocus="searchFocus" bindinput="searchInput" class="seaInput" focus="{{searchFocus}}" value="{{searchContent}}"></input>
+    <view class="searIcon {{searchHidden?'hidden':''}}">
+        <text class="iconfont icon-sousuo mr5"></text>
+        <text>楼盘名称/地址</text>
+    </view>
+</view>
+<view class="houList">
+    <view catchtap="navigateTo" class="houItem gridXb flex" data-param="?id={{item.id}}" data-path="../newHouseDetail/newHouseDetail" wx:for="{{list}}" wx:key="{{index}}">
+        <view class="itemLf mr10">
+            <image class="houPic" mode="aspectFill" src="{{item.front_cover_url}}"></image>
+            <view class="houLabel lineText tc f12">{{item.house_type_text}}</view>
+        </view>
+        <view class="itemRg sub flex flexC ">
+            <view class="houTit lineText mb5">{{item.name}}</view>
+            <view class="houDesc lineText2 mb5 grey f14">{{item.content}}</view>
+            <view class="houTyp f12 ">
+                <view class="mr10 gridFour" wx:for="{{item.labelTextList}}" wx:for-index="indexs" wx:for-item="items" wx:key="{{indexs}}">{{items}}</view>
+            </view>
+            <view class="htRg sub lineText f14  price-cou-unt">
+                <text class="pri f16">{{item.price}}</text>元/m²
+            </view>
+        </view>
+    </view>
+</view>
+<view class="{{nodata||false?'hidden':''}}" hidden="{{nodata||false}}">
+    <include src="../template/nodata.wxml"></include>
+</view>
+<view class="{{!isShowLoading?'hidden':''}}" hidden="{{!isShowLoading}}">
+    <include src="../template/loading.wxml"></include>
+</view>

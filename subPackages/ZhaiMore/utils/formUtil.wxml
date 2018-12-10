@@ -1,0 +1,48 @@
+<template name="formCreate">
+    <view class="input-row flex gridXb" wx:for="{{controls}}" wx:for-index="name" wx:for-item="control" wx:key="*this">
+        <view class="title">{{control.label}}</view>
+        <input bindinput="{{control.bindChange?control.bindChange:'onBindChange'}}" class="sub grey" data-group="{{group}}" data-name="{{name}}" data-type="input" maxlength="128" name="{{name}}" placeholder="{{control.placeholder}}" type="{{control.type}}" value="{{control.value}}" wx:if="{{control.type=='text'||control.type=='number'||control.type=='idcard'||control.type=='digit'}}"></input>
+        <textarea bindinput="{{control.bindChange?control.bindChange:'onBindChange'}}" class="sub ml10" data-group="{{group}}" data-name="{{name}}" data-type="textarea" maxlength="255" name="{{name}}" placeholder="{{control.placeholder}}" value="{{control.value}}" wx:elif="{{control.type=='textarea'}}"></textarea>
+        <checkbox-group bindchange="onBindChange" class="input-static sub grey" data-group="{{group}}" data-name="{{name}}" data-type="checkbox" wx:elif="{{control.type=='checkbox'}}">
+            <scroll-view>
+                <label wx:for="{{control.extra}}" wx:for-item="checkbox" wx:key="*this">
+                    <checkbox checked="{{control.value[index]?'checked':''}}" value="{{index}}"></checkbox>{{checkbox}}
+            <input hidden="true" name="{{name}}[{{index}}]" type="text" value="{{index}}" wx:if="{{control.value[index]}}"></input>
+                </label>
+            </scroll-view>
+        </checkbox-group>
+        <radio-group bindchange="onBindChange" class="input-static sub grey" data-group="{{group}}" data-name="{{name}}" data-type="radio" wx:elif="{{control.type=='radio'}}">
+            <input hidden="true" name="{{name}}" type="text" value="{{control.value}}"></input>
+            <label class="mr5" wx:for="{{control.extra}}" wx:for-item="radio" wx:key="*this">
+                <radio checked="{{control.value==index?'checked':''}}" value="{{index}}"></radio>{{radio}}
+          </label>
+        </radio-group>
+        <view class="input-static flex grey" wx:elif="{{control.type=='datetime'}}">
+            <input hidden="hidden" name="{{name}}" type="text" value="{{control.value[0]}} {{control.value[1]}}"></input>
+            <view class="title"></view>
+            <picker bindchange="onBindChange" class="sub" data-child-type="date" data-group="{{group}}" data-name="{{name}}" data-type="datetime" mode="date" value="{{control.value[0]}}">
+            {{control.value[0]}}
+          </picker>
+            <picker bindchange="onBindChange" class="sub" data-child-type="time" data-group="{{group}}" data-name="{{name}}" data-type="datetime" mode="time" value="{{control.value[1]}}">
+            {{control.value[1]}}
+          </picker>
+        </view>
+        <view class="input-static flex grey" wx:elif="{{control.type=='date'}}">
+            <input hidden="hidden" name="{{name}}" type="text" value="{{control.value}}"></input>
+            <view class="title"></view>
+            <picker bindchange="onBindChange" class="sub" data-group="{{group}}" data-name="{{name}}" data-type="date" mode="date" value="{{control.value}}">{{control.value}}
+          </picker>
+        </view>
+        <view class="input-static flex grey" wx:elif="{{control.type=='time'}}">
+            <input hidden="hidden" name="{{name}}" type="text" value="{{control.value}}"></input>
+            <view class="title"></view>
+            <picker bindchange="onBindChange" class="sub" data-group="{{group}}" data-name="{{name}}" data-type="time" mode="time" value="{{control.value}}">{{control.value}}
+          </picker>
+        </view>
+    </view>
+</template>
+<template name="formUtil">
+    <view class="input-group" wx:for="{{formData}}" wx:key="*this">
+        <template is="formCreate" data="{{controls:item.controls,group:index}}"></template>
+    </view>
+</template>

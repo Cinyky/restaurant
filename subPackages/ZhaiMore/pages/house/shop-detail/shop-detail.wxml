@@ -1,0 +1,69 @@
+<view>
+    <!--<swiper autoplay="{{autoplay}}" duration="{{duration}}" indicatorDots="{{indicatorDots}}" interval="{{interval}}">-->
+        <!--<swiper-item wx:for="{{info.pic}}" wx:key="index">-->
+            <!--<image class="slide-image" mode="aspectFill" src="{{item}}" style="{{isAli?'height: 375rpx;':''}}"></image>-->
+        <!--</swiper-item>-->
+    <!--</swiper>-->
+    <view>
+        <image src="{{info.pic}}" mode="aspectFill" />
+    </view>
+</view>
+<view class="shop-info">
+    <view class="shop-name gridXb black">{{info.name}}</view>
+    <view catchtap="makePhoneCall" class="shop-tel gridXb  f14" data-mobile="{{info.phone}}" style="display: flex">
+        <text class="iconfont icon-dianhua1 mr5 "></text>
+        <text>{{info.phone}}</text>
+    </view>
+    <view catchtap="openLocation" class="shop-address-detail gridXb f14">
+        <text class="iconfont icon-btnmap mr5"></text>
+        <text class="grey f14">{{info.addr}}</text>
+    </view>
+</view>
+<view class="do-type-box gridXb">
+    <view class="do-type gridFourCirle flex" style="display: flex;justify-content: space-between">
+        <text catchtap="setresourceInit" class="sub {{resource?'actice-style':''}}" style="width:350rpx">房源</text>
+        <text catchtap="setagentInit" class="sub {{agent?'actice-style':''}}" style="width:350rpx">经纪人</text>
+    </view>
+</view>
+<view class="fangyuan {{resource?'':'display-hide'}} ">
+    <view class="estate-list">
+        <view catchtap="navigateToResource" class="estate-item gridXb flex" data-id="{{item.id}}" wx:for="{{shopFangList}}" wx:key="{{index}}" style="display: flex">
+            <image class="estate-pic  mr10" mode="aspectFill" src="{{item.pics[0]}}"></image>
+            <view class="item-content sub flex flexC" style="display: flex;flex-direction: column;margin-left: 10rpx;width:500rpx;">
+                <view class="estate-feature lineText2">
+                    <text>{{item.name}}--{{item.type==2?'出售':'出租'}}</text>
+                </view>
+                <view class="estate-na-add lineText">
+                    <text class="estate-name mr10">{{item.xiaoqu}}　</text>
+                    <text class="estate-address">{{item.area}}</text>
+                </view>
+                <view class="estate-advantage">
+                    <text class="gridFourRadio" wx:for="{{item.biaoqian}}" wx:key="*this" style="border: 1rpx solid red">{{item}}</text>
+                </view>
+                <view class="estate-price f14" style="display: flex;justify-content: space-between;align-items: center">
+                    <text class="estate-contain mr10">{{item.huxing}}</text>
+                    <text class="estate-area">{{item.mianji}}m²</text>
+                    <view class="price-cou-unt mr10">
+                        <text class="price-count mr5">{{item.type==2?item.shoujia:item.zujin}}</text>
+                        <text class="price-unit">{{item.type==2?'万元':'元/月'}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="jingjiren {{agent?'':'display-hide'}}">
+    <view catchtap="navigateTo" class="agencer-box gridXb flex" data-params="?id={{item.id}}" data-path="../agencer-detail/agencer-detail" wx:for="{{shopAgentList}}" wx:key="{{index}}" style="display: flex">
+        <image class="agencer-avator mr10" src="{{item.pic}}"></image>
+        <view class="agencer-info sub gridYr">
+            <view>{{item.nickname}}</view>
+            <view class="grey lineText2 f14">
+                <text>{{item.phone}}</text>
+            </view>
+        </view>
+        <view class="tel tc " style="display: flex;flex-direction: column;align-items: center">
+            <view catchtap="makePhoneCall" class="iconfont icon-dianhua1" data-mobile="{{item.phone}}"></view>
+            <text class="f14">电话咨询</text>
+        </view>
+    </view>
+</view>

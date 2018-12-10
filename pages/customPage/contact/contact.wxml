@@ -1,0 +1,53 @@
+<import src="/wxParse/wxParse.wxml"/>
+<view class="box {{navshow?'active':''}}" bindtap="navHide">
+  <!--banner-->
+  <view class="banner">
+    <image src="{{setting.contact.banner}}" mode="aspectFill"></image>
+    <view class="banner-font">{{setting.contact.title1}}</view>
+  </view>
+  <!--联系我们-->
+  <view class="section mt50 pl30 pr30">
+    <view class="section-item mt50 mb50">
+      <view class="section-text smallSize cgrey">
+        <view class="section-name cblack gridXb pb30">
+          <text>{{setting.contact.company_name}}</text>
+        </view>
+        <map wx:if="{{markers}}" id="map" longitude="{{setting.contact.lng}}" latitude="{{setting.contact.lat}}" scale="14" show-location style="width: 100%; height: 200px;" markers="{{markers}}"></map>
+        <view class="section-p flex gridXb">
+          <text class="c-tit">地址</text>
+          <view class="sub" bindtap="tolocation">{{setting.contact.address}}</view>
+        </view>
+        <view class="section-p flex gridXb" bindtap="cllmobile" data-mobile="{{setting.contact.tel}}">
+          <text class="c-tit">电话</text>
+          <view class="sub">{{setting.contact.tel}}</view>
+        </view>
+        <view class="section-p flex gridXb">
+          <text class="c-tit">手机</text>
+          <view class="sub">
+            <text class="phone-item iconfont icon-mobilefill" bindtap="cllmobile" data-mobile="{{setting.contact.phone}}">{{setting.contact.phone}}</text>
+          </view>
+        </view>
+        <block wx:if="{{setting.contact.qq}}">
+          <view class="section-p flex gridXb">
+            <text class="c-tit">QQ</text>
+            <view class="sub">{{setting.contact.qq}}</view>
+          </view>
+        </block>
+        <block wx:if="{{setting.contact.weibo}}">
+          <view class="section-p flex gridXb">
+            <text class="c-tit">微博</text>
+            <view class="sub">{{setting.contact.weibo}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="me2">
+      <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+      </view>
+    </view>
+  </view>
+</view>
+
+<import src="../../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

@@ -1,0 +1,3 @@
+<template name="video">
+  <video poster="{{setData.pic}}" src="{{setData.video}}" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'></video>
+</template>

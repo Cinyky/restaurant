@@ -1,0 +1,97 @@
+.top-box,.mid-box,.footer-box {
+    padding: 20rpx 30rpx 5rpx 30rpx;
+    background-color: #fff;
+}
+
+.top-box {
+    padding-top: 30rpx;
+}
+
+.house-pic-box {
+    width: 220rpx;
+    height: 180rpx;
+}
+
+.house-pic {
+    width: 100%;
+    height: 100%;
+}
+
+.top-box-rg {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tag-btn {
+    color: #fff;
+    line-height: 38rpx;
+    border-radius: 6rpx;
+    padding: 0 8rpx;
+    display: inline-block;
+}
+
+.rent-btn {
+    background-color: #fea512;
+}
+
+.sell-btn {
+    background-color: #f35150;
+}
+
+.name,.huxing,.chaoxiang,.age {
+    padding: 15rpx 0;
+}
+
+.name,.huxing,.chaoxiang,.age {
+    justify-content: space-between;
+}
+
+.para-box {
+    width: 35%;
+}
+
+.footer-box {
+    padding: 50rpx 0 240rpx 0;
+}
+
+.qr-code-box {
+    width: 300rpx;
+    height: 300rpx;
+    margin: 0 auto;
+}
+
+.qr-code-box-ali {
+    height: 400rpx;
+}
+
+.qr-code-pic {
+    width: 100%;
+    height: 100%;
+}
+
+.save-pic-btn {
+    color: #fff;
+    width: 100%;
+    height: 92rpx;
+    line-height: 92rpx;
+    position: fixed;
+    bottom: 0;
+}
+
+.zhezhao {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #fff;
+}
+
+.shareTo {
+    margin-top: 50%;
+}
+
+@import "../../../__wuBaseWxss__/2.wxss";
+
+@import "../../../__wuBaseWxss__/0.wxss";

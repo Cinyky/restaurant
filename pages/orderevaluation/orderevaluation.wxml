@@ -1,0 +1,41 @@
+<view class="m-product-all">
+  <scroll-view scroll-y="true" class="m-orderlist">
+    <view class="m-panel m-panel-access">
+      <view class="m-product-list">
+        <view wx:for="{{products}}" wx:for-item="item" class="product-box">
+          <view class="m-product-item">
+            <view class="m-product-img">
+              <image src="{{item.ImageUrl}}" mode="aspectFill"/>
+            </view>
+            <view class="m-product-info">
+              <view class="m-product-name">
+                <label>{{item.Name}}</label>
+                <label class="m-min-name" style="overflow:hiddentext-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">{{item.Description==null?"":item.Description}}</label>
+              </view>
+              <view class="m-product-price">
+                <label>￥</label>{{item.Price}}
+                <text>x{{item.Count}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="star-box">
+            <text wx:for="{{starNum}}" wx:for-item="starIndex" bindtap="selectStar" data-star-num="{{starIndex}}" data-product-id="{{item.ProductId}}">
+              <text wx:if="{{evaluations[item.ProductId]['star']>=starIndex}}" class="iconfont icon-star"></text>
+              <text wx:if="{{evaluations[item.ProductId]['star']<starIndex}}" class="iconfont icon-star1"></text>
+            </text>
+          </view>
+          <view class="evaluation-box">
+            <textarea class="evaluation-textarea" bindinput="evaluationInput" data-product-id="{{item.ProductId}}" auto-height placeholder="请输入商品评价信息"/>
+          </view>
+        </view>
+
+        <view class="box-button">
+          <form bindsubmit="submitEvaluationWrap" report-submit="{{true}}">
+          <button class="btn-submit" formType="submit" disabled="{{submitBtnDisabled}}">提交评价</button>
+          </form>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+		

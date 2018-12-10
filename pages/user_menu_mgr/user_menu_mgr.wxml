@@ -1,0 +1,10 @@
+<view class="page">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_switch" wx:for="{{list}}" wx:for-index="key">
+      <view class="weui-cell__bd">{{item.text}}</view>
+      <view class="weui-cell__ft">
+        <switch checked="{{!!item.show}}" data-name="{{key}}" bindchange="bindSwitch"/>
+      </view>
+    </view>
+  </view>
+</view>

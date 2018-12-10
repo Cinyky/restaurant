@@ -1,0 +1,334 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<canvas canvas-id="shareCanvas" style="width:300px;height:600px;"></canvas>
+<!-- 预览分享图 这里就是上图展示的效果   -->
+<!-- 刚开始是隐藏的 生成分享图之后显示, 用一个布尔变量来控制 这里的样式大家看图就写出来了 -->
+<view hidden='{{hidden}}' class='preview_wrapper'>
+  <view style="background: #fff;border-radius: 5rpx;">
+    <view style="padding: 60rpx;border: 1rpx solid #dedede;border-radius: 15rpx;overflow: hidden;">
+      <image src='{{prurl}}' style="width: 400rpx;height: 800rpx;"></image>
+    </view>
+  <view class="btn-group">
+    <button bindtap='saveShareImg'>保存</button>
+    <button bindtap='closeImg' >取消</button>
+  </view>
+  </view>
+</view>
+<block wx:if="{{isdata}}">
+  <view class="m-banner-ad">
+    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="300">
+      <swiper-item wx:for="{{ProductInfo.productPicList}}" wx:for-item="item">
+        <image class="slide-image" mode="aspectFill" src="{{item.Path}}"/>
+      </swiper-item>
+    </swiper>
+  </view>
+
+
+  <view class="m-cells">
+    <view class="m-cell m-info-box">
+      <view class="m-cell-bd">
+      <view style="display: flex;justify-content: space-between">
+        <text>{{ProductInfo.ProductName}}</text>
+      </view>
+      <label>{{ProductInfo.SellingPoints || " "}}</label>
+      <view class="m-info-price" wx:if="{{ProductInfo.SalePrice!=0}}"><text>¥</text>
+        {{ProductInfo.SalePrice}}
+        <text class="m-info-delprice">¥{{ProductInfo.MarketPrice}}</text>
+        <text class="m-info-deal">已完成{{ProductInfo.SalesNum}}笔</text>
+        <text style='color:#888;margin-left:16rpx' wx:if="{{ProductInfo.freight!=0}}">快递：<text>{{ProductInfo.freight}}</text></text>
+        <text style='color:#888;margin-left:18rpx' wx:if="{{ProductInfo.baoyou!=0}}">满<text>{{ProductInfo.baoyou}}</text>包邮</text>
+      </view>
+    </view>
+    </view>
+    <view class="m-cell">
+      <image src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/duigou1.png" class="duigou"
+             wx:if='{{baozhang}}'></image>
+      <text class="m-service" wx:if='{{baozhang}}'>正品保障</text>
+      <image src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/duigou1.png" class="duigou"
+             wx:if='{{jisu}}'></image>
+      <text class="m-service" wx:if='{{jisu}}'>极速发货</text>
+      <image src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/duigou1.png" class="duigou"
+             wx:if='{{tuikuan}}'></image>
+      <text class="m-service" wx:if='{{tuikuan}}'>7天退换货</text>
+    </view>
+    <view wx:if="{{ProductInfo.SalePrice!=0}}">
+    <view wx:if="{{ProductInfo.SpecLst.length>0}}" class="m-cell m-cell-access m-info-sp" bindtap="ckselectsp">
+      <view class="m-cell-bd">
+        <text class="m-info-tip">已选</text>
+        <label class="m-imfo-sp-selext">
+          <view style="display: flex">
+            <block wx:for="{{ProductInfo.SpecLst}}" wx:for-item="items">
+              <block wx:for="{{items.svLst}}" wx:for-item="item">
+                <block wx:if="{{item.IsChecked}}">
+                  <view wx:if="{{item.Typess == 1}}">
+                    {{item.Name}}　
+                  </view>
+                  <view wx:else>
+                    {{item.guige}}:{{item.wt}}
+                  </view>
+                </block>
+              </block>
+            </block>
+          </view>
+        </label>
+      </view>
+      <view class="m-cell-ft"></view>
+    </view></view>
+  </view>
+  <!--评论-->
+  <view class="m-panel m-panel-access m-comment {{ProductInfo.totalSum<=0?'hide':''}}">
+    <view class="m-panel-hd">评价（{{ProductInfo.totalSum}}）
+      <!--<label wx:if="{{ProductInfo.Goodgrade>0}}">好评度
+        <text>{{ProductInfo.Goodgrade}}%</text>
+      </label>-->
+    </view>
+    <view class="m-panel-bd">
+      <view class="m-media-box m-media-box-appmsg">
+        <view class="m-media-box-hd">
+          <image class="m-media-box-thumb" src="{{ProductInfo.Productcomment.Title}}"/>
+        </view>
+        <view class="m-media-box-bd">
+          <label class="m-media-box-title">{{ProductInfo.Productcomment.Account_User}}</label>
+          <view class="m-media-box-desc">
+            <view style="margin-bottom:10rpx;">
+              <label wx:for="{{ProductInfo.CommentProductSkuList}}" wx:for-item="itemSku"
+                     style="margin-right:10rpx;font-size:20rpx;">
+                {{itemSku.Name}}：{{itemSku.SpecificationValueAlias}}
+              </label>
+            </view>
+            <label wx:if="{{ProductInfo.Productcomment.CommentInfo!=null}}">
+              {{ProductInfo.Productcomment.CommentInfo}}</label>
+          </view>
+
+          <view class="m-media-box-info">
+            <view class="m-media-box-info-meta m-start" wx:for="{{[1, 2, 3, 4, 5]}}" wx:for-item="itemIndex">
+              <label class="iconfont icon-start {{(itemIndex<=ProductInfo.Productcomment.Grade)?'sel':''}}"
+                     data-index="{{itemIndex}}" data-type="1" bindtap="ServiceStart"></label>
+            </view>
+            <view class="m-media-box-info-meta m-tiem">{{ProductInfo.Productcomment.CreateTimeStr}}</view>
+            <view class="m-media-list">
+              <image wx:for="{{ProductInfo.Productcommentpic}}" wx:for-item="item" src="{{item.Path}}"
+                     bindtap="ImgTap"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="m-panel-ft" wx:if="{{ProductInfo.totalSum>1}}">
+      <navigator url="../PCommentList/PCommentList?Id={{ProductInfo.Id}}" class="m-cell m-cell-access m-cell-link">
+        <view class="m-cell-bd">查看全部评论</view>
+        <text class="m-cell-ft"></text>
+      </navigator>
+    </view>
+  </view>
+  <!-- 商品详情 -->
+  <view class="m-panel m-panel-access m-detail" style="{{tapindex==3?'min-height:100rpx':''}}">
+    <view class="m-tab">
+      <view class="m-navbar">
+        <view class="m-navbar-item {{tapindex==1?'m-navbar-item-on':''}}" bindtap="picDetail">
+          图文详情
+        </view>
+        <!-- <view class="m-navbar-item {{tapindex==2?'m-navbar-item-on':''}}" bindtap="spcParam">
+           规格参数
+         </view> -->
+        <view class="m-navbar-item {{tapindex==3?'m-navbar-item-on':''}}" bindtap="userEvaluation">
+          用户评价
+        </view>
+      </view>
+    </view>
+    <view class="imagesDetail_h {{tapindex==1?'':'hide'}}">
+      <template is="wxParse" data="{{wxParseData:pinfo.nodes}}"/>
+    </view>
+    <view class="b {{tapindex==2?'':'hide'}}">
+      <template is="wxParse" data="{{wxParseData:pinfo2.nodes}}"/>
+    </view>
+    <view class="c {{tapindex==3?'':'hide'}}">
+      <view wx:for="{{evList}}" wx:for-item="evItem" wx:key="{{evItem.id}}">
+        <view class="ev-box">
+          <!--头像-->
+          <view class="ev-left">
+            <image src="{{evItem.wechat_group_list.headimgurl}}" class="ev-headimg"/>
+          </view>
+          <!--昵称和星级-->
+          <view class="ev-right">
+            <view class="ev-right-head">
+              <view>
+                {{evItem.wechat_group_list.nickname}}
+              </view>
+              <view class="star-box">
+                <text wx:for="{{starNum}}" wx:for-item="starIndex">
+                  <text wx:if="{{evItem.star>=starIndex}}" class="fa fa-star"></text>
+                  <text wx:if="{{evItem.star<starIndex}}" class="fa fa-star-o"></text>
+                </text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!--显示评价-->
+        <view class="ev-info-box">
+          <view class="ev-info-to">
+            {{evItem.content}}
+            <view style="text-align: left;padding:5rpx;color: #ccc;font-size: 26rpx">{{evItem.submit_time}}</view>
+          </view>
+          <view class="ev-info-re" wx:if="{{evItem.reply_content}}">
+            商家回复：{{evItem.reply_content}}
+            <view style="text-align: left;padding:5rpx;color: #ccc;font-size: 26rpx">{{evItem.reply_time}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="text-align: center;font-size: 28rpx;color: #aaa;" wx:if="{{!evHasMore}}">
+    -----到底啦-----
+  </view>
+
+  <!-- 底部菜单 -->
+  <view class="m-footer-btn" wx:if="{{ProductInfo.SalePrice!=0}}">
+    <view class="m-footer-btn-list">
+      <view class="m-footer-btn-item" data-id="{{ProductInfo.Id}}">
+        <view class="m-footer-btn-icon">
+          <contact-button size="27" type="default-dark" session-from="weapp">
+          </contact-button>
+          <label class="iconfont icon-more "></label>
+        </view>
+        <text>客服</text>
+      </view>
+      <view class="m-footer-btn-item" bindtap="PDCollection" data-id="{{ProductInfo.Id}}">
+        <view class="m-footer-btn-icon">
+          <label class="iconfont {{isCollection?'icon-favoritesfilling':'icon-favorite'}}"
+                 style="{{isCollection?'color:#DB384C':''}}"></label>
+        </view>
+        <text>{{isCollection?'已收藏':'收藏'}}</text>
+      </view>
+      <navigator url="/pages/shoppingcart/shoppingcart" class="m-footer-btn-item">
+        <view class="m-footer-btn-icon">
+          <label class="iconfont icon-cart "></label>
+        </view>
+        <text>购物车</text>
+      </navigator>
+    </view>
+    <block wx:if="{{ProductInfo.Stock<=0}}">
+      <view class="m-footer-btn-main m-footer-desable">
+        立即购买
+      </view>
+      <view class="m-footer-btn-main m-footer-desable">
+        库存不足
+      </view>
+    </block>
+    <block wx:if="{{ProductInfo.Status===false}}">
+      <view class="m-footer-btn-main m-footer-desable">
+        立即购买
+      </view>
+      <view class="m-footer-btn-main m-footer-desable">
+        商品已下架
+      </view>
+    </block>
+    <block wx:else>
+      <view wx:if="{{ProductInfo.SpecLst.length>0}}" class="m-footer-btn-main" bindtap="ckselectsp">
+        加入购物车
+      </view>
+      <view wx:else class="m-footer-btn-main" catchtap="addCard">
+        加入购物车
+      </view>
+      <view wx:if="{{ProductInfo.SpecLst.length>0}}" class="m-footer-btn-main m-now" bindtap="ckselectsp1">
+        立即购买
+      </view>
+      <view wx:else class="m-footer-btn-main m-now" catchtap="buynow">
+        立即购买
+      </view>
+    </block>
+  </view>
+
+  <!-- 选择属性 -->
+  <view class="u-cleanbox"></view>
+  <view class="m-panel-sp {{selectsp==0?'hide':''}} " bindtap="closesp">
+    <view class="m-panel-sp-content {{selectct==0?'bounceOutDown animated':'bounceInUp animated'}}" catchtap>
+      <view class="m-panel-sp-pinfo">
+        <view class="m-panel-sp-pimg">
+          <image src="{{selectimg}}"/>
+        </view>
+        <view class="m-panel-sp-pname">
+          <view class="m-pprice">¥{{SalePrice?SalePrice:ProductInfo.SalePrice}}</view>
+          <view class="m-pstock">库存{{stock}}件</view>
+          <view wx:if="{{ProductInfo.SpecLst.length}}" class="m-pstock" style="display: flex;">已选择：
+            <block wx:for="{{ProductInfo.SpecLst}}" wx:for-item="items">
+              <block wx:for="{{items.svLst}}" wx:for-item="item">
+                <block wx:if="{{item.IsChecked}}">
+                  <view wx:if="{{item.Typess == 1}}">
+                    {{item.Name}}　
+                  </view>
+                  <view wx:else>
+                    <!--<image src="{{item.Name}}" style="height: 30rpx;width: 30rpx;"/>-->
+                    　{{item.guige}}:{{item.wt}}
+                  </view>
+                </block>
+              </block>
+            </block>
+          </view>
+        </view>
+        <icon type="cancel" class="m-panel-sp-icon" color="#888" catchtap="closesp"/>
+      </view>
+      <scroll-view class="m-panel-sp-listbox" scroll-y="true">
+        <block wx:for="{{ProductInfo.SpecLst}}" wx:for-item="items">
+          <view class="m-panel-sp-listbox-item">
+            <view class="m-cells-title">{{items.Name}}</view>
+            <view class="m-panel-sp-labellist">
+              <block wx:for="{{items.svLst}}" wx:for-item="item">
+                <block wx:if="{{item.IsChecked}}">
+                  <label class="m-panel-sp-sellabel">
+                    <view wx:if="{{item.Typess == 1}}">
+                      {{item.Name}}
+                    </view>
+                    <view wx:else>
+                      <image src="{{item.Name}}" style="height: 30rpx;width: 30rpx;"/>
+                    </view>
+                  </label>
+                </block>
+                <block wx:else>
+                  <label>
+                    <view wx:if="{{item.Typess == 1}}" data-ckid="{{items.ckid}}" data-spid="{{item.Id}}"
+                          catchtap="selectsp">
+                      {{item.Name}}
+                    </view>
+                    <view wx:else>
+                      <view data-ckid="{{items.ckid}}" data-spid="{{item.Id}}" catchtap="selectsp">
+                        <image src="{{item.Name}}" style="height: 30rpx;width:30rpx;"/>
+                        <text>{{item.guige}}</text>
+                      </view>
+                    </view>
+                  </label>
+                </block>
+              </block>
+            </view>
+          </view>
+        </block>
+        <view style="height:96rpx;width:100%;"></view>
+      </scroll-view>
+      <view class="m-m-panel-sp-btn">
+        <view class="m-m-panel-sp-lbtn">
+          <view class="u-cart-num">
+            <view class="u-num-btn" catchtap="sub">-</view>
+            <input type="number" value="{{numval}}" bindblur="writenum"/>
+            <view class="u-num-btn" catchtap="add">+</view>
+          </view>
+        </view>
+        <view class="m-m-panel-sp-rbtn" catchtap="addCard" wx:if="{{flag}}">加入购物车</view>
+        <view class="m-m-panel-sp-rbtn" catchtap="buynow" wx:if="{{flag1}}">立即购买</view>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="m-nullpage" wx:else>
+  <view class="m-nullpage-middle">
+    <label class="iconfont icon-meiyougengduo"></label>
+    <view class="m-null-tip">
+      <text>什么都没有</text>
+    </view>
+  </view>
+</view>
+
+<view class="u-tap-btn">
+
+  <navigator url="/pages/index/index" open-type="reLaunch" class="u-go-home">
+    <view class="iconfont icon-shouyeshouye"></view>
+  </navigator>
+</view>

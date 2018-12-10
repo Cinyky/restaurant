@@ -1,0 +1,48 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view wx:if="{{httpsurl}}" class="body">
+  <web-view src="{{httpsurl}}"></web-view>
+</view>
+<view wx:if="{{!httpsurl}}" class="body">
+  <view wx:if="{{flag}}">
+    <view class="header">{{dataList.Title}}</view>
+    <view class="time">发布时间：{{dataList.PublishTimeText}}</view>
+    <view wx:if="{{video}}">
+      <video id="myVideo" src="{{video}}" controls></video>
+    </view>
+    <view class="center">
+      <!-- <template is="wxParse" data="{{wxParseData:activitydetail.nodes}}" /> -->
+      <rich-text nodes='{{Content}}'></rich-text>
+    </view>
+    <!-- 注释地图 -->
+    <!-- <view wx:if="{{markers[0].longitude}}" class="introduce">
+      <map id="map" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" scale="14" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
+    </view> -->
+    <!-- <view class="comment_box">
+      <input class="comment_input" value="{{comment_input}}" placeholder="请输入评论..." bindinput="inputComment" />
+      <button class="weui-btn comment_submit_btn" bindtap="submitComment">提交</button>
+    </view> -->
+
+    <!-- <view class="comment_list">
+      <view class="comment_item" wx:for="{{comment_list}}" wx:key="{{item.id}}">
+        <view class="comment_nickname">{{item.user.nickname}}</view>
+        <view class="comment_content">{{item.comment}}</view>
+      </view>
+    </view> -->
+  </view>
+  <view class="m-nullcontent" wx:if="{{!flag}}">
+    <view class="m-nullpage-middle">
+      <label class="iconfont icon-meiyougengduo"></label>
+      <view class="m-null-tip">
+        <text>亲~什么都没有</text>
+        <text>到别处看看吧~~</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class='reeturn_index_container' bindtap='Return_H'>
+  <view class='reeturn_index_content'>首页</view>
+</view> -->
+
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

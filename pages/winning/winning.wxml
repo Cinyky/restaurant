@@ -1,0 +1,11 @@
+<!--pages/winning/winning.wxml-->
+<view class='recordItem f14' wx:for="{{prizeList}}" wx:key="{{item.id}}">
+  <view class='ntmBox'>
+    <view class='grey '>{{item.add_time}}</view>
+    <view class='name mt10 f16'>{{item.prize_name}}</view>
+    <view class='duijiangma mt5'>{{item.prize_type==1?'积分已自动兑换':'兑奖码：'+item.code}}</view>
+  </view>
+  <view class='btnBox' wx:if="{{item.prize_type!=1}}">
+    <button class='telBtn' plain catchtap='onCopyTap' data-data='{{item.code}}'>复制</button>
+  </view>
+</view>

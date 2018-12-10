@@ -1,0 +1,29 @@
+<view>
+  <block wx:for="{{list}}" wx:key="{{item.id}}">
+    <!--列表项-->
+    <view style="background: #fff;padding: 20rpx;margin-top: 20rpx;">
+      <view style="font-size: 28rpx;">
+        <block wx:if="{{type==0}}">
+          <text>我 回复</text>
+          <text>{{item.to_user.name}}：</text>
+        </block>
+        <block wx:if="{{type==1}}">
+          <text>{{item.to_user.name}}</text>
+          <text> 回复 我：</text>
+        </block>
+        <text>{{item.content}}</text>
+      </view>
+      <view style="background: #eeeeee;padding: 20rpx;margin-top: 15rpx;" catchtap="bindRedirectToDetail" data-id="{{item.msg_id}}">
+        <text style="color: #666">原贴内容：</text>
+        <text>{{item.msg.content}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+
+<!--没有更多了-->
+<view class="nothing tc linght flex mb10 mt10" hidden="{{hasMore}}">
+  <text class="sub line mr10"></text>
+  <text>没有更多了</text>
+  <text class="sub line ml10"></text>
+</view>

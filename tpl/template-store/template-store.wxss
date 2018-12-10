@@ -1,0 +1,13 @@
+.mar-r{margin-right:5px}
+.mar-t{margin-top:5px}
+.fs-14{font-size:14px;font-weight:600}
+.fs-12{font-size:12px}
+.store-img{width:40px;height:40px;background-size:100% 100%;border-radius: 50%;}
+.store-time{background: #9ED269;border-radius: 10px;padding: 2px 7px;color: #fff;margin: 0 5px}
+.store-address{flex:1;margin-right:5px}
+.store-addimg{width:15px;height:15px;background-size:100% 100%;}
+.store-phone{background-size:100% 100%;margin-top:-3px;width:20px;height:20px; padding: 0 10px;
+}
+.store-bottom{display:flex;font-size:12px;margin-top:10px}
+.bottom-left{display:flex; flex: 1;}
+.store-address-leftRange{margin-right: 20rpx;}

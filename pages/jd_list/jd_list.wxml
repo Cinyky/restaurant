@@ -1,0 +1,27 @@
+<view class="jd_wrapper">
+  <view class="jd_item" wx:for="{{jdList}}" data-id="{{item.id}}" data-idx="{{index}}" bindtap="bindRedirectToJdDetail">
+    <view>
+      <image class="jd_brand" src="{{item.imgs[0]}}"></image>
+    </view>
+    <view class="jd_desc">
+      <view class="jd_desc_line">
+        <view class="jd_name">{{item.name}}</view>
+        <view class="jd_min_price">￥{{item.min_price}}起</view>
+      </view>
+      <view class="jd_desc_line">
+        <view class="">{{item.avg_star}}分 | {{item.comment_count}}人评论</view>
+        <view class="">
+          <text class="jd_label" wx:if="{{item.fw_tc==1}}">停车</text>
+          <text class="jd_label" wx:if="{{item.fw_wifi==1}}">WiFi</text>
+          <text class="jd_label" wx:if="{{item.fw_ct==1}}">用餐</text>
+          <text class="jd_label" wx:if="{{item.fw_jc==1}}">行李寄存</text>
+        </view>
+      </view>
+      <view class="jd_desc_line">
+        <view class="">{{item.address}} | {{item.distance}}km</view>
+      </view>
+    </view>
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

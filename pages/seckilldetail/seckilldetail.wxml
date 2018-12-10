@@ -1,0 +1,185 @@
+<import src="/wxParse/wxParse.wxml" />
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{[product.pic]}}" wx:for-item="item">
+    <swiper-item>
+      <image mode='widthFix' src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- H start -->
+<!-- 价格 -->
+<view class='bargaindetail_price_container' style="background: {{__wechat_main_color}};">
+  <view class='bargaindetail_price_content_public bargaindetail_price_content_public_first'>
+    <view class='bargaindetailPrice_up'>
+      原价
+    </view>
+    <view class='bargaindetailPrice_down'>
+      <text>￥{{product.oprice}}</text>
+    </view>
+  </view>
+  <view class='bargaindetail_price_content_public bargaindetail_price_content_public_last'>
+    <view class='bargaindetailOriginal_up' style="color: {{__wechat_main_color}};">
+      秒杀价
+    </view>
+    <view class='bargaindetailOriginal_down'>
+      <text>￥</text>{{product.price}}
+    </view>
+  </view>
+  <view class='bargaindetail_price_time_content'>
+    <view class='bargaindetailTime_up'>
+      秒杀立减{{(product.oprice*100-product.price*100)/100}}元
+    </view>
+  </view>
+</view>
+<!-- 名称 -->
+<view class='bargaindetail_title_container'>
+  <view class='bargaindetail_title_content'>
+    {{product.name}}
+  </view>
+  <view class='bargaindetailStock_content'>
+    <view>
+      {{product.num}}
+    </view>
+    <view>
+      剩余库存
+    </view>
+  </view>
+</view>
+<!-- 提示 -->
+<view class='bargaindetail_tip_container'>
+  <view class='bargaindetail_tip_pay_container bargaindetail_tip_content_public'>
+    <image src='http://weidogstest.oss-cn-beijing.aliyuncs.com/3e55406a11d25e70a86a55fb946d1ef1.png'></image>
+    <text>此商品支持微信支付</text>
+  </view>
+  <view class='bargaindetail_tip_time_container bargaindetail_tip_content_public'>
+    <text class='bargaindetail_tip_public_leftText'>秒杀开始时间</text>
+    <text class='bargaindetail_tip_public_rightText' style="color: {{__wechat_main_color}};">{{product.times}}</text>
+  </view>
+  <view class='bargaindetail_tip_payMethod_container bargaindetail_tip_content_public'>
+    <text class='bargaindetail_tip_public_leftText'>付款方式</text>
+    <text class='bargaindetail_tip_public_rightText' style="color: {{__wechat_main_color}};">在线支付</text>
+  </view>
+</view>
+<!-- 查看 -->
+<!-- <view class='bargaindetail_check_container'>
+  <view class='bargaindetail_check_content_public'>
+    <text style="color: {{__wechat_main_color}};">3015</text>
+    <text>人查看</text>
+  </view>
+  <view class='bargaindetail_check_content_public'>
+    <text style="color: {{__wechat_main_color}};">3015</text>
+    <text>人参与</text>
+  </view>
+  <view class='bargaindetail_check_content_public'>
+    <text style="color: {{__wechat_main_color}};">3015</text>
+    <text>人帮砍</text>
+  </view>
+</view> -->
+<!-- H end -->
+
+
+
+<!-- <view class='shop-info'>
+  <view class='price'>
+    <text class='nowPrice'>￥{{product.price}}</text>
+    <text class='line-delete'>￥{{product.oprice}}</text>
+    <text class='priceCutDown'>秒杀立减{{(product.oprice*100-product.price*100)/100}}元</text>
+  </view>
+  <view class='title'>
+    <view>
+      <text>{{product.name}}</text>
+      <text style="margin-left: 10rpx;font-size: small;color: orangered;">库存{{product.num}}件</text>
+    </view>
+    <view class='title-tip'>{{product.ms}}</view>
+  </view>
+</view> -->
+
+<!-- 倒计时 -->
+<!--<view class='clock'>-->
+  <!--<view wx:if="{{!is_start}}">-->
+    <!--倒计时：0天00:00:00-->
+  <!--</view>-->
+  <!--<view wx:else>-->
+    <!--秒杀已经开始，立即抢购吧！-->
+  <!--</view>-->
+<!--</view>-->
+
+<!-- 商品详情 -->
+<view class='shop-play shop-detail'>
+  <view class='title'>商品详情</view>
+  <view class='con'>
+    <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+  </view>
+</view>
+
+
+
+<!-- 底部菜单 -->
+<view class='bargaindetail_navBottom_container'>
+  <view class='bargaindetail_navBottom_content'>
+    <view class='bargaindetail_navBottom_left_container' bindtap='return_index_h'>
+      <image src='http://weidogstest.oss-cn-beijing.aliyuncs.com/d25a559835ccff85e4b4c807eaf1ea93.png'></image>
+      <text>首页</text>
+    </view>
+    <view class='bargaindetail_navBottom_left_container'>
+      <image src='http://weidogstest.oss-cn-beijing.aliyuncs.com/3817c0b42c250e2120dd01e603bcfdcf.png'></image>
+      <button type="primary" open-type="share" data-name="pageShare" id="share" class='con_listbox_h' hover-class='none'>分享</button>
+      <!-- <text>分享</text> -->
+    </view>
+    <!-- <view class='bargaindetail_navBottom_right_container bargaindetail_navBottom_orange_container'>
+      <text>直接买</text>
+    </view> -->
+
+
+    <view bindtap='showModal1'class='bargaindetail_navBottom_right_container bargaindetail_navBottom_red_container' style="background: {{__wechat_main_color}};">
+      <text wx:if="{{product.num!=0}}">{{is_start==0?timeOut:'立即购买'}}</text>
+      <text wx:if="{{product.num==0}}">库存不足</text>
+    </view>
+  </view>
+</view>
+
+<!-- 底部菜单 -->
+<!-- <view class='fixedBottom'>
+  <view class='home'>
+    <navigator url='/pages/seckill/seckill'>
+      <image mode='widthFix' src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/pin2.png" />
+      <text>首页</text>
+    </navigator>
+  </view>
+  <view class="btn-buy {{is_start==0?'not-start':'is-start'}} " style="{{product.num==0?'background:#aaaaaa;':''}} " bindtap='showModal1'>
+    <text>￥{{product.price}}</text>
+    <text wx:if="{{product.num!=0}}">{{is_start==0?timeOut:'立即购买'}}</text>
+    <text wx:if="{{product.num==0}}">库存不足</text>
+  </view>
+</view> -->
+
+<!-- 自定义底部弹出层 -->
+<view class="commodity_screen" bindtap="hideModal1" wx:if="{{showModalStatus1}}"></view>
+<view animation="{{animationData1}}" class="commodity_attr_box" wx:if="{{showModalStatus1}}">
+
+  <view class='header'>
+    <view class='header-imgBox'>
+      <image mode='widthFix' src="{{product.pic}}" />
+    </view>
+    <view class='header-infoBox'>
+      <text>{{product.name}}</text>
+      <text class='red'>￥{{type=='group'?product.gprice:product.price}}</text>
+    </view>
+  </view>
+
+  <view class='count'>
+    <text>购买数量:</text>
+    <view class="stepper floatR">
+      <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+      <input type="number" bindchange="bindManual" value="{{num}}" />
+      <text class="normal" bindtap="bindPlus">+</text>
+    </view>
+  </view>
+
+  <view class='submit'>
+    <view bindtap="navigateToSubmitOrder">
+      <button type='submit' style="border-radius: 0">确定</button>
+    </view>
+  </view>
+</view>

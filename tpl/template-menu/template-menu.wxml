@@ -1,0 +1,51 @@
+<template name="menu_01">
+  <view class="menu-container menu-01" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <block wx:for="{{setData.dataList}}" wx:key="menu">
+      <view class="menu-item">
+        <navigator url="{{item.linkurl}}">
+          <image class="menuicon menu-01" src="{{item.img}}"></image>
+          <text>{{item.title}}</text>
+        </navigator>
+      </view>
+    </block>
+  </view>
+</template>
+<template name="navigation_01">
+  <view class="menu-container01 menu-01" style="height: 100rpx; {{xcx_menu_height!=''?'padding-bottom:'+xcx_menu_height+' !important;':'' }}" wx:if="{{setData.dataList.length != 0}}">
+    <block wx:for="{{setData.dataList}}" wx:key="menu" wx:for-index="index">
+      <view class="menu-item02" wx:if="{{index==highLightIndex}}">
+        <view>
+          <image class="menuicon02 menu-01" src="{{item.selectimg}}"></image>
+          <text style='color:{{setData.selectedColor}}'>{{item.title}}</text>
+        </view>
+      </view>
+      <view class="menu-item02" wx:else>
+        <view bindtap='phone' wx:if="{{item.linkurl=='tel'}}" data-phone="{{setData.kfTel}}">
+          <image class="menuicon02 menu-01" src="{{item.img}}"></image>
+          <text>{{item.title}}</text>
+        </view>
+        <view wx:elif="{{item.linkurl=='map'}}" bindtap='map'>
+          <image class="menuicon02 menu-01" src="{{item.img}}"></image>
+          <text>{{item.title}}</text>
+        </view>
+        <view wx:elif="{{item.linkurl=='facilitator'}}" style='position:relative'>
+          <button open-type="contact" session-from="weapp"></button>
+          <image class="menuicon02 menu-01" src="{{item.img}}"></image>
+          <text>{{item.title}}</text>
+        </view>
+        <view wx:elif="{{item.linkurl=='map'}}" bindtap='map'>
+          <image class="menuicon02 menu-01" src="{{item.img}}"></image>
+          <text>{{item.title}}</text>
+        </view>
+        <view wx:elif="{{item.checkId=='-2'}}" bindtap='web' data-data='{{item.linkurl}}'>
+          <image class="menuicon02 menu-01" src="{{item.img}}"></image>
+          <text>{{item.title}}</text>
+        </view>
+        <view data-url="{{item.linkurl}}" data-idx="{{index}}" catchtap="bind_menu_redirect_btn" wx:else>
+          <image class="menuicon02 menu-01" src="{{item.img}}"></image>
+          <text>{{item.title}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</template>

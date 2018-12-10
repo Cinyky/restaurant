@@ -1,0 +1,47 @@
+@import "/tpl/template-menu/template-menu.wxss";
+@import "../../assets/common.wxss";
+
+page, view, button, text, form, input {
+  margin: 0;
+  padding: 0;
+  /*box-sizing: border-box;*/
+}
+
+page, .page {
+  background: #f5f5f5;
+}
+.head_box{
+  height: 100rpx;
+}
+.head_box>view{
+  height: 100rpx;
+  background: #fff;
+  position: relative;
+  top: 50rpx;
+  width: 700rpx;
+  margin-left: 25rpx;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  color: #888;
+}
+.quote_form{
+  margin-top: 70rpx;
+  box-sizing: border-box;
+  width: 700rpx;
+  margin-left: 25rpx;
+  background: #fff;
+  padding: 40rpx;
+}
+.weui-input{
+  color: #888;
+  font-size: 30rpx;
+}
+.submit_btn{
+  margin-top: 20rpx;
+  margin-bottom: 100rpx;
+  width: 700rpx;
+  margin-left: 25rpx;
+}

@@ -1,0 +1,192 @@
+<include src="../header.wxml"/>
+<view class="box  {{navshow?'active':''}}" bindtap="navHide">
+  <include src="../logo.wxml"/>
+  <!--轮播图-->
+  <swiper class="swiper swiper-box" circular="true" indicator-dots="true" autoplay="true" interval="3000">
+    <block wx:for="{{imgList}}">
+      <swiper-item>
+        <image src="{{item.img}}" data-url="{{item.img}}" bindtap="link" class="slide-image" mode="aspectFill"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--分类-->
+  <view class="class f14 tc flex">
+    <block wx:for="{{setting.navList}}">
+      <view class="group sub">
+        <view data-key="{{item.key}}" class="navigator" bindtap="linkto">
+          <view class="icon">
+            <image src="{{item.logo}}" mode="aspectFill"></image>
+          </view>
+          <view class="class-group-tit">{{item.title}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!--产品-->
+  <view class="main-box">
+    <block wx:if="{{setting.prod.content_show==1}}">
+      <view class='section section-product'>
+        <view class='section-tit tc pt50 pb50'>
+          <view class='section-h2' style="color: {{__wechat_main_color}}">{{setting.prod.title1}}</view>
+          <view class="section-p linght" wx:if="{{setting.prod.title2!=''}}">{{setting.prod.title2}}</view>
+        </view>
+        <view class="section-item flex tc">
+          <block wx:for="{{setting.homeContent.prod}}">
+            <view class="section-li">
+              <view class="setction-img" data-key="prod" data-id="{{item.id}}" bindtap="detail">
+                <image src="{{item.img}}" mode="aspectFill"></image>
+              </view>
+              <view class="section-text lineText">
+                <text>{{item.title}}</text>
+                <view wx:if="{{item.price>0}}">{{item.price}}元</view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view class="section-btn tc">
+          <text style="color: {{__wechat_main_color}}; border:1px solid {{__wechat_main_color}};" class="navigator-hover gridFourCirle" data-key="prod" bindtap="linkto">查看所有产品</text>
+        </view>
+      </view>
+    </block>
+    <!--案例-->
+    <block wx:if="{{setting.demo.content_show==1}}">
+      <view class='section section-product'>
+        <view class='section-tit tc pt50 pb50'>
+          <view class='section-h2' style="color: {{__wechat_main_color}}">{{setting.demo.title1}}</view>
+          <view class="section-p linght" wx:if="{{setting.demo.title2!=''}}">{{setting.demo.title2}}</view>
+        </view>
+        <view class="section-item flex tc">
+          <block wx:for="{{setting.homeContent.demo}}">
+            <view class="section-li">
+              <view class="setction-img" data-key="demo" data-id="{{item.id}}" bindtap="detail">
+                <image src="{{item.img}}" mode="aspectFill"></image>
+              </view>
+              <view class="section-text lineText">
+                <text>{{item.title}}</text>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view class="section-btn tc">
+          <text style="color: {{__wechat_main_color}}; border:1px solid {{__wechat_main_color}};" class="navigator-hover gridFourCirle" data-key="demo" bindtap="linkto">所有案例展示</text>
+        </view>
+      </view>
+    </block>
+    <!--关于我们-->
+    <block wx:if="{{setting.about.content_show==1}}">
+      <view class="section section-about">
+        <view class="section-tit tc pt50 pb50">
+          <view class='section-h2' style="color: {{__wechat_main_color}}">{{setting.about.title1}}</view>
+          <view class="section-p linght" wx:if="{{setting.about.title2!=''}}">{{setting.about.title2}}</view>
+        </view>
+        <view class="section-item pl30 pr30">
+          <view class="setction-img">
+            <image src="{{setting.about.banner}}" mode="aspectFill"></image>
+          </view>
+          <text class="section-text grey lineText3">{{setting.about.desc}}</text>
+        </view>
+        <view class="section-btn tc">
+          <text style="color: {{__wechat_main_color}}; border:1px solid {{__wechat_main_color}};" class="navigator-hover gridFourCirle" data-key="about" bindtap="linkto">详细了解我们</text>
+        </view>
+      </view>
+    </block>
+    <!--新闻中心-->
+    <block wx:if="{{setting.news.content_show==1}}">
+      <view class="section section-News">
+        <view class="section-tit tc">
+          <view class='section-h2' style="color: {{__wechat_main_color}}">{{setting.news.title1}}</view>
+          <view class="section-p linght" wx:if="{{setting.news.title2!=''}}">{{setting.news.title2}}</view>
+        </view>
+        <view class="section-item">
+          <block wx:for="{{setting.homeContent.news}}">
+            <view class="section-li flex gridXb p30" data-key="news" data-id="{{item.id}}" bindtap="detail">
+              <view class="setction-img">
+                <image src="{{item.img}}" mode="aspectFill"></image>
+              </view>
+              <view class="section-text sub pl30">
+                <view class="section-empty">
+                  <text class="setction-title lineText">{{item.title}}</text>
+                  <text class="setction-info lineText2 smallSize cgrey">{{item.desc}}</text>
+                  <text class="setction-time lightSize">{{item.ctime}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view class="section-btn tc">
+          <text style="color: {{__wechat_main_color}}; border:1px solid {{__wechat_main_color}};" class="navigator-hover gridFourCirle" data-key="news" bindtap="linkto">进入新闻中心</text>
+        </view>
+      </view>
+    </block>
+    <!--联系我们-->
+    <block wx:if="{{setting.contact.content_show==1}}">
+      <view class="section section-cactact pt50 pb50">
+        <view class="section-tit tc">
+          <view class='section-h2' style="color: {{__wechat_main_color}}">{{setting.contact.title1}}</view>
+          <view class="section-p linght" wx:if="{{setting.contact.title2!=''}}">{{setting.contact.title2}}</view>
+        </view>
+        <view class="section-item pl30 pr30">
+          <view class="section-text">
+            <map id="map" longitude="{{setting.contact.lng}}" latitude="{{setting.contact.lat}}" scale="15" show-location style="width: 100%; height: 200px;" markers="{{markers}}" bindmarkertap="tolocation"></map>
+            <view class="section-name">
+              <text>{{setting.contact.company_name}}</text>
+            </view>
+            <view class="section-p flex">
+              <text class="ad-tit">地址</text>
+              <text class="sub" bindtap="tolocation">{{setting.contact.address}}</text>
+            </view>
+            <view class="section-p flex" bindtap="cllmobile" data-mobile="{{setting.contact.tel}}">
+              <text class="ad-tit">电话</text>
+              <text class="sub">{{setting.contact.tel}}</text>
+            </view>
+            <view class="section-p flex">
+              <text class="ad-tit">手机</text>
+              <view class="sub clearfix">
+                <text class="phone-item iconfont icon-mobilefill" bindtap="cllmobile" data-mobile="{{setting.contact.phone}}">{{setting.contact.phone}}</text>
+              </view>
+            </view>
+            <block wx:if="{{setting.contact.qq}}">
+              <view class="section-p flex">
+                <text class="ad-tit">QQ</text>
+                <text class="sub">{{setting.contact.qq}}</text>
+              </view>
+            </block>
+            <block wx:if="{{setting.contact.weibo}}">
+              <view class="section-p flex">
+                <text class="ad-tit">微博</text>
+                <text class="sub">{{setting.contact.weibo}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!--在线留言-->
+    <block wx:if="{{setting.is_open_ly==1}}">
+      <view class="section section-Leaving">
+        <view class="section-tit tc">
+          <view class="section-h2" style="color: {{__wechat_main_color}}">留言板</view>
+          <view class="section-p grey">Message Board</view>
+        </view>
+        <view class="section-inpt pl30 pr30">
+          <form bindsubmit="lySubmit">
+            <view class="section-li">
+              <input type="text" name="phone" placeholder="请输入电话~"/>
+            </view>
+            <view class="section-li">
+              <input type="text" name="email" placeholder="请输入邮箱~"/>
+            </view>
+            <view class="section-li">
+              <textarea placeholder="请输入您的建议~" name="content"/>
+            </view>
+            <view class="section-li">
+              <button form-type="submit" type="primary" style="background: {{__wechat_main_color}}"> 提交</button>
+            </view>
+          </form>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<import src="../../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

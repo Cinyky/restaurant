@@ -1,0 +1,91 @@
+<template name="goodsList_01">
+    <view class="gooods-container goods-01" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="goods"> 
+        <view class="goods-item">
+          <view class="goods-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}"></image>
+            <view class="goods-item-inner_H">
+              <text class="tit">{{item.title}}</text>
+              <text class="mon" wx:if="{{item.price!=0}}">{{item.price}}<text class="m-info-delprice">¥{{item.yuanjia}}</text></text>
+            </view>
+            </navigator>
+          </view>
+        </view> 
+       </block> 
+    </view>
+</template>
+
+<template name="goodsList_02">
+    <view class="gooods-container goods-02" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="goods"> 
+        <view class="goods-item">
+          <view class="goods-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}"></image>
+            <view>
+              <text class="tit">{{item.title}}</text>
+              <text class="mon" wx:if="{{item.price!=0}}">{{item.price}}<text class="m-info-delprice">¥{{item.yuanjia}}</text></text>
+            </view>
+            </navigator>
+          </view>
+        </view> 
+       </block> 
+    </view>
+</template>
+
+<template name="goodsList_03">
+    <view class="gooods-container goods-03" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="goods"> 
+        <view class="goods-item">
+          <view class="goods-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}"></image>
+            <view>
+              <text class="tit">{{item.title}}</text>
+              <text class="mon" wx:if="{{item.price!=0}}">{{item.price}}<text class="m-info-delprice">¥{{item.yuanjia}}</text></text>
+            </view>
+            </navigator>
+          </view>
+        </view> 
+       </block> 
+    </view>
+</template>
+
+<template name="goodsList_04">
+    <view class="gooods-container goods-04" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="goods"> 
+        <view class="goods-item">
+          <view class="goods-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}"></image>
+            <view>
+              <text class="tit DListL_4">{{item.title}}</text>
+              <text class="mon DListM_4" wx:if="{{item.price!=0}}">{{item.price}}<text class="m-info-delprice">¥{{item.yuanjia}}</text></text>
+            </view>
+            </navigator>
+          </view>
+        </view>
+       </block> 
+    </view>
+</template>
+
+<template name="goodsList_05">
+  <scroll-view scroll-x="true"> 
+    <view class="gooods-container goods-05 uploadWrap" scroll-x="true" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="goods"> 
+        <view class="goods-item">
+          <view class="goods-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}"></image>
+            <view>
+              <text class="tit">{{item.title}}</text>
+              <text class="mon" wx:if="{{item.price!=0}}">{{item.price}}<text class="m-info-delprice">¥{{item.yuanjia}}</text></text>
+            </view>
+            </navigator>
+          </view>
+        </view> 
+       </block> 
+    </view>
+    </scroll-view> 
+</template>

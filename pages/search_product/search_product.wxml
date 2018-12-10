@@ -1,0 +1,70 @@
+<scroll-view scroll-y="true" class="m-product-all u-pa" bindscrolltolower="scrollbottom" scroll-top="{{scposition}}" wx:if="{{isdata}}">
+	<view class="m-tab" >
+		<view class="m-navbar">
+			<view class="m-navbar-item {{post.orderby==1?'m-navbar-item-on':''}}" bindtap="sealnum">
+				销量
+			</view>
+			<view class="m-navbar-item {{post.orderby==2?'m-navbar-item-on':''}}" bindtap="newpd">
+				新品
+			</view>
+			<view class="m-navbar-item {{post.orderby==3?'m-navbar-item-on':''}} " bindtap="pdprice">
+				<label class="m-sort"> 排序 <image src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/{{sort==1?'sort-desc':'sort-asc'}}.png" /></label>
+			</view>
+		</view>
+	</view>
+	<view  class="m-product-list {{viewtype==1?'m-listv':''}}" >
+		<block wx:for="{{pdlist}}" wx:for-item="item">
+			<navigator url="/pages/goods/goods?id={{item.id}}" class="m-product-item">
+				<view class="m-product-img">
+					<image src="{{item.ProductPic}}" />
+				</view>
+				<view class="m-product-info">
+					<view class="m-product-name">
+						<label>{{item.SalesName}}</label>
+					</view>
+					<view class="m-product-price" wx:if="{{item.SalePrice!=0}}">
+						<label>￥</label>{{item.SalePrice}}<text class="m-info-delprice">￥{{item.MarketPrice}}</text>
+					</view>
+				</view>
+			</navigator>
+		</block>
+	</view>
+
+	<view class="m-loading-box">
+		<block wx:if="{{ispage}}">
+			<view class="u-loadmore">
+				<label class="u-loading"></label>
+				<text class="u-loadmore-tips">正在加载</text>
+			</view>
+		</block>
+		<block wx:else>
+			<view class="u-loadmore u-loadmore-line">
+				<text class="u-loadmore-tips">没有更多数据啦！</text>
+			</view>
+		</block>
+	</view>
+	<view class="u-top">
+   <navigator  open-type="navigateBack" class="u-go-home">
+    <view class="iconfont icon-shouyeshouye"></view>
+  </navigator>
+   <navigator bindtap="viewType" open-type="switchTab">
+  </navigator>
+		<view class="u-view" bindtap="viewType">
+			<label class="iconfont {{viewtype==1?'icon-viewlist':'icon-viewgallery'}}"></label>
+		</view>
+		<view class="u-back" bindtap="returnTop">
+			<label class="iconfont icon-fanhuidingbu"></label>
+		</view>
+	</view>
+</scroll-view>
+<navigator url="/pages/search/search" redirect="true" class="m-nullpage" wx:else>
+	<view class="m-nullpage-middle">
+		<label class="iconfont icon-sousuo-sousuo"></label>
+		<view class="m-null-tip">
+			<text>亲~找不到您想要的商品</text>
+			<text>再多点提示呗</text>
+		</view>
+	</view>
+</navigator>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

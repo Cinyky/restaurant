@@ -1,0 +1,59 @@
+<view class="page_wrapper">
+  <view>
+    <image src="{{answer.phbg}}" class="phbg_img" mode="scaleToFill"></image>
+  </view>
+  <view class="ans_info" style="background: {{__wechat_main_color}};">
+    <view>
+      <text>活动剩余时间：</text>
+      <text class="hl_txt">{{_etime[0]}}</text>
+      <text>天</text>
+      <text class="hl_txt">{{_etime[1]}}</text>
+      <text>小时</text>
+      <text class="hl_txt">{{_etime[2]}}</text>
+      <text>分</text>
+      <text class="hl_txt">{{_etime[3]}}</text>
+      <text>秒</text>
+    </view>
+    <view style="margin-top: 40rpx;color: #eeeeee;">
+      <view>麒麟臂功力没发挥出来？</view>
+      <view>每邀请一位好友，可增加一次dati机会</view>
+    </view>
+  </view>
+  <view class="abs_center tab_list" style="background: {{__wechat_main_color}};">
+    <view class="abs_center" style="position: relative;" bindtap="changeTab" data-tab="0">
+      <text class="iconfont icon-check" wx:if="{{tab==0}}"></text>
+      <text>排行榜</text>
+      <view class="badge">99</view>
+    </view>
+    <view class="abs_center" style="position: relative;" bindtap="changeTab" data-tab="1">
+      <text class="iconfont icon-check" wx:if="{{tab==1}}"></text>
+      <text>我邀请的好友</text>
+      <view class="badge">99</view>
+    </view>
+  </view>
+  <view class="user_list">
+    <view class="user_item" wx:for="{{userList}}" wx:for-item="user" wx:key="{{user.id}}" wx:for-index="user_idx">
+      <!--头像-->
+      <view style="margin-right: 50rpx;">
+        <image src="{{user.headimg}}" mode="scaleToFill" class="head_img"></image>
+      </view>
+      <!--用户名/分数-->
+      <view style="display: flex;flex-direction: column;justify-content: space-between;">
+        <!--用户名-->
+        <view style="color: #de7d00;font-size: 40rpx;">{{user.name}}</view>
+        <!--分数-->
+        <view>
+          <text style="color: #888;">分数：</text>
+          <text style="color: #de7d00;margin-right: 40rpx;">{{user.score}}</text>
+          <text style="color: #888;">用时：</text>
+          <text style="color: #de7d00;">{{user.used_time}}</text>
+          <text style="color: #888;">秒</text>
+        </view>
+      </view>
+      <!--名次-->
+      <view style="color: #888; display: flex;justify-content: flex-end;align-items: center;flex-grow: 1;">
+        <text>第{{user.rank}}名</text>
+      </view>
+    </view>
+  </view>
+</view>

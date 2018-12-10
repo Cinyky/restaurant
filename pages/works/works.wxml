@@ -1,0 +1,19 @@
+
+<!--预约列表-->
+<view class="container-goods">
+
+  <view class="main-goods">
+
+    <view class="single-goods"  bindtap="img" data-key='{{index}}' wx:for="{{list}}" wx:for-item="v" wx:key="index">
+      <image class="avatar" src="{{v.pics[0].src}}" mode="aspectFill" />
+      <text class="title">{{v.name}}</text>
+    </view>
+
+  </view>
+
+</view>
+
+
+
+
+

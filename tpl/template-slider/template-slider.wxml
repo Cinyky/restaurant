@@ -1,0 +1,58 @@
+<template name="slider_01">
+  <view class="swiper-container slider-01">
+    <swiper style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px; height: {{swiperHeight}}' class="swiper" autoplay="{{true}}" indicator-dots="{{true}}"   current="0">
+      <block wx:for="{{setData.dataList}}" wx:key="slider"> 
+        <swiper-item>
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}" style='height: {{swiperHeight}}'  class="slider-img" bindload='imgHeight'></image>
+            </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</template>
+
+<template name="slider_03">
+  <view class="swiper-container slider-03">
+    <swiper style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px; height: {{swiperHeight}}' class="swiper" autoplay="{{true}}" indicator-dots="{{true}}" indicator-color="{{setData.FocusColor}}" indicator-active-color="{{setData.FocusSelectColor}}"  current="0">
+      <block wx:for="{{setData.dataList}}" wx:key="slider">
+        <swiper-item>
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}" class="slider-img" style='height: {{swiperHeight}}' bindload='imgHeight'></image>
+            </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</template>
+
+<template name="slider_04">
+  <view class="swiper-container slider-04">
+    <swiper style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px; height: {{swiperHeight}}' class="swiper" autoplay="{{true}}" indicator-color="{{setData.FocusColor}}" indicator-active-color="{{setData.FocusSelectColor}}"   current="0">
+      <block wx:for="{{setData.dataList}}" wx:key="slider">
+        <swiper-item>
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}" class="slider-img" style='height: {{swiperHeight}}' bindload='imgHeight'></image>
+            </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</template>
+
+<template name="slider_05">
+  <view class="swiper-container slider-05">
+    <swiper style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px; height: {{swiperHeight}}' class="swiper" autoplay="{{true}}" indicator-dots="{{true}}" indicator-color="{{setData.FocusColor}}" indicator-active-color="{{setData.FocusSelectColor}}" current="0">
+      <block wx:for="{{setData.dataList}}" wx:key="slider">
+        <swiper-item>
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}" class="slider-img" style='height: {{swiperHeight}}' bindload='imgHeight'></image>
+            </navigator>
+        </swiper-item>
+      </block>
+      <view class="dots">
+
+      </view>
+    </swiper>
+  </view>
+</template>

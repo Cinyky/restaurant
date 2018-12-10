@@ -1,0 +1,10 @@
+<view class="page">
+  <!--单个课程-->
+  <view class="singleView" wx:for="{{lesson.all_lesson}}">
+    <image src="{{item.pic}}"  style="width: 260rpx;height: 200rpx;"/>
+    <view class="detailText">
+      <text>{{item.name}}</text>
+      <view class="yuyueView" bindtap="bindToLessonDetail" data-id="{{item.id}}"><text>预约试听</text></view>
+    </view>
+  </view>
+</view>

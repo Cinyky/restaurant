@@ -1,0 +1,49 @@
+<view class="m-product-all">
+  <scroll-view scroll-y="true" class="m-orderlist" bindscrolltolower="scrollBottom">
+    <view wx:for="{{eList}}" wx:for-item="e" class="m-panel m-panel-access" wx:key="{{e.id}}">
+      <view class="m-panel-hd">用户昵称：{{e.user.nickname}}
+        <label wx:if="{{e.is_show==1}}">已显示</label>
+        <label wx:if="{{e.is_show==0}}">已隐藏</label>
+      </view>
+      <view class="m-product-list" style="overflow: hidden">
+        <view class="m-product-img">
+          <image src="{{e.product.pic}}" mode="aspectFill"/>
+        </view>
+        <view class="m-product-info" style="overflow: hidden">
+          <view class="m-product-name">
+            <label>{{e.product.name}}</label>
+            <label class="m-min-name" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">{{e.product.ms}}</label>
+          </view>
+        </view>
+      </view>
+      <view class="line-box">
+        星级
+        <text wx:for="{{e.stars}}" wx:for-item="star" style="color: #fff100;">
+          <text wx:if="{{star==1}}" class="iconfont icon-star"></text>
+          <text wx:if="{{star==0}}" class="iconfont icon-star1"></text>
+        </text>
+      </view>
+      <view class="line-box">
+        用户评价：{{e.content?e.content:'暂无评价'}}
+      </view>
+      <view class="line-box">
+        商家回复：{{e.reply_content?e.reply_content:'未回复'}}
+      </view>
+      <view class="m-total-btn">
+        <view class="u-link-btn" catchtap="showReply" data-id="{{e.id}}" wx:if="{{!e.reply_content}}">回复</view>
+        <view class="u-link-btn" data-id="{{e.id}}" catchtap="toggleEvaluate">隐藏/显示</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<view class="reply_box" wx:if="{{showReply}}">
+  <view class="reply_box_mask" catchtap="hideReply"></view>
+  <view class="reply_box_content">
+      <view class="reply_textarea" style="height: 200rpx;padding: 20rpx;">
+        <textarea placeholder="请输入回复内容" style="height: 200rpx" bindinput="inputReply" value="{{reply_content}}" />
+      </view>
+      <view class="reply_button" style="padding: 20rpx;">
+        <button class="weui-btn" type="warn" catchtap="submitReply">回复</button>
+      </view>
+  </view>
+</view>

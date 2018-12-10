@@ -1,0 +1,46 @@
+<import src="/wxParse/wxParse.wxml" />
+<view class="m-tab">
+  <view class="m-navbar">
+    <view class="m-navbar-item {{tabIndex==0?'m-navbar-item-on':''}}" bindtap="productInfo">
+      商品详情
+    </view>
+    <view class="m-navbar-item {{tabIndex==10?'m-navbar-item-on':''}}" bindtap="comment">
+      评价
+    </view>
+  </view>
+</view>
+<!--商品详情-->
+<scroll-view class="m-scrollBox" scroll-y="true" bindscrolltolower="scrollbottom" wx:if="{{tabIndex==0}}">
+  <!--图片-->
+  <view class="picview">
+    <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1200" style="width: 750rpx;height: 700rpx;">
+      <block wx:for="{{product.pic}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" style="width: 750rpx;height: 700rpx;"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!--<image src="{{product.pic}}" style="width: 750rpx;height: 750rpx;"></image>-->
+  </view>
+  <!--商品信息-->
+  <view class="goodinfoview">
+    <view class="nameview"><text>{{product.name}}</text></view>
+    <view class="priceview"><text>￥{{product.price}}</text></view>
+  </view>
+  <!--销量-->
+  <view class="numandbuy">
+    <view class="numview"><text>销量：{{product.num}}</text></view>
+    <!--立即购买-->
+    <view class="buynowview" style="background: {{__wechat_main_color}}" bindtap="bindBuynow">
+      <text>立即购买</text>
+    </view>
+  </view>
+  <!--商品介绍-->
+  <view class="introview">
+    <text>商品介绍</text>
+  </view>
+  <!--图文介绍-->
+  <view class="introdetal">
+    <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+  </view>
+</scroll-view>

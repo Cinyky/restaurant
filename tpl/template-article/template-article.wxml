@@ -1,0 +1,98 @@
+<template name="articleList_01">
+    <view class="article-container article-01" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="article"> 
+        <view class="article-item">
+          <view class="article-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}"></image>
+            <view>
+              <text class="tit DListT_1">{{item.title}}</text>
+              <text class="mon DListM_1">{{item.ms}}</text>
+            </view>
+            </navigator>
+          </view>
+        </view> 
+       </block> 
+    </view>
+</template>
+<template name="articleList_02">
+    <view class="article-container article-02" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="article"> 
+        <view class="article-item">
+          <view class="article-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <view class="DListL_2"><image src="{{item.img}}"></image></view>
+            <view class="DListR_2">
+              <text class="tit DListT_2">{{item.title}}</text>
+              <text class="mon DListM_2">{{item.ms}}</text>
+            </view>
+            </navigator>
+          </view>
+        </view> 
+       </block> 
+    </view>
+</template>
+<template name="articleList_03">
+    <view class="article-container article-03" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="article"> 
+        <view class="article-item">
+          <view class="article-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}"></image>
+            <view>
+              <text class="tit  DListT_3">{{item.title}}</text>
+              <text class="mon  DListT_3">{{item.ms}}</text>
+            </view>
+            </navigator>
+          </view>
+        </view> 
+       </block> 
+    </view>
+</template>
+<template name="articleList_04">
+    <view class="article-container article-04" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="article"> 
+        <view class="article-item">
+          <view class="article-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}" mode='widthFix'></image>
+            <view>
+              <text class="tit DListT_4">{{item.title}}</text>
+            </view>
+            </navigator>
+          </view>
+        </view>
+       </block> 
+    </view>
+</template>
+<template name="articleList_05">
+    <view class="article-container article-05" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="article"> 
+        <view class="article-item">
+          <view class="article-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <view>
+              <text class="tit DListT_5">{{item.title}}</text>
+            </view>
+            </navigator>
+          </view>
+        </view> 
+       </block> 
+    </view>
+</template>
+<template name="articleList_06">
+    <view class="article-container article-06" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <block wx:for="{{setData.dataList}}" wx:key="article"> 
+        <view class="article-item">
+          <view class="article-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <view>
+              <text class="tit DListT_6">{{item.title}}</text>
+              <text class="DLiR_6">{{item.ctime}}</text>
+            </view>
+            </navigator>
+          </view>
+        </view>
+       </block> 
+    </view>
+</template>

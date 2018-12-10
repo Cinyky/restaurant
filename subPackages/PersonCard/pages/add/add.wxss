@@ -1,0 +1,31 @@
+@import "../../../../utils/weui.wxss";
+page{
+	background: #F5F5F5;
+}
+.addView{
+	margin: 5%;
+}
+.imgView{
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 20rpx;
+	padding-bottom: 20rpx;
+}
+.imgView image{
+	border-radius: 50%;
+	width: 200rpx;
+}
+.demoView{
+	margin-top: 5rpx;
+	background: white;
+	/*display: flex;*/
+	padding-left: 40rpx;
+}
+.buttonView{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 50rpx;
+}

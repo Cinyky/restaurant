@@ -1,0 +1,124 @@
+<view>
+  <!--未开卡-->
+  <view wx:if="{{isVip==0}}">
+    <view class="brand" style="background: {{__wechat_main_color}};">
+      <view class="brand_title_box">
+        <text class="brand_title">VIP</text>
+      </view>
+      <view class="brand_desc1_box">
+        <text class="brand_desc1">您尚未开通会员卡，开卡立即赠送{{vipSetting.open_point}}积分</text>
+      </view>
+      <view>
+        <text class="brand_desc2">开通会员卡</text>
+      </view>
+    </view>
+    <view class="card_form">
+      <!--表单部分-->
+      <!--姓名-->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">姓名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入姓名" bindinput="normalInput" data-key="form_name" value="{{form_name}}"/>
+        </view>
+      </view>
+      <!--手机号-->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">手机号</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入手机号" bindinput="phoneInput" value="{{form_phone}}"/>
+        </view>
+        <!-- <view class="weui-cell__ft" wx:if="{{showVerify}}">
+          <view class="weui-vcode-btn" bindtap="getVerifyCode" wx:if="{{waitCode==0}}">验证码</view> -->
+          <!-- <view class="weui-vcode-btn" wx:if="{{waitCode!=0}}" style="color: #999;">{{waitCode}}秒</view> -->
+        <!-- </view> -->
+      </view>
+      <!--验证码-->
+      <!-- <view class="weui-cell weui-cell_input" wx:if="{{showVerify}}">
+        <view class="weui-cell__hd">
+          <view class="weui-label">验证码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入验证码" bindinput="normalInput" data-key="form_code" value="{{form_code}}"/>
+        </view>
+      </view> -->
+      <!--生日-->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">生日</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{form_date}}" bindchange="bindDateChange" end="{{max_form_date}}">
+            <view class="weui-input">{{form_date}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <!--确定按钮-->
+    <form bindsubmit="submitFormWrap" report-submit="{{true}}">
+      <button class="weui-btn" type="warn" formType="submit" style="background: {{__wechat_main_color}};">立即开卡</button>
+    </form>
+    <view style="text-align: right;">
+      <button class="weui-btn mini-btn" type="default" size="mini" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" id="btn_get_phone">一键获取手机号</button>
+    </view>
+  </view>
+  <!--已开卡-->
+  <view wx:if="{{isVip==1}}">
+    <form bindsubmit="mark" report-submit="{{true}}">
+      <button class="btn-mark" wx:if="{{todayDate!=vipInfo.mark_date}}" formType="submit" style="background: {{__wechat_main_color}};">签到</button>
+      <button class="btn-mark" wx:if="{{todayDate==vipInfo.mark_date}}" formType="submit" style="background: {{__wechat_main_color}};">已签到</button>
+    </form>
+    <view class="brand" style="background: {{__wechat_main_color}};">
+      <view class="brand_title_box">
+        <text class="brand_title">VIP</text>
+      </view>
+      <view class="brand_desc1_box">
+        <text class="brand_desc1" style="color: #eee;">恭喜，您已成功开通会员卡</text>
+        <navigator url="/pages/vippasswd/vippasswd">
+          <button class="weui-btn mini-btn btn-pwd" type="default" size="mini" style="background: {{__wechat_main_color}};">设置密码</button>
+        </navigator>
+      </view>
+      <view class="brand_desc2_box">
+        <text class="brand_desc2">卡号{{vipInfo.card_num}}</text>
+      </view>
+      <view class="weui-flex money-box">
+        <!--积分-->
+        <view class="weui-flex__item">
+          <view>积分</view>
+          <view>{{vipInfo.point}}</view>
+        </view>
+        <!--余额-->
+        <view class="weui-flex__item">
+          <view>余额</view>
+          <view>{{vipInfo.balance}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="vip_info" style="background: #fff">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">会员等级：</view>
+        <view class="weui-cell__bd">{{vipInfo.level.name}}</view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__hd">累计总积分：</view>
+        <view class="weui-cell__bd">{{vipInfo.total_point}}</view>
+      </view>
+    </view>
+    <view class="recharge_box">
+      <navigator url="/pages/viprecharge/viprecharge">
+        <button class="weui-btn" type="warn" style="background: {{__wechat_main_color}};">立即充值</button>
+      </navigator>
+    </view>
+    <view class="rule">
+      <view class="rule_title">积分规则</view>
+      <view class="rule_info">
+        <text decode="{{true}}">{{vipSetting.point_rule}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

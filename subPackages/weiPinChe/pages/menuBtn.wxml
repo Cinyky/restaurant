@@ -1,0 +1,4 @@
+<!--跳转按钮-->
+<view class="abs_center float_btn" bindtap="showRedirect" style="background: {{__wechat_main_color}};">
+  <text class="iconfont icon-cogs"></text>
+</view>

@@ -1,0 +1,6 @@
+.topbg {background-color: #DB384C;padding-bottom: 40rpx;}
+.topinfo {display: inline-block;width: 100%;text-align: center;color: white;font-size: 14px;margin-top: 56rpx;position: relative;}
+.topinfo label {font-size: 56px;}
+.m-text-box{font-size: 24rpx;box-sizing: border-box;padding: 20rpx;color: #888;line-height: 40rpx;}
+.m-text-box label{padding-right: 10rpx;}
+.m-btn-box{padding-bottom: 40rpx;}

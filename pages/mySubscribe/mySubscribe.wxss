@@ -1,0 +1,62 @@
+@import "/tpl/template-menu/template-menu.wxss";
+
+.mySubscribe_container {
+  background: #fefefe;
+  padding: 4% 5%;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  margin-bottom: 20rpx;
+}
+
+.mySubscribe_container_h3 {
+  color: #494949;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.mySubscribe_line_content_public {
+  overflow: hidden;
+  line-height: 48rpx;
+}
+
+.mySubscribe_block_content_public {
+  float: left;
+  margin-right: 30rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+}
+
+.mySubscribe_block_content_public text:first-child {
+  color: #6f6f6f;
+  float: left;
+  margin-right: 20rpx;
+}
+
+.mySubscribe_block_content_public text:last-child {
+  color: #494949;
+  float: left;
+}
+
+.block_first_span_width {
+  width: 112rpx;
+}
+
+.mySubscribe_other_line {
+  font-size: 28rpx;
+  overflow: hidden;
+  line-height: 48rpx;
+}
+
+.mySubscribe_other_line text:first-child {
+  color: #6f6f6f;
+  float: left;
+  margin-right: 10px;
+}
+
+.mySubscribe_other_line text:last-child {
+  color: #494949;
+  float: left;
+}

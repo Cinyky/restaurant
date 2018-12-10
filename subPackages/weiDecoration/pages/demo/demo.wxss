@@ -1,0 +1,75 @@
+@import "../../assets/common.wxss";
+page{
+  font-size: 30rpx;
+}
+.page_footer{
+  width: 750rpx;
+  height: 80rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  box-sizing: border-box;
+  border-top: 1rpx solid #eeeeee;
+}
+.page_footer>view{
+  box-sizing: border-box;
+  display: flex;
+  height: 80rpx;
+  justify-content: center;
+  align-items: center;
+}
+.page_footer>view:first-child{
+  width: 300rpx;
+}
+.page_footer>view:last-child{
+  width: 450rpx;
+  color: #fff;
+}
+.page{
+  margin-bottom: 80rpx;
+}
+.author_box{
+  width: 750rpx;
+  height: 100rpx;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1rpx solid #eee;
+}
+.author_img_box{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 40rpx;
+}
+.author_img_box>image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.author_box>view:last-child{
+  font-size: 30rpx;
+  color: #888888;
+}
+.demo_info_box{
+  width: 750rpx;
+}
+.demo_img_box{
+  width: 750rpx;
+  height: 400rpx;
+}
+.demo_img_box>image{
+  width: 100%;
+  height: 100%;
+}
+.demo_cate{
+  padding: 20rpx;
+  color: #888888;
+}
+.demo_desc_box{
+  padding: 20rpx;
+}
+.demo_desc{
+  padding: 10rpx;
+}

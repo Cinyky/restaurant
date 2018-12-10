@@ -1,0 +1,48 @@
+<view class="m-category">
+	<navigator  url="/pages/search/search" class="u-search-box">
+		<view class="u-search-cont">
+			<icon type="search" size="14"></icon> <text>搜索商品</text>
+		</view>
+	</navigator>
+  <view wx:if="{{Category.length>0}}">
+    <scroll-view class="m-category-l" scroll-y="true">
+      <block wx:for="{{Category}}" wx:for-index="i" wx:for-item="item">
+        <view class="m-category-l-item {{item.id==fid?'m-category-l-select':''}}" data-id="{{item.id}}" bindtap="ckCategoryitem">{{item.name}}</view>
+      </block>
+      <view class="m-category-l-item"></view>
+    </scroll-view>
+    <scroll-view class="m-category-r" scroll-y="true">
+      <view class="g-grids">
+        <navigator wx:if="{{CategoryTwo[0].is_dan != true}}" wx:for="{{CategoryTwo}}" wx:for-item="item" url="/pages/search_product/search_product?cid={{item.id}}&cname={{item.name}}" class="g-grid">
+          <view class="g-grid-icon">
+            <image class="m-cell-default-icon" src="{{item.PicPath}}" />
+          </view>
+          <p class="g-grid-label">{{item.name}}</p>
+        </navigator>
+        <navigator wx:if="{{CategoryTwo[0].is_dan == true}}" wx:for="{{productList}}" wx:for-item="item" url="/pages/goods/goods?id={{item.id}}" class="g-grid">
+          <view class="g-grid-icon">
+            <image class="m-cell-default-icon" src="{{item.pic}}" />
+          </view>
+          <p class="g-grid-label">{{item.name}}</p>
+        </navigator>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:else class="m-nullpage">
+    <view class="m-nullpage-middle">
+      <label class="iconfont icon-meiyougengduo"></label>
+      <view class="m-null-tip">
+        <text>亲~什么都没有</text>
+        <text>请尽快去商城后后台完善内容哦</text>
+      </view>
+    </view>
+  </view>
+</view>
+	<!-- <view class="u-top">
+     <navigator url="/pages/index/index" class="u-go-home"  open-type="navigateBack">
+    <view class="iconfont icon-shouyeshouye"></view>
+  </navigator>
+	</view> -->
+
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

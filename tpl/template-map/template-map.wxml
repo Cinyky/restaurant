@@ -1,0 +1,5 @@
+<template name="map">
+  <view class='map_conatiner' style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <map id="map" latitude="{{setData.lat}}" longitude="{{setData.lng}}" scale="14" markers="{{markers}}" show-location></map>
+  </view>
+</template>

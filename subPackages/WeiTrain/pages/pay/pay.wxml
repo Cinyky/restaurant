@@ -1,0 +1,34 @@
+<form bindsubmit="formSubmit" reportSubmit="true">
+    <view class="white_bg mb15">
+        <view class="cell gridXb mainColor f18">{{lesson.name}}</view>
+        <view class="cell total">
+            <view wx:if="{{lesson.price==0}}">
+                <text>免费</text>
+            </view>
+            <view wx:else>
+                <text>总计：</text>
+                <text class="subColor f18">
+                    <text class="f14">￥</text>{{lesson.price}}</text>
+            </view>
+        </view>
+    </view>
+    <input hidden class="" name="price" value="{{lesson.price}}"></input>
+    <view class="personalBox white_bg">
+        <view>
+            <view class=" mb10">个人信息</view>
+            <view class="f14">
+                <input class="inp mb10" name="username" placeholder="请填写姓名" value="{{username}}" style="margin-bottom: 20rpx"></input>
+                <input class="inp mb10" name="phone" placeholder="请填写手机号" type="number" value="{{phone}}" style="margin-bottom: 20rpx"></input>
+                <!--<view class="inp flex flexCCen " wx:if="{{is_bm==0}}">-->
+                    <!--<input name="phone_code" placeholder="请输入验证码" type="number" value="{{phone_code}}"></input>-->
+                    <!--<button bindtap="send_phone_code_bind" class="getCode  mainColor" disabled="{{yzm_btn_disabled}}" hoverClass="none">{{yzm_btn_text}}</button>-->
+                <!--</view>-->
+            </view>
+            <view class="gtBox f12 grey mt10" style="margin-bottom: 50rpx">
+                <text class="gtIcon mr5 iconfont icon-tixing"></text>
+                <text>填写信息后支付，方便我们提供更深入的服务！</text>
+            </view>
+        </view>
+        <button class="tanbesBtn mainColor_bg" formType="submit">报名支付</button>
+    </view>
+</form>

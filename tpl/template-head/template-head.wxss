@@ -1,0 +1,9 @@
+.head_01 {position:relative;width: 100%;overflow:hidden;}
+.head_01 .header{ height: 300rpx;background-color: #888;margin-bottom:5rpx;}
+.head_01 .background image {width: 100%;height: 300rpx;}
+.head_01 .logo{position:absolute;top:60rpx;left:50rpx;border-radius:10px;-moz-border-radius:10px;}
+.head_01 .logo image{width:130rpx;height:130rpx;border:6rpx solid #DB384C;border-radius:10px;-moz-border-radius:10px; }
+.head_01 .logo2{position:absolute;top:60rpx;left:50rpx;background: #fff;border-radius:50px;-moz-border-radius:50px;}
+.head_01 .logo2 image{width:130rpx;height:130rpx;border:6rpx solid #DB384C;border-radius:50px;-moz-border-radius:50px;}
+.head_01 .shopinfo{position: absolute;top:75rpx;left:200rpx;width: 100%;display:block;}
+.head_01 .shopinfo text{display:block;color:#000;font-size: 34rpx;text-shadow: 2rpx 1rpx 0rpx #eee;width: 100%;}

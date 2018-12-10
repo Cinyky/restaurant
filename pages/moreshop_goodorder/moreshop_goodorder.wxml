@@ -1,0 +1,96 @@
+<view wx:if="{{FullAddress}}" bindtap="selectAddress" class="m-addres-info m-cell-access">
+  <view class="m-ad-name">
+    <text>{{FullAddress}}</text><text></text>
+  </view>
+  <view class="m-ad-address">
+    <text>{{receiver}}{{phone}}</text>
+  </view>
+  <view class="m-cell-ft "></view>
+</view>
+<view wx:else class="m-addres-info m-cell-access" bindtap="selectAddress">
+  <view class="m-ad-address u-null-ad">
+    <label class="iconfont icon-shouhuodizhi"></label>
+    请选择收货地址
+  </view>
+  <view class="m-cell-ft"></view>
+</view>
+
+<view class="m-product-all">
+  <view class="m-product-list">
+    <view class="m-product-item">
+      <view class="m-product-img">
+        <image src="{{product.pic}}" />
+      </view>
+      <view class="m-product-info">
+        <view class="m-product-name">
+          <label>{{product.name}}</label>
+          <!--<label class="m-min-name" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">{{product.goods_ms}}</label>-->
+        </view>
+        <view class="m-product-price">
+          <label>￥</label>
+          {{perPrice}}<text>x{{num}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="m-cells-title">备注</view>
+<view class="m-cells m-cells-form">
+  <view class="m-cell">
+    <view class="m-cell-bd">
+      <textarea class="u-textarea" maxlength="200" value="{{remark}}" bindinput="remarkInput"></textarea>
+      <view class="u-textarea-counter">
+        <label>{{remark.length||0}}</label>
+        /200
+      </view>
+    </view>
+  </view>
+</view>
+<view class="m-cells total-info">
+  <view class="m-cell">
+    <view class="m-cell-bd">
+      <text>商品应付</text>
+    </view>
+    <view class="m-cell-ft m-order-typetxt">￥{{reallyPrice}}</view>
+    <view class="arrow"></view>
+  </view>
+  <view class="m-cell">
+    <view class="m-cell-bd">
+      <text>运费</text>
+    </view>
+    <view class="m-cell-ft m-order-typetxt">+￥{{product.trans_money}}</view>
+    <view class="arrow"></view>
+  </view>
+  <view class="m-cell ">
+    <view class="m-cell-bd">
+    </view>
+    <view class="m-cell-ft m-total-info">
+      实付款：
+      <label class="m-total-price">￥{{allPrice}}</label>
+    </view>
+  </view>
+</view>
+
+<view class="u-cleanbox"></view>
+
+<view class="m-footer-btn">
+  <view class="m-footer-btn-list">
+    <view class="m-footer-btn-item m-cart-total">
+      <view>合计：
+        <label>￥</label>
+        <text>{{allPrice}}</text></view>
+      <view>运费(
+        <label>￥{{product.trans_money}}</label>
+        )
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{isSubmit}}" class="m-footer-btn-main u-disabled">
+    正在提交....
+  </view>
+  <block wx:else>
+    <form report-submit="true" bindsubmit="submitOrder">
+      <button class="m-footer-btn-main" formType="submit">提交订单</button>
+    </form>
+  </block>
+</view>

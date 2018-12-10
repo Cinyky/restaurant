@@ -1,0 +1,158 @@
+<import src="/wxParse/wxParse.wxml" />
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height: 400rpx;'>
+  <block wx:for="{{[Tdata_h.pic]}}" wx:for-item="item">
+    <swiper-item>
+      <image mode='widthFix' src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- H start -->
+<!-- 价格 -->
+<view class='bargaindetail_price_container' style="background: {{__wechat_main_color}};">
+  <view class='bargaindetail_price_content_public bargaindetail_price_content_public_first'>
+    <view class='bargaindetailPrice_up'>
+      原价
+    </view>
+    <view class='bargaindetailPrice_down'>
+      <text>￥{{Tdata_h.goods_price}}</text>
+    </view>
+  </view>
+  <view class='bargaindetail_price_content_public bargaindetail_price_content_public_last'>
+    <view class='bargaindetailOriginal_up' style="color: {{__wechat_main_color}};">
+      砍价立减
+    </view>
+    <view class='bargaindetailOriginal_down'>
+      <text>￥</text>{{Tdata_h.bargain_money}}元
+    </view>
+  </view>
+  <view class='bargaindetail_price_time_content'>
+    <view class='bargaindetailTime_up'>
+      活动结束倒计时
+    </view>
+    <view class='bargaindetailTime_down'>
+      <!-- 46天21：39：43 -->
+      {{clock}}
+    </view>
+  </view>
+</view>
+<!-- 名称 -->
+<view class='bargaindetail_title_container'>
+  <view class='bargaindetail_title_content'>
+    {{Tdata_h.goods_name}}
+  </view>
+  <view class='bargaindetailStock_content'>
+    <view>
+      {{Tdata_h.goods_snum}}
+    </view>
+    <view>
+      剩余库存
+    </view>
+  </view>
+</view>
+<!-- 提示 -->
+<view class='bargaindetail_tip_container'>
+  <view class='bargaindetail_tip_pay_container bargaindetail_tip_content_public'>
+    <image src='http://weidogstest.oss-cn-beijing.aliyuncs.com/3e55406a11d25e70a86a55fb946d1ef1.png'></image>
+    <text>此商品支持微信支付</text>
+  </view>
+  <view class='bargaindetail_tip_time_container bargaindetail_tip_content_public'>
+    <text class='bargaindetail_tip_public_leftText'>此商品有效期至</text>
+    <text class='bargaindetail_tip_public_rightText' style="color: {{__wechat_main_color}};">{{Tdata_h.endTime}}</text>
+  </view>
+  <view class='bargaindetail_tip_payMethod_container bargaindetail_tip_content_public'>
+    <text class='bargaindetail_tip_public_leftText'>付款方式</text>
+    <text class='bargaindetail_tip_public_rightText' style="color: {{__wechat_main_color}};">在线支付</text>
+  </view>
+</view>
+<!-- 查看 -->
+<!-- <view class='bargaindetail_check_container'>
+  <view class='bargaindetail_check_content_public'>
+    <text style="color: {{__wechat_main_color}};">3015</text>
+    <text>人查看</text>
+  </view>
+  <view class='bargaindetail_check_content_public'>
+    <text style="color: {{__wechat_main_color}};">3015</text>
+    <text>人参与</text>
+  </view>
+  <view class='bargaindetail_check_content_public'>
+    <text style="color: {{__wechat_main_color}};">3015</text>
+    <text>人帮砍</text>
+  </view>
+</view> -->
+<!-- 商品详情 -->
+<view class='shop-play shop-detail'>
+  <view class='title'>商品详情</view>
+  <view class='con'>
+    <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+  </view>
+</view>
+<!-- H end -->
+
+<!-- <view class='shop-info'>
+  <view class='price'>
+    <text class='nowPrice'>￥{{product.goods_price}}</text>
+    <text class='priceCutDown'>砍价立减{{product.bargain_money}}元</text>
+  </view>
+  <view class='floatR haved'>
+    剩余
+    <text class='red'>{{product.goods_snum}}</text>件
+  </view>
+  <view class='title'>
+    <view>{{product.goods_name}}</view>
+    <view class='title-tip'>
+    <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+    </view>
+  </view>
+</view> -->
+<!-- 商品详情 -->
+<!-- <view class='shop-play shop-detail'>
+  <view class='title'>商品详情</view>
+  <view class='con'>
+    <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+  </view>
+</view> -->
+
+<!-- 砍价玩法 -->
+<!-- <view class='shop-play'>
+  <view class='title'>砍价玩法</view>
+  <view class='menu'>
+    <view>1.下单发起砍价</view>
+    <view>2.在砍价时限（
+      <text class='red'>{{product.limit_day}}天</text>）内拉好友帮砍</view>
+    <view>3.付款</view>
+  </view>
+</view> -->
+
+
+
+
+<!-- 底部菜单 -->
+<view class='bargaindetail_navBottom_container'>
+  <view class='bargaindetail_navBottom_content'>
+    <view class='bargaindetail_navBottom_left_container' bindtap='return_index_h'>
+      <image src='http://weidogstest.oss-cn-beijing.aliyuncs.com/d25a559835ccff85e4b4c807eaf1ea93.png'></image>
+      <text>首页</text>
+    </view>
+    <view class='bargaindetail_navBottom_left_container'>
+      <image src='http://weidogstest.oss-cn-beijing.aliyuncs.com/3817c0b42c250e2120dd01e603bcfdcf.png'></image>
+      <button type="primary" open-type="share" data-name="pageShare" id="share" class='con_listbox_h' hover-class='none'>分享</button>
+      <!-- <text>分享</text> -->
+    </view>
+    <!-- <view class='bargaindetail_navBottom_right_container bargaindetail_navBottom_orange_container'>
+      <text>直接买</text>
+    </view> -->
+
+
+    <view bindtap='beginBargain' data-goodsid="{{Tdata_h.id}}" class='bargaindetail_navBottom_right_container bargaindetail_navBottom_red_container' style="background: {{__wechat_main_color}};">
+      <text>发起砍价</text>
+    </view>
+  </view>
+</view>
+
+
+<!-- <view class='fixedBottom'>
+  <view class='yoursPurse' bindtap='beginBargain' data-goodsid="{{product.id}}">
+    <text>发起砍价</text>
+  </view>
+</view> -->

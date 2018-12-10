@@ -1,0 +1,132 @@
+<view wx:if="{{isdata}}">
+  <view class="m-cells">
+    <view class="m-cell ">
+      <view class="m-cell-bd">
+        <text>订单编号：{{OrderInfo.OrderNum}}</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">{{OrderInfo.OrderStatus}}</view>
+    </view>
+    <view wx:if="{{OrderInfo.LogisticName && OrderInfo.LogisticCode}}">
+      <view class="m-cell">
+        <view class="m-cell-bd">
+          <text>物流单号：{{OrderInfo.LogisticCode||""}}</text>
+        </view>
+      </view>
+      <view class="m-cell">
+        <view class="m-cell-bd">
+          <text>物流公司：{{OrderInfo.LogisticName||""}}</text>
+        </view>
+      </view>
+      <!-- <navigator url="/pages/logisticsprogress/logisticsprogress?on={{OrderInfo.OrderNum}}" class="m-cell m-cell-access ">
+        <view class="m-cell-bd">
+          <text>查看物流</text>
+        </view>
+        <view class="m-cell-ft"></view>
+      </navigator> -->
+    </view>
+  </view>
+
+  <view class="m-addres-info">
+    <view class="m-ad-name"> 
+      <text>{{OrderInfo.Consignee}}</text>
+      <text>{{OrderInfo.Tel}}</text>
+    </view>
+    <view class="m-ad-address">
+      <text>{{OrderInfo.Address}}</text>
+    </view>
+  </view>
+
+  <view class="m-product-all">
+    <view class="m-product-list">
+      <navigator wx:for="{{OrderInfo.OrderDetailVOList}}" wx:for-item="item" url="/pages/goods/goods?id={{item.ProductId}}" class="m-product-item">
+        <view class="m-product-img">
+          <image src="{{item.Path}}" mode="aspectFill" />
+        </view>
+        <view class="m-product-info">
+          <view class="m-product-name">
+            <label>{{item.ProductName}}</label>
+            <label class="m-min-name" style="overflow:hiddentext-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">{{item.SpecStr==null?"":item.SpecStr}}</label>
+          </view>
+          <view class="m-product-price">
+            <label>￥</label>{{item.FactPrice}}
+            <text>x{{item.Amount}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view wx:if="{{OrderInfo.Remark}}">
+    <view class="m-cells-title">备注</view>
+    <view class="m-cells m-cells-form">
+      <view class="m-cell">
+        <view class="m-cell-bd">
+          {{OrderInfo.Remark}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="m-cells total-info">
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <text>商品总额</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">￥{{OrderInfo.ProTotalMoney}}</view>
+    </view>
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <text>活动优惠</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">-￥{{OrderInfo.OrderTypeDiscount}}</view>
+    </view>
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <text>优惠券</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">-￥{{OrderInfo.CouponDiscount}}</view>
+    </view>
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <text>运费</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">+￥{{OrderInfo.Freight}}</view>
+    </view>
+    <view class="m-cell" wx:if="{{OrderInfo.is_vip_pay==1}}">
+      <view class="m-cell-bd">
+        <text>积分抵扣</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">-￥{{OrderInfo.point_discount}}</view>
+    </view>
+    <view class="m-cell" wx:if="{{OrderInfo.is_vip_pay==1}}">
+      <view class="m-cell-bd">
+        <text>会员折扣</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">-￥{{OrderInfo.vip_discount}}</view>
+    </view>
+    <view class="m-cell ">
+      <view class="m-cell-bd">
+      </view>
+      <view class="m-cell-ft m-total-info">
+        实付款：
+        <label class="m-total-price" wx:if="{{OrderInfo.is_vip_pay!=1}}">￥{{OrderInfo.RealTotal}}</label>
+        <label class="m-total-price" wx:else>￥{{OrderInfo.vip_pay_money}}</label>
+        <view class="m-total-time">下单时间：{{OrderInfo.CreateTime}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="u-cleanbox"></view>
+  <view class="m-footer-btn">
+    <navigator url="../PComment/PComment?od={{OrderInfo.OrderNum}}" wx:if="{{OrderInfo.ShowOrderButton.IsOrderEvaluate}}" class="u-link-btn" >去评价</navigator>
+            <navigator url="../PComment/PComment?od={{OrderInfo.OrderNum}}" wx:if="{{OrderInfo.ShowOrderButton.IsShowEvaluate}}" class="u-link-btn" >查看评价</navigator>
+    <form report-submit="true" bindsubmit="gotopay" data-ON="{{OrderInfo.OrderNum}}" wx:if="{{OrderInfo.ShowOrderButton.IsPay}}">
+      <button class="u-link-btn" formType="submit">去支付</button>
+    </form>
+    <view data-ON="{{OrderInfo.OrderNum}}" wx:if="{{OrderInfo.ShowOrderButton.IsCancel}}" class="u-link-btn" bindtap="cancelOrder">取消订单</view>
+  </view> -->
+</view>
+<navigator url="/pages/orderlist/orderlist?type=1&sl=1" redirect="true" class="m-nullpage" wx:else>
+    <view class="m-nullpage-middle">
+      <view class="m-null-tip">
+        <text>订单不存在</text>
+      </view>
+    </view>
+</navigator>

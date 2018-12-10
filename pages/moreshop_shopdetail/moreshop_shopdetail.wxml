@@ -1,0 +1,93 @@
+<!--加入按钮-->
+<view class="myorder" bindtap="bind_myorder" style="background: {{__wechat_main_color}};">
+  <text>订单</text>
+</view>
+<import src="/wxParse/wxParse.wxml" />
+<!--大图一张-->
+<view class="pic_one">
+  <image  src="{{shopInfo.really_pic[0]}}"/>
+</view>
+<!--商店头像（logo），名称-->
+<view class="logo_view">
+  <view class="shop_name">
+    <text style="font-weight: bold">{{shopInfo.shop_name}}</text>
+  </view>
+  <view class="pic_two">
+    <image  src="{{shopInfo.logo}}"/>
+  </view>
+</view>
+<!--提供服务-->
+<view class="helpview">
+  <view wx:for="{{shopInfo.shopprovide}}" class="help">
+    <text>{{item}}</text>
+  </view>
+</view>
+<!--时间-->
+<view>
+  <view class="timeview">
+    <text class="iconfont icon-clock" style="color: {{__wechat_main_color}};"></text>
+    <text>营业时间：{{shopInfo.stime}}-{{shopInfo.etime}}</text>
+  </view>
+</view>
+<!--地点,电话-->
+<view class="addrview">
+  <view>
+    <text class="iconfont icon-location1" style="color: {{__wechat_main_color}};"></text>
+    <text>{{shopInfo.detailaddr}}</text>
+  </view>
+  <view class="contact-box">
+    <view class="iconfont icon-phone" type="primary" catchtap="onCallTap" disabled="{{msg.user.tel==''}}" data-tel="{{shopInfo.iphone}}" style="color: {{__wechat_main_color}};font-size: 2em;"></view>
+  </view>
+</view>
+<!--优惠买单-->
+<view class="buycheapview" style="background: {{__wechat_main_color}};" bindtap="toPaycheap" data-id="{{shopInfo.id}}">
+  <view class="buycheap">
+    <text>优惠买单</text>
+  </view>
+</view>
+
+<!--优惠券-->
+<!--<view class="couponview">-->
+  <!--<text>代金券、折扣券</text><text>></text>-->
+<!--</view>-->
+
+<!--进入商品列表-->
+<view class="goodslist" bindtap="toGoodsList" data-id="{{shopInfo.id}}">
+  <text>┃\t商品列表</text><text>></text>
+</view>
+
+<!--店铺简介-->
+<view class="introview">
+  <view class="textview">
+    <text>┃\t店铺简介</text>
+  </view>
+  <view class="introtext">
+    <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+  </view>
+  <view class="intropics">
+    <view wx:for="{{shopInfo.really_pic}}" >
+      <image src="{{item}}" mode="widthFix" class="intropic"/>
+    </view>
+  </view>
+</view>
+
+<!--留言咨询-->
+<!--<view class="leavewordsview" >-->
+  <!--<view class="leavewords" style="background: {{__wechat_main_color}};">-->
+    <!--<text>留言咨询</text>-->
+  <!--</view>-->
+<!--</view>-->
+
+<!--最新评价-->
+<view class="words">
+  <text style="font-weight: bold">最新评价</text>
+  <view class="word" wx:for="{{shopInfo.comment}}">
+      <view class="name">
+        <text>{{item.nickname}}</text>
+        <text>{{item.time}}</text>
+      </view>
+      <view class="content">
+        <text>　{{item.comment}}</text>
+      </view>
+  </view>
+</view>

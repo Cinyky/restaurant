@@ -1,0 +1,140 @@
+<view>
+    <swiper autoplay="{{autoplay}}" duration="{{duration}}" indicatorActiveColor="#fff" indicatorDots="{{indicatorDots}}" interval="{{interval}}">
+        <swiper-item wx:for="{{info.album_urls}}" wx:key="index">
+            <image class="slide-image" mode="aspectFill" src="{{item}}"></image>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="tlvBox  white_bg">
+    <view class="houTit lineText2">{{info.name}}</view>
+    <view class="labelBox grey f12 mt10 flex">
+        <view class="label gridFour" wx:for="{{info.labelTextList}}" wx:key="{{index}}">{{item}}</view>
+    </view>
+    <view class="mt10">
+        <text class="averPri">均价：</text>
+        <text class="apVal">{{info.price}}元/m²</text>
+    </view>
+</view>
+<button catchtap="webView" class="vrBtn mt5 mb10" data-title="{{info.web_view_title||'VR全景图'}}" data-url="{{info.web_view_url}}" hoverClass="none" wx:if="{{info.web_view_url&&!(info.web_view_url=='')}}">VR全景图</button>
+<view>
+    <view class="esInfo  mt10  white_bg {{lookMore==true?'maxHei':''}}">
+        <view class="secTit">楼盘信息</view>
+        <view class="estInfoBox f14">
+            <view class="flex" wx:if="{{info.discount}}">
+                <text class="abInfoHead">打折优惠：</text>
+                <text class="sub">{{info.discount}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.property_type}}">
+                <text class="abInfoHead">物业类型：</text>
+                <text class="sub">{{info.property_type}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.decoration}}">
+                <text class="abInfoHead">装修程度：</text>
+                <text class="sub">{{info.decoration}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.open_time}}">
+                <text class="abInfoHead">开盘时间：</text>
+                <text class="sub">{{info.open_time}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.check_in_time}}">
+                <text class="abInfoHead">入住时间：</text>
+                <text class="sub">{{info.check_in_time}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.property_fee}}">
+                <text class="abInfoHead lesp3">物业费：</text>
+                <text class="sub">{{info.property_fee}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.property_developer}}">
+                <text class="abInfoHead lesp3">开发商：</text>
+                <text class="sub">{{info.property_developer}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.business_circle}}">
+                <text class="abInfoHead">所属商圈：</text>
+                <text class="sub">{{info.business_circle}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.floor_area}}">
+                <text class="abInfoHead">占地面积：</text>
+                <text class="sub">{{info.floor_area}}平方米</text>
+            </view>
+            <view class="flex" wx:if="{{info.building_area}}">
+                <text class="abInfoHead">建筑面积：</text>
+                <text class="sub">{{info.building_area}}平方米</text>
+            </view>
+            <view class="flex" wx:if="{{info.plot_ratio}}">
+                <text class="abInfoHead lesp3">容积率：</text>
+                <text class="sub">{{info.plot_ratio}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.greening_rate}}">
+                <text class="abInfoHead lesp3">绿化率：</text>
+                <text class="sub">{{info.greening_rate}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.property_rights_deadline}}">
+                <text class="abInfoHead ">产权年限：</text>
+                <text class="sub">{{info.property_rights_deadline}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.parking_space}}">
+                <text class="abInfoHead lesp3">停车位：</text>
+                <text class="sub">{{info.parking_space}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.property_management_company}}">
+                <text class="abInfoHead">物业公司：</text>
+                <text class="sub">{{info.property_management_company}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.traffic_conditions}}">
+                <text class="abInfoHead">交通状况：</text>
+                <text class="sub">{{info.traffic_conditions}}</text>
+            </view>
+            <view class="flex" wx:if="{{info.sales_hotline}}">
+                <text class="abInfoHead">销售热线：</text>
+                <text class="sub">{{info.sales_hotline}}</text>
+            </view>
+        </view>
+    </view>
+    <view catchtap="lookMore" class="downBox white_bg tc" hidden="{{!lookMore}}">
+        <text class="f14">查看更多</text>
+        <text class="down"></text>
+    </view>
+    <view catchtap="lookMore" class="upBox white_bg tc" hidden="{{lookMore}}">
+        <text catchtap="lookMore" class="f14">收起</text>
+        <text class="up"></text>
+    </view>
+</view>
+<view class="esInfo mt10  white_bg">
+    <view class="secTit ">楼盘位置</view>
+    <view class="estmsBox">
+        <view class="f14 flex">
+            <view class="grey">项目地址：</view>
+            <view catchtap="openLocation" class="addrDetail sub flex" data-address="{{info.project_address}}" data-latitude="{{info.project_latitude}}" data-longitude="{{info.project_longitude}}">
+                <view class="sub">{{info.project_address}}</view>
+                <view class="iconfont icon-dizhi"></view>
+            </view>
+        </view>
+        <view class="f14 mt10 flex">
+            <view class="grey">销售地址：</view>
+            <view catchtap="openLocation" class="addrDetail sub flex" data-address="{{info.sale_address}}" data-latitude="{{info.sale_latitude}}" data-longitude="{{info.sale_longitude}}">
+                <view class="sub">{{info.sale_address}}</view>
+                <view class="iconfont icon-dizhi"></view>
+            </view>
+        </view>
+    </view>
+</view>
+<view>
+    <view class="esInfo mt10 white_bg">
+        <view class="secTit">楼盘简介</view>
+        <view class="estmsBox esDesCon f14">
+            <text>{{info.content}}</text>
+        </view>
+    </view>
+</view>
+<view class="esGallery mt10  white_bg">
+    <view class="secTit">楼盘相册</view>
+    <scroll-view scrollX class="srcollView ">
+        <view class="subScrBox" wx:for="{{info.album_urls}}" wx:key="{{index}}">
+            <image class="gallPic" mode="aspectFill" src="{{item}}"></image>
+        </view>
+    </scroll-view>
+</view>
+<view catchtap="makePhoneCall" class="footerBtn flex" data-phone-number="{{info.sales_hotline}}" wx:if="{{info.sales_hotline}}">
+    <text class="iconfont icon-dianhua1"></text>
+    <text>电话咨询</text>
+</view>

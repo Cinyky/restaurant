@@ -1,0 +1,59 @@
+<view class="feedback-box">
+      <view class="m-cells m-cells-form" style="margin-top:10rpx;">
+        <view class="m-celld">
+          <view class="m-cell-hd"><label class="u-label">选择服务人员</label></view>
+        </view>   
+        <view class="m-cell">
+            <view class="menu-container menu-01">
+
+<radio-group class="radio-group" bindchange="inputservice">
+<block wx:for="{{dataList}}" wx:for-item="items">
+ <label class="{{service==items.Title?'active':''}}"> 
+      <view class="menu-item"> 
+        <image class="menuicon menu-01" src="{{items.MainPhoto}}"></image>
+        <text>{{items.Title}}</text>
+      </view>
+<radio hidden="true" value="{{items.Title}}"></radio>
+</label>
+</block> 
+</radio-group>
+            </view>
+        </view> 
+        <view class="m-cell" style="border-top:1px solid #eee;">
+          <view class="m-cell-hd"><label class="u-label">预约时间</label></view>
+          <view class="m-cell-bd">
+          <view class="section">  
+            <picker mode="date" value="{{date}}" start="2017-01-01" end="2050-12-31 23:59" bindchange="bindDateChange">  
+              <view class="picker">{{date}}</view>  
+            </picker>  
+          </view> 
+          </view>
+        </view>
+        <view class="m-cell" style="border-top:1px solid #eee;">
+        <view class="m-cell-hd"><label class="u-label">姓名</label></view>
+        <view class="m-cell-bd">
+            <input class="u-input" type="text" placeholder="请输入姓名" bindinput="inputname"/>
+        </view>
+        </view>
+    <view class="m-cell" style="border-top:1px solid #eee;">
+        <view class="m-cell-hd"><label  class="u-label">手机</label></view>
+        <view class="m-cell-bd">
+            <input class="u-input" type="text" value="{{phone}}" placeholder="请输入手机号码" bindinput="inputphone" maxlength="30"/>
+        </view>
+    </view>
+    <view class="m-cells m-cells-form" style="border-top:1px solid #eee;">
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <textarea class="u-textarea" maxlength="500" placeholder="其他需求" bindinput="inputRemark" style="height:300rpx;"></textarea>
+        <view class="u-textarea-counter"><label>{{remarkLength}}</label>/500</view>
+      </view>
+    </view>
+  </view>
+</view>
+ <input class="u-inputs" type="text" value="{{biaoti}}"  bindinput="inputbiaoti" placeholder=""  maxlength="30"/>
+<input class="u-inputs" type="text" value="{{cid}}"  bindinput="inputcid" placeholder=""  maxlength="30"/>
+<view class="btn_box" bind="submitdata">
+    <button class="u-btn u-btn-default" bindtap="submitdata">提交</button>
+</view>
+
+</view>

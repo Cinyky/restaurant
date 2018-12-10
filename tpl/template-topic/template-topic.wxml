@@ -1,0 +1,67 @@
+<template name="topic_01">
+  <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+  <view class="topic-container topic-01" wx:if="{{setData.type == 1}}" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+        <image src="{{setData.img}}"></image>
+        <view class="topic-font">
+          <text>{{setData.txt}}</text>
+        </view>
+  </view>
+  <view class="topic-container topic-01" wx:else>
+        <view class="topic-font">
+          <text>{{setData.txt}}</text>
+        </view>
+        <image src="{{setData.img}}"></image>
+  </view>
+  </navigator>
+</template>
+
+<template name="topic_02">
+  <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+  <view class="topic-container topic-02" wx:if="{{setData.type == 1}}" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+        <image src="{{setData.img}}"></image>
+        <view class="topic-font">
+          <text>{{setData.txt}}</text>
+        </view>
+  </view>
+  <view class="topic-container topic-02" wx:else>
+        <view class="topic-font">
+          <text>{{setData.txt}}</text>
+        </view>
+        <image src="{{setData.img}}"></image>
+  </view>
+  </navigator>
+</template>
+
+<template name="topic_03">
+  <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+  <view class="topic-container topic-03" wx:if="{{setData.type == 1}}" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+        <image src="{{setData.img}}"></image>
+        <view class="topic-font">
+          <text>{{setData.txt}}</text>
+        </view>
+  </view>
+  <view class="topic-container topic-03" wx:else>
+        <view class="topic-font">
+          <text>{{setData.txt}}</text>
+        </view>
+        <image src="{{setData.img}}"></image>
+  </view>
+  </navigator>
+</template>
+
+<template name="topic_04">
+  <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+  <view class="topic-container topic-04" wx:if="{{setData.type == 1}}" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+        <image src="{{setData.img}}"></image>
+        <view class="topic-font">
+          <text>{{setData.txt}}</text>
+        </view>
+  </view>
+  <view class="topic-container topic-04" wx:else>
+        <view class="topic-font">
+          <text>{{setData.txt}}</text>
+        </view>
+        <image src="{{setData.img}}"></image>
+  </view>
+  </navigator>
+</template>

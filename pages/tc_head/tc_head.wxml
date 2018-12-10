@@ -1,0 +1,13 @@
+<template name="tc_head">
+  <view class="tc_nav_bar">
+    <navigator url="/pages/tc_index/tc_index">
+    <view style="{{active=='1'?'border-bottom: 10rpx solid '+__wechat_main_color:''}}">首页</view>
+    </navigator>
+    <navigator url="/pages/tc_cate/tc_cate">
+    <view style="{{active=='2'?'border-bottom: 10rpx solid '+__wechat_main_color:''}}">发布</view>
+    </navigator>
+    <navigator url="/pages/tc_user/tc_user">
+    <view style="{{active=='3'?'border-bottom: 10rpx solid '+__wechat_main_color:''}}">我的</view>
+    </navigator>
+  </view>
+</template>

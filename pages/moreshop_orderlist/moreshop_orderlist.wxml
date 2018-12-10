@@ -1,0 +1,87 @@
+<!--评论框-->
+<view class="popView" bindtap="closePopView" wx:if="{{flag}}">
+  <view class="popViews" catchtap="bindComment">
+    <textarea bindinput="bindTextAreaBlur" auto-height placeholder="请输入评论" />
+  </view>
+  <view class="btnComment" bindtap="subComment">
+    <text>提交评论</text>
+  </view>
+</view>
+
+<!--订单列表-->
+<scroll-view class="m-scrollBox" scroll-y="true" bindscrolltolower="scrollbottom">
+  <block wx:if="{{orderList}}">
+    <view wx:for="{{orderList}}" wx:for-item="item" class="m-panel m-panel-access" style="margin-top:0">
+      <view data-order-id="{{item.order.id}}">
+        <view class="m-panel-hd" style="white-space:nowrap;">订单编号：{{item.order.orderNo}}</view>
+        <view class="m-product-list">
+          <view  class="m-product-item">
+            <view class="m-product-img">
+              <image src="{{item.product.pic}}" mode="aspectFill"/>
+            </view>
+            <view class="m-product-info" style="width: auto;">
+              <view class="m-product-name">
+                <label>{{item.product.name}}</label>
+              </view>
+              <view class="m-product-price">
+                <label>￥</label>{{item.product.price}}
+                <text> x 1</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="m-total-info" style="display: flex;align-items: stretch;justify-content: space-between;padding: 10rpx;">
+          <view style="font-size: 26rpx;display: flex;align-items:center;">
+            实付款：<label class="m-total-price">￥{{item.order.really_price}}</label>
+          </view>
+          <!--申请退款-->
+          <view>
+            <view data-order-id="{{item.order.id}}" data-order-index="{{index}}"  class="u-link-btn" catchtap="refundMoney" wx:if="{{item.order.status[0]==1}}">
+              <view wx:if="{{item.order.is_refund_money == 0}}">
+              申请退款
+              </view>
+              <view wx:else>
+                已申请退款
+              </view>
+            </view>
+          </view>
+          <!--评价-->
+          <view>
+            <view data-order-id="{{item.order.id}}" data-order-index="{{index}}"  class="u-link-btn"  wx:if="{{item.order.status[0]==3}}">
+              <view wx:if="{{item.order.is_comment == 0}}" catchtap="openComment" data-order-id="{{item.order.id}}">
+                <view wx:if="{{commentFlag}}">
+                  发表评论
+                </view>
+                <view wx:else>
+                  已评论
+                </view>
+              </view>
+              <view wx:else>
+                已评论
+              </view>
+            </view>
+          </view>
+          <!--收货状态-->
+          <view>
+            <view data-order-id="{{item.order.id}}" data-order-index="{{index}}"  class="u-link-btn" wx:if="{{item.order.status[0]==0}}" bindtap="bindPay">未支付,现在付款</view>
+            <view data-order-id="{{item.id}}" data-order-index="{{index}}"  class="u-link-btn" wx:if="{{item.order.status[0]==1}}">待发货</view>
+            <view data-order-id="{{item.order.id}}" data-order-index="{{index}}"  class="u-link-btn" catchtap="receive" wx:if="{{item.order.status[0]==2}}">确认收货</view>
+            <view data-order-id="{{item.id}}" data-order-index="{{index}}"  class="u-link-btn" wx:if="{{item.order.status[0]==3}}">已收货</view>
+            <view data-order-id="{{item.id}}" data-order-index="{{index}}"  class="u-link-btn" wx:if="{{item.order.status[0]==4}}">已退款</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="m-nullcontent" wx:else>
+    <view class="m-nullpage-middle">
+      <label class="iconfont icon-meiyougengduo"></label>
+      <view class="m-null-tip">
+        <text>亲~什么都没有</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

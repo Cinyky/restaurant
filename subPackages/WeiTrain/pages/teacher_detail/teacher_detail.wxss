@@ -1,0 +1,68 @@
+.page{
+	margin: 2%;
+}
+.topView{
+	margin: 1% 2% 0 2%;
+	background: white;
+	height: 450rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.picView image{
+	border: 1rpx;
+	border-radius: 50%;
+}
+.nameView{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.changeButtonView{
+	margin-top: 50rpx;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 70rpx;
+	width: 100%;
+}
+/*下部分*/
+.bottomView{
+	margin: 2% 2% 0 2%;
+	background: white;
+	padding: 2%;
+}
+.callView{
+	height: 100rpx;
+	width: 100%;
+	background: #22A582;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	z-index: 100;
+	position: fixed;
+	bottom: 0;
+}
+/*单课程*/
+.singleView{
+	padding: 2%;
+	background: white;
+	display: flex;
+	justify-content: left;
+	margin-bottom: 2%;
+}
+.detailText{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.yuyueView text{
+	padding: 10rpx;
+	background: #1CA27E;
+	border-radius: 20rpx;
+	font-size: 30rpx;
+	margin-left: 200rpx;
+	color:white;
+}

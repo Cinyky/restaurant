@@ -1,0 +1,13 @@
+@import "/tpl/template-menu/template-menu.wxss";
+.m-coupon-item{width: 700rpx;height: 192rpx;margin: 10rpx auto;background:url('https://mp.yuli.be/1/Coupon.png') center no-repeat;background-size: cover;box-sizing: border-box;padding: 12rpx;}
+.m-coupon-info{float: left;width:485rpx;margin-left:30rpx;margin-top: 19.5rpx;}
+.m-coupon-btn{float: left;width: 160rpx;height: 140rpx;/*margin-left: 30rpx;*/line-height: 35rpx;text-align: center;font-size: 30rpx;color: #DB384C;margin-top: 14rpx;}
+.btn-coupon{display: inline-block;/*width: 28rpx;*/line-height: 140rpx;}
+.btn-coupon-gray{color: #888;}
+.m-coupon-text{float: left;width: 300rpx;}
+.m-coupon-text label{display: inline-block;color:#333;font-size: 28rpx;width: 350rpx;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+.m-coupon-text text{display: inline-block;width: 350rpx;font-size: 24rpx;color:#888; overflow: hidden;white-space: nowrap;text-overflow:ellipsis;}
+.m-coupon-price{float:left;height: 132rpx;color:#DB384C;font-weight: bold; line-height: 132rpx;width: 180rpx;position: relative;font-size: 75rpx;}
+.price-content-box{position: absolute;left: -35rpx;text-align: center;width: 200rpx;}
+.price-content-box label{font-size: 32rpx;}
+

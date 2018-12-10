@@ -1,0 +1,61 @@
+<view class="page_wrapper" style="background: {{__wechat_main_color}};">
+  <!--顶部状态显示-->
+  <view class="page_header">
+    <view>
+      <text class="iconfont icon-bar-chart"></text>
+      <text style="margin-left: 10rpx;">进度：{{q_curr_idx+1}}/{{questionList.length}}</text>
+    </view>
+    <view>
+      <text class="iconfont icon-clock"></text>
+      <text style="margin-left: 10rpx;">还剩 {{time_limit}} 秒</text>
+    </view>
+  </view>
+  <!--dati主体部分-->
+  <view class="page_main" animation="{{animationData}}">
+    <view style="position: relative;">
+      <image src="{{answer.bg}}" mode="scaleToFill" class="main_img"></image>
+      <!--题目主体-->
+      <view class="question_main">
+        <view class="q_text">
+          <text class="q_num">{{q_curr_idx+1}}</text>
+          <view class="q_type">{{questionList[q_curr_idx].type==0?'单':'多'}}</view>
+          <text>{{questionList[q_curr_idx].title}}</text>
+        </view>
+      </view>
+    </view>
+    <!--选项列表-->
+    <scroll-view scroll-y="{{true}}" class="ans_list">
+      <!--单选-->
+      <radio-group class="radio-group" bindchange="radioChange" wx:if="{{questionList[q_curr_idx].type==0}}">
+        <view class="radio ans_item" wx:for="{{questionList[q_curr_idx].options}}" wx:for-item="option" wx:for-index="opt_idx">
+          <radio value="{{opt_idx}}"/>
+          {{indexList[opt_idx]}} . {{option}}
+        </view>
+      </radio-group>
+      <!--多选-->
+      <checkbox-group bindchange="checkboxChange" wx:else>
+        <view class="checkbox ans_item" wx:for="{{questionList[q_curr_idx].options}}" wx:for-item="option" wx:for-index="opt_idx">
+          <checkbox value="{{opt_idx}}"/>
+          {{indexList[opt_idx]}} . {{option}}
+        </view>
+      </checkbox-group>
+      <!--下一题按钮-->
+      <view>
+        <button class="next_btn abs_center" bindtap="bindNext" style="background:{{__wechat_main_color}};">{{q_curr_idx+1==questionList.length?'立即提交':'下一题'}}</button>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<view class="info_mask abs_center" wx:if="{{show_end_dialog}}">
+  <form bindsubmit="formSubmit">
+    <view class="info_dialog">
+      <view style="text-align: center;font-size: 40rpx;">请完善个人信息</view>
+      <view class="input_group">
+        <input type="text" name="name" placeholder="请输入姓名（必填）" />
+        <input type="text" name="phone" placeholder="请输入手机号码（必填）" />
+        <input type="text" name="remark" placeholder="请输入备注（选填）" />
+      </view>
+      <button formType="submit" style="background: {{__wechat_main_color}};">确认</button>
+    </view>
+  </form>
+</view>

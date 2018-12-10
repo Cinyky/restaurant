@@ -1,0 +1,51 @@
+.text-01 text {
+  display: block;
+  font-size: 14px;
+  line-height: 1.2 !important;
+  margin: 10px;
+  color: #999;
+  text-align: left !important;
+  padding: 5px;
+}
+
+.text-02 {
+  border-bottom: 1px solid #eee;
+  padding: 0px 5px;
+  display: flex;
+}
+
+.text-02 text {
+  padding: 1px 2px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #000;
+  text-align: left !important;
+  display: block;
+}
+
+.text-02 image {
+  padding: 5px 2px 1px 2px;
+  height: 30px;
+  line-height: 30px;
+  color: #999;
+  display: block;
+}
+
+.info_box_happy {
+  flex: 1;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  padding: 1px 2px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #000;
+  text-align: left !important;
+}
+
+.info_box_happy_txt {
+  width: 100%;
+  position: relative;
+}

@@ -1,0 +1,105 @@
+@import "../../../__wuBaseWxss__/2.wxss";
+
+@import "../../../__wuBaseWxss__/0.wxss";
+
+.topBox {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 20rpx 30rpx;
+}
+
+.innerBox {
+    position: relative;
+    z-index: -2;
+    border: 1px solid red;
+    background-color: #fff;
+}
+
+.searIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%,-50%);
+    color: #999;
+}
+
+.searIcon .icon-sousuo {
+    display: inline-block;
+    font-size: 32rpx;
+    transform: translateY(2rpx);
+}
+
+.seaInput {
+    width: 100%;
+    height: 70rpx;
+    border-radius: 8rpx;
+    background-color: #fff;
+}
+
+.houList {
+    margin-top: 110rpx;
+    background-color: #fff;
+}
+
+.houItem {
+    padding: 30rpx;
+}
+
+.itemLf {
+    position: relative;
+    width: 180rpx;
+    height: 180rpx;
+}
+
+.houPic {
+    width: 100%;
+    height: 100%;
+}
+
+.houLabel {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 60%;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10rpx;
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.itemRg {
+    position: relative;
+    margin-top: -8rpx;
+}
+
+.houTit {
+    color: #333;
+}
+
+.houDesc {
+    line-height: 32rpx;
+}
+
+.houTyp {
+    color: #999;
+    justify-content: space-between;
+}
+
+.houTyp .gridFour {
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 10rpx;
+}
+
+.houTyp .gridFour::before {
+    border-color: #999;
+}
+
+.itemRg .htRg {
+    text-align: right;
+}

@@ -1,0 +1,13 @@
+<template name="text_01">
+    <view class="text-container text-01" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+        <text>{{setData.content}}</text>
+    </view>
+</template>
+<template name="text_02">
+    <view class="text-container text-02" data-Textcontent="{{textN}}" bindtap='Notice_h' style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+        <image src="{{setData.imgs}}" style="width:20px;height:20px"></image>
+        <view class="info_box_happy">
+    <view class="info_box_happy_txt" style="width: {{textW}}px;margin-left: {{textL}}px">{{textN}}</view>
+</view>
+    </view>
+</template>

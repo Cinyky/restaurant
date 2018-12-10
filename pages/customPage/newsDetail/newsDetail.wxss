@@ -1,0 +1,55 @@
+@import "/tpl/template-menu/template-menu.wxss";
+@import "/utils/customPage.wxss";
+@import "../header.wxss";
+
+/****详情******/
+
+.section {
+  padding: 20px;
+}
+
+.section .section-h2 {
+  font-size: 48rpx;
+  line-height: 120%;
+  color: #000;
+  padding-bottom: 4rpx;
+}
+
+.section .section-p text {
+  padding-left: 30rpx;
+}
+
+.section .setction-img {
+  margin-bottom: 30rpx;
+  height: 400rpx;
+}
+
+.section .section-Min text {
+  text-align: justify;
+}
+
+.setcion-video video {
+  width: 100%;
+  height: 400rpx;
+}
+
+.tabs {
+  line-height: 50px;
+  position: relative;
+}
+
+.weui-bar__item_on {
+  font-weight: bold;
+  color: #000;
+}
+
+.detail-box {
+  margin-top: 30rpx;
+}
+
+.weui-navbar__slider {
+  background: #000;
+  width: 40px;
+}
+
+.items{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 16px;}

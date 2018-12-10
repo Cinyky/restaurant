@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="head"style="background-color:{{__wechat_main_color}}">{{userInfo.nickname}}</view>
+  <scroll-view class="body" scroll-x="{{false}}" scroll-y="{{true}}" scroll-into-view="{{'id'+startId}}">
+    <block wx:for="{{msgList}}" wx:for-item="msg" wx:key="{{msg.id}}">
+      <view class="msg-item1" wx:if="{{msg.type==0 && msg.MsgType=='text'}}" id="{{'id'+msg.id}}">
+        <image class="msg-head" src="{{userInfo.headImg}}"></image>
+        <view class="msg-text1">{{msg.Content}}</view>
+      </view>
+      <view class="msg-item2" wx:if="{{msg.type==1 && msg.MsgType=='text'}}" id="{{'id'+msg.id}}">
+        <image class="msg-head" src="{{myInfo.headImg}}"></image>
+        <view class="msg-text2">{{msg.Content}}</view>
+      </view>
+      <view class="msg-item1" wx:if="{{msg.type==0 && msg.MsgType=='image'}}" id="{{'id'+msg.id}}">
+        <image class="msg-head" src="{{userInfo.headImg}}"></image>
+        <image class="msg-img" src="{{msg.PicUrl}}" data-src="{{msg.PicUrl}}" mode="aspectFill" catchtap="bindImagePreview"></image>
+      </view>
+      <view class="msg-item2" wx:if="{{msg.type==1 && msg.MsgType=='image'}}" id="{{'id'+msg.id}}">
+        <image class="msg-head" src="{{myInfo.headImg}}"></image>
+        <image class="msg-img" src="{{msg.PicUrl}}" data-src="{{msg.PicUrl}}" mode="aspectFill" catchtap="bindImagePreview"></image>
+      </view>
+    </block>
+  </scroll-view>
+  <view class="foot">
+    <textarea bindinput="bindTextInput" class="input_box" value="{{text}}"/>
+    <button size="default" class="btn-image" catchtap="bindSendImg">
+      <text class="iconfont icon-image"></text>
+    </button>
+    <button size="default" class="btn-send" type="primary" disabled="{{disableSend || !canSend || canSendCount==0}}" catchtap="bindSendText">
+      <text class="iconfont icon-send"></text>
+      <text>{{canSendCount}}</text>
+    </button>
+  </view>
+</view>

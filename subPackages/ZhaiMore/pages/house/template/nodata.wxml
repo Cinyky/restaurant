@@ -1,0 +1,8 @@
+<view class="nodata flex" style="display: flex">
+    <view class="">
+        <text class="iconfont icon-kongbaiyemian"></text>
+    </view>
+    <view class="">
+        <text>暂无数据</text>
+    </view>
+</view>

@@ -1,0 +1,85 @@
+@import "../../assets/common.wxss";
+page{
+  font-size: 30rpx;
+  background: #f5f5f5;
+}
+.author_head_box{
+  width: 750rpx;
+  height: 200rpx;
+  z-index: 1;
+}
+.author_head_true{
+  height: 300rpx;
+  width: 700rpx;
+  position: absolute;
+  top: 50rpx;
+  left: 25rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  box-shadow:  0 5rpx 50rpx #cccccc;
+  z-index: 2;
+}
+.head_btn_box{
+  height: 200rpx;
+  width: 650rpx;
+  position: absolute;
+  top: 300rpx;
+  left: 50rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  box-shadow:  0 5rpx 50rpx #cccccc;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.author_img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
+  box-sizing: border-box;
+  position: absolute;
+  left: 300rpx;
+  top: -50rpx;
+}
+.author_info{
+  height: 250rpx;
+  margin-top: 50rpx;
+  padding: 20rpx;
+  text-align: center;
+}
+.author_name{
+  font-size: 35rpx;
+}
+.author_job{
+  color: #888;
+}
+.author_desc{
+  margin-top: 10rpx;
+  text-align: left;
+  color: #888;
+}
+.head_btn_box_true{
+  margin-top: 50rpx;
+  height: 150rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.head_btn_box_true>button{
+  width: 300rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40rpx;
+  color: #fff;
+}
+.zx_list{
+  margin-left: 25rpx;
+  margin-top: 320rpx;
+}

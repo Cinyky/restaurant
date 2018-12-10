@@ -1,0 +1,190 @@
+<!--<view>-->
+    <!--<swiper autoplay="{{swiper.autoplay}}" duration="{{swiper.duration}}" indicatorDots="{{swiper.indicatorDots}}" interval="{{swiper.interval}}">-->
+        <!--<swiper-item wx:for="{{jumpSwiperUrls}}" wx:key="index">-->
+            <!--<image catchtap="swiperJump" class="slide-image" data-house-id="{{item.house_id}}" data-house-type="{{item.house_type}}" data-url="{{item.web_view_url}}" mode="aspectFill" src="{{item.img}}" style="{{isAli?'height: 375rpx;':''}}"></image>-->
+        <!--</swiper-item>-->
+    <!--</swiper>-->
+<!--</view>-->
+<view class="livein" bindtap="bind_livein" style="background: {{__wechat_main_color}};  margin-top: 950rpx;">
+    <text>收藏</text>
+</view>
+
+<view class="livein" bindtap="bind_livein2" style="background: {{__wechat_main_color}};margin-top:1050rpx;">
+    <text>发布</text>
+</view>
+<view>
+    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1200">
+        <block wx:for="{{jumpSwiperUrls.pics}}" wx:for-index="index">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" mode="aspectFill"/>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+<!--<form action="" bindsubmit="submitSearchForm">-->
+    <!--<view class="search-box">-->
+        <!--<view class="search-box-inner flex">-->
+            <!--<picker bindchange="bindPickerChange" data-index="{{index}}" range="{{searchArr}}" rangeKey="value" value="{{pickerIndex}}">-->
+                <!--<view class="picker">-->
+                    <!--<text>{{searchArr[pickerIndex]['value']}}</text>-->
+                    <!--<text class="iconfont icon-unfold ml5"></text>-->
+                <!--</view>-->
+            <!--</picker>-->
+            <!--<input bindblur="blurToSaveContent" bindinput="saveContent" class="search-input sub" focus="{{search.focus}}" placeholder="{{search.placeholder}}" value="{{searchValue}}"></input>-->
+            <!--<button catchtap="search" class="iconfont icon-search"></button>-->
+        <!--</view>-->
+    <!--</view>-->
+<!--</form>-->
+<view class="tab-list flex">
+    <view catchtap="navigateTo" class=" tab-item sub flex" data-url="../rent/rent">
+        <image class="mb5" mode="aspectFill" src="{{iconList.rent}}"></image>
+        <text>{{tabList.rent||'租房'}}</text>
+    </view>
+    <view catchtap="navigateTo" class="tab-item sub  flex" data-url="../purchase/purchase">
+        <image class="mb5" mode="aspectFill" src="{{iconList.purchase}}"></image>
+        <text>{{tabList.purchase||'买房'}}</text>
+    </view>
+    <!--<view catchtap="navigateTo" class="tab-item sub flex" data-url="../newHouse/newHouse" wx:if="{{isShowNewHouse}}">-->
+        <!--<image class="mb5" mode="aspectFill" src="{{iconList.new_house}}"></image>-->
+        <!--<text>{{tabList.new_house||'新房'}}</text>-->
+    <!--</view>-->
+    <view catchtap="navigateTo" class="tab-item sub flex" data-url="../agencer-list/agencer-list" wx:if="{{isShowAgent==0?false:true}}">
+        <image class="mb5" mode="aspectFill" src="{{iconList.agent}}"></image>
+        <text>{{tabList.agent||'经纪人'}}</text>
+    </view>
+    <view catchtap="navigateTo" class="tab-item sub flex" data-url="../shop/shop">
+        <image class="mb5" mode="aspectFill" src="{{iconList.shop}}"></image>
+        <text>{{tabList.shop||'门店'}}</text>
+    </view>
+    <view catchtap="openLayer" class="tab-item sub flex ">
+        <image class="mb5" mode="aspectFill" src="{{iconList.regist}}"></image>
+        <text>{{tabList.regist||'登记'}}</text>
+    </view>
+</view>
+<view class="estate-box  mt15">
+    <view class="do-type-box gridXb">
+        <view class="do-type gridFourCirle flex" style="display: flex;justify-content: space-around">
+            <text catchtap="tapSelectResource" class="sub {{index=='rent_house'?'actice-style':''}}" data-index="rent_house" style="width: 300rpx">我要租房</text>
+            <text catchtap="tapSelectResource" class="sub {{index=='sell_house'?'actice-style':''}}" data-index="sell_house" style="width: 300rpx">我要买房</text>
+        </view>
+    </view>
+    <!--租房列表-->
+    <view hidden="{{index=='rent_house'?false:true}}">
+        <view wx:if="{{zushouList.zu != ''}}" class="estate-list" >
+            <view catchtap="navigateToResource" class="estate-item gridXb flex" data-id="{{item.id}}" wx:for="{{zushouList.zu}}" wx:key="{{item.id}}" style="display: flex">
+                <image class="estate-pic clearfix mr10" mode="aspectFill" src="{{item.pics[0]}}" style="margin-right: 20rpx;"></image>
+                <view class="item-content sub flex flexC" style="display: flex;flex-direction: column;width:500rpx;">
+                    <view class="estate-feature lineText2">
+                        <text>{{item.name}}</text>
+                    </view>
+                    <view class="estate-na-add lineText">
+                        <text class="estate-name mr10" style="margin-left: 10rpx;">{{item.xiaoqu}}　</text>
+                        <text class="estate-address">{{item.area}}</text>
+                    </view>
+                    <view class="estate-advantage">
+                        <text class="gridFourRadio" wx:for="{{item.biaoqian}}" wx:key="{{index}}" style="border: 1rpx solid red">{{item}}</text>
+                    </view>
+                    <view class="estate-price f14" style="display: flex;justify-content: space-between">
+                        <view>
+                            <text class="estate-contain mr10" style="margin-left: 10rpx;">{{item.huxing}}</text>
+                            <text class="estate-area">{{item.mianji}}m²</text>
+                        </view>
+                        <view class="price-cou-unt mr10">
+                            <text class="price-count mr5">{{item.zujin}}</text>
+                            <text class="price-unit">元/月</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:else>
+            <view style="display: flex;justify-content: center">
+                <include src="../template/nodata.wxml"></include>
+            </view>
+        </view>
+    </view>
+    <!--买房列表-->
+    <view hidden="{{index=='sell_house'?false:true}}">
+        <view wx:if="{{zushouList.shou != ''}}" class="estate-list" >
+            <view catchtap="navigateToResource" class="estate-item gridXb flex" data-id="{{item.id}}" wx:for="{{zushouList.shou}}" wx:key="{{item.id}}" style="display: flex">
+                <image class="estate-pic clearfix mr10" mode="aspectFill" src="{{item.pics[0]}}" style="margin-right: 20rpx;"></image>
+                <view class="item-content sub flex flexC" style="display: flex;flex-direction: column;width:500rpx;">
+                    <view class="estate-feature lineText2">
+                        <text>{{item.name}}</text>
+                    </view>
+                    <view class="estate-na-add lineText">
+                        <text class="estate-name mr10" style="margin-left: 10rpx;">{{item.xiaoqu}}　</text>
+                        <text class="estate-address">{{item.area}}</text>
+                    </view>
+                    <view class="estate-advantage">
+                        <text class="gridFourRadio" wx:for="{{item.biaoqian}}" wx:key="{{index}}" style="border: 1rpx solid red">{{item}}</text>
+                    </view>
+                    <view class="estate-price f14" style="display: flex;justify-content: space-between">
+                        <view>
+                            <text class="estate-contain mr10" style="margin-left: 10rpx;">{{item.huxing}}</text>
+                            <text class="estate-area">{{item.mianji}}m²</text>
+                        </view>
+                        <view class="price-cou-unt mr10">
+                            <text class="price-count mr5">{{item.shoujia}}</text>
+                            <text class="price-unit">万元</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!--<view wx:if="{{zushouList.shou != ''}}" class="houList">-->
+            <!--<view catchtap="navigateToNewHouse" class="houItem gridXb flex" data-param="?id={{item.id}}" data-path="../newHouseDetail/newHouseDetail" wx:for="{{zushouList.shou}}" wx:key="{{index}}">-->
+                <!--<view class="itemLf mr10">-->
+                    <!--<image class="houPic" mode="aspectFill" src="{{item.pics[0]}}"></image>-->
+                    <!--<view class="houLabel lineText tc f12">{{item.house_type_text}}</view>-->
+                <!--</view>-->
+                <!--<view class="itemRg sub flex flexC ">-->
+                    <!--<view class="houTit lineText mb5">{{item.name}}</view>-->
+                    <!--<view class="houDesc lineText2 grey mb5 f14">{{item.content}}</view>-->
+                    <!--<view class="houTyp f12">-->
+                        <!--<view class="mr10 gridFour" wx:for="{{item.labelTextList}}" wx:for-index="indexs" wx:for-item="items" wx:key="{{indexs}}">{{items}}</view>-->
+                    <!--</view>-->
+                    <!--<view class="htRg sub lineText f14 price-cou-unt">-->
+                        <!--<text class="pri f16">{{item.shoujia}}</text>元/m²-->
+                    <!--</view>-->
+                <!--</view>-->
+            <!--</view>-->
+        <!--</view>-->
+        <view wx:else>
+            <view style="display: flex;justify-content: center">
+                <include src="../template/nodata.wxml"></include>
+            </view>
+        </view>
+    </view>
+    <!--什么都没有-->
+
+    <!--<view hidden="{{index==sell_house&&zushouList.shou == ''}}" style="display: flex;justify-content: center">-->
+        <!--<include src="../template/nodata.wxml"></include>-->
+    <!--</view>-->
+    <!--<view hidden="{{!isShowLoading}}">-->
+        <!--<include src="../template/loading.wxml"></include>-->
+    <!--</view>-->
+</view>
+<view catchtap="closeLayer" class="shade_bg" hidden="{{!isShowLayer}}"></view>
+<!--登记-->
+<view class="whiteShade_bg show" hidden="{{!isShowLayer}}">
+    <view class="tanBox tc" style="display: flex;flex-wrap: wrap">
+        <view catchtap="layerNavigateTo" class="tanItem" data-path="../rent-out-regist/rent-out-regist" style="display: flex;flex-direction:column;align-items: center;">
+            <image class="tanItemIcon" mode="aspectFill" src="{{iconList.rent_out_regist}}"></image>
+            <view class="f14 grey">{{tabList.rent_out_regist||'出租发布'}}</view>
+        </view>
+        <view catchtap="layerNavigateTo" class="tanItem" data-path="../sell-regist/sell-regist" style="display: flex;flex-direction:column;align-items: center;">
+            <image class="tanItemIcon" mode="aspectFill" src="{{iconList.sell_regist}}"></image>
+            <view class="f14 grey">{{tabList.sell_regist||'出售发布'}}</view>
+        </view>
+        <view catchtap="layerNavigateTo" class="tanItem" data-path="../rent-in-regist/rent-in-regist" style="display: flex;flex-direction:column;align-items: center;">
+            <image class="tanItemIcon" mode="aspectFill" src="{{iconList.rent_in_regist}}"></image>
+            <view class="f14 grey">{{tabList.rent_in_regist||'求租登记'}}</view>
+        </view>
+        <view catchtap="layerNavigateTo" class="tanItem" data-path="../purchase-regist/purchase-regist" style="display: flex;flex-direction:column;align-items: center;">
+            <image class="tanItemIcon" mode="aspectFill" src="{{iconList.purchase_regist}}"></image>
+            <view class="f14 grey">{{tabList.purchase_regist||'求购登记'}}</view>
+        </view>
+    </view>
+    <view catchtap="closeLayer" class="closeBtn"></view>
+</view>

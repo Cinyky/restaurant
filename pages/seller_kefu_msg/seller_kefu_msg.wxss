@@ -1,0 +1,99 @@
+@import "../../utils/weui.wxss";
+@import "/utils/my_iconfont.wxss";
+
+page{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.head{
+  height: 10%;
+  width: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  background: #DB384C;
+  color: #ffffff;
+}
+.body{
+  width: 100%;
+  height: 80%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 10%;
+  overflow: hidden;
+  padding: 20rpx;
+}
+.msg-item1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10rpx 0;
+  justify-content: left;
+}
+.msg-item2{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 10rpx 0;
+  justify-content: right;
+}
+.msg-head{
+  width: 100rpx;
+  height: 100rpx;
+  padding: 10rpx;
+  border-radius: 50%;
+}
+.msg-text1{
+  border-radius: 10rpx;
+  /*border: 1rpx solid #999999;*/
+  background: #FFFFFF;
+  color: #000;
+  padding: 10rpx;
+  max-width: 60%;
+}
+.msg-text2{
+  border-radius: 10rpx;
+  /*border: 1rpx solid #999999;*/
+  background: #9eea6a;
+  color: #000;
+  padding: 10rpx;
+  max-width: 60%;
+}
+.msg-img{
+  max-width: 60%;
+  max-height: 30%;
+  display: block;
+}
+.foot{
+  position: absolute;
+  bottom: 0;
+  height: 10%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #ffffff;
+  padding: 10rpx;
+}
+.input_box{
+  border: 1rpx solid #888888;
+  border-radius: 0;
+  height: 100%;
+  box-sizing: border-box;
+  width: 60%;
+}
+.btn-image,.btn-send{
+  width: 20%;
+  height: 100%;
+  border-radius: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

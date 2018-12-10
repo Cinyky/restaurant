@@ -1,0 +1,135 @@
+<view class="estate-category gridXb flex" style="display: flex;justify-content: space-around;align-items: center">
+    <view catchtap="cityAreaList" class="tc sub lineText">
+        <text>{{cityAreaTitle||'区域'}}</text>
+        <text class="iconfont icon-xiala linght"></text>
+    </view>
+    <view catchtap="totalPrice" class="tc sub lineText">
+        <text>{{totalPriceTitle||'价格'}}</text>
+        <text class="iconfont icon-xiala linght"></text>
+    </view>
+    <view catchtap="huoseType" class="tc sub lineText">
+        <text>{{houseTypeTitle||'类型'}}</text>
+        <text class="iconfont icon-xiala linght"></text>
+    </view>
+    <view catchtap="more" class="tc sub">
+        <text>更多</text>
+        <text class="iconfont icon-xiala linght"></text>
+    </view>
+</view>
+<view class="estate-list">
+    <!--<view catchtap="navigateTo" class="estate-item gridXb flex" data-id="{{item.id}}" wx:for="{{zushouList.zu}}" wx:key="{{item.id}}">-->
+    <!--<view class="isTop">已置顶</view>-->
+    <!--<image class="estate-pic mr10" mode="aspectFill" src="{{item.pics[0]}}"></image>-->
+    <!--<view class="item-content sub flex flexC">-->
+    <!--<view class="estate-feature lineText2">-->
+    <!--<text>{{item.name}}</text>-->
+    <!--</view>-->
+    <!--<view class="estate-na-add lineText">-->
+    <!--<text class="estate-name mr10">{{item.xiaoqu}}</text>-->
+    <!--<text class="estate-address">{{item.area}}</text>-->
+    <!--</view>-->
+    <!--<view class="estate-advantage">-->
+    <!--<text class="gridFourRadio" wx:for="{{item.biaoqian}}" wx:key="*this">{{item}}</text>-->
+    <!--</view>-->
+    <!--<view class="estate-price f14">-->
+    <!--<text class="estate-contain mr10">{{item.huxing}}</text>-->
+    <!--<text class="estate-area">{{item.mianji}}m²</text>-->
+    <!--<view class="price-cou-unt mr10">-->
+    <!--<text class="price-count mr5">{{item.zujin}}</text>-->
+    <!--<text class="price-unit">元/月</text>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <!--</view>-->
+    <view catchtap="navigateTo" class="estate-item gridXb flex" data-id="{{item.id}}" wx:for="{{SearchList?SearchList:zushouList.shou}}" wx:key="{{item.id}}" style="display: flex">
+        <image class="estate-pic clearfix mr10" mode="aspectFill" src="{{item.pics[0]}}" style="margin-right: 20rpx;"></image>
+        <view class="item-content sub flex flexC" style="display: flex;flex-direction: column;width:500rpx;">
+            <view class="estate-feature lineText2">
+                <text>{{item.name}}</text>
+            </view>
+            <view class="estate-na-add lineText">
+                <text class="estate-name mr10" style="margin-left: 10rpx;">{{item.xiaoqu}}　</text>
+                <text class="estate-address">{{item.area}}</text>
+            </view>
+            <view class="estate-advantage">
+                <text class="gridFourRadio" wx:for="{{item.biaoqian}}" wx:key="{{index}}" style="border: 1rpx solid red">{{item}}</text>
+            </view>
+            <view class="estate-price f14" style="display: flex;justify-content: space-between">
+                <view>
+                    <text class="estate-contain mr10" style="margin-left: 10rpx;">{{item.huxing}}</text>
+                    <text class="estate-area">{{item.mianji}}m²</text>
+                </view>
+                <view class="price-cou-unt mr10">
+                    <text class="price-count mr5">{{item.shoujia}}</text>
+                    <text class="price-unit">万元</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view hidden="{{zushouList.zu == ''?false:true}}">
+    <include src="../template/nodata.wxml"></include>
+</view>
+<!--<view hidden="{{!isShowLoading}}">-->
+<!--<include src="../template/loading.wxml"></include>-->
+<!--</view>-->
+<view class="panel">
+    <view catchtap="shadeHidden" class="pur-rent-panel-bg-shade {{panel_bg_shade}}"></view>
+    <view class="{{cityAreaListDisplayClass}} pur-rent-panel-content flex">
+        <scroll-view scrollY class="panel-middle sub">
+            <view bindtap="selectCityArea" class="{{cityAreaListDefault=='-1'?'price-cou-unt':''}} position-item gridFour" data-id="100000" data-index="-1" data-name="不限">不限</view>
+            <view bindtap="selectCityArea" class="{{cityAreaListDefault==index?'price-cou-unt':''}} position-item gridFour" data-id="{{item.id}}" data-index="{{index}}" data-name="{{item.area}}" wx:for="{{userInfo.area}}" wx:key="{{item.id}}">{{item.area}}</view>
+        </scroll-view>
+    </view>
+    <view class="{{totalPriceDisplayClass}} pur-rent-panel-content flex">
+        <scroll-view>
+            <view bindtap="selectTotalPrice" class="{{totalPriceDefault=='-1'?'price-cou-unt':''}} position-item gridXb" data-index="-1" data-max="0" data-min="0">不限</view>
+            <view bindtap="selectTotalPrice" class="{{totalPriceDefault=='0'?'price-cou-unt':''}} position-item gridXb" data-index="0" data-max="50" data-min="0">50万以下</view>
+            <view bindtap="selectTotalPrice" class="{{totalPriceDefault=='1'?'price-cou-unt':''}} position-item gridXb" data-index="1" data-max="80" data-min="50">50-80万</view>
+            <view bindtap="selectTotalPrice" class="{{totalPriceDefault=='2'?'price-cou-unt':''}} position-item gridXb" data-index="2" data-max="100" data-min="80">80-100万</view>
+            <view bindtap="selectTotalPrice" class="{{totalPriceDefault=='3'?'price-cou-unt':''}} position-item gridXb" data-index="3" data-max="200" data-min="100">100-200万</view>
+            <view bindtap="selectTotalPrice" class="{{totalPriceDefault=='4'?'price-cou-unt':''}} position-item gridXb" data-index="4" data-max="300" data-min="200">200-300万</view>
+            <view bindtap="selectTotalPrice" class="{{totalPriceDefault=='5'?'price-cou-unt':''}} position-item gridXb" data-index="5" data-max="400" data-min="300">300-400万</view>
+            <view bindtap="selectTotalPrice" class="{{totalPriceDefault=='6'?'price-cou-unt':''}} position-item gridXb" data-index="6" data-max="500" data-min="400">400-500万</view>
+            <view bindtap="selectTotalPrice" class="{{totalPriceDefault=='7'?'price-cou-unt':''}} position-item gridXb" data-index="7" data-max="10000" data-min="500">500万以上</view>
+        </scroll-view>
+    </view>
+    <view class="{{houseTypeDisplayClass}} pur-rent-panel-content">
+        <scroll-view>
+            <view bindtap="selectHouseType" class="{{houseTypeDefault=='-1'?'price-cou-unt':''}} position-item gridXb" data-house-word="不限" data-id="0" data-index="-1">不限</view>
+            <view bindtap="selectHouseType" class="{{houseTypeDefault==index?'price-cou-unt':''}} position-item gridXb" data-house-word="{{item.name}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{userInfo.zhuangxiu}}" wx:key="{{item.id}}">{{item.name}}</view>
+        </scroll-view>
+    </view>
+    <view class="{{moreDisplayClass}} pur-rent-panel-content f12">
+        <scroll-view>
+            <view class="orientation mb15">
+                <view class="orientation-head f16 grey">面积</view>
+                <view class="area-list flex" style="display: flex;justify-content: left;flex-wrap: wrap">
+                    <view bindtap="selectHouseArea" class="{{houseAreaDefault=='-1'?'price-cou-unt':''}} position-item area-item mb10 tc gridFour" data-key="-1" data-max="0" data-min="0" style="width:200rpx;display: flex;justify-content: center;align-items: center;border: 1rpx solid #F5F5F5">不限</view>
+                    <view bindtap="selectHouseArea" class="{{houseAreaDefault==index?'price-cou-unt':''}} position-item area-item mb10 tc gridFour" data-key="{{index}}" data-max="{{item.max}}" data-min="{{item.min}}" wx:for="{{houseAreaList}}" wx:key="{{item.min}}" style="width:200rpx;display: flex;justify-content: center;align-items: center;border: 1rpx solid #F5F5F5">
+                        <block wx:if="{{item.min<300}}">
+                            {{item.min}}-{{item.max}}m²
+                        </block>
+                        <block wx:else>
+                            {{item.min}}m²以上
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <!--<view class="orientation mb15">-->
+            <!--<view class="orientation-head f16 grey">房屋类型</view>-->
+            <!--<view class="house-age-list flex">-->
+            <!--<view bindtap="selectHouseCategory" class="{{houseCategoryeDefault=='-1'?'price-cou-unt':''}} position-item house-age-item mb10 tc gridFour" data-house-word="不限" data-id="0" data-key="-1">不限</view>-->
+            <!--<view bindtap="selectHouseCategory" class="{{houseCategoryeDefault==index?'price-cou-unt':''}} position-item house-age-item mb10 tc gridFour" data-house-word="{{item.house_word}}" data-id="{{item.id}}" data-key="{{index}}" wx:for="{{houseCategoryList}}" wx:key="{{item.id}}">{{item.house_word}}</view>-->
+            <!--</view>-->
+            <!--</view>-->
+            <!--<view class="orientation mb15">-->
+            <!--<view class="orientation-head f16 grey">房屋类别</view>-->
+            <!--<view class="house-age-list flex">-->
+            <!--<view bindtap="selectHouseUse" class="{{houseUseDefault=='-1'?'price-cou-unt':''}} position-item house-age-item mb10 tc gridFour" data-house-word="不限" data-id="0" data-key="-1">不限</view>-->
+            <!--<view bindtap="selectHouseUse" class="{{houseUseDefault==index?'price-cou-unt':''}} position-item house-age-item mb10 tc gridFour" data-house-word="{{item.house_word}}" data-id="{{item.id}}" data-key="{{index}}" wx:for="{{houseUseList}}" wx:key="{{item.id}}">{{item.house_word}}</view>-->
+            <!--</view>-->
+            <!--</view>-->
+        </scroll-view>
+    </view>
+</view>

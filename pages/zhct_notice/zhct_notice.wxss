@@ -1,0 +1,7 @@
+@import "/zhct.wxss";
+page{
+  background: #fff;
+}
+.contenter{
+  padding: 20rpx;
+}

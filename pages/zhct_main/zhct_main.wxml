@@ -1,0 +1,232 @@
+<official-account class="follow_wechat"></official-account>
+<block>
+  <view class="ress-main flex flexC">
+    <!--tab start-->
+    <view class="ress-nav gridXb f18 tc flex">
+      <block wx:if="{{ tabTit == 1 }}">
+        <view class="sub" style="color: {{main_color}};border-bottom: 1rpx solid {{main_color}}">{{editData_h.diancan}}</view>
+      </block>
+      <block wx:else>
+        <view class="sub" bindtap="tabSubBind" id="1">{{editData_h.diancan}}</view>
+      </block>
+      <block wx:if="{{ tabTit == 2 }}">
+        <view class="sub" style="color: {{main_color}}};border-bottom: 1rpx solid {{main_color}}">评价</view>
+      </block>
+      <block wx:else>
+        <view class="sub" bindtap="tabSubBind" id="2">评价</view>
+      </block>
+      <view class="sub" bindtap="go_user_order_bind">订单</view>
+    </view>
+
+    <!--tab end-->
+
+    <!--dc tab区域 start-->
+    <block wx:if="{{ tabTit == 1 }}">
+      <!--公告 start-->
+      <view class="gridXb ress-post" wx:if="{{setting.notice}}">
+        <view class="red arrowR lineText ress-post-item" bindtap="huodong_info_bind" style="color: {{main_color}};">{{setting.notice}}</view>
+      </view>
+      <!--公告 end-->
+      <!--dc 区域 start-->
+      <view class="ress-bd sub">
+        <scroll-view scroll-y="true" class="ress-side tc">
+          <block wx:for="{{cateList}}">
+            <view class="ress-side-item {{cate_id==item.id?'ress-side-active':''}} gridXb" style="{{cate_id==item.id?'color:'+main_color:''}};" data-id="{{item.id}}" bindtap="tapClassify">{{item.name}}</view>
+          </block>
+        </scroll-view>
+        <scroll-view scroll-y="true" scroll-with-animation="true" class="ress-con">
+          <!--优惠劵-->
+          <block wx:for="{{couponList}}" wx:for-item="coupon" wx:key="{{coupon.id}}">
+            <view class="juan">
+              <view class="juan-list mt10 flex write" bindtap="bind_get_coupon" data-id="{{coupon.id}}" style="background: {{main_color}};">
+                <view class="price mr10">￥
+                  <text class="f36">{{coupon.coupon_discount}}</text>
+                </view>
+                <view class="sub text">
+                  <view class="f16">{{coupon.name}}</view>
+                  <view class="f12">满{{coupon.min_price}}减{{coupon.coupon_discount}}</view>
+                </view>
+                <view class="lingqu tc ml10">领取</view>
+              </view>
+            </view>
+          </block>
+          <block wx:for="{{prodList}}" wx:for-item="prod" wx:for-index="prodIdx">
+            <block wx:if="{{cate_id==0 || prod.cate_id==cate_id}}">
+              <view class="ress-item gridXb flex">
+                <view class="ress-item-l mr10" bindtap="goods_info_bind" id="{{prod.id}}">
+                  <view class="ress-item-avatar">
+                    <image src="{{prod.img}}" class="ress-item-img" mode="aspectFill"></image>
+                  </view>
+                </view>
+                <view class="ress-item-con sub">
+                  <view class="ress-item-name f18" bindtap="goods_info_bind" id="{{prod.id}}">
+                    <text>{{prod.name}}</text>
+                  </view>
+                  <view class="ress-item-info f12 grey" bindtap="goods_info_bind" id="{{prod.id}}">
+                    <!--<text class="mr10">月售{{gitem.yt_com_salesvolume}}</text>-->
+                    <!--<text class="mr10">赞{{gitem.yt_com_grade}}</text>-->
+                    <text class="mr10"></text>
+                  </view>
+                  <view class="ress-price f18 red" bindtap="goods_info_bind" id="{{prod.id}}">
+                    <text style="color: {{main_color}};">￥{{prod.spec[0].price}}</text>
+                  </view>
+                  <view class="count-spec tc" bindtap="guige_select_bind" id="{{prod.id}}" data-idx="{{prodIdx}}">
+                    <text class="count-spec-c" style="background: {{main_color}}">{{prod.num==-1?'∞':prod.num}}</text>
+                    <text>选择规格</text>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </block>
+        </scroll-view>
+      </view>
+      <!--dc区域 end-->
+      <!-- 浮动购物车 start-->
+      <block wx:if="{{ cart_num > 0 }}">
+        <!--达到了配送金额或者不是wm类型-->
+        <block wx:if="{{setting.wm_min_price<= cart_price || type==0}}">
+          <view class="ress-float gridXt flex">
+            <view class="float-cart" bindtap="cart_list_show_bind">
+              <view class="cart-circle" style="background-color: {{main_color}};">
+                <text class="iconfont icon-cart"></text>
+                <text class="counts" style="background-color: {{main_color}};">{{cart_num}}</text>
+              </view>
+            </view>
+            <view class="float-price sub">
+              <view class="price-count f20 red" style="color: {{main_color}};">
+                <text>￥{{cart_price}}</text>
+              </view>
+            </view>
+            <view class="float-btn">
+              <button class="float-btn-s" type="primary" bindtap="bind_submit_order" disabled="{{dish_button_status}}" style="background-color: {{main_color}};">下单</button>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="ress-float gridXt flex cart-none-float">
+            <view class="float-cart" bindtap="cart_list_show_bind">
+              <view class="cart-circle" style="background-color: {{main_color}};">
+                <text class="iconfont icon-cart"></text>
+                <text class="counts" style="background-color: {{main_color}};">{{cart_num}}</text>
+              </view>
+            </view>
+            <view class="float-price sub">
+              <view class="price-count f20 red-none">
+                <text>{{setting.wm_min_price}}元起送 配送费{{wm_price}}元</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+      <!--购物车是空的。。。-->
+      <block wx:else>
+        <view class="ress-float gridXt flex cart-none-float">
+          <view class="float-cart">
+            <view class="cart-circle cart-none">
+              <text class="iconfont icon-cart"></text>
+            </view>
+          </view>
+          <view class="float-price sub">
+            <view class="price-count f20 red-none">
+              <text>购物车是空的</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!-- 浮动购物车 end-->
+    </block>
+    <!--浮动购物车-->
+    <view class="mallcart" wx:if="{{cart_list_isshow}}">
+      <view class="mc-box">
+        <view class="mc-t tr gridXb" bindtap="cart_delete_bind">
+          <view class="mc-t-de green f16" style="color: {{main_color}};">
+            <text class="iconfont icon-delete"></text>
+            清空购物车
+          </view>
+        </view>
+        <scroll-view scroll-y="true" style="max-height:720rpx;">
+          <block wx:for="{{cart}}" wx:for-item="cart_item" wx:for-index="cart_idx">
+            <view class="mc-item gridXt flex">
+              <view class="f18 mc-name">
+                <view class="lineText">{{cart_item.prod.name}}</view>
+                <view class="guige f12 linght">{{cart_item.sp.name}}</view>
+              </view>
+              <view class="red mc-price f18" style="color: {{main_color}};">
+                ￥{{cart_item.sp.price}}
+              </view>
+              <view class="mc-m sub ml10">
+                <view class="count-set mc-set tc">
+                  <view class="count-btn gridFourCirle" bindtap="bind_cart_number_jian" data-index="{{cart_idx}}" item-attr="">
+                    <text class="iconfont icon-move"></text>
+                  </view>
+                  <input type="number" value="{{cart_item.num}}" class="buy-couts" disabled="{{true}}"/>
+                  <view class="count-btn" bindtap="bind_cart_number_jia" data-index="{{cart_idx}}">
+                    <text class="count-btn iconfont icon-add" style="background: {{main_color}};border: none;"></text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+      <view class="mc-bg" bindtap="cart_list_show_bind"></view>
+    </view>
+    <!--浮动购物车-->
+    <!--dc tab区域 end-->
+    <!--评价tab区域 start-->
+    <block wx:if="{{ tabTit == 2 }}">
+      <view class="ress-comm sub">
+        <scroll-view scroll-y="true" class="ress-scroll" bindscrolltolower="loadComment">
+          <block wx:for="{{commentList}}" wx:for-item="comment" wx:for-index="cidx" wx:key="{{comment.id}}">
+            <view class="comm-item gridXt">
+              <view class="comm-info grey">
+                <text class="fr linght">{{comment.ctime}}</text>
+                <text class="comm-name">{{comment.user.nickname}}</text>
+              </view>
+              <view class="comm-text">
+                <text>{{comment.comment}}</text>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+    </block>
+    <!--评价tab区域 end-->
+    <!--规格弹出 start-->
+    <view class="floatBox floatBoxBg spec-popup {{show_guige?'guige_show':''}}">
+      <view class="mid spec-box">
+        <view class="fr iconfont icon-close f24" style="position:relative;" bindtap="attr_select_clost_bind"></view>
+        <view class="f18">{{prod.name}}</view>
+        <!-- <block wx:for="{{goods.yt_cte_values}}" wx:for-item="itemType"> -->
+        <view class="sp-item f14 flex">
+          <view class="sp-n grey">规格</view>
+          <view class="sub">
+            <view class="sub-i-i clearfix">
+              <block wx:for="{{prod.spec}}" wx:for-item="sp" wx:for-index="spIdx">
+                <text class="sp-item-i gridFourCirle" style="{{tmp_spIdx==spIdx?'color:'+main_color+';border:1rpx solid '+main_color:''}}" bindtap="select_attr_bind" data-idx="{{spIdx}}">{{sp.name}}</text>
+                <!-- <block wx:if="{{true}}">
+                 <text class="sp-item-i gridFourCirle active" bindtap="select_attr_bind" id="{{itemVal.id}}" data-type="{{itemType.name}}">{{itemVal}}</text>
+                 </block>
+                   <block wx:else>
+                   <text class="sp-item-i gridFourCirle" bindtap="select_attr_bind" id="{{itemVal.id}}" data-type="{{itemType.name}}">{{itemVal}}</text>
+                   </block> -->
+              </block>
+            </view>
+          </view>
+        </view>
+        <!-- </block> -->
+        <view class="gridXt mt15 flex" style="padding-top:40rpx;">
+          <view class="sub" style="line-height:72rpx;">
+            <text class="f18 red" style="color:{{main_color}}">￥{{tmp_sp.price}}</text>
+            <text></text>
+          </view>
+          <view class="s-r-box">
+            <button type="primary" class="s-r-box-btn" style="display:block;background:{{main_color}}" bindtap="bind_join_car">加入购物车</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--规格弹出 end-->
+
+  </view>
+</block>

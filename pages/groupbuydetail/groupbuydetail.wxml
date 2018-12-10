@@ -1,0 +1,192 @@
+<import src="/wxParse/wxParse.wxml" />
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='swiperHeight_H'>
+  <block wx:for="{{[product.pic]}}" wx:for-item="item">
+    <swiper-item>
+      <image mode='widthFix' src="{{item}}" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+
+
+<!-- H start -->
+<view class='groupbuydetail_other_container' style='background: -webkit-linear-gradient(left, #e44c51 , #f67d5f);'>
+  <view class='groupbuydetail_otherLeft_content'>
+    <image src='http://weidogstest.oss-cn-beijing.aliyuncs.com/89235edf5b2a301608f9664644ff55d4.png'></image>
+    <text>越拼越便宜！</text>
+  </view>
+  <view class='groupbuydetail_otherRight_content'>
+    <text>已有人{{product.join_group_people_num}}参团</text>
+  </view>
+</view>
+<view class='groupbuydetail_title_container'>
+  {{product.name}}
+</view>
+<view class='groupbuydetail_price_container'>
+  <view class='groupbuydetail_gprice_content' style='color: #f2292d'>
+    <view>￥</view>
+    <view>
+    {{product.gprice}}
+    </view>
+  </view>
+  <view class='groupbuydetail_oprice_content'>
+    <view>
+    价格￥{{product.oprice}}
+    </view>
+    <view style='background: #e44c51'>
+    {{product.num}}人团
+    </view>
+  </view>
+  <view class='groupbuydetail_icon_content'>
+    <image src='http://weidogstest.oss-cn-beijing.aliyuncs.com/19a13e3843ae5fc97781d2392bf3db17.png'></image>
+    <text>分享</text>
+    <button type="primary" open-type="share" data-name="pageShare" id="share" class='con_listbox_h' hover-class='none'>分享</button>
+  </view>
+</view>
+<view class='groupbuydetail_otherInfo_container'>
+  <view class='groupbuydetail_otherInfo_content'>
+    <icon style='border: 1px solid #ff5258' color='#ff5258' type='success_no_circle' size='14'></icon>
+    <text>全场包邮</text>
+  </view>
+  <view class='groupbuydetail_otherInfo_content'>
+    <icon style='border: 1px solid #ff5258' color='#ff5258' type='success_no_circle' size='14'></icon>
+    <text>七天退换</text>
+  </view>
+  <view class='groupbuydetail_otherInfo_content'>
+    <icon style='border: 1px solid #ff5258' color='#ff5258' type='success_no_circle' size='14'></icon>
+    <text>微信支付</text>
+  </view>
+</view>
+
+<view class='groupbuydetail_play_container'>
+  <view class='groupbuydetail_playTitle_content'>
+    <text>拼团玩法</text>
+  </view>
+  <view class='groupbuydetail_playInfo_container'>
+    <view class='groupbuydetail_playInfo_content'>
+      <text class='groupbuydetail_playInfo_color' style='color: #ff5258'>1.</text>
+      <text class='groupbuydetail_playInfo_text'>开团/参团</text>
+    </view>
+    <view class='groupbuydetail_playInfo_content'>
+      <text class='groupbuydetail_playInfo_color' style='color: #ff5258'>2.</text>
+      <text class='groupbuydetail_playInfo_text'>邀请好友</text>
+    </view>
+    <view class='groupbuydetail_playInfo_content'>
+      <text class='groupbuydetail_playInfo_color' style='color: #ff5258'>3.</text>
+      <text class='groupbuydetail_playInfo_text'>满员发货 (不满自动退款)</text>
+    </view>
+  </view>
+</view>
+<!-- H end -->
+<!-- <view class='shop-info'>
+  <view class='price'>
+    <text class='nowPrice'>￥{{product.gprice}}</text>
+    <text class='line-delete'>￥{{product.oprice}}</text>
+    <text class='priceCutDown'>拼团立减{{~~(product.oprice*100-product.gprice*100)/100}}元</text>
+  </view>
+  <view class='floatR haved'>已有
+    <view>
+      <text class='red'>{{product.join_group_people_num}}</text> 人参团
+    </view>
+  </view>
+  <view class='title'>
+    <view>{{product.name}}</view>
+    <view class='title-tip'>{{product.ms}}</view>
+  </view>
+</view> -->
+<!-- 正在开团 -->
+<view class='tuan' hidden='{{groupList.length==0}}'>
+  <view class='title'>正在开团的小伙伴</view>
+  <view class='con' wx:for="{{groupList}}" wx:key="{{item.id}}">
+    <view class='con_left'>
+      <image src='{{item.user.headimgurl}}' />
+      <view>
+        <text>{{item.user.nickname}}</text>
+        <text class='color999'>正在开团中</text>
+      </view>
+    </view>
+    <view class='con_right'>
+      <view>
+        <text class='red'>还差{{item.person_num-item.current_num}}人参团</text>
+        <text class='color999'>剩余{{item.timeout}}</text>
+      </view>
+      <text class='join' bindtap="joinGroup" data-group-id="{{item.id}}">加入团</text>
+    </view>
+  </view>
+</view>
+
+
+<!-- 拼团玩法 -->
+<!-- <view class='shop-play'>
+  <view class='title'>拼团玩法</view>
+  <view class='menu'>
+    <view>
+      <image mode='widthFix' src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/ptimg/burse.png" /> 支付开团或者参团
+    </view>
+    <view>
+      <image mode='widthFix' src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/ptimg/user.png" /> 邀请好友参团
+    </view>
+    <view>
+      <image mode='widthFix' src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/ptimg/car.png" /> 人数达到分别发货
+    </view>
+    <view>
+      <image mode='widthFix' src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/ptimg/back.png" /> 人数不够自动退款
+    </view>
+  </view>
+</view> -->
+
+<!-- 商品详情 -->
+<view class='shop-play shop-detail'>
+  <view class='title'>商品详情</view>
+  <view class='con'>
+    <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+  </view>
+</view>
+
+
+<!-- 底部菜单 -->
+<view class='fixedBottom'>
+  <view class='home'>
+    <navigator url='/pages/groupbuy/groupbuy'>
+      <image mode='widthFix' src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/pin2.png" />
+      <text>首页</text>
+    </navigator>
+  </view>
+  <view class='yourPurse' bindtap='showModal1' data-type="single">
+    <text>￥{{product.price}}</text>
+    <text>单独购买</text>
+  </view>
+  <view class='yoursPurse' bindtap='showModal1' data-type="group" style='background: #ff5258'>
+    <text>￥{{product.gprice}}</text>
+    <text>{{product.num}}人团</text>
+  </view>
+</view>
+
+<!-- 自定义底部弹出层 -->
+<view class="commodity_screen" bindtap="hideModal1" wx:if="{{showModalStatus1}}"></view>
+<view animation="{{animationData1}}" class="commodity_attr_box" wx:if="{{showModalStatus1}}">
+
+  <view class='header'>
+    <view class='header-imgBox'>
+      <image mode='widthFix' src="{{product.pic}}" />
+    </view>
+    <view class='header-infoBox'>
+      <text>{{product.ms}}</text>
+      <text class='red'>￥{{type=='group'?product.gprice:product.price}}</text>
+    </view>
+  </view>
+
+  <view class='count'>
+    <text>购买数量:</text>
+    <view class="stepper floatR">
+      <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+      <input type="number" bindchange="bindManual" value="{{num}}" />
+      <text class="normal" bindtap="bindPlus">+</text>
+    </view>
+  </view>
+
+  <view class='submit'>
+    <view bindtap="navigateToSubmitOrder">
+      <button type='submit' style="border-radius: 0">确定</button>
+    </view>
+  </view>
+</view>

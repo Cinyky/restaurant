@@ -1,0 +1,67 @@
+<view class="publishList">
+    <view class="pulishItem mb15" wx:for="{{list}}" wx:key="{{index}}">
+        <view class="itemTop mb10 flex">
+            <view class="itemTit sub  lineText2">
+                <text class="grey">{{item.is_sell==1?'出售':'出租'}}</text> {{item.house_name}}</view>
+            <view class="status f14 ml15 red" wx:if="{{item.top_time!=0}}">已置顶</view>
+        </view>
+        <view class="itemMid">
+            <text class="mr15 red" wx:if="{{(item.vill_name||'')==''?false:true}}"> {{item.vill_name||''}} </text>
+            <text class="mr15 orange" wx:if="{{(item.vill_cityarea_name||'')==''?false:true}}"> {{item.vill_cityarea_name||''}} </text>
+            <text class="oliver">{{item.is_sell==1?item.house_total:item.house_rental}} {{item.is_sell==1?'万元':'元/月'}}</text>
+        </view>
+        <view class="itemMid flex mb10">
+            <view>
+                <text>浏览次数：{{item.views}}</text>
+            </view>
+            <view>{{item.is_show==1?'已上架':'未上架'}}</view>
+            <view>{{item.createtime}}</view>
+        </view>
+        <view catchtap="action" class="itemBot gridFour flex" data-form="list" data-index="{{index}}">
+            <button class="btn sub" data-action="refresh" disabled="{{!baseInfo['isAgent']}}">
+                <text class="iconfont icon-shuaxin"></text> 刷新 </button>
+            <button class="btn sub" data-action="top" disabled="{{!baseInfo['isAgent']}}">
+                <text class="iconfont icon-zhiding"></text> 置顶 </button>
+            <button class="btn sub" data-action="more">
+                <text class="iconfont icon-gengduo"></text> 更多 </button>
+        </view>
+    </view>
+    <view hidden="{{nodata||false}}">
+        <include src="../template/nodata.wxml"></include>
+    </view>
+    <view hidden="{{!isShowLoading}}">
+        <include src="../template/loading.wxml"></include>
+    </view>
+</view>
+<view class="shade_bg" hidden=" ">
+    <view class="dialogBox tc">
+        <view class="mb15">刷新可以提升排名，获得更多浏览机会</view>
+        <view class="f14 grey mb15">可免费刷新1次</view>
+        <button class="submit-btn">立即刷新</button>
+    </view>
+</view>
+<view class="shade_bg" hidden=" ">
+    <view class="dialogBox tc">
+        <view class="mb15">刷新可以提升排名，获得更多浏览机会</view>
+        <view class="f14 grey mb15">剩余10个刷新点，每次刷新消耗1个点</view>
+        <button class="submit-btn">立即刷新</button>
+    </view>
+</view>
+<view class="shade_bg" hidden=" ">
+    <view class="dialogBox tc">
+        <view class="mb15">刷新可以提升排名，获得更多浏览机会</view>
+        <view class="f14 grey mb15">剩余10个刷新点，每次刷新消耗1个点</view>
+        <button class="submit-btn">购买点数</button>
+    </view>
+</view>
+<view class="shade_bg {{dialog}}">
+    <view catchtap="action" class="moreBox tc" data-form="dialog" data-index="{{index}}">
+        <view class="moreCell gridXb">房屋名称：{{list[index]['is_sell']==1?'出售':'出租'}} {{list[index]['house_name']}}</view>
+        <view class="moreCell gridXb" data-action="{{list[index]['is_show']==1?'down_shelves':'up_shelves'}}">{{list[index]['is_show']==1?'下架':'上架'}}</view>
+        <view class="moreCell gridXb" data-action="edit" wx:if="{{baseInfo['isAgent']}}">修改</view>
+        <view class="moreCell gridXb" data-action="delete">删除</view>
+        <view class="moreCell gridXb" data-action="view" wx:if="{{baseInfo['isAgent']||list[index]['is_show']==1}}">预览</view>
+        <view class="moreCell gridXb" data-action="make_phone">联系客服</view>
+        <view class="cancel" data-action="cancel">取消</view>
+    </view>
+</view>

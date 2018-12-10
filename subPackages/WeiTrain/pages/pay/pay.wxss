@@ -1,0 +1,55 @@
+@import "../../__wuBaseWxss__/3.wxss";
+
+@import "../../__wuBaseWxss__/0.wxss";
+
+.cell {
+    padding: 30rpx;
+}
+
+.coupon {
+    position: relative;
+}
+
+.coupon::after {
+    content: '';
+    position: absolute;
+    top: 46rpx;
+    right: 30rpx;
+    width: 15rpx;
+    height: 15rpx;
+    border: 2rpx solid;
+    border-color: #666 #666 transparent transparent;
+    transform: rotate(45deg);
+}
+
+.coupon:active {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.total {
+    text-align: right;
+}
+
+.personalBox {
+    padding: 30rpx;
+}
+
+.inp {
+    height: 90rpx;
+    line-height: 90rpx;
+}
+
+.getCode {
+    width: 200rpx;
+    height: 24px;
+    line-height: 28px;
+    font-size: 22rpx;
+}
+
+.getCode::after {
+    border-color: currentColor;
+}
+
+.tanbesBtn {
+    line-height: 88rpx;
+}

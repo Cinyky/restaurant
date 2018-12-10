@@ -1,0 +1,56 @@
+<view class="m-category">
+  <scroll-view scroll-x="true">
+    <view class="m-category-l uploadWrap" scroll-x="true">
+      <block wx:for="{{Category}}" wx:for-item="item">
+        <navigator url="/pages/newsletter/newsletter?cid={{item.id}}&wid={{item.Wwid}}" open-type="reLaunch">
+          <view class="m-category-l">
+            <view class="tit m-category-l-item">{{item.name}}</view>
+          </view>
+        </navigator>
+      </block>
+    </view>
+  </scroll-view>
+</view>
+
+<block wx:if="{{ispage}}">
+  <scroll-view scroll-y="true" wx:if="{{dataList.length>0}}" bindscrolltolower="scrollbottom"
+               style="width:100%;height:{{windowHeight}}px">
+    <navigator url="/pages/newsletterdetail/newsletterdetail?id={{items.Id}}" class="m-activity-item"
+               wx:for="{{dataList}}" wx:for-item="items">
+      <image src="{{items.MainPhoto}}" mode="aspectFill" class="m-activity-img"/>
+      <view class="m-activity-info">
+        <view class="m-activity-name" style="word-wrap:break-word;">{{items.Title}}</view>
+        <view class="m-activity-time" style="display: flex;justify-content: space-between;">
+          <span>点击量{{items.click_num}}</span>
+          <span>评论数{{items.comment_num}}</span>
+        </view>
+        <view class="m-activity-time">发布时间：{{items.PublishTimeText}}</view>
+      </view>
+    </navigator>
+    <view class="m-loading-box">
+      <block wx:if="{{flag}}">
+        <view class="u-loadmore">
+          <lael class="u-loading"></lael>
+          <text class="u-loadmore-tips">正在加载</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="u-loadmore u-loadmore-line">
+          <text class="u-loadmore-tips">没有更多数据啦！</text>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+  <view class="m-nullcontent" wx:else>
+    <view class="m-nullpage-middle">
+      <label class="iconfont icon-meiyougengduo"></label>
+      <view class="m-null-tip">
+        <text>亲~什么都没有</text>
+      </view>
+    </view>
+  </view>
+</block>
+
+
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

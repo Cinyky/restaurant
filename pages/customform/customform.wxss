@@ -1,0 +1,154 @@
+@import "../../utils/weui.wxss";
+@import "/tpl/template-menu/template-menu.wxss";
+
+page {
+  background: #fff !important;
+}
+
+.brand {
+  padding: 20rpx;
+  text-align: center;
+  font-size: 40rpx;
+  background: #db384c;
+  color: #fff;
+}
+
+.field_box {
+  margin: 15rpx 0;
+  background: #fff;
+  padding: 20rpx;
+}
+
+.field_title {
+  font-size: 32rpx;
+}
+
+.field_desc {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.input_box {
+  
+}
+
+.input_text {
+  border-radius: 5px;
+  font-size: 32rpx;
+  color: #666;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.input_textarea {
+  color: #666;
+  height: 150rpx;
+}
+
+.field_required::after {
+  content: '*';
+  color: #f00;
+}
+
+.align_center {
+  text-align: center;
+}
+
+.align_right {
+  text-align: right;
+}
+
+.upload-btn {
+  width: 210rpx;
+  height: 210rpx;
+  box-sizing: border-box;
+  margin: 10rpx;
+  border: 1rpx dotted #999;
+  color: #666;
+  font-size: 25rpx;
+  text-align: center;
+}
+
+.uploaded_img {
+  width: 210rpx;
+  height: 210rpx;
+  box-sizing: border-box;
+  margin: 10rpx;
+}
+
+.flex_box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /*align-items: center;*/
+}
+
+.upload-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Return_H_container {
+  position: fixed;
+  right: 30rpx;
+  bottom: 150rpx;
+  border-radius: 50%;
+  background: rgba(111, 179, 255, 0.79);
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.Return_H_content {
+  display: flex;
+  width: 110rpx;
+  height: 110rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .Return_H_content image {
+  width: 48rpx;
+  height: 48rpx;
+} */
+
+.Return_H_content text {
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.submit-btn-box {
+  margin: 50rpx 60rpx;
+}
+.radio{
+  display: flex;
+  align-items: center;
+}
+.input_box_radio {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.input_box_input{
+  margin: 10rpx 0 0 0;
+  border-radius: 5px;
+  font-size: 32rpx;
+  color: #666;
+  border: 1rpx solid #ccc;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 2rpx 20rpx;
+}
+
+.input_box_textarea{
+  margin: 10rpx 0 0 0;
+  border-radius: 5px;
+  font-size: 32rpx;
+  color: #666;
+  border: 1rpx solid #ccc;
+  padding: 2rpx 20rpx;
+  border-radius: 5px;
+}
+.input_box_textarea textarea{
+  width: 100%;
+}

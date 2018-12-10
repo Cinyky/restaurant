@@ -1,0 +1,14 @@
+<view class="head">
+  <view style="width: 200rpx;height: 200rpx;overflow: hidden;border-radius: 50%;">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view style="font-size: 40rpx;">
+    <open-data type="userNickName"></open-data>
+  </view>
+</view>
+<view class="desc">
+  您好，为了您的方便使用，请先进行登录
+</view>
+<view style="padding: 20rpx;">
+  <button class="login_btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">一键登录</button>
+</view>

@@ -1,0 +1,51 @@
+<view class="page">
+  <view class="anli_box">
+    <!--三个分类按钮-->
+    <view class="select_btn_group">
+      <view class="select_btn_item" style="{{menuShow['kj']?'color:'+__wechat_main_color:''}}" data-key="kj" bindtap="toggleSelectBtn">
+        <text>空间</text>
+        <text class="iconfont_dec icon-menu-down" wx:if="{{!menuShow['kj']}}"></text>
+        <text class="iconfont_dec icon-menu-up" wx:if="{{menuShow['kj']}}"></text>
+      </view>
+      <view class="select_btn_item" style="{{menuShow['fg']?'color:'+__wechat_main_color:''}}" data-key="fg" bindtap="toggleSelectBtn">
+        <text>风格</text>
+        <text class="iconfont_dec icon-menu-down" wx:if="{{!menuShow['fg']}}"></text>
+        <text class="iconfont_dec icon-menu-up" wx:if="{{menuShow['fg']}}"></text>
+      </view>
+      <view class="select_btn_item" style="{{menuShow['jb']?'color:'+__wechat_main_color:''}}" data-key="jb" bindtap="toggleSelectBtn">
+        <text>局部</text>
+        <text class="iconfont_dec icon-menu-down" wx:if="{{!menuShow['jb']}}"></text>
+        <text class="iconfont_dec icon-menu-up" wx:if="{{menuShow['jb']}}"></text>
+      </view>
+    </view>
+    <!--三个分类列表-->
+    <view>
+      <view class="select_list" wx:if="{{menuShow['kj']}}">
+        <view style="{{filter.kj_id==item.id?'color:#fff;background:'+__wechat_main_color:''}}" wx:for="{{cate.kj}}" data-key="kj" data-id="{{item.id}}" bindtap="changeFilter">{{item.name}}</view>
+      </view>
+      <view class="select_list" wx:if="{{menuShow['fg']}}">
+        <view style="{{filter.fg_id==item.id?'color:#fff;background:'+__wechat_main_color:''}}" wx:for="{{cate.fg}}" data-key="fg" data-id="{{item.id}}" bindtap="changeFilter">{{item.name}}</view>
+      </view>
+      <view class="select_list" wx:if="{{menuShow['jb']}}">
+        <view style="{{filter.jb_id==item.id?'color:#fff;background:'+__wechat_main_color:''}}" wx:for="{{cate.jb}}" data-key="jb" data-id="{{item.id}}" bindtap="changeFilter">{{item.name}}</view>
+      </view>
+    </view>
+    <!--真正的图库列表-->
+    <view class="zx_list">
+      <view class="zx_list_item" wx:for="{{demoList}}" wx:for-index="index">
+        <view class="zx_img_wrapper" data-idx="{{index}}" bindtap="showImgs">
+          <image mode="scaleToFill" src="{{item.cover}}"></image>
+        </view>
+        <view class="zx_info_box">
+          <view class="zx_line1" style="text-align: center;justify-content: center;">
+            <text class="zx_name">{{item.name}}</text>
+          </view>
+          <view class="zx_line2" style="color:{{__wechat_main_color}};text-align: center;justify-content: center;"  data-tid="{{item.id}}" data-type="1" bindtap="toggleLove" data-idx="{{index}}" >
+            <text class="iconfont_dec icon-heart1" wx:if="{{!item.is_love}}"></text>
+            <text class="iconfont_dec icon-heart" wx:else></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

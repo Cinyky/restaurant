@@ -1,0 +1,15 @@
+<template name="bargain">
+  <view class="m-coupon-items" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <image src="{{setData.pic}}" style="flex:1;height:100%;display:inline-block"></image>
+    <view class="coupon-item-right">
+      <view class="item-title">{{setData.goodsName}}</view>
+      <view class="item-middle">
+        <lable class="item-time">￥{{setData.oprice}}</lable>
+        <navigator class="item-usenow" url='/pages/bargaindetail/bargaindetail?id={{setData.bargainId}}'>立即砍价</navigator>
+      </view>
+      <view class="item-desc">
+        <text>砍价剩余天数：{{setData.limit_day}}天</text>
+      </view>
+    </view>
+  </view>
+</template>

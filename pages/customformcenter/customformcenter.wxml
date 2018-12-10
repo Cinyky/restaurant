@@ -1,0 +1,24 @@
+<view>
+  <!--填写过的表单列表-->
+  <view class="item_box" wx:for="{{recordList}}" wx:for-index="idx" wx:for-item="item" wx:key="{{item.data.id}}">
+    <view class="item_left">
+      <view class="item_l1">
+        {{item.form.title}}
+      </view>
+      <view class="item_l2">
+        {{item.data.ctime2}}
+      </view>
+    </view>
+    <view class="item_right">
+      <!--未支付的显示支付按钮-->
+      <button class="weui-btn mini-btn" type="warn" size="mini" wx:if="{{item.data.need_pay==1 && item.data.is_pay==0}}" data-id="{{item.data.id}}" catchtap="payForm">支付￥{{item.data.pay_amount}}</button>
+      <button class="weui-btn mini-btn" type="default" size="mini" disabled wx:else>已完成</button>
+    </view>
+  </view>
+</view>
+
+<view class='Return_H_container' bindtap='Return_H'>
+    <view class='Return_H_content'>
+      <text>首页</text>
+    </view>
+  </view>

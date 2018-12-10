@@ -1,0 +1,139 @@
+<official-account class="follow_wechat"></official-account>
+<import src="../../tpl/template-head/template-head.wxml"/>
+<import src="../../tpl/template-slider/template-slider.wxml"/>
+<import src="../../tpl/template-fn/template-fn.wxml"/>
+<import src="../../tpl/template-goods/template-goods.wxml"/>
+<import src="../../tpl/template-article/template-article.wxml"/>
+<import src="../../tpl/template-line/template-line.wxml"/>
+<import src="../../tpl/template-search/template-search.wxml"/>
+<import src="../../tpl/template-title/template-title.wxml"/>
+<import src="../../tpl/template-topic/template-topic.wxml"/>
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<import src="../../tpl/template-pic/template-pic.wxml"/>
+<import src="../../tpl/template-text/template-text.wxml"/>
+<import src="../../tpl/template-sanft/template-sanft.wxml"/>
+<import src="../../tpl/template-video/template-video.wxml"/>
+<import src="../../tpl/template-map/template-map.wxml"/>
+<import src="../../tpl/template-feedback/template-feedback.wxml"/>
+<import src="../../tpl/template-store/template-store.wxml"/>
+<import src="../../tpl/template-severTel/template-severTel.wxml"/>
+<import src="../../tpl/template-richtext/template-richtext.wxml"/>
+<import src="../../tpl/template-groupbuy/template-groupbuy.wxml"/>
+<import src="../../tpl/template-seckill/template-seckill.wxml"/>
+<import src="../../tpl/template-zhct/template-zhct.wxml"/>
+<import src="../../tpl/template-bargain/template-bargain.wxml"/>
+<import src="../../tpl/template-moreshop/template-moreshop.wxml"/>
+<import src="../../tpl/template-music/template-music.wxml"/>
+<import src="../../tpl/template-onlinebooking/template-onlinebooking.wxml"/>
+<!-- 首页加载动画  -->
+<view class='mask' hidden="{{mask}}">
+  <div class="gifAnimation_h">
+    <image bindload='bindloadrImg' style='width:{{loadingGIF_width_h}}rpx; height:{{loadingGIF_height_h}}rpx' src='{{gifAnimation_h}}'></image>
+  </div>
+  <!-- <div class="page">
+    <div class="circle-loader">
+      <div class="circle-line">
+        <div class="circle circle-blue"></div>
+        <div class="circle circle-blue"></div>
+        <div class="circle circle-blue"></div>
+      </div>
+      <div class="circle-line">
+        <div class="circle circle-yellow"></div>
+        <div class="circle circle-yellow"></div>
+        <div class="circle circle-yellow"></div>
+      </div>
+      <div class="circle-line">
+        <div class="circle circle-red"></div>
+        <div class="circle circle-red"></div>
+        <div class="circle circle-red"></div>
+      </div>
+      <div class="circle-line">
+        <div class="circle circle-green"></div>
+        <div class="circle circle-green"></div>
+        <div class="circle circle-green"></div>
+      </div>
+    </div>
+  </div> -->
+  
+</view>
+<!--首次进入现实广告-->
+<view wx:if="{{AdInfo.is_open==2}}">
+  <view wx:if="{{AdInfo.type==1}}">
+    <view id="popView" style="display: {{flag}}" catchtouchmove="move">
+      <view class="imgView">
+        <image class="adimg" src="{{AdInfo.pic}}" mode="aspectFit" bindtap="coupon"></image>
+        <button bindtap="closeAd">关闭</button>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <view id="popView" style="display: {{flag}}" catchtouchmove="move">
+      <view class="imgView">
+        <image class="adimg" src="{{AdInfo.pic}}" mode="aspectFit" bindtap="picUrl"></image>
+        <button bindtap="closeAd">关闭</button>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{AdInfo.adPicture}}">
+  <!--判断是否开启-->
+  <view wx:if="{{AdInfo.is_open==1}}">
+    <view wx:if="{{AdInfo.type==1}}">
+      <view id="popView" style="display: {{flag}}" catchtouchmove="move">
+        <view class="imgView">
+          <image class="adimg" src="{{AdInfo.pic}}" mode="aspectFit" bindtap="coupon"></image>
+          <button bindtap="closeAd">关闭</button>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+      <view id="popView" style="display: {{flag}}" catchtouchmove="move">
+        <view class="imgView">
+          <image class="adimg" src="{{AdInfo.pic}}" mode="aspectFit" bindtap="picUrl"></image>
+          <button bindtap="closeAd">关闭</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--分享获得优惠券-->
+<!--<view wx:if="{{show_share_modal}}">-->
+<!--<form bindsubmit="bindShareModalSubmit" report-submit="{{true}}" >-->
+<!--<view wx:if="{{is_open == 1}}">-->
+<!--<view id="popView" catchtouchmove="move">-->
+<!--<view id="form_get_coupon">-->
+<!--<view id="flaxcenter">-->
+<!--<view id="text_view">-->
+<!--<text>您有机会获得一张优惠券，是否领取？</text>-->
+<!--</view>-->
+<!--<view id="button_view">-->
+<!--<button formType="submit" id="btn_get_coupon">领取</button>-->
+<!--<button id="btn_close_coupon" bindtap="btn_close_coupon">取消</button>-->
+<!--</view>-->
+<!--</view>-->
+<!--</view>-->
+<!--</view>-->
+<!--</view>-->
+<!--</form>-->
+<!---->
+<!--</view>-->
+<!-- 循环加载模板 -->
+<block wx:for="{{indexArray}}" wx:key="index" wx:for-item="setData">
+  <template is="{{setData.name}}" data="{{setData,highLightIndex:highLightIndex,markers,musicHandle,xcx_menu_height,editData_h,textN,textW,textL,ServicePersonal,ServiceContent,onlinebookingData,__wechat_main_color,swiperHeight}}"></template>
+</block>
+<view class="jishu">
+  <text></text>
+</view>
+<view class="u-loadmore u-loadmore-line" wx:if="{{copyright}}">
+  <text class="u-loadmore-tips tipss">{{copyright}}</text>
+</view>
+<view class='index_Noticefixed_container' bindtap='Notice_hide' wx:if="{{Notice_showData}}">
+  <view class='index_Noticefixed_title_content'>
+    公告详情
+  </view>
+  <view class='index_Noticefixed_content'>
+    {{Notice_fixedContent}}
+  </view>
+</view>
+
+

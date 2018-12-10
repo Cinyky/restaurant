@@ -1,0 +1,31 @@
+<!--pages/reserve/reserve.wxml-->
+<view class='list' wx:for="{{list}}" wx:for-item="v" wx:key="">
+  <view class='list_s'>
+    <image src="{{v.pic}}" mode="aspectFill" class="list_time"/>
+    <view class='name' style='width:40%;margin-left:30%;'>
+      <view style='line-height:70rpx; color:#e8a9ba'>{{v.name}}</view>
+      <view style='font-size: 28rpx;color:#948a89'>{{v.title}}</view>
+    </view>
+    <view class='name'>
+      <view style='line-height:70rpx;color:{{__wechat_main_color}}'>￥{{v.price}}</view>
+      <view style='font-size: 28rpx;color:#948a89'>预约特惠价</view>
+    </view>
+  </view>
+  <view class='list_x'>
+    <view class='list_xl'>{{v.small}}</view>
+    <view class='list_xr' bindtap='details' data-id='{{v.id}}' data-praise='{{v.praise}}' style='background:{{__wechat_main_color}}'>预约TA</view>
+  </view>
+  <view class='list_x' style='margin:0;height: 60rpx;'>
+    <view class='list_x_t' style='width: 36%;margin-left: 20rpx; color:{{__wechat_main_color}}'>好评率：{{v.praise}}</view>
+    <view class='list_x_t'>已被约：<block wx:if="{{v.reserve_count != 0}}">{{v.reserve_count}}</block><block wx:else>{{v.reserve_count}}</block></view>
+    <view class='list_x_t' data-id='{{v.id}}' bindtap='works'>作品数：{{v.works_count}}</view>
+  </view>
+</view>
+<!--<image class='order-listt' src='http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/index.png' bindtap='ret' mode='widthFix' style='background:{{__wechat_main_color}}'></image>-->
+<image class='order-list' src='https://mp.yuli.be/1/yy.png' bindtap='nav' style='background:{{__wechat_main_color}}'></image>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<!-- <import src="../../tpl/template-menu/template-menu.wxml" /> -->
+ <template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template> 
+
+
+

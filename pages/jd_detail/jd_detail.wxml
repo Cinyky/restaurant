@@ -1,0 +1,170 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="page_wrapper">
+  <!--轮播图-->
+  <view class="slide_wrapper">
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}" class="slide">
+      <block wx:for="{{jd.imgs}}" wx:for-item="jd_img">
+        <swiper-item>
+          <image src="{{jd_img}}" class="slide-image" mode="scaleToFill"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--地址条-->
+  <view class="address_wrapper" bindtap="bindLookAddress">
+    <view>
+      <text>{{jd.address}}</text>
+    </view>
+    <view>
+      <text class="btn-map iconfont icon-location" style="color: {{__wechat_main_color}};"></text>
+    </view>
+  </view>
+  <!--三个标签页-->
+  <view class="main_wrapper">
+    <!--标签页按钮-->
+    <view class="tab_wrapper">
+      <view bindtap="bindChangeTab" data-tab="1" style="{{tab==1?'border-bottom: 4rpx solid '+__wechat_main_color:''}}">预定</view>
+      <view bindtap="bindChangeTab" data-tab="2" style="{{tab==2?'border-bottom: 4rpx solid '+__wechat_main_color:''}}">住客点评</view>
+      <view bindtap="bindChangeTab" data-tab="3" style="{{tab==3?'border-bottom: 4rpx solid '+__wechat_main_color:''}}">酒店详情</view>
+    </view>
+    <!--客房-->
+    <view class="kf_block" wx:if="{{tab==1}}">
+      <!--时间选择器-->
+      <view class="time_select">
+        <view>
+          <view class="text_gray">入住</view>
+          <picker mode="date" value="{{sdate}}" start="{{ssdate}}" bindchange="bindDateChange" data-type="sdate">
+            <view class="picker" style="color: {{__wechat_main_color}}">{{sdate}}</view>
+          </picker>
+        </view>
+        <view>
+          <view class="text_gray">离店</view>
+          <picker mode="date" value="{{edate}}" start="{{eedate}}" bindchange="bindDateChange" data-type="edate">
+            <view class="picker" style="color: {{__wechat_main_color}}">{{edate}}</view>
+          </picker>
+        </view>
+      </view>
+      <!--客房列表-->
+      <view class="kf_wrapper">
+        <view class="kf_item" wx:for="{{jd.kfList}}" wx:for-index="kf_idx" wx:for-item="kf" wx:key="{{kf.id}}">
+          <!--客房主信息-->
+          <view class="kf_item_main" data-idx="{{kf_idx}}" data-id="{{kf.id}}" bindtap="bindToggleTaocan">
+            <view class="img_wrapper">
+              <image src="{{kf.img}}" mode="scaleToFill"></image>
+            </view>
+            <view class="kf_info">
+              <view class="kf_name">{{kf.name}}</view>
+              <view class="kf_desc_text">可住{{kf.volume}}人|{{kf.area}}m^2{{kf.have_window==1&&kf.show_window==1?'|有窗':''}}{{kf.have_zc==1&&kf.show_zc==1?'|含早':''}}{{kf.have_wifi==1&&kf.show_wifi==1?'|wifi':''}}</view>
+              <view class="kf_min_price" style="color: {{__wechat_main_color}};">￥{{kf.show_min_price}}起</view>
+            </view>
+          </view>
+          <!--客房套餐信息-->
+          <view class="kf_item_taocan" wx:for="{{kf.taocan}}" wx:for-index="taocan_idx" wx:for-item="taocan_item" wx:if="{{kf.show_taocan}}">
+            <view class="taocan_info">
+              <view>{{taocan_item.name}}</view>
+              <view style="color: #898989;">
+                <view wx:if="{{taocan_item.cancel==2}}">不可取消</view>
+                <view wx:if="{{taocan_item.cancel==1}}">18点前取消</view>
+                <view wx:if="{{taocan_item.cancel==0}}">随时取消</view>
+              </view>
+            </view>
+            <view class="taocan_price">
+              <text>特价
+                <text style="color: {{__wechat_main_color}};">￥{{taocan_item.price}}</text>
+              </text>
+            </view>
+            <view>
+              <button class="taocan_btn" style="background: {{__wechat_main_color}};color: #fff;border-radius: 0;" bindtap="showYuDingDialog" data-id="{{kf.id}}" data-kfidx="{{kf_idx}}" data-tcidx="{{taocan_idx}}">预定</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--点评-->
+    <view class="dp_block" wx:if="{{tab==2}}">
+      <view wx:if="{{!jd.comments.length}}" style="text-align: center;padding: 30rpx;">暂无评论</view>
+      <view wx:else>
+        <view class="comment_item" wx:for="{{jd.comments}}" wx:for-item="jd_comment" wx:key="{{jd_comment.id}}" wx:for-index="jd_comment_idx">
+          <view class="headimg_box" style="padding: 10rpx;">
+            <image src="{{jd_comment.headimgurl}}" class="comment_headimg"></image>
+          </view>
+          <view style="padding: 10rpx;flex-grow: 1">
+            <view style="display: flex;flex-direction: row;justify-content: space-between;border-bottom: 1rpx dotted #eeeeee;padding-bottom: 20rpx;">
+              <view>{{jd_comment.nickname}}</view>
+              <view style="color: #898989;">{{jd_comment.star}}分</view>
+            </view>
+            <view style="padding: 20rpx 0;">{{jd_comment.content}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--酒店详情-->
+    <view class=jdinfo_block" wx:if="{{tab==3}}">
+      <view class="jdinfo_wrapper">
+        <view class="info_title">
+          <text class="iconfont icon-start"></text>
+          <text>酒店服务</text>
+        </view>
+        <view class="jd_fw_wrapper">
+          <view wx:if="{{jd.fw_tc==1}}">停车</view>
+          <view wx:if="{{jd.fw_wifi==1}}">免费WiFi</view>
+          <view wx:if="{{jd.fw_jc==1}}">行李寄存</view>
+          <view wx:if="{{jd.fw_ct==1}}">用餐</view>
+        </view>
+        <view class="info_title">
+          <text class="iconfont icon-start"></text>
+          <text>酒店介绍</text>
+        </view>
+        <view>
+          <template is="wxParse" data="{{wxParseData:jdinfo.nodes}}"/>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--预定弹窗-->
+<view class="yd_dialog_wrapper" wx:if="{{showDialog}}" bindtap="hideYuDingDialog">
+  <view class="yd_dialog" catchtap="Empty">
+    <view class="yd_dialog_header">
+      <view class="yd_dialog_header_title">{{dialogKf.name}}</view>
+      <view class="yd_dialog_header_taocan">{{dialogTc.name}}</view>
+    </view>
+    <view class="yd_dialog_body">
+      <view class="yd_dialog_labels">
+        <view wx:if="{{dialogKf.have_zc==1}}">提供早餐</view>
+        <view wx:if="{{dialogKf.have_window==1}}">有窗户</view>
+        <view>{{dialogKf.floor}}</view>
+        <view>{{dialogKf.area}}平米</view>
+        <view>可入住{{dialogKf.volume}}人</view>
+        <view wx:if="{{dialogKf.have_wifi==1}}">有WiFi</view>
+      </view>
+      <view class="yd_notice">
+        <view class="yd_notice_title" style="color:{{__wechat_main_color}};font-size: 34rpx;">预定须知</view>
+        <view style="color: #898989;font-size: 26rpx;">
+          <view style="display: flex;">
+            <view style="width: 30%">预付</view>
+            <view style="width: 70%;">立即线上支付</view>
+          </view>
+          <view style="display: flex;" wx:if="{{dialogTc.cancel==2}}">
+            <view style="width: 30%">不可取消</view>
+            <view style="width: 70%;">订单一经支付，不可取消或变更，如未能如约入住，预支付的金额不予退还</view>
+          </view>
+          <view style="display: flex;" wx:if="{{dialogTc.cancel==1}}">
+            <view style="width: 30%">18点前可取消</view>
+            <view style="width: 70%;">订单一经支付，在入住当日18点前可取消，取消将会退还预支付金额；超过18点不可取消，金额不予退还</view>
+          </view>
+          <view style="display: flex;" wx:if="{{dialogTc.cancel==0}}">
+            <view style="width: 30%">随时取消</view>
+            <view style="width: 70%;">订单在未入住情况下可取消，取消将会退还预支付金额</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="yd_dialog_foot" style="display: flex;justify-content: space-between;align-items: center">
+      <view class="yd_dialog_price" style="padding-left: 20rpx;font-size: 40rpx;color: {{__wechat_main_color}};">￥{{dialogTc.price}}</view>
+      <view>
+        <button catchtap="bindDoYuding" style="background: {{__wechat_main_color}};border-radius: 0;color: #ffffff;">立即预定</button>
+      </view>
+    </view>
+  </view>
+</view>

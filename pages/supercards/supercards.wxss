@@ -1,0 +1,118 @@
+/* pages/cards/cards.wxss */
+@import "/tpl/template-menu/template-menu.wxss";
+page {
+  background-color: #EDEEF2;
+}
+.page-wrap {
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+.li-card {
+  position: relative;
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  align-items: flex-start;
+  padding: 50rpx 44rpx 30rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  box-shadow: 0 0 8rpx #ccc;
+  -webkit-box-shadow: 0 0 8rpx #ccc;
+}
+.lc-left {
+  flex: 1;
+  overflow: hidden;
+}
+.lc-right {
+  width: 90rpx;
+  height: 90rpx;
+}
+.txt-bigger {
+  font-size: 1.1em;
+}
+.lc-name {
+  width: 360rpx;
+  font-size: 40rpx;
+  color: #666;
+  margin-top: 40rpx;
+  margin-bottom: 30rpx;
+}
+.lc-line {
+  padding-bottom: 10rpx;
+}
+.lc-space {
+  margin-top: 40rpx;
+}
+.lc-btns {
+  position: absolute;
+  right: 20rpx;
+  bottom: 30rpx;
+  width: 270rpx;
+}
+.lc-btn {
+  padding: 12rpx 14rpx;
+  float: right;
+  margin-right: 30rpx;
+  background-color: #F2F2F2;
+  border: 2rpx solid #DEDEDE;
+}
+.lc-star {
+  position: absolute;
+  right: 180rpx;
+  top: 112rpx;
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.mask, .mask-transparent {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+}
+.mask {
+  background-color: rgba(0, 0, 0, .5);
+}
+image {
+  display: block;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.side-padding {
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+.txt-center {
+  text-align: center;
+}
+.txt-l {
+  font-size: 32rpx;
+  color: #111;
+}
+.txt-m {
+  font-size: 28rpx;
+  color: #333;
+}
+.txt-s {
+  font-size: 24rpx;
+  color: #666;
+}
+.tc-9 {color: #999;}
+.tc-7 {color: #777;}
+.tc-3 {color: #333;}
+.tc-red {
+  color: #FF493F;
+}
+.tc-green {color: #0EBC0C;}
+.txt-bold {
+  font-weight: 700;
+}
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

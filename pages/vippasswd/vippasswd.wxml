@@ -1,0 +1,43 @@
+<view>
+  <view>
+    <view class="brand" style="background: {{__wechat_main_color}};">
+      <view class="brand_title_box">
+        <text class="brand_title">会员卡密码</text>
+      </view>
+    </view>
+    <form bindsubmit="setPasswd" report-submit="{{true}}">
+      <view class="vip_info" style="background: #fff">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">密码：</view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" password="{{true}}" name="newPwd"/>
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">重复密码：</view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" password="{{true}}" name="rePwd"/>
+          </view>
+        </view>
+        <!--验证码-->
+        <!-- <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">验证码</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入验证码" name="code"/>
+          </view>
+          <view class="weui-cell__ft">
+            <view class="weui-vcode-btn" bindtap="getVerifyCode" wx:if="{{waitCode==0}}">验证码</view>
+            <view class="weui-vcode-btn" wx:if="{{waitCode!=0}}" style="color: #999;">{{waitCode}}秒</view> -->
+           <!-- </view>
+        </view> -->
+      </view>
+      <view class="recharge_box">
+        <button class="weui-btn" type="warn" formType="submit" style="background: {{__wechat_main_color}};">保存密码</button>
+      </view>
+    </form>
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

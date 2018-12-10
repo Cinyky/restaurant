@@ -1,0 +1,113 @@
+<block wx:if="{{loaded}}">
+  <view class="top-msg mb10">
+    <!--<image class="topbg" src="" mode="aspectFill"></image>-->
+    <view class="top-content flex write" style="background: {{__wechat_main_color}};">
+      <!--<view class="logo-img mr10">-->
+      <!--<image src="{{r_store.log}}" mode="aspectFill"></image>-->
+      <!--</view>-->
+      <view class="" style="display: flex;align-items: center">
+        <!--店铺名称-->
+        <view class="name f20">
+          {{setting.name}}
+        </view>
+        <!--星级-->
+        <!--<view class="star">-->
+        <!--<block wx:for="{{3}}">-->
+        <!--<text class="iconfont icon-xingjifull"></text>-->
+        <!--</block>-->
+        <!--<block wx:for="{{5-3}}">-->
+        <!--<text class="iconfont icon-xingjiline"></text>-->
+        <!--</block>-->
+        <!--</view>-->
+        <!--附加信息-->
+        <!--<view class="other-msg f12 mt5">-->
+        <!-- <block wx:for="{{r_store.service}}" wx:for-item="fu_idx"> -->
+        <!--<text>123</text>-->
+        <!-- </block> -->
+        <!--</view>-->
+
+        <!--价格-->
+        <!--<view class="price f12 mt5">￥{{r_store.consumption}}/人</view>-->
+      </view>
+    </view>
+    <navigator url="/pages/paycheap/paycheap" wx:if="{{setting.show_youhui==1}}">
+      <view class="eatpay gridFourCirle">优惠买单</view>
+    </navigator>
+  </view>
+
+  <!--横排列表-->
+  <view class="mb10 flex tc order">
+    <view class="sub" bindtap="diancan">
+      <text class="order-item">{{editData_h.diancan}}</text>
+    </view>
+    <view class="sub" bindtap="waimai">
+      <text class="order-item">{{editData_h.waimai}}</text>
+    </view>
+  </view>
+
+  <!--详细列表-->
+  <view class="grey detail">
+    <view class="list gridXb flex">
+      <text class="iconfont icon-shop f20"></text>
+      <view class="sub ml10">{{setting.name}}</view>
+    </view>
+    <view class="list gridXb flex">
+      <text class="iconfont icon-location f20"></text>
+      <view class="sub ml10">{{setting.addr}}</view>
+    </view>
+    <view class="list gridXb flex" bindtap="call_phone_bind">
+      <text class="iconfont icon-phone f20"></text>
+      <view class="sub ml10">电话：{{setting.phone}}</view>
+    </view>
+    <view class="list gridXb flex" wx:if="{{setting.is_open_sm==1}}">
+      <text class="iconfont icon-time f20"></text>
+      <view class="sub ml10" style="display: flex;flex-direction: row;">
+        <view>营业时间：</view>
+        <view>
+          <view wx:for="{{setting.ct_times}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="list gridXb flex" wx:if="{{setting.is_open_wm==1}}">
+      <text class="iconfont icon-time f20"></text>
+      <view class="sub ml10" style="display: flex;flex-direction: row;">
+        <view>{{editData_h.waimai}}营业时间：</view>
+        <view>
+          <view wx:for="{{setting.wm_times}}">{{item}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="list gridXb flex" catchtap="show_color_setting">
+      <view>
+        <text class="iconfont icon-add f20"></text>
+        <text> 配色设置</text>
+      </view>
+    </view> -->
+  </view>
+  <view style="width: 100%;height: 100%;background: rgba(0,0,0,0.6);position: absolute;top:0;z-index: 99999999;" wx:if="{{show_color_setting}}" bindtap="hide_color_setting">
+    <view style="position: absolute;width: 60%;height: 30%;top: 35%;left: 20%;border: 6rpx dotted #888888;background: #fff;border-radius: 50rpx;padding: 50rpx;" catchtap="none">
+      <view style="text-align: center;">选择配色</view>
+      <view>
+        <view catchtap="bind_select_color" data-color="#fe5848" style="width: 80%;height: 50rpx;margin-left: 10%;margin-top:10rpx;background: #fe5848;"></view>
+        <view catchtap="bind_select_color" data-color="#09bb07" style="width: 80%;height: 50rpx;margin-left: 10%;margin-top:10rpx;background: #09bb07;"></view>
+        <view catchtap="bind_select_color" data-color="#2b579a" style="width: 80%;height: 50rpx;margin-left: 10%;margin-top:10rpx;background: #2b579a;"></view>
+      </view>
+    </view>
+  </view>
+  <!--选择桌台-->
+  <view style="width: 100%;height: 100%;background: rgba(0,0,0,0.6);position: absolute;top:0;z-index: 99999999;" wx:if="{{show_select_table}}" bindtap="hide_select_table">
+    <view style="position: absolute;width: 90%;height: 80%;top: 10%;left: 5%;border: 6rpx dotted #888888;background: #fff;border-radius: 50rpx;" catchtap="none">
+      <view style="border-bottom: 1rpx solid #eeeeee;display: flex;flex-direction: row;justify-content: center;align-items: center;height: 10%;">
+        <text>选择桌台</text>
+      </view>
+      <scroll-view scroll-y="{{true}}" style="height: 85%;">
+        <!--桌台选项-->
+        <view wx:for="{{tableList}}" wx:for-item="table" wx:key="{{table.id}}" class="table_item" data-id="{{table.id}}" catchtap="bindSelectTable">
+          {{table.name}}
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</block>
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

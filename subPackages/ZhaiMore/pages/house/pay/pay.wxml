@@ -1,0 +1,48 @@
+<view>
+    <view class="cell flex arrowR">
+        <view class="">置顶时长</view>
+        <picker bindchange="zdDurationChange" class="picker sub" range="{{zdDuration}}" value="{{zdIndex}}">
+            <view class=" grey">
+                <text class="red mr5">{{zdDuration[zdIndex]}}</text>
+                <text>天</text>
+            </view>
+        </picker>
+    </view>
+    <view class="cell flex arrowR">
+        <view>费用</view>
+        <picker bindchange="chargeChange" class="picker sub" range="{{chargeArr}}" value="{{chargeIndex}}">
+            <view class=" grey">
+                <text class="red mr5">{{chargeArr[chargeIndex]}}</text>
+                <text>元</text>
+            </view>
+        </picker>
+    </view>
+</view>
+<view hidden=" ">
+    <view class="cell flex arrowR">
+        <view>购买点数</view>
+        <picker bindchange="zdDurationChange" class="picker sub" range="{{zdDuration}}" value="{{zdIndex}}">
+            <view class=" grey">
+                <text class="red mr5">{{zdDuration[zdIndex]}}</text>
+                <text>点</text>
+            </view>
+        </picker>
+    </view>
+    <view class="cell flex arrowR">
+        <view class="">费用</view>
+        <picker bindchange="chargeChange" class="picker  sub" range="{{chargeArr}}" value="{{chargeIndex}}">
+            <view class="grey">
+                <text class="red mr5">{{chargeArr[chargeIndex]}}</text>
+                <text>元</text>
+            </view>
+        </picker>
+    </view>
+</view>
+<view class="zhu f14 grey">
+    <text class="iconfont icon-zhuyi"></text>
+    <text>  注：支付金额不支持退款</text>
+</view>
+<view class="payBox">
+    <button class="submit-btn" style="">支付</button>
+    <button class="submit-btn">返回</button>
+</view>

@@ -1,0 +1,27 @@
+.page{
+	margin: 2%;
+}
+.singleView{
+	height:200rpx;
+	background: white;
+	display: flex;
+	align-items: center;
+	margin-bottom: 20rpx;
+}
+.picView{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200rpx;
+}
+.picView image{
+	border-radius: 50%;
+	border: 1rpx;
+}
+.nameView{
+	height: 150rpx;
+	width: 500rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}

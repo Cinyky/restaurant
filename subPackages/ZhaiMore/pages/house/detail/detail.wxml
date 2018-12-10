@@ -1,0 +1,163 @@
+<view>
+    <swiper autoplay="{{swiper.autoplay}}" class="{{hasVideoUrl&&video.isShow?'hidden':''}}" duration="{{swiper.duration}}" indicatorDots="{{swiper.indicatorDots}}" interval="{{swiper.interval}}">
+        <swiper-item wx:for="{{zushouList.pics}}" wx:key="index">
+            <image class="slide-image" mode="aspectFill" src="{{item}}" style="{{isAli?'height: 375rpx;':''}}"></image>
+        </swiper-item>
+    </swiper>
+    <!--<block wx:if="{{!isAli}}">-->
+        <!--&lt;!&ndash;<view class=" {{hasVideoUrl&&video.isShow?'':'hidden'}}">&ndash;&gt;-->
+            <!--&lt;!&ndash;<video controls autoplay="{{video.autoplay}}" class="video" id="video" src="{{zushouList.video_url}}"></video>&ndash;&gt;-->
+        <!--&lt;!&ndash;</view>&ndash;&gt;-->
+        <!--<view class="switchBox {{hasVideoUrl||info.web_view_url!=''?'':'hidden'}}">-->
+            <!--<view class="flex tc {{video.isShow?'':'pd14'}}">-->
+                <!--<view catchtap="webView" class="sub" data-title="{{zushouList.web_view_title||'VR全景图'}}" data-url="{{zushouList.web_view_url}}" wx:if="{{zushouList.web_view_url!=''}}">VR全景图</view>-->
+                <!--<view catchtap="showSwiperOrVideo" class="sub {{hasVideoUrl?'':'hidden'}}">{{video.text}}</view>-->
+            <!--</view>-->
+        <!--</view>-->
+    <!--</block>-->
+</view>
+<view class="estate-desc">
+    <view class="estate-feature">{{zushouList.name}}</view>
+    <view class="estate-position grey f12">
+        <text class="estate-name mr10">{{zushouList.xiaoqu.area}}　</text>
+        <text class="estate-address">{{zushouList.area.area}}</text>
+    </view>
+    <view class="estate-price {{zushou.type==2?'':'estate-price-rg'}} ">
+        <text class="price-count red mr5">{{zushouList.type==2?zushouList.shoujia:zushouList.zujin}}</text>
+        <text class="price-unit grey f12">{{zushouList.type==2?'万元':'元/月'}}</text>
+    </view>
+    <view class="">
+        <text class="price-unit grey f12">{{zushouList.fatime}}</text>
+    </view>
+    <view catchtap="tocounter" id="{{zushouList.id}}" wx:if="{{zushouList.type==2?true:false}}">
+        <button plain class="counter-btn gridFourRadio" size="mini" type="warn" style="border: 1rpx solid red;">房贷计算器</button>
+    </view>
+</view>
+<view catchtap="openAgencerDetail" class="agencer-box flex mt15" data-id="{{zushouList.userid}}" style="display: flex;margin-top: 40rpx;">
+    <image class="agencer-avator mr10" mode="aspectFill" src="{{zushouList.user.pic}}"></image>
+    <view class="agencer-info sub">
+        <view>{{zushouList.user.nickname}}</view>
+        <view class="grey">{{zushouList.user.phone}}</view>
+    </view>
+    <view catchtap="makePhoneCall" class="tel tc" data-mobile="{{zushouList.user.phone}}" style="display: flex;justify-content: center;align-items: center;flex-direction:column">
+        <view class="iconfont icon-dianhua1"></view>
+        <text class="f14">电话咨询</text>
+    </view>
+</view>
+<view class="estate-info mt15" style="margin-top: 40rpx;">
+    <view class="house-resouce-title gridXb clearfix">
+        <text>房源信息</text>
+        <view catchtap="toSharePage" class="f20 share-btn clearfix">
+            <text class="iconfont icon-fenxiang"></text>
+        </view>
+    </view>
+    <view class="info-content flex f14" style="display: flex;">
+        <view class="house-info-lf">
+            <view class="lineText">
+                <text class="grey">面积：</text>
+                <text>{{zushouList.mianji}}m²</text>
+            </view>
+            <view class="lineText">
+                <text class="grey">户型：</text>
+                <text>{{zushouList.huxing}}</text>
+            </view>
+            <view class="lineText">
+                <text class="grey">楼层：</text>
+                <text>{{zushouList.louceng}}</text>
+            </view>
+        </view>
+        <view class="house-info-rg sub">
+            <view class="lineText">
+                <text class="grey">{{zushouList.type==2?'单价':'租房类型'}}：</text>
+                <text>{{zushouList.type==2?zushouList.shoujia+'元/m²':zushouList.yajin}}</text>
+            </view>
+            <view class="lineText">
+                <text class="grey">类型：</text>
+                <text>{{zushouList.zhuangxiu.name}}</text>
+            </view>
+            <view class="lineText">
+                <text class="grey">年代：</text>
+                <text>{{zushouList.niandai}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="estate-info mt15" wx:if="{{zushouList.desc}}" style="margin-top: 40rpx;">
+    <view class="house-resouce-title gridXb clearfix">
+        <text>房屋描述</text>
+    </view>
+    <view class="info-content flex f14" style="display: flex;">
+        <text>{{zushouList.desc}}</text>
+    </view>
+</view>
+
+<view class="nearby gridXt" wx:if="{{zushouList.xiaoqu.lng==null?false:true}}" style="margin-top: 40rpx;">
+    <view class="nearby-head flex" style="display: flex;">
+        <text class="nearby-peitao-sheshi">房源地图</text>
+        <view class="classname">
+            <!--<text catchtap="lookall" class="grey" data-vid="{{zushouList.xiaoqu.id}}">查看全部</text>-->
+            <!--<text class="iconfont icon-jiantou-copy-copy grey"></text>-->
+        </view>
+    </view>
+    <view class="map-box" style="height: 160px;background: white;padding-bottom: 0px;">
+        <view class="">
+            <map showLocation bindmarkertap="markertap" id="map" latitude="{{zushouList.xiaoqu.lat}}" longitude="{{zushouList.xiaoqu.lng}}" markers="{{marker}}" scale="13" style="width: 100%; height:150px"></map>
+        </view>
+        <!--<view class="{{isAli?'hidden':''}}">-->
+            <!--<view class="map-bottom-bar flex" style="display: flex;justify-content: space-around">-->
+                <!--<view class="sub tc">-->
+                    <!--<view class="iconfont icon-gongjiao map-bottom-icon"></view>-->
+                    <!--<view catchtap="setmark" class="f14" data-name="公交" data-vid="{{zushouList.vill_id}}">公交</view>-->
+                <!--</view>-->
+                <!--<view class="sub tc">-->
+                    <!--<view class="iconfont icon-dtyx-copy-copy-copy-copy map-bottom-icon"></view>-->
+                    <!--<view catchtap="setmark" class="f14" data-name="地铁" data-vid="{{zushouList.vill_id}}">地铁</view>-->
+                <!--</view>-->
+                <!--<view class="sub tc">-->
+                    <!--<view class="iconfont icon-shuben map-bottom-icon"></view>-->
+                    <!--<view catchtap="setmark" class="f14" data-name="学校" data-vid="{{zushouList.vill_id}}">学校</view>-->
+                <!--</view>-->
+                <!--<view class="sub tc">-->
+                    <!--<view class="iconfont icon-yiyuan map-bottom-icon"></view>-->
+                    <!--<view catchtap="setmark" class="f14" data-name="医院" data-vid="{{zushouList.vill_id}}">医院</view>-->
+                <!--</view>-->
+                <!--<view class="sub tc">-->
+                    <!--<view class="iconfont icon-yinxing map-bottom-icon"></view>-->
+                    <!--<view catchtap="setmark" class="f14" data-name="银行" data-vid="{{zushouList.vill_id}}">银行</view>-->
+                <!--</view>-->
+            <!--</view>-->
+        <!--</view>-->
+    </view>
+</view>
+
+<view class="estate-info mt15" style="margin-top: 40rpx;">
+    <block wx:if="{{zushouList.pics}}">
+        <view class="house-resouce-title gridXb clearfix">
+            <text>房源相册</text>
+        </view>
+        <view catchtap="previewImage" class="info-content flex f14" style="display: flex;">
+            <image mode="scaleToFill" src="{{zushouList.pics[0]}}" style="width: 100%;"></image>
+        </view>
+    </block>
+</view>
+
+<view class="buttombar-box flex" style="display: flex;justify-content: space-between;width: 100%">
+    <view class="buttombar-box-left flex gridXt sub " style="display: flex;justify-content: space-around;width: 600rpx;">
+        <view catchtap="openAgencerDetail" class="tc sub gridYr {{isAli?'hidden':''}}" data-id="{{zushouList.userid}}" style="display: flex;flex-direction: column;justify-content: center;align-items: center">
+            <view class="iconfont icon-shouye detail-page-footer-icon"></view>
+            <view class="f14">Ta的房源</view>
+        </view>
+        <!--<view catchtap="openLocation" class="gridYr tc sub" data-address="{{zushouList.xiaoqu.area}}" data-latitude="{{zushouList.xiaoqu.lat}}" data-longitude="{{zushouList.xiaoqu.lng}}" data-name="{{zushouList.name}}" style="display: flex;flex-direction: column;justify-content: center;align-items: center">-->
+            <!--<view class="iconfont icon-btnmap detail-page-footer-icon"></view>-->
+            <!--<view class="f14">地图导航</view>-->
+        <!--</view>-->
+        <view catchtap="collect" class="tc sub" style="display: flex;flex-direction: column;justify-content: center;align-items: center">
+            <view class="iconfont {{collect?'icon-shoucang1':'icon-shoucang'}} detail-page-footer-icon"></view>
+            <view class="f14" wx:if="{{collect}}">取消收藏</view>
+            <view class="f14" wx:else>收藏房源</view>
+        </view>
+    </view>
+    <view catchtap="makePhoneCall" class="buttombar-box-right" data-mobile="{{zushouList.phone}}" style="width: 150rpx;display: flex;justify-content: center">
+        立即联系
+        </view>
+</view>

@@ -1,0 +1,62 @@
+<view class="page-box">
+  <!--头部-->
+  <view class="brand" style="text-align:center;padding: 50rpx 0;background:{{__wechat_main_color}};color: #ffffff;">
+    <view class="brand-text"style="background-color:{{__wechat_main_color}}">
+      <text class="iconfont icon-shoppingbagalt" style="font-size: 60rpx;"></text>
+      <text style="font-size: 60rpx;"> 商户中心</text>
+    </view>
+    <button class="weui-btn mini-btn btn-logout" type="default" size="mini" catchtap="logout">退出登录</button>
+  </view>
+  <!--表单-->
+  <view class="main" style="margin-top: 10rpx;">
+    <view class="setting-box">
+      <view class="weui-flex">
+        <!--商家设置-->
+        <view class="weui-flex__item btn-setting">
+          <navigator url="/pages/sellersetting/sellersetting" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">
+              <text class="iconfont icon-icon-user"></text>
+              <text> 商家设置</text>
+            </view>
+          </navigator>
+        </view>
+        <!--订单设置-->
+        <view class="weui-flex__item btn-setting">
+          <navigator url="/pages/sellerordersetting/sellerordersetting" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <text class="iconfont icon-list2"></text>
+            <view class="weui-cell__bd">订单设置</view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <!--订单管理-->
+      <navigator url="/pages/sellerorder/sellerorder" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">订单管理</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <!--发货管理-->
+      <!--<navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">-->
+        <!--<view class="weui-cell__bd">发货管理</view>-->
+        <!--<view class="weui-cell__ft weui-cell__ft_in-access"></view>-->
+      <!--</navigator>-->
+      <!--评价管理-->
+      <navigator url="/pages/sellerevaluate/sellerevaluate" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">评价管理</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="/pages/seller_kefu_list/seller_kefu_list" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">客服列表</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="/pages/seller_zhct_orderlist/seller_zhct_orderlist" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">餐厅订单</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+    <view class='sellercenter_other_container_h'>
+      <view class='sellercenter_other_listContent_h' bindtap='scancode'>扫码核销</view>
+      <!-- <view class='sellercenter_other_listContent_h' bindtap='testpage'>测试详情页</view> -->
+    </view>
+  </view>
+</view>

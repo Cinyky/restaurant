@@ -1,0 +1,71 @@
+<import src="../../wxParse/wxParse.wxml" />
+<block wx:if="{{ispage}}">
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">服务</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">分类</view>
+    </scroll-view>
+  <scroll-view scroll-y="true" wx:if="{{dataList.length>0}}"  bindscrolltolower="scrollbottom" style="width:100%;height:{{windowHeight}}px">
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab"
+     style="width:100%;height:{{windowHeight}}px">
+        <swiper-item >
+            <scroll-view scroll-y="true" class="scoll-h" >
+                <block wx:for="{{dataList}}" wx:for-item="items">
+                    <view class="item-ans">
+                        <view class="avatar">
+                            <image class="img" src="{{items.MainPhoto}}"></image>
+                        </view>
+                        <view class="expertInfo">
+                            <view class="name">{{items.Title}}</view>
+                            <view class="tag"></view>
+                            <view class="answerHistory">{{items.PublishTimeText}} </view>
+                        </view>
+                        <navigator url="/pages/bespeakletterdetail/bespeakletterdetail?id={{items.Id}}" class="askBtn">详情</navigator> 
+                    </view>
+                </block>
+            </scroll-view>
+        </swiper-item>
+        <swiper-item >
+        <scroll-view scroll-y="true" class="scoll-h" >
+        <block wx:for="{{Category}}" wx:for-item="item">
+        <navigator url="/pages/bespeakcategory/bespeakcategory?cid={{item.id}}" open-type="redirect">
+            <view class="demo">
+              <image src="{{item.logoimg}}"></image>
+              <text>{{item.name}}</text>
+            </view>
+        </navigator>  
+       </block> 
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+
+
+    <view class="m-loading-box">
+      <block wx:if="{{flag}}">
+        <view class="u-loadmore">
+          <lael class="u-loading"></lael>
+          <text class="u-loadmore-tips">正在加载</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="u-loadmore u-loadmore-line">
+          <text class="u-loadmore-tips">没有更多数据啦！</text>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+   <view class="m-nullcontent" wx:else>
+    <view class="m-nullpage-middle">
+      <label class="iconfont icon-meiyougengduo"></label>
+      <view class="m-null-tip">
+        <text>亲~什么都没有</text>
+      </view>
+    </view>
+  </view>
+</block>
+<view class="u-top">
+     <navigator url="/pages/index/index" open-type="switchTab" class="u-go-home">
+         <view class="iconfont icon-shouyeshouye"></view>
+     </navigator>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

@@ -1,0 +1,239 @@
+<form bindreset="formReset" bindsubmit="formSubmit">
+    <view class="commonBox mb15">
+        <view wx:if="{{userInfo.is_agent == 1}}">您是经纪人，可以发帖{{jumpSwiperUrls.huiyuan_num}}条/天</view>
+        <view wx:else>
+            <view class="flex" style="display: flex;align-items: center">
+                <view>您是个人，可以发帖{{jumpSwiperUrls.putong_num}}条/天</view>
+                <button plain catchtap="becomeAgent" class="counter-btn gridFourRadio"  size="mini" type="warn">成为经纪人</button>
+            </view>
+        </view>
+    </view>
+    <view class="page-box">
+        <view class="info-box">
+            <view class="info-head grey mt15">基本信息</view>
+            <view class="box-content basic-info-content mt5">
+                <view style="display: flex;justify-content: space-between;align-items: center">
+                    <view catchtap="cityAreaTap" class="flex gridXb">
+                        <label class="mr20">区域</label>
+                        <text class="select-list sub">{{city_area||'请选择区域'}}</text>
+                        <input class="display-hide" name="city_area" value="{{city_area}}"></input>
+                        <input class="display-hide" name="city_area_id" type="text" value="{{city_area_id}}"></input>
+                    </view>
+                    <view>
+                        <text class="iconfont icon-jiantou-copy-copy grey"></text>
+                    </view>
+                </view>
+                <view style="display: flex;justify-content: space-between;align-items: center">
+                    <view class="flex gridXb">
+                        <label class="mr20">小区</label>
+                        <picker bindchange="pickerChange" class="select-list sub" data-name="vill_id" range="{{xiaoquList}}" rangeKey="area" value="{{villageListIndex}}" name="xiaoqu">
+                            <text>{{xiaoquList[villageListIndex]['area']||'此区域尚未录入小区'}}</text>
+                        </picker>
+                    </view>
+                    <view>
+                        <text class="tr iconfont icon-jiantou-copy-copy grey"></text>
+                    </view>
+                </view>
+                <view style="display: flex;justify-content: space-between;align-items: center">
+                    <view catchtap="decorationTap" class="flex gridXb">
+                        <label class="mr20">装修</label>
+                        <text class="select-list sub">{{house_style||'请选择装修情况'}}</text>
+                        <input class="display-hide" name="house_style" value="{{house_style}}"></input>
+                        <input class="display-hide" name="house_style_id" type="text" value="{{house_style_id}}"></input>
+                    </view>
+                    <view>
+                        <text class="iconfont icon-jiantou-copy-copy grey"></text>
+                    </view>
+                </view>
+                <view style="display: flex;justify-content: space-between;align-items: center">
+                    <view catchtap="useTap" class="flex gridXb">
+                        <label class="mr20">用途</label>
+                        <text class="select-list sub">{{house_lieb||'请选择用途'}}</text>
+                        <input class="display-hide" name="house_lieb" value="{{house_lieb}}"></input>
+                        <input class="display-hide" name="house_lieb_id" type="text" value="{{house_lieb_id}}"></input>
+                    </view>
+                    <view>
+                        <text class="iconfont icon-jiantou-copy-copy grey"></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="info-box">
+            <view class="info-head grey mt15">出租信息</view>
+            <view class="box-content basic-info-content mt5">
+                <view class="flex gridXb">
+                    <label class="mr20">屋名</label>
+                    <input class="sub" name="house_name" placeholder="请输入房屋名称" value="{{house_name}}"></input>
+                </view>
+                <view class="flex gridXb">
+                    <label class="mr20">租金</label>
+                    <input class="sub" name="house_rental" placeholder="请输入租金元/月" value="{{house_rental}}"></input>
+                </view>
+                <view class="flex gridXb">
+                    <label class="mr20">押金类型</label>
+                    <input class="sub" name="rental_style" placeholder="例如：押一付一" value="{{rental_style}}"></input>
+                </view>
+  
+              <view class="flex gridXb">
+                <label class="mr20">户型</label>
+                <input class="sub" name="house_type" placeholder="例如：两室一厅" value="{{house_type}}"></input>
+              </view>
+                <!--<view style="display: flex;justify-content: space-between;align-items: center">-->
+                    <!--<view catchtap="houseTypeTap" class="flex gridXb">-->
+                        <!--<label class="mr20">户型</label>-->
+                        <!--<text class="select-list sub">{{house_type||'请选择户型'}}</text>-->
+                        <!--<input class="display-hide" name="house_type" value="{{house_type}}"></input>-->
+                        <!--<input class="display-hide" name="house_type_id" type="text" value="{{house_type_id}}"></input>-->
+                    <!--</view>-->
+                    <!--<view>-->
+                        <!--<text class="iconfont icon-jiantou-copy-copy grey"></text>-->
+                    <!--</view>-->
+                <!--</view>-->
+                <!--<view class="flex gridXb">-->
+                    <!--<label class="mr20">显示年代</label>-->
+                    <!--<switch bindchange="switchChange" checked="{{isShowHouseAge}}" data-name="isShowHouseAge"></switch>-->
+                <!--</view>-->
+                <view class="flex gridXb">
+                  <label class="mr20">年代</label>
+                  <input class="sub" name="house_age" placeholder="例如：2015" value="{{house_age}}"></input>
+                </view>
+                <!--<view style="display: flex;justify-content: space-between;align-items: center">-->
+                    <!--<view catchtap="houseAgeTap" class="flex gridXb">-->
+                        <!--<label class="mr20">年代</label>-->
+                        <!--<text class="select-list sub">{{house_age||'请选择年代'}}</text>-->
+                        <!--<input class="display-hide" name="house_age" type="text" value="{{house_age}}"></input>-->
+                    <!--</view>-->
+                    <!--<view>-->
+                        <!--<text class="iconfont icon-jiantou-copy-copy grey"></text>-->
+                    <!--</view>-->
+                <!--</view>-->
+                <view class="flex gridXb">
+                    <label class="mr20">面积</label>
+                    <input class="sub" name="house_area" placeholder="请输入面积/m²" value="{{house_area}}"></input>
+                </view>
+                <view class="flex gridXb">
+                    <label class="mr20">楼层</label>
+                    <input class="house-floor-input gridYr sub" name="house_floor" placeholder="格式：中楼层/20层" value="{{house_floor}}"></input>
+                </view>
+                <view class="flex gridXb">
+                    <label class="mr20">手机号</label>
+                    <input class="sub" name="mobile" placeholder="手机号" type="number" value="{{mobile}}"></input>
+                </view>
+                <view class="flex gridXb">
+                    <label class="mr20">标签</label>
+                    <input class="sub" name="signarr" placeholder="使用英文逗号分隔" type="number" value="{{signarr}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class=" info-box">
+            <view class="info-head grey mt15">房屋描述(最多1000)</view>
+            <view class="box-content basic-info-content mt5">
+                <textarea class="other-desc-textarea" maxlength="2000" name="house_description" placeholder="请输入装修配套等能体现房屋亮点的简单描述" value="{{house_description}}"></textarea>
+                <text class="grey">说明：最多2000个汉字</text>
+            </view>
+            <view class="info-head grey mt15">房屋备注信息</view>
+            <view class="box-content basic-info-content mt5">
+                <textarea class="other-desc-textarea" maxlength="500" name="remark" placeholder="房屋备注信息（不在小程序端展示，只在后台展示，便于补充其它信息）" value="{{remark}}"></textarea>
+                <text class="grey">说明：最多500个汉字</text>
+                <view class="other-desc-pic flex">
+                    <!--<view class="img-zhezhao" wx:for="{{house_photo_urls||[]}}" wx:key="{{index}}">-->
+                        <!--<image bindtap="tapPreviewImage" class="checked-imgs" data-index="{{index}}" data-src="{{item}}" data-stage="edit" mode="aspectFill" src="{{item}}"></image>-->
+                        <!--<view catchtap="tapDeleteImage" class="tc close-img" data-index="{{index}}" data-stage="edit">-->
+                            <!--<text class="iconfont icon-huishouzhan"></text>-->
+                        <!--</view>-->
+                    <!--</view>-->
+                    <!--<view class="img-zhezhao" wx:for="{{imageList}}" wx:key="{{index}}">-->
+                        <!--<image bindtap="tapPreviewImage" class="checked-imgs" data-index="{{index}}" data-src="{{item}}" data-stage="add" mode="aspectFill" src="{{item}}"></image>-->
+                        <!--<view catchtap="tapDeleteImage" class="tc close-img" data-index="{{index}}" data-stage="add">-->
+                            <!--<text class="iconfont icon-huishouzhan"></text>-->
+                        <!--</view>-->
+                    <!--</view>-->
+                    <!--<view catchtap="onChooseImage" class="upload-pic tc ml5" style="display: flex;flex-direction:column;justify-content: center;align-items: center">-->
+                        <!--<view class="iconfont icon-camera mb10"></view>-->
+                        <!--<text class="increase-pic">添加图片</text>-->
+                    <!--</view>-->
+                    <view class="weui-cell">
+                        <view class="weui-cell__bd">
+                            <view class="weui-uploader">
+                                <view class="weui-uploader__hd">
+                                    <view class="weui-uploader__title">添加图片</view>
+                                </view>
+                                <view class="weui-uploader__bd">
+                                    <view class="weui-uploader__input-box">
+                                        <view class="weui-uploader__input" bindtap="chooseReally"></view>
+                                    </view>
+                                    <view class="weui-uploader__files" id="uploaderFiles" style="display: flex;justify-content: space-around;flex-wrap: wrap">
+                                        <block wx:for="{{reallyImg}}" wx:key="*this">
+                                            <view class="weui-uploader__file" bindtap="previewReally" id="{{item}}">
+                                                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill"/>
+                                            </view>
+                                        </block>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="submit-box box-content mt20 mb20">
+            <button class="submit-btn" disabled="{{buttonIsDisabled}}" formType="submit" loading="{{submitIsLoading}}">提交</button>
+        </view>
+    </view>
+</form>
+<view catchtap="shadeHidden" class="{{panel_bg_shade}}"></view>
+<view class="panel-content">
+    <view class="{{cityAreaDisplayClass}}">
+        <view class="panel-content-head ">期望区域</view>
+        <scroll-view scrollY class="common-list">
+            <view bindtap="cityAreaSelect" class="common-item gridXb f14" data-id="{{item.id}}" data-name="{{item.area}}" wx:for="{{userInfo.area}}" wx:key="{{item.id}}">{{item.area}}</view>
+        </scroll-view>
+    </view>
+</view>
+<view class="panel-content">
+    <view class="{{decorationDisplayClass}}">
+        <view class="panel-content-head ">装修情况选择</view>
+        <scroll-view scrollY class="common-list">
+            <view bindtap="decorationSelect" class="common-item gridXb f14" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{userInfo.zhuangxiu}}" wx:key="{{item.id}}">{{item.name}}</view>
+        </scroll-view>
+    </view>
+</view>
+<view class="panel-content">
+    <view class="{{useDisplayClass}}">
+        <view class="panel-content-head">用途选择</view>
+        <scroll-view scrollY class="common-list">
+            <view bindtap="useSelect" class="common-item gridXb f14" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{userInfo.yongtu}}" wx:key="{{item.id}}">{{item.name}}</view>
+        </scroll-view>
+    </view>
+</view>
+<!--<view class="panel-content">-->
+    <!--<view class="{{houseTypeDisplayClass}}">-->
+        <!--<view class="panel-content-head">户型选择</view>-->
+        <!--<scroll-view scrollY class="common-list">-->
+            <!--<view bindtap="houseTypeSelect" class="common-item gridXb f14" data-id="{{item.id}}" data-name="{{item.house_word}}" wx:for="{{list.houseTypeList}}" wx:key="{{item.id}}">{{item.house_word}}</view>-->
+        <!--</scroll-view>-->
+    <!--</view>-->
+<!--</view>-->
+<!--<view class="panel-content">-->
+    <!--<view class="{{houseAgeDisplayClass}}">-->
+        <!--<view class="panel-content-head">年代选择</view>-->
+        <!--<scroll-view scrollY class="common-list">-->
+            <!--<view bindtap="houseAgeSelect" class="common-item gridXb f14" data-house-age="{{item}}" wx:for="{{list.houseAgeList}}" wx:key="*this">{{item}}</view>-->
+        <!--</scroll-view>-->
+    <!--</view>-->
+<!--</view>-->
+<!--<view class="panel-content hidden">-->
+    <!--<view class="orientation-panel">-->
+        <!--<view class="panel-content-head">朝向选择</view>-->
+        <!--<scroll-view scrollY class="common-list">-->
+            <!--<view class="common-item gridXb f14">东</view>-->
+            <!--<view class="common-item gridXb f14">南</view>-->
+            <!--<view class="common-item gridXb f14">西</view>-->
+            <!--<view class="common-item gridXb f14">北</view>-->
+            <!--<view class="common-item gridXb f14">东</view>-->
+            <!--<view class="common-item gridXb f14">南</view>-->
+            <!--<view class="common-item gridXb f14">西</view>-->
+            <!--<view class="common-item gridXb f14">北</view>-->
+        <!--</scroll-view>-->
+    <!--</view>-->
+<!--</view>-->

@@ -1,0 +1,153 @@
+<view class="top-bg-red">
+    <view class="top-tab tc" style="display: flex;justify-content: center;align-items: center">
+        <view catchtap="changeMode" class="top-tab-item tc {{mode=='等额本息'?'counter-active-color':''}}" data-mode="等额本息" style="display: flex;justify-content: center;align-items: center">等额本息</view>
+        <view catchtap="changeMode" class="top-tab-item tc {{mode=='等额本金'?'counter-active-color':''}}" data-mode="等额本金" style="display: flex;justify-content: center;align-items: center">等额本金</view>
+    </view>
+    <view class="count-result dengerbenxi">
+        <view class="flex" style="display: flex;justify-content: space-around">
+            <view class="right-line top-line sub tc" style="display: flex;flex-direction: column;align-items: center">
+                <view class="lineText">
+                    <text class="">首付</text>
+                </view>
+                <view class="mt5">
+                    <text class="f14 mr10">￥</text>
+                    <text class="f24">{{shoufu}}</text>
+                    <text class="f14 ml5">万</text>
+                </view>
+            </view>
+            <view class="top-line sub tc" style="display: flex;flex-direction: column;align-items: center">
+                <view class="lineText">
+                    <text class="" hidden="{{mode=='等额本金'}}">月供</text>
+                    <text class="" hidden="{{mode=='等额本息'}}">首月月供</text>
+                </view>
+                <view class="mt5">
+                    <text class="f14 mr10">￥</text>
+                    <text class="f24">{{yuegong}}</text>
+                    <text class="f14 ml5">元</text>
+                </view>
+            </view>
+        </view>
+        <view class="flex" style="display: flex;justify-content: space-around">
+            <view class="right-line top-line sub tc" style="display: flex;flex-direction: column;align-items: center">
+                <view class="lineText">
+                    <text class="">还款总额</text>
+                </view>
+                <view class="mt5">
+                    <text class="f14 mr10">￥</text>
+                    <text class="f24" style="font-size: 40rpx">{{huankuanzonge}}</text>
+                    <text class="f14 ml5">万</text>
+                </view>
+            </view>
+            <view class="top-line sub tc" style="display: flex;flex-direction: column;align-items: center">
+                <view class="lineText">
+                    <text class="">利息总额</text>
+                </view>
+                <view class="mt5">
+                    <text class="f14 mr10">￥</text>
+                    <text class="f24">{{lixizonge}}</text>
+                    <text class="f14 ml5">万</text>
+                </view>
+            </view>
+            <view class="left-line top-line sub tc" hidden="{{mode=='等额本息'}}">
+                <view class="lineText">
+                    <text class="">每月递减</text>
+                </view>
+                <view class="mt5">
+                    <text class="f14 mr10">￥</text>
+                    <text class="f24">{{meiyuedijian}}元</text>
+                    <text class="f14 ml5"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="radio-box">
+    <radio-group bindchange="changeLoanType" class="radio-group">
+        <label class="radio tc">
+            <radio checked="true" value="公积金贷款"></radio>
+            <text>公积金贷款</text>
+        </label>
+    </radio-group>
+</view>
+<view class="loan-panel">
+    <form bindsubmit="formSubmit" class="loan-computer">
+        <view class="gongjijin-loan loan-computer">
+            <view class="loan-panel-item flex gridXb" style="display: flex;justify-content: space-between">
+                <view class="">房屋售价</view>
+                <view style="display: flex;">
+                    <input class="sub" name="house_total" value="{{house_total}}"></input>
+                    <text class="grey" style="color: grey;">万元</text>
+                </view>
+                
+            </view>
+        </view>
+        <view class="loan-panel-item flex gridXb" style="display: flex;justify-content: space-between">
+            <view class=" ">首付比例</view>
+            <view style="display: flex;align-items: center">
+                <input name="shoufubiliKey" style="display:none;" type="number" value="{{shoufubiliKey}}"></input>
+                <picker bindchange="changeShoufubili" class="sub" range="{{shoufubili}}" value="{{shoufubiliKey}}" style="display: flex;">
+                    <view class="picker">{{shoufubili[shoufubiliKey]}}</view>
+                </picker>
+                <text class="iconfont icon-jiantou-copy-copy grey" style="color: grey;"></text>
+            </view>
+        </view>
+        <view class="loan-panel-item flex gridXb" style="display: flex;justify-content: space-between">
+            <view class=" ">贷款总额：</view>
+            <view style="display: flex;">
+                <input class="sub" value="{{daikuanzonge}}"></input>
+                <text class="grey" style="color: grey">万元</text>
+            </view>
+        </view>
+        <view class="loan-panel-item flex gridXb" style="display: flex;justify-content: space-between">
+            <view class=" ">贷款年限</view>
+            <view style="display: flex;align-items: center">
+                <input name="yearsArrKey" style="display:none;" type="number" value="{{yearsArrKey}}"></input>
+                <picker bindchange="changeYearsArr" class="sub" range="{{yearsArr}}" value="{{yearsArrKey}}">
+                    <view class="picker">
+                        {{yearsArr[yearsArrKey]}}
+                    </view>
+                </picker>
+                <text class="iconfont icon-jiantou-copy-copy grey"></text>
+            </view>
+        </view>
+        <view class="loan-panel-item flex gridXb" hidden="{{loanType=='商业贷款'}}" style="display: flex;justify-content: space-between">
+            <view style="width: 500rpx">公积金利率(百分比%)</view>
+            <picker class="sub" disabled="true">
+                <view class="picker">
+                    <input name="gongjijinlilv" placeholder="百分百比，例如3.25%" value="{{gongjijinlilv}}"></input>
+                </view>
+            </picker>
+        </view>
+        <!--<view class="loan-panel-item flex gridXb" hidden="{{loanType=='公积金贷款'}}" style="display: flex;justify-content: space-between">-->
+            <!--<label class=" ">商贷利率</label>-->
+            <!--<picker bindchange="bindPickerChange" class="sub" range="{{yearsArr}}" value="{{index}}">-->
+                <!--<view class="picker">-->
+          <!--{{yearsArr[index]}}-->
+        <!--</view>-->
+            <!--</picker>-->
+            <!--<text class="iconfont icon-jiantou-copy-copy grey"></text>-->
+        <!--</view>-->
+        <!--<view class="loan-panel-item flex gridXb" hidden="{{loanType!='组合贷款'}}" style="display: flex;justify-content: space-between">-->
+            <!--<view class="">公积金贷款：</view>-->
+            <!--<view style="display: flex;">-->
+                <!--<input class="sub" placeholder="请输入贷款金额" value=""></input>-->
+                <!--<text class="grey" style="color: grey">万元</text>-->
+            <!--</view>-->
+           <!---->
+        <!--</view>-->
+        <!--<view class="loan-panel-item flex gridXb" hidden="{{loanType!='组合贷款'}}" style="display: flex;justify-content: space-between">-->
+            <!--<view class="">商业贷款：</view>-->
+            <!--<view style="display: flex;">-->
+                <!--<input class="sub" placeholder="请输入贷款金额" value=""></input>-->
+                <!--<text class="grey" style="color: grey">万元</text>-->
+            <!--</view>-->
+           <!---->
+        <!--</view>-->
+        <!--<view>-->
+            <!--<button class="ml15 mr15 mt20 submit-btn" formType="submit">开始计算</button>-->
+        <!--</view>-->
+    </form>
+</view>
+<view class="footer mt20 mb5 tc f12 grey" style="display: flex;justify-content: center;align-items: center;color:grey;font-size: 30rpx;">
+    <text>此结果仅供参考，实际费用以当地缴费为准</text>
+</view>

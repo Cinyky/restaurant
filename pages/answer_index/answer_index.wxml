@@ -1,0 +1,46 @@
+<view class="page_wrapper">
+  <view class="bg_img_box">
+    <image src="{{answer.img}}" class="bg_img" mode="scaleToFill"></image>
+  </view>
+  <view class="joined_info_box">
+    <view>已参与人数</view>
+    <view class="joined_num_box">
+      <view wx:for="{{joined_num}}">{{item}}</view>
+    </view>
+  </view>
+  <view class="rule_info_box">
+    <veiw bindtap="showRuleDialog">
+      <text class="iconfont icon-list1"></text>
+      <text> 活动规则</text>
+    </veiw>
+    <view style="margin: 0 10rpx;">|</view>
+    <view bindtap="bindRedirectToMy">
+      <text class="iconfont icon-icon-user"></text>
+      <text> 我的信息</text>
+    </view>
+  </view>
+  <view class="start_btn_box">
+    <button class="start_btn" bindtap="bindStartAnswer" style="background: {{__wechat_main_color}};">
+      <text>开始{{editData_h.dati}}</text>
+    </button>
+    <view class="ans_number_badge">
+      <text>{{answer.info.join_count}}</text>
+    </view>
+  </view>
+</view>
+<!--活动规则弹窗-->
+<view class="rule_box" bindtap="closeRuleDialog" wx:if="{{show_rule_dialog}}">
+  <view class="rule_dialog">
+    <view style="width: 50rpx;height: 50rpx;position: absolute;right: 20rpx;top: 30rpx;color: #666;font-size: 38rpx">x</view>
+    <view class="rule_title" catchtap="empty">
+      活动规则
+    </view>
+    <scroll-view scroll-y="{{true}}" class="rule_body" catchtap="empty">
+      <view class="rule_line" wx:for="{{answer.rule}}" wx:for-item="rule_line">
+        <text>{{rule_line}}</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

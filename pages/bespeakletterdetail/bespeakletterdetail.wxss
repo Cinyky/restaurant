@@ -1,0 +1,44 @@
+.body{background:#f8f8f8}
+.header{width:100%;height:450rpx;background:#fff;border-bottom:2rpx solid #d9d9d9}
+.header-top{width:100%;height:450rpx}
+.header-top image{width:100%;height:450rpx}
+.header-bottom{height:150rpx;display:flex;justify-content:center;font-size:32rpx;color:#000}
+.header-bottom text{margin-top:90rpx}
+.logo{width:150rpx;height:150rpx;position:absolute;top:180rpx;left:300rpx}
+.logo image{width:100%;height:150rpx}
+.introduce{background:#fff;margin-top:30rpx;border-top:2rpx solid #d9d9d9;border-bottom:2rpx solid #d9d9d9;padding:20rpx}
+.introduce .title{font-size:28rpx;color:#000}
+.introduce .text{font-size:28rpx;color:#717171;margin-top:10rpx}
+.message{background:#fff;padding:20rpx 20rpx 0 20rpx;border-top:1rpx solid #d9d9d9;margin-top:30rpx}
+.message .title{padding-bottom:20rpx;font-size:28rpx;color:#000;border-bottom:1px solid #d9d9d9}
+.message .aboutUs{border-bottom:1px solid #d9d9d9;font-size:28rpx;padding:20rpx 0;color:#333;display:flex}
+.message .aboutUs view{width:160rpx}
+.message .aboutUs label{color:#717171}
+.u-tap-btn{position:fixed;right:20rpx;bottom:30rpx}
+.u-go-home{border-radius:100%;width:80rpx;height:80rpx;border:1px solid #eee;font-size:20rpx;text-align:center;background-color:#fff;box-shadow:0 4rpx 8rpx;z-index:2;line-height:80rpx;margin-bottom:20rpx}
+.u-go-home .iconfont{font-size:36rpx}
+.footer-box{height: 92rpx;}
+.footer {position: fixed;width: 100%;bottom: 0; box-shadow: 0 -4rpx 20rpx #ddd;}
+.footer .price {padding:0 30rpx;line-height: 92rpx;}
+.footer button {border-radius: 0;}
+.footer button::after {border: 0;}
+.u-tap-btn{position: fixed;right: 20rpx;bottom: 110rpx;}
+.u-go-home{border-radius: 100%;width: 80rpx;height: 80rpx;border: 1px solid #eee;font-size: 20rpx;text-align: center;background-color: #fff;box-shadow: 0px 3rpx 5rpx rgba(0,0,0,0.35);z-index: 2;opacity: 0.8;line-height:80rpx; margin-bottom: 110rpx;}
+.u-go-home .iconfont{font-size: 40rpx;}
+.main-button {
+  color: #fff;
+  border-radius: 0;
+  padding: 0;
+  height: 50px;
+  line-height: 50px;
+  border: none;
+ background: #f12c20;
+ text-align: center;
+}
+
+.main-button.reverse {
+  color: #f14b7d;
+  background: #f12c20;
+  border: 1px solid #f14b7d;
+  box-sizing: border-box;
+}

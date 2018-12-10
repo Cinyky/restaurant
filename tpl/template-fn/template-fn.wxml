@@ -1,0 +1,40 @@
+<template name="fn_01">
+    <view class="fn-container fn-01" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+        <block wx:for="{{setData.dataList}}" wx:key="fn">
+             <view class="fn-item">
+                <navigator url="{{item.linkurl}}">
+                <view class="fnicon {{item.iconClass}}"></view>
+                <text>{{item.font}}</text>
+                </navigator>
+            </view> 
+        </block> 
+    </view>
+</template>
+
+<template name="fn_02" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <view class="fn-container fn-02">
+        <block wx:for="{{setData.dataList}}" wx:key="fn">
+            <view class="fn-item">
+                <navigator url="{{item.linkurl}}">
+                <view class="fnicon {{item.iconClass}}"></view>
+                <text>{{item.font}}</text>
+                </navigator>
+            </view> 
+        </block> 
+    </view>
+</template>
+
+<template name="fn_03" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <view class="fn-container fn-03">
+        <block wx:for="{{setData.dataList}}" wx:key="fn">
+            <view class="fn-item">
+                <navigator url="{{item.linkurl}}">
+                <view class="fnicon {{item.iconClass}}"></view>
+                <text>{{item.font}}</text>
+                </navigator>
+            </view> 
+        </block> 
+    </view>
+</template>
+
+ 

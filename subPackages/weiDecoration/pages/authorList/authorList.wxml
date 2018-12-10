@@ -1,0 +1,15 @@
+<view class="page">
+  <view class="author_item" wx:for="{{authorList}}" data-author-id="{{item.id}}" bindtap="gotoAuthorIndex">
+    <view class="author_img_box">
+      <image mode="scaleToFill" class="author_img" src="{{item.img}}"></image>
+    </view>
+    <view class="author_info_box">
+      <view>{{item.name}}</view>
+      <view>{{item.desc}}</view>
+    </view>
+    <view class="author_phone" style="color: {{__wechat_main_color}};" data-phone="{{item.phone}}" catchtap="callPhone">
+      <view class="iconfont_dec2 icon_dec2-phone"></view>
+      <view>电话咨询</view>
+    </view>
+  </view>
+</view>

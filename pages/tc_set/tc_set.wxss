@@ -1,0 +1,61 @@
+
+@import "/tc.wxss";
+/* pages/set/set.wxss */
+page{
+  background-color: #eee;
+}
+.part1{
+  position: relative;
+  width: 100%;
+  height: 240rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+}
+.text1{
+  font-size: 32rpx;
+  color: #686464;
+  line-height: 240rpx;
+  margin-left: 100rpx;
+
+}
+.pic{
+  position: absolute;
+  width: 130rpx;
+  height: 130rpx;
+  /* background: red; */
+  margin-top: 55rpx;
+  right: 70rpx;
+  border-radius: 100rpx;
+}
+
+.part2{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 90rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.text2{
+  font-size: 32rpx;
+  color: #686464;
+  line-height: 90rpx;
+  margin-left: 100rpx;
+}
+.view_text{
+  text-align: right;
+  position: absolute;
+  font-size: 32rpx;
+  color: #686464;
+  /* text-align: right; */
+  right: 70rpx; 
+  line-height: 90rpx;
+ 
+  width: 300rpx;
+  height: 40rpx;
+  /* background: red; */
+  margin-top: 25rpx;
+}

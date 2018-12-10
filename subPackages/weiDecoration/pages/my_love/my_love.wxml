@@ -1,0 +1,51 @@
+<view class="page">
+  <view class="nav">
+    <view style="{{type==0?'border-bottom: 4rpx solid '+__wechat_main_color+';':''}}" bindtap="changeTab" data-type="0">收藏的案例</view>
+    <view style="{{type==1?'border-bottom: 4rpx solid '+__wechat_main_color+';':''}}" bindtap="changeTab" data-type="1">收藏的图册</view>
+  </view>
+  <view class="main">
+    <view wx:if="{{type==0}}">
+      <view class="zx_list">
+        <navigator wx:for="{{demoList}}" url="../demo/demo?id={{item.id}}">
+          <view class="zx_list_item">
+            <view class="zx_img_wrapper">
+              <image mode="scaleToFill" src="{{item.img}}"></image>
+            </view>
+            <view class="zx_info_box">
+              <view class="zx_line1">
+                <text class="zx_name">{{item.name}}</text>
+                <image mode="scaleToFill" class="zx_author_img" src="{{item.author.img}}"></image>
+              </view>
+              <view class="zx_line2">
+                <view class="zx_info">{{item.kj}}/{{item.fg}}/{{item.jb}}</view>
+                <view class="zx_love" style="color:{{__wechat_main_color}}">
+                  <text class="iconfont_dec icon-heart1" wx:if="{{!item.is_love}}"></text>
+                  <text class="iconfont_dec icon-heart" wx:else></text>
+                  <text>{{item.love_num}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view wx:if="{{type==1}}" class="imgs_box">
+      <view class="zx_list">
+        <view class="zx_list_item" wx:for="{{demoList}}" wx:for-index="index">
+          <view class="zx_img_wrapper" data-idx="{{index}}" bindtap="showImgs">
+            <image mode="scaleToFill" src="{{item.cover}}"></image>
+          </view>
+          <view class="zx_info_box">
+            <view class="zx_line1" style="text-align: center;justify-content: center;">
+              <text class="zx_name">{{item.name}}</text>
+            </view>
+            <view class="zx_line2" style="color:{{__wechat_main_color}};text-align: center;justify-content: center;"  data-tid="{{item.id}}" data-type="1" bindtap="toggleLove" data-idx="{{index}}" >
+              <text class="iconfont_dec icon-heart1" wx:if="{{!item.is_love}}"></text>
+              <text class="iconfont_dec icon-heart" wx:else></text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<!--pages/set/set.wxml-->
+<view class="part1">
+  <text class="text1">头像</text>
+  <image class="pic" src="{{user.headimg}}" mode="scaleToFill"></image>
+</view>
+<view class="part2">
+  <text class="text2">昵称</text>
+  <input class="view_text" type="text" value="{{user.name}}" disabled="true" />
+</view>
+<view class="part2">
+  <text class="text2">电话</text>
+  <input class="view_text" type="text" value="{{user.tel}}" bindinput="bindInputPhone" />
+</view>
+<view class="m20">
+  <button disabled="{{!tel}}" class="save" catchtap="bindSave">保存</button>
+</view>

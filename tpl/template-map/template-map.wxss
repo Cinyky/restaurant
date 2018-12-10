@@ -1,0 +1,7 @@
+.map_conatiner{
+  display: flex;
+}
+map {
+  flex: 1;
+  height: 250px;
+}

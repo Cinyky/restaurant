@@ -1,0 +1,19 @@
+<template name="head_01">
+ <view class="head_01">
+    <view class="header">
+      <view class="background">
+        <image src="{{setData.img}}"></image>
+      </view>
+		<view class="logo" wx:if="{{setData.type == 1}}">
+			<image src="{{setData.imglogo}}" ></image>
+	   </view>
+	   <view class="logo2" wx:else>
+			<image src="{{setData.imglogo}}"></image>
+	   </view>
+      <view class="shopinfo">
+        <text>{{setData.txt}}</text>
+        <text>{{setData.navtext}}</text>
+      </view>
+  </view>
+   </view>
+</template>

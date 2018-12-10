@@ -1,0 +1,1 @@
+exports.config={wid:"210",ASEkey:"lnlqwynwmolymxnp",ASEIv:"1234567812345678",configUrl:"https://xcx.vjmchina.com/api/vshop/"};

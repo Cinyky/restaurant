@@ -1,0 +1,27 @@
+.mainColor {
+    color: #1ca27e;
+}
+
+.mainColor_bg {
+    background-color: #1ca27e;
+}
+
+.subColor {
+    color: #ff5050;
+}
+
+.title::after {
+    background-color: #1ca27e;
+}
+
+.jingpin .purBtn {
+    background-color: #f38d4f;
+}
+
+.selected {
+    background: linear-gradient(90deg,#3b967e,#2ad6a7);
+}
+
+.besTit::after {
+    background-color: #1ca27e;
+}

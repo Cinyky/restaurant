@@ -1,0 +1,5 @@
+<!--logs.wxml-->
+<view>
+  <canvas bind:tap="preview" style="{{canvasSize}}" class="my-canvas" canvas-id="myCanvas" />
+  <button bind:tap="auth" type="primary">保存名片海报分享到朋友圈</button>
+</view>

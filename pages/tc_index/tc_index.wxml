@@ -1,0 +1,127 @@
+<import src="../tc_head/tc_head.wxml" />
+<template is="tc_head" data="{{__wechat_main_color:__wechat_main_color,active:'1'}}"></template>
+<!--搜索-->
+<form bindsubmit="onSearchSubmit" report-submit="true">
+  <view class="search-bar flex">
+    <view class="input-inner sub">
+      <view class="flex search-box">
+        <text class="mr5 iconfont icon-search"></text>
+        <input type="text" class="sub" placeholder="请输入关键词" focus="{{searchShow}}" bindblur="onHideSearchBlur" confirm-type="搜索" name="keyword" value="{{param.keyword}}"/>
+        <text class="ml5 iconfont icon-close f12"></text>
+      </view>
+      <label class="search-show tc grey" wx:if="{{!searchShow}}" catchtap="onShowSearchTap">
+        <text class="mr5 iconfont icon-search"></text>
+        <text>搜索</text>
+      </label>
+    </view>
+    <button form-type="submit" wx:if="{{searchShow}}" hover-class="active" class="green searchbtn f14">搜索</button>
+  </view>
+</form>
+<!--Banner-->
+<template name="category">
+  <swiper class="fenlei gridXb mt10" style="height:{{cateList[0].length<5?'212':'364'}}rpx;" indicator-dots="true" circular="true">
+    <swiper-item wx:for="{{cateList}}" wx:for-item="cateGroup">
+      <view class="classify-box clearfix">
+        <view catchtap="bindNavToList" data-type="cate" data-id="{{item.id}}" class="classify-list tc" wx:for="{{cateGroup}}" wx:for-item="item" wx:key="{{item.id}}">
+          <image class="list-img" src="{{item.img}}" mode="aspectFill"></image>
+          <view class="lineText">{{item.name}}</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</template>
+<!--广告位-->
+<template name="img">
+  <swiper indicator-dots="true" autoplay="true" interval="5000" style='height: {{swiperHeight}}'>
+    <block wx:for="{{imgList}}" wx:key="idx">
+      <swiper-item>
+        <view class="adsense tc mt10" style='height: 95%;'>
+          <image class="ad-img" src="{{item.img}}" catchtap="onAdTap" data-url="{{item.url}}" style='height: 100%;' bindload='imgHeight123'></image>
+          <text class="ad-text f12 write">广告</text>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</template>
+<!--公告-->
+<template name="gonggao">
+  <view style="display: flex;justify-content: flex-start;align-items: center;margin-top: 15rpx;background: #fff;padding: 10rpx;">
+    <view style="margin-right:10rpx">
+      <text class="iconfont icon-volumeup"></text>
+    </view>
+    <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+      <block wx:for="{{noticeList}}">
+        <swiper-item>
+          <view class="swiper_item">
+            {{item.content}}
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</template>
+<!--上-->
+<block wx:if="{{setting.pos_img==1}}">
+  <template is="img" data="{{imgList:imgList,swiperHeight}}"/>
+</block>
+<block wx:if="{{setting.pos_cate==1}}">
+  <template is="category" data="{{cateList:cateList}}"/>
+</block>
+<block wx:if="{{setting.pos_notice==1}}">
+  <template is="gonggao" data="{{noticeList:noticeList}}"/>
+</block>
+<!--中-->
+<block wx:if="{{setting.pos_img==2}}">
+  <template is="img" data="{{imgList:imgList}}"/>
+</block>
+<block wx:if="{{setting.pos_cate==2}}">
+  <template is="category" data="{{cateList:cateList}}"/>
+</block>
+<block wx:if="{{setting.pos_notice==2}}">
+  <template is="gonggao" data="{{noticeList:noticeList}}"/>
+</block>
+<!--下-->
+<block wx:if="{{setting.pos_img==3}}">
+  <template is="img" data="{{imgList:imgList}}"/>
+</block>
+<block wx:if="{{setting.pos_cate==3}}">
+  <template is="category" data="{{cateList:cateList}}"/>
+</block>
+<block wx:if="{{setting.pos_notice==3}}">
+  <template is="gonggao" data="{{noticeList:noticeList}}"/>
+</block>
+<!--排序分类-->
+<view class="flex tc paixu f16 grey mt10 mb10">
+  <view class="sub gridYr {{type==0?'active':''}}" catchtap="onSwitchTabTap" data-type="0">最新发布</view>
+  <view class="sub {{type==1?'active':''}}" catchtap="onSwitchTabTap" data-type="1">距离最近</view>
+</view>
+<view>
+  <import src="../tc_list/list.wxml"/>
+  <template is="list" data="{{msgList:msgList,show_pay_btn:0,setting:setting,show_comment:show_comment}}"/>
+</view>
+<!--没有更多了-->
+<view class="nothing tc linght flex mt10 mb10" hidden="{{hasMore}}">
+  <text class="sub line mr10"></text>
+  <text>没有更多了</text>
+  <text class="sub line ml10"></text>
+</view>
+<!--我要发布-->
+<!--<view class="add-msg write tc" style="bottom: 210rpx;">-->
+  <!--<view class="add transition-duration-150" catchtap="onNavigateTap" data-url="/pages/tongchengpro/fabu/fabu" data-type="switch">-->
+    <!--<text class="f18 iconfont icon-homefill"></text>-->
+  <!--</view>-->
+<!--</view>-->
+<!--<view class="add-msg write tc" style="bottom: 110rpx;">-->
+  <!--<navigator url="/pages/tc_cate/tc_cate">-->
+    <!--<view class="add transition-duration-150">-->
+      <!--<text class="f18 iconfont icon-add"></text>-->
+    <!--</view>-->
+  <!--</navigator>-->
+<!--</view>-->
+<!--<view class="add-msg write tc" style="bottom: 10rpx;">-->
+  <!--<view class="add transition-duration-150" catchtap="onNavigateTap" data-url="/pages/tongchengpro/fabu/fabu" data-type="switch">-->
+    <!--<text class="f18 iconfont icon-user-outline"></text>-->
+  <!--</view>-->
+<!--</view>-->
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

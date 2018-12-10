@@ -1,0 +1,60 @@
+<view class='bj_img'>
+  <image src="{{data.pic}}" mode="aspectFill"  />
+</view>
+<view class='tx_img'>
+  <image src="{{data.pic}}" mode="aspectFill"  />
+</view>
+<view class="mune">
+  <view class='mune_s'>{{data.name}}</view>
+  <view class='mune_x'>
+    <view class='mune_x_l'>职称：<text>{{data.title}}</text></view>
+    <view class='mune_x_l'>预约人次：<text><block wx:if="{{data.reserve_count!= 0}}">{{data.reserve_count}}</block><block wx:else>{{data.reserve_count}}</block></text></view>
+    <view class='mune_x_l' style='width:36%;'>好评率：<text>{{praise}}</text></view>
+  </view>
+</view>
+<!-- <view class='bai'></view> -->
+
+<view bindtap='serve' class="tableviewcell">
+	<image src=" http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/118.png" />
+	<text>全部服务</text>
+  <image src=" http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/tab_6.png"  style="width:10px;height:15px; position:absolute;right:50rpx;"/>
+</view>
+
+<view class="tableviewcell1" wx:for="{{service}}" wx:for-item="v" wx:key="" wx:for-index="idx">
+	<view class="tableviewcell1-dotted" wx:if="{{idx!=num}}" style="height:70rpx;">
+    <text style='float: left;'>{{v.name}}</text>
+    <text style='float: right;color:#eca9bb'>￥{{v.price}}</text>
+  </view>
+  <view wx:else  style="height:70rpx;">
+    <text style='float: left;'>{{v.name}}</text>
+    <text style='float: right;color:#eca9bb'>￥{{v.price}}</text>
+  </view>
+</view>
+
+<view bindtap="works" data-id='{{data.id}}' class="tableviewcell" >
+	<image src=" http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/118.png" />
+	<text>作品</text>
+  <image src=" http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/tab_6.png"  style="width:10px;height:15px; position:absolute;right:50rpx;"/>
+</view>
+
+<!--作品列表-->
+<view class="container-goods">
+
+  <view class="main-goods">
+
+    <view class="single-goods"  bindtap="img" data-key='{{index}}' wx:for="{{list}}" wx:for-item="v" wx:key="index">
+      <image class="avatar" src="{{v.pics[0].src}}" mode="aspectFill" />
+      <text class="title">{{v.name}}</text>
+    </view>
+
+  </view>
+
+</view>
+
+<view class='bai'></view>
+
+<view class='ljzf'>
+  <button  class='text-save' type="primary" data-id='{{data.id}}' bindtap="confirmOrder" style="background: {{__wechat_main_color}}">立即预约</button>
+</view>
+
+

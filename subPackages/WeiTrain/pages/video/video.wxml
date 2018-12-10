@@ -1,0 +1,11 @@
+<view class="page">
+  <!--单个video-->
+  <view class="singleVideo" wx:for="{{videos.all_video}}">
+    <view class="videoCenter">
+      <video src="{{item.video}}"></video>
+    </view>
+    <view class="videoText">
+      <text>{{item.title}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+.detailText{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.singleView{
+	padding: 2%;
+	background: white;
+	display: flex;
+	justify-content: left;
+	margin-bottom: 2%;
+}
+.yuyueView text{
+	padding: 10rpx;
+	background: #1CA27E;
+	border-radius: 20rpx;
+	font-size: 30rpx;
+	margin-left: 270rpx;
+	color:white;
+}

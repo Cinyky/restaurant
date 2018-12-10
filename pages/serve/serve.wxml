@@ -1,0 +1,18 @@
+
+<!--预约列表-->
+
+<view class='list' wx:for="{{list}}" wx:for-item="v" wx:key="">
+  <view class='list_s'>
+    <image src="{{v.pic}}" mode="aspectFill" class="list_time"/>
+    <view class='name' style='width:40%;margin-left:20%;'>
+      {{v.name}}
+    </view>
+  
+  </view>
+  <view class='list_x'>
+    <view class='list_xl'>{{v.name}}</view>
+    <view class='list_xr'>{{v.price}}元</view>
+  </view>
+</view>
+
+

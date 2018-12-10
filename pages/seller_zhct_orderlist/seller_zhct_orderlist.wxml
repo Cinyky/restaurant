@@ -1,0 +1,54 @@
+<view class="top-select flex tc mb10">
+  <view class="sub {{this_group_val == '-1' ? 'active':''}}" bindtap="select_status_show" data-val='-1' id='0'>全部</view>
+  <view class="sub {{this_group_val == '0' ? 'active':''}}" bindtap="select_status_show" data-val='0' id='3'>{{editData_h.diancan}}</view>
+  <view class="sub {{this_group_val == '1' ? 'active':''}}" bindtap="select_status_show" data-val='1' id='2'>{{editData_h.waimai}}</view>
+</view>
+<block wx:if="{{orderList.length ==0}}">
+  <!--暂无内容提示 start-->
+  <view class="no-content tc">
+    <text class="no-content-icon iconfont icon-yemianwuneirong"></text>
+    <view class="no-content-font">暂无订单信息</view>
+  </view>
+  <!--暂无内容提示 end-->
+</block>
+<block wx:else>
+  <view class="r-o">
+    <block wx:for="{{orderList}}" wx:key="{{item.id}}">
+      <view class="ro-item gridXb flex">
+        <!--<view class="r-logo" bindtap="user_orderinfo_bind" id="{{item.yt_ord_id}}">-->
+        <!--<image src="{{item.yt_str_log}}" class="r-logo-img" mode="aspectFill"></image>-->
+        <!--</view>-->
+        <view class="r-info sub">
+          <view class="lineText r-i-name" bindtap="user_orderinfo_bind" data-id="{{item.id}}" wx:if="{{item.type==0}}">
+            <text class="fr" wx:if="{{item.is_send==0}}">未上菜</text>
+            <text class="fr" wx:if="{{item.is_send==1}}">已上菜</text>
+            <text class="f18 r-i-n">{{editData_h.diancan}}</text>
+          </view>
+          <view class="lineText r-i-name" bindtap="user_orderinfo_bind" data-id="{{item.id}}" wx:else>
+            <text class="fr" wx:if="{{item.is_send==0}}">未配送</text>
+            <text class="fr" wx:if="{{item.is_send==1}}">已配送</text>
+            <text class="f18 r-i-n">{{editData_h.waimai}}【{{item.address.userName}}（{{item.address.provinceName}}{{item.address.cityName}}{{item.address.countyName}}{{item.address.detailInfo}}）】</text>
+          </view>
+          <view class="f14 grey mt5" bindtap="user_orderinfo_bind" data-id="{{item.id}}">
+            <view>下单时间：{{item.ctime}}</view>
+            <view>总价：￥{{item.total_price}}</view>
+          </view>
+          <view class="tr r-info-b">
+            <block wx:if="{{item.is_send==0 && item.type==0}}">
+              <button type="default" class="r-i-b mr10 red" bindtap="bind_order_send" data-id="{{item.id}}" style="color: {{main_color}};border:1prx solid {{main_color}};">标记已上菜</button>
+            </block>
+            <block wx:if="{{item.is_send==0 && item.type==1}}">
+              <button type="default" class="r-i-b mr10 red" bindtap="bind_order_send" data-id="{{item.id}}" style="color: {{main_color}};border:1prx solid {{main_color}};">标记已配送</button>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="m20 tc grey loading" wx:if="{{showLoading}}">
+      <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+      <text>正在加载...</text>
+    </view>
+  </view>
+</block>
+
+

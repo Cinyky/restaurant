@@ -1,0 +1,57 @@
+<include src="../header.wxml"/>
+<view class="box {{navshow?'active':''}}" bindtap="navHide">
+  <include src="../logo.wxml"/>
+  <!--banner-->
+  <view class="banner {{procate.is_char==2 ? 'nofont' : ''}}">
+    <image src="{{setting.joinus.banner}}" mode="aspectFill"></image>
+    <view class="banner-font">{{setting.joinus.title1}}</view>
+  </view>
+  <!--新闻-->
+  <view class="section section-News">
+    <block wx:if="{{menu.length!=0}}">
+      <view class="section-nav">
+        <view class="section-nav-box">
+          <view class="section-nav-li tc {{mid==0?'active':''}}" style="color: {{mid==0?__wechat_main_color:'#666'}}" data-id="0" bindtap="changeMenu">
+            全部
+          </view>
+          <block wx:for="{{menu}}">
+            <view style="color: {{item.id==mid?__wechat_main_color:'#666'}}" class="section-nav-li tc {{item.id==mid?'active':''}}" data-id="{{item.id}}" bindtap="changeMenu">
+              {{item.title1}}
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+    <view class="section-item">
+      <block wx:for="{{list}}">
+        <view class="section-li flex gridXb p30" data-key="joinus" data-id="{{item.id}}" bindtap="detail">
+          <view class="setction-img">
+            <image src="{{item.img}}" mode="aspectFill"></image>
+          </view>
+          <view class="section-text sub pl30">
+            <view class="section-empty">
+              <text class="setction-title lineText">{{item.title}}</text>
+              <text class="setction-info lineText2 smallSize cgrey">{{item.desc}}</text>
+              <!--<text class="setction-time lightSize">{{item.ctime}}</text>-->
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<!--<view class="loding tc mt10 mb10" wx:if="{{isloading}}">-->
+<!--<text class="iconfont icon-jiazai mr10 f18 grey"></text>-->
+<!--<text>正在加载</text>-->
+<!--</view>-->
+
+<!--&lt;!&ndash;没有更多了&ndash;&gt;-->
+<!--<view class="nothing flex grey" wx:if="{{ismore}}">-->
+<!--<text class="line mr10 sub"></text>-->
+<!--<text>没有更多了</text>-->
+<!--<text class="line ml10 sub"></text>-->
+<!--</view>-->
+
+<import src="../../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

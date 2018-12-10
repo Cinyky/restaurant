@@ -1,0 +1,35 @@
+<view class="feedback-box">
+  <view class="m-cells m-cells-form">
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <textarea class="u-textarea" maxlength="500" placeholder="感谢提出建议" bindinput="inputRemark" style="height:300rpx;"></textarea>
+        <view class="u-textarea-counter">
+          <label>{{remarkLength}}</label>/500</view>
+      </view>
+    </view>
+  </view>
+
+<view class="m-cells m-cells-form" style="margin-top:80rpx;">
+    <view class="m-cell">
+        <view class="m-cell-hd"><label class="u-label">姓名</label></view>
+        <view class="m-cell-bd">
+            <input class="u-input" type="text" placeholder="请输入姓名" bindinput="inputwechat"/>
+        </view>
+    </view>
+
+
+    <view class="m-cell" style="border-top:1px solid #eee;">
+        <view class="m-cell-hd"><label  class="u-label">手机</label></view>
+        <view class="m-cell-bd">
+            <input class="u-input" type="text" value="{{Email}}" placeholder="请输入手机号码" bindinput="inputemail" maxlength="11"/>
+        </view>
+    </view>
+    
+</view>
+<view class="btn_box" bind="submitdata">
+    <button class="u-btn u-btn-default" bindtap="submitdata"style="background-color:{{__wechat_main_color}}">提交</button>
+</view>
+
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

@@ -1,0 +1,168 @@
+<!--pages/errand/lotteryDraw/lotteryDraw.wxml-->
+<view class='luckPage' wx:if="{{is_end==0}}">
+  <view class='drawBg'>
+    <!--背景图片  -->
+    <image class='drawBgPic' src="http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/bg.png"></image>
+
+    <!--抽一次消耗积分  -->
+    <view class='xhjifen' wx:if='{{is_vip && dzpSetting.open_point_lottery==1}}'>
+      每次额外抽奖消耗<text class='subColor'>{{dzpSetting.point_lottery_consume}}</text>积分
+    </view>
+
+    <!--背景上的点缀  -->
+    <view class='adornBox '>
+      <view class='titleLf'>
+        <image class='titleLfPic' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/titleLf.png'></image>
+      </view>
+      <view class='titleRg'>
+        <image class='titleRgPic' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/titleRg.png'></image>
+      </view>
+      <view class='titleBot'>
+        <image class='titleBotPic' class='titleRgPic' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/titleBot.png'></image>
+      </view>
+    </view>
+
+    <!--包含转盘和底座  -->
+    <view class='turnArea'>
+      <!--转盘  包含开始按钮 灯 以及奖品-->
+      <view class='turnBox '>
+        <!--开始按钮  -->
+        <view class='startBtn'>
+        <button class='lotteryDraw_getPhone_button' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{phoneNumber=='null' || !phoneNumber}}">
+        {{phoneNumber}}
+      </button>
+          <image class='startPic' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/start.png' mode='aspectfill' catchtap='onStartTap'></image>
+        </view>
+
+        <!--圆盘上的灯  -->
+        <view class='lightList'>
+          <view class='lightItem smaLight lightOne'></view>
+          <view class='lightItem bigLight lightTwo'></view>
+          <view class='lightItem smaLight lightThree'></view>
+          <view class='lightItem bigLight lightFour'></view>
+          <view class='lightItem smaLight lightFive'></view>
+          <view class='lightItem bigLight lightSix'></view>
+          <view class='lightItem smaLight lightSeven'></view>
+          <view class='lightItem bigLight lightEight'></view>
+        </view>
+
+        <!--为了遮盖圆的不圆  -->
+        <view class='zhecir'>
+          <view class='zhecirinner'></view>
+        </view>
+
+        <!-- animation="{{animationData}}" -->
+        <view class='awardBox' style='transition: transform {{animationData.duration}}ms {{animationData.timingFunction}};transform: rotate({{animationData.rotate}}deg);'>
+          <image class='turn' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/turn.png' mode='aspectFill'></image>
+
+          <!--奖品列表  -->
+          <view class='awardlist'>
+            <view class="awardItem" wx:for="{{prizeList}}" wx:item="{{item}}" wx:key="{{item.id}}">
+              <view class='awardName mb10'>{{item.name}}</view>
+              <image class='awardPic' src='{{item.img}}' mode='aspectFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--底座  -->
+      <view>
+        <image class='dizuo' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/dizuo.png' mode='aspectFill'></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='commonBox '>
+    <!--有几次抽奖机会  -->
+    <view class='zfBlock tc'>
+      <view class=' mb15 f16'>
+        <text>您今天还有</text>
+        <text class='subColor'>{{frequency}}</text>
+        <text>次抽奖机会</text>
+      </view>
+
+      <view class='getChance mb10'>分享给好友可获得{{dzpSetting.share_num}}次抽奖机会，今日可分享{{share_count}}次</view>
+      <view class='flex'>
+        <button class='zfBtn' catchtap='onNavigateTap' data-url='../winning/winning'>中奖记录</button>
+        <button class='zfBtn' open-type='share'>分享</button>
+      </view>
+    </view>
+
+    <!-- 中奖名单  -->
+    <view class='cell '>
+      <view class='titleBox flex '>
+        <image class='titleIcon mr10' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/titleIcon.png' mode='aspectFill'></image>
+        <view class='mr10 f16'>中奖名单</view>
+        <image class='titleIcon' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/titleIcon.png' mode='aspectFill'></image>
+      </view>
+
+      <scroll-view class='luckerList' scroll-y wx:if='{{winList.length}}'>
+        <view class='lineText mb5' wx:for='{{winList}}' wx:key='{{item.id}}'>
+          <text class='luckName mr10 subColor'>{{item.nickname}}</text>
+          <text>获得了{{item.name}}</text>
+        </view>
+      </scroll-view>
+      <!--没有人中奖 -->
+      <view class='mt5' wx:else>暂时还没有人中奖，赶快试一把，看看手气如何~</view>
+    </view>
+
+    <!--活动规则  -->
+    <view class='cell ruleBox' style='padding-bottom:40rpx;'>
+      <view class='titleBox flex'>
+        <image class='titleIcon  mr10' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/titleIcon.png' mode='aspectFill'></image>
+        <view class='mr10 f16'>活动规则</view>
+        <image class='titleIcon ' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/titleIcon.png' mode='aspectFill'></image>
+      </view>
+      <view class='ruleList'>
+        <rich-text nodes="{{dzpSetting.rule}}"></rich-text>
+      </view>
+    </view>
+
+    <!--活动声明  -->
+    <view class='shengBox tc' hidden='true'>
+      <view class='f16'>活动声明</view>
+      <view class='jishiquan mt10'>本活动最终解释权归魔方所有</view>
+    </view>
+  </view>
+</view>
+
+<!--弹窗 中奖 -->
+<view class='shade_bg tc' wx:if="{{showWin}}">
+  <view class='luckBox'>
+    <image class='luckPic' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/lucky.png' mode='aspectFill'></image>
+    <view class='myAwardBox tc'>
+      <image class='myAwardPic' src='{{prize.img}}' mode='aspectFill'></image>
+      <view class='myAwardName'>恭喜你获得</view>
+      <view class='chakan'>{{prize.name}}</view>
+    </view>
+    <button class='xyyxBtn' open-type='share'></button>
+  </view>
+  <!--关闭按钮  -->
+  <view class='closeBox' catchtap='onSetValueTap' data-name='showWin' data-value='{{false}}'>
+    <view class='close shunshi'></view>
+    <view class='close nishi'></view>
+  </view>
+</view>
+
+<!--弹窗  未中奖-->
+<view class='shade_bg tc' wx:if="{{showFail==1}}">
+  <view class=''>
+    <view class='unluckBox'>
+      <image class='unluckPic' src='http://ixiaochengxu.cc/resource/images/plug-in/luck-draw/unlucky.png' mode='aspectFill'></image>
+      <view class='tipBox'>
+        <view>很遗憾~</view>
+        <view class='mt5'>您未中奖</view>
+      </view>
+    </view>
+    <!--关闭按钮  -->
+    <view class='closeBox' catchtap='onSetValueTap' data-name='showFail' data-value='{{0}}'>
+      <view class='close shunshi'></view>
+      <view class='close nishi'></view>
+    </view>
+  </view>
+</view>
+
+<!--活动过期  -->
+<view class="no-content" wx:if="{{is_end==1}}">
+  <image class="no-content-img" src="http://www.ixiaochengxu.cc/resource/images/common/no-order.png" mode="widthFix"></image>
+  <view class="">活动已经结束，您来晚了哦~</view>
+</view>

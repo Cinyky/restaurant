@@ -1,0 +1,7 @@
+@import "../../assets/common.wxss";
+@import "/tpl/template-menu/template-menu.wxss";
+.active{
+	display: inline;
+	color: #fff !important;
+	word-break: keep-all;
+}

@@ -1,0 +1,23 @@
+<!--pages/set/set.wxml-->
+<view style="background: #fff;font-size: 28rpx;margin: 15rpx 0;padding: 30rpx;">
+  <view>
+    可用发布次数：{{user.free_num}}
+  </view>
+  <!--<view>-->
+  <!--转发奖励：{{Res6.is_retransmission?'已获取':'未获取'}}-->
+  <!--</view>-->
+</view>
+<view>
+  <view style="width: 100%;padding: 30rpx;background: #fff;margin-top: 20rpx;font-size: 30rpx;font-weight: bold">
+    充值发布次数
+  </view>
+  <view style="width: 100%;padding: 30rpx;background: #fff;margin-top: 20rpx;" wx:for="{{setting.recharge_setting}}">
+    <view>
+      <view style="text-align: center;font-size: 30rpx;margin-bottom: 20rpx;">
+        <text>充值￥{{item.recharge_money}}元 </text>
+        <text>可发布{{item.recharge_num}}次</text>
+      </view>
+      <button data-recharge_money="{{item.recharge_money}}" data-recharge_num="{{item.recharge_num}}" bindtap="bindCharge">立即充值</button>
+    </view>
+  </view>
+</view>

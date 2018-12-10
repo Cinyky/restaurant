@@ -1,0 +1,68 @@
+<view class="topbg" style="background-color:{{__wechat_main_color}}">
+  <view class="topinfo">
+    <view>
+      <label>{{TotalPrice}}</label>
+    </view>
+    <view>可提现金额(元)</view>
+  </view>
+</view>
+<view class="m-cells m-cells-form">
+  <view class="m-cell">
+    <view class="m-cell-hd">
+      <label class="u-label">提现金额</label>
+    </view>
+    <view class="m-cell-bd">
+      <input class="u-input" type="number" placeholder="输入提现金额({{limit}}的整数倍)" maxlength="6" bindinput="inputPrice" />
+    </view>
+    <view wx:if="{{!isPrice}}" class="m-cell-ft">
+      <icon class="m-icon-warn" type="warn"></icon>
+    </view>
+  </view>
+  <view class="m-cell">
+    <view class="m-cell-hd">
+      <label class="u-label">账户姓名</label>
+    </view>
+    <view class="m-cell-bd">
+      <input class="u-input" type="text" value="{{alipayName}}" placeholder="输入支付宝账户姓名" maxlength="20" bindinput="inputalipayName" />
+    </view>
+    <view wx:if="{{!isalipayName}}" class="m-cell-ft">
+      <icon class="m-icon-warn" type="warn"></icon>
+    </view>
+  </view>
+  <view class="m-cell">
+    <view class="m-cell-hd">
+      <label class="u-label">账户</label>
+    </view>
+    <view class="m-cell-bd">
+      <input class="u-input" type="text" value="{{alipayNum}}" placeholder="输入支付宝账户" maxlength="20" bindinput="inputalipayNum" />
+    </view>
+    <view wx:if="{{!isalipayNum}}" class="m-cell-ft">
+      <icon class="m-icon-warn" type="warn"></icon>
+    </view>
+  </view>
+  <view class="m-cell">
+    <view class="m-cell-hd">
+      <label class="u-label">手机号码</label>
+    </view>
+    <view class="m-cell-bd">
+      <input class="u-input" type="number" value="{{Phone}}" placeholder="输入手机号码" maxlength="11" bindinput="inputPhone" />
+    </view>
+    <view wx:if="{{!isPhone}}" class="m-cell-ft">
+      <icon class="m-icon-warn" type="warn"></icon>
+    </view>
+  </view>
+</view>
+<view class="m-text-box">
+  <view>
+    <label class="iconfont icon-14052218"></label>提现规则
+  </view>
+  <view>
+    <view>当你的粉丝在店铺内支付订单后，你将会获得奖金收益，收益的可提现时间为支付订单时间往后延长
+    <label style="color:red">{{ValidDays}}</label>天。（延长时间以店铺设置为准）
+- 当你的粉丝取消订单、退货退款，或者因订单异常被扣除收益，你将不会收到奖金收益。
+    </view>
+  </view>
+</view>
+<view class="btn_box" bind="submitdata" >
+  <button class="u-btn u-btn-default" bindtap="submitdata"style="background-color:{{__wechat_main_color}}">申请提现</button>
+</view>

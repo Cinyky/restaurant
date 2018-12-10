@@ -1,0 +1,43 @@
+<view class="noView" wx:if="{{flag == 0}}">
+  <image src="../../image/no_card.png" mode="widthFix" style="width: 100%"/>
+  <view class="buttonView">
+    <text>创建我的专属名片</text>
+  </view>
+</view>
+<view wx:else class="addView">
+  <view class="imgView">
+    <image src="{{cardInfo.pic}}" mode="widthFix"/>
+  </view>
+  <view class="weui-cell__bd demoView">
+    <input type="text" class="weui-input" value="{{cardInfo.name}}" placeholder="请输入昵称" name="name" bindblur="bindName"/>
+  </view>
+  <view class="weui-cell__bd demoView">
+    <input type="text" class="weui-input" value="{{cardInfo.phone}}" placeholder="请输入手机号" name="phone" bindblur="bindPhone"/>
+  </view>
+  <!--<view class="weui-cell__bd demoView">-->
+    <!--<view style="width: 475rpx;">-->
+      <!--<input type="text" class="weui-input" value="" placeholder="请输入手机号" name="shopname" bindblur="bindphone"/>-->
+    <!--</view>-->
+    <!--<button bindtap="yanzhengBtn" style="width: 200rpx;font-size: 30rpx;background: red;color:white">验证码</button>-->
+  <!--</view>-->
+  <view class="weui-cell__bd demoView">
+    <input type="text" class="weui-input" value="{{cardInfo.company_name}}" placeholder="请输入公司名称" name="company_name" bindblur="bindCname"/>
+  </view>
+  <view class="weui-cell__bd demoView">
+    <input type="text" class="weui-input" value="{{cardInfo.job}}" placeholder="请输入职务" name="job" bindblur="bindJob"/>
+  </view>
+  <view class="weui-cell__bd demoView">
+    <input type="text" class="weui-input" value="{{cardInfo.email}}" placeholder="请输入邮箱" name="email" bindblur="bindEmail"/>
+  </view>
+  
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea" placeholder="来一段简单介绍" style="height: 4em" name="intro" bindinput="bindIntro" value="{{cardInfo.intro}}"/>
+      </view>
+    </view>
+  </view>
+  <view class="buttonView">
+    <button bindtap="bindBtn" style="width: 700rpx;font-size: 35rpx;background: red;color:white">提交保存</button>
+  </view>
+</view>

@@ -1,0 +1,68 @@
+@import "/tpl/template-menu/template-menu.wxss";
+.header{padding:20rpx;font-size:32rpx;font-weight:700}
+.time{padding:0 20rpx 20rpx;color:#717171;font-size:28rpx}
+.center{padding:0 20rpx;word-wrap:break-word}
+.u-tap-btn{position:fixed;right:20rpx;bottom:10rpx}
+.u-go-home{border-radius:100%;width:80rpx;height:80rpx;border:1px solid #eee;font-size:20rpx;text-align:center;background-color:#fff;box-shadow:0 4rpx 8rpx;z-index:2;line-height:80rpx;margin-bottom:20rpx}
+.u-go-home .iconfont{font-size:36rpx}
+#myVideo{width:100%}
+.introduce{background:#fff;margin-top:30rpx;border-top:2rpx solid #d9d9d9;border-bottom:2rpx solid #d9d9d9;padding:20rpx}
+.introduce .title{font-size:28rpx;color:#000}
+.introduce .text{font-size:28rpx;color:#717171;margin-top:10rpx}
+
+.comment_box{
+  display: flex;
+  padding: 10rpx;
+  height: 50rpx;
+}
+.comment_input{
+  flex-grow: 1;
+  flex-shrink: 0;
+  background: #fff;
+  display: block;
+  height: 100%;
+}
+.comment_submit_btn{
+  height: 50rpx;
+  padding: 0;
+  width: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx;
+  font-size: 20rpx;
+}
+.comment_list{
+  background: #fff;
+  padding: 20rpx;
+}
+.comment_item{
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #ccc;
+}
+.comment_item:last-child{
+  border-bottom: none;
+}
+.comment_nickname{
+  font-weight: bold;
+  color: #888;
+  font-size: 30rpx;
+}
+.comment_content{
+  font-size: 30rpx;
+  color: #888;
+}
+.reeturn_index_container{
+  position: fixed;
+  right: 40rpx;
+  bottom: 80rpx;
+  border-radius: 50%;
+  text-align: center;
+  background: rgba(111, 179, 255, 0.79);
+  color: #fff;
+  font-size: 30rpx;
+  padding: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}

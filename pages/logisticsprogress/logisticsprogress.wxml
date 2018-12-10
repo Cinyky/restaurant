@@ -1,0 +1,25 @@
+<view class="m-logisticsbox" wx:if="{{Logistics.LogisticCode!=null}}">
+    <view class="m-cells" >
+        <view class="m-cell ">
+            <view class="m-cell-bd">
+                <text>物流单号：{{Logistics.LogisticCode}}</text>
+            </view>
+        </view>
+        <view class="m-cell">
+            <view class="m-cell-bd">
+                <text>物流公司：{{Logistics.ShipperName}}</text>
+            </view>
+        </view>
+        <view class="m-cell" >
+            <view class="m-cell-bd">
+                <text>物流状态：{{Logistics.StateStr}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="m-logistbox">
+        <view wx:for="{{Logistics.Traces}}" wx:for-item="item"  class="m-logistitem">
+            {{item.AcceptStation}}
+            <view>{{item.AcceptTimeStr}}</view>
+        </view>
+    </view>
+</view>

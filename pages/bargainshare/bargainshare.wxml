@@ -1,0 +1,61 @@
+<view class="container">
+  <!--商品图片-->
+  <view class="pic-view">
+    <image src="{{orderdetaildata.goodsinfo.pic}}"></image>
+  </view>
+  <!--剩余时间-->
+  <!-- <view class="time-view"> -->
+  <!--<text>{{orderdetaildata.goodsinfo.timeout}}</text>-->
+  <!-- </view> -->
+  <!--商品名称-->
+  <view class="name-view">
+    <text>{{orderdetaildata.goodsinfo.goods_name}}</text>
+  </view>
+  <!--商品价钱-->
+  <view class='price-view-container'>
+    <view class="price-view-content">
+      <text class='price_text_h'>当前价格</text>
+      <text class='nowPrice nowPrice_add'>￥{{orderdetaildata.orderinfo.really_price}}</text>
+      <text class='line-delete'>原价￥{{orderdetaildata.goodsinfo.goods_price}}</text>
+    </view>
+  </view>
+
+  <!--分割线。。。-->
+  <!-- <view class="xian"></view> -->
+  <!--帮砍信息-->
+  <view class="people-view">
+    <!-- <text>快点击右上角分享给好友帮忙砍价吧！</text> -->
+    <view class='price_more_container'>
+      已砍
+      <text class="nowPrice">{{orderdetaildata.orderinfo.yikan}}</text>次，还能帮砍
+      <text class="nowPrice">{{orderdetaildata.orderinfo.weikan}}</text>次。
+    </view>
+
+    <view class='surplustime-container'>
+      <text>{{clock}}</text>
+    </view>
+  </view>
+  <!--底部购买-->
+  <view wx:if="{{is_kan==0}}">
+    <view class='fixedBottom' bindtap="buyNow" data-order-id="{{orderdetaildata.orderinfo.id}}">
+      <text>立即购买</text>
+    </view>
+  </view>
+  <view wx:else>
+    <view class='fixedBottom'>
+      <view bindtap="helpKan">
+        <text>帮忙砍价</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="helpInfo">
+  <text class='helpInfo_text'>已帮砍信息：</text>
+  <view wx:for="{{orderdetaildata.bangkan}}" class="bangkan">
+    <text class="bluetext floatLeft_h">{{item.nickname}}</text>
+    <view class='helpInfo_price_container floatRight_h'>
+      <text class='helpInfo_otherText_h'>砍掉了</text>
+      <text class="nowPrice">{{item.bargain_money}}元</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<import src="../../tpl/template-head/template-head.wxml" />
+<import src="../../tpl/template-slider/template-slider.wxml" />
+<import src="../../tpl/template-fn/template-fn.wxml" />
+<import src="../../tpl/template-goods/template-goods.wxml" />
+<import src="../../tpl/template-article/template-article.wxml" />
+<import src="../../tpl/template-line/template-line.wxml" />
+<import src="../../tpl/template-search/template-search.wxml" />
+<import src="../../tpl/template-title/template-title.wxml" />
+<import src="../../tpl/template-topic/template-topic.wxml" />
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<import src="../../tpl/template-pic/template-pic.wxml" />
+<import src="../../tpl/template-text/template-text.wxml" />    
+<import src="../../tpl/template-sanft/template-sanft.wxml" />
+<import src="../../tpl/template-video/template-video.wxml" />    
+<import src="../../tpl/template-map/template-map.wxml" />  
+<import src="../../tpl/template-feedback/template-feedback.wxml" />
+<import src="../../tpl/template-store/template-store.wxml" />
+<import src="../../tpl/template-severTel/template-severTel.wxml" />
+<import src="../../tpl/template-richtext/template-richtext.wxml" />    
+<import src="../../tpl/template-groupbuy/template-groupbuy.wxml" />
+<import src="../../tpl/template-seckill/template-seckill.wxml" />        
+<import src="../../tpl/template-onlinebooking/template-onlinebooking.wxml"/>
+<!-- 循环加载模板 --> 
+<block wx:for="{{indexArray}}" wx:key="index" wx:for-item="setData">
+  <template is="{{setData.name}}" data="{{setData,xcx_menu_height,highLightIndex:highLightIndex,ServicePersonal,ServiceContent,onlinebookingData,__wechat_main_color}}"></template>
+</block>
+<view class="jishu"><text></text></view>
+<view class="u-loadmore u-loadmore-line" wx:if="{{copyright}}">
+		<text class="u-loadmore-tips tipss">{{copyright}}</text>
+</view>
+
+  

@@ -1,0 +1,43 @@
+<template name="onlinebooking">
+  <view class="onlinebooking_container">
+    <view class='onlinebooking_main_container'>
+      <view class='onlinebooking_list_container'>
+        <view class='onlinebooking_list_content'>
+          <text>预约服务</text>
+          <picker bindchange="bindPickerChange_ServiceContent" value="{{ServiceContent.index}}" range="{{ServiceContent.array}}">
+            <view class="ServicePersonalPicker">
+              {{ServiceContent.array[ServiceContent.index]}}
+            </view>
+          </picker>
+        </view>
+        <view class='onlinebooking_list_content'>
+          <text>服务人员</text>
+          <picker bindchange="bindPickerChange_ServicePersonal" value="{{ServicePersonal.index}}" range="{{ServicePersonal.array}}">
+            <view class="ServicePersonalPicker">
+              {{ServicePersonal.array[ServicePersonal.index]}}
+            </view>
+          </picker>
+        </view>
+        <view class='onlinebooking_list_content'>
+          <text>预约时间</text>
+          <picker mode="date" value="{{onlinebookingData.date_h}}" start="2017-09-01" end="2020-09-01" bindchange="bindDateChange">
+            <view class="ServicePersonalPicker">
+              {{onlinebookingData.date_h}}
+            </view>
+          </picker>
+        </view>
+        <view class='onlinebooking_list_content'>
+          <text>姓名</text>
+          <input type="text" value='' placeholder="请输入姓名" bindinput='getOnlinebooking_Name'/>
+        </view>
+        <view class='onlinebooking_list_content'>
+          <text>手机</text>
+          <input type="text" value='' placeholder="请输入手机号码" bindinput='getOnlinebooking_phone'/>
+        </view>
+      </view>
+      <view style="background: {{__wechat_main_color}};" class='onlinebooking_button_container' bindtap='getOnlinebooking_submit'>
+        提交
+      </view>
+    </view>
+  </view>
+</template>

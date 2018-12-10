@@ -1,0 +1,114 @@
+@import "/tpl/template-menu/template-menu.wxss";
+@import "/utils/my_iconfont.wxss";
+page{
+  height: 100%;
+  background: #fff;
+  font-size: 30rpx;
+  color: #000;
+}
+.bg_img_box{
+  width: 100%;
+}
+.bg_img{
+  width: 100%;
+  height: 600rpx;
+}
+.joined_info_box{
+  text-align: center;
+  margin-top: 40rpx;
+}
+.joined_num_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.joined_num_box>view{
+  margin: 20rpx 5rpx;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  color: #fff;
+  background: -webkit-gradient(linear,0 0 , 0 bottom,from(#121212),to(#424242));
+}
+.rule_info_box{
+  color: #312e43;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.start_btn_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30rpx;
+  position: relative;
+}
+.start_btn{
+  width: 500rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50rpx;
+}
+.start_btn::after{
+  display: none;
+}
+.ans_number_badge{
+  position: absolute;
+  right: 100rpx;
+  width: 60rpx;
+  height: 60rpx;
+  box-sizing: border-box;
+  border: 4rpx solid #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: red;
+  color: #fff;
+  top: -10rpx;
+}
+.rule_box{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  background: rgba(0,0,0,0.5);
+}
+.rule_dialog{
+  background: #fff;
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  height: 90%;
+  top:5%;
+  border-radius: 8rpx;
+}
+.rule_title{
+  font-size: 46rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+  border-bottom: 1rpx solid #eee;
+}
+.rule_body{
+  width: 100%;
+  height: 90%;
+  font-size: 38rpx;
+  color: #666;
+}
+.rule_line{
+  margin: 20rpx 40rpx;
+  line-height: 78rpx;
+  word-wrap: break-word;
+}

@@ -1,0 +1,25 @@
+<view class="page">
+  <block wx:for="{{list}}" wx:key="{{item.id}}">
+    <navigator url="/pages/seller_kefu_msg/seller_kefu_msg?id={{item.id}}">
+      <view class="user_item_box">
+        <view class="user_item">
+          <view class="head_img_box">
+            <image class="head_img" src="{{item.headimgurl}}"></image>
+          </view>
+          <view class="info_box">
+            <view class="user_name_box">
+              <view class="user_name">{{item.nickname}}</view>
+              <view class="box_right">
+                <view>
+                  <view class="weui-badge bdg-success" wx:if="{{item.is_reply}}">已回复</view>
+                  <view class="weui-badge" wx:else>未回复</view>
+                </view>
+              </view>
+            </view>
+            <view class="user_msg">{{item.msg}}</view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+</view>

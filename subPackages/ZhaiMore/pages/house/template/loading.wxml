@@ -1,0 +1,4 @@
+<view class="tc mt10">
+    <text class="loading-icon mr10"></text>
+    <text>正在加载</text>
+</view>

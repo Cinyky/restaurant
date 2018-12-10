@@ -1,0 +1,175 @@
+<!--pages/card/card.wxml-->
+<view>
+  <!-- 卡片 -->
+  <view class="card-wrap">
+    <view class="card">
+      <image class="card-avatar" mode="aspectFill" src="{{pageData.avatar}}" />
+      <view class="flex-row card-content">
+        <view class="cc-left">
+          <view class="flex-row cn-box">
+            <text class="ellipsis card-name">{{pageData.name}}</text>
+            <text class="txt-m">{{pageData.job_title}}</text>
+          </view>
+          <text class="tc-9">{{phoneWithSpace}}</text>
+        </view>
+        <image class="cc-right" mode="aspectFill" src="{{pageData.company_logo}}" />
+      </view>
+    </view>
+    <!-- 卡片返回按钮 -->
+    <navigator open-type="redirect" url="/pages/supercards/supercards">
+      <view class="card-back">
+        <image src="../../assets/img/i-card.png"></image>
+      </view>
+    </navigator>
+  </view>
+  <!-- 全部名片信息 -->
+  <view bind:tap="toggleFold" class="txt-center fold-bar">
+    <text class="txt-s tc-9">{{showFold ? '收起以下': '展开全部'}}名片信息</text>
+    <image class="{{showFold ? 'rotate' : ''}}" src="../../assets/img/arrow_d.png" />
+  </view>
+  <view hidden="{{!showFold}}" class="side-padding fold-content">
+    <!-- <view wx:key="index" wx:for="{{}}" class="flex-row txt-m fold-item"></view> -->
+    <view class="flex-row txt-m fold-item">
+      <text class="tc-9">座机</text>
+      <text class="side-padding fi-middle">{{pageData.cellphone}}</text>
+      <button bind:tap="makeCall" data-msg="{{pageData.cellphone}}" type="primary" plain>拨打</button>
+    </view>
+    <view class="flex-row txt-m fold-item">
+      <text class="tc-9">电话</text>
+      <text class="side-padding fi-middle">{{pageData.telephone}}</text>
+      <button bind:tap="makeCall" data-msg="{{pageData.telephone}}" type="primary" plain>拨打</button>
+    </view>
+    <view class="flex-row txt-m fold-item">
+      <text class="tc-9">微信</text>
+      <text class="side-padding fi-middle">{{pageData.wechat}}</text>
+      <button bind:tap="copy" data-copy="{{pageData.wechat}}" type="primary" plain>复制</button>
+    </view>
+    <view class="flex-row txt-m fold-item">
+      <text class="tc-9">邮箱</text>
+      <text class="side-padding fi-middle">{{pageData.email}}</text>
+      <button bind:tap="copy" data-copy="{{pageData.email}}" type="primary" plain>复制</button>
+    </view>
+    <view class="flex-row txt-m fold-item">
+      <text class="tc-9">公司</text>
+      <text class="side-padding fi-middle">{{pageData.company}}</text>
+      <button bind:tap="copy" data-copy="{{pageData.company}}" type="primary" plain>复制</button>
+    </view>
+    <view class="flex-row txt-m fold-item">
+      <text class="tc-9">地址</text>
+      <text class="side-padding fi-middle">{{pageData.address}}</text>
+      <button bind:tap="copy" data-copy="{{pageData.address}}" type="primary" plain>复制</button>
+    </view>
+  </view>
+  <!-- 分享、保存按钮 -->
+  <view class="flex-row btn-group">
+    <button bind:tap="toggleSharePanel" type="primary" plain>分享名片</button>
+    <button bind:tap="addPhoneContact" type="primary">存入手机通讯录</button>
+  </view>
+  <!-- 浏览者 -->
+  <view class="flex-row side-padding viewer-wrap">
+    <view wx:if="{{pageData.viewers}}" class="viewer-left">
+      <view class=" flex-row viewer-box">
+        <block wx:key="index" wx:for="{{pageData.viewers.items}}">
+          <image mode="aspectFill" src="{{item}}" />
+        </block>
+        <text class="tc-9">...</text>
+      </view>
+      <text class="txt-s tc-9">{{pageData.viewers.count}}浏览</text>
+    </view>
+    <view bind:tap="toggleSupport" class="txt-center viewer-right">
+      <image wx:if="{{pageData.is_supported}}" mode="aspectFill" src="../../assets/img/supported.png" />
+      <image wx:else mode="aspectFill" src="../../assets/img/support.png" />
+      <text class="txt-s tc-9">靠谱</text>
+      <text class="txt-s">{{pageData.support_count}}</text>
+    </view>
+  </view>
+  <view class="side-padding intro-wrap">
+    <view class="wrap-head">
+      <text class="txt-l txt-bold">我的个人简介</text>
+    </view>
+    <view class="p">
+      <text class="txt-m">{{pageData.introduction}}</text>
+    </view>
+    <!-- 音频 需要的话可以封成组件 -->
+    <view wx:if="{{pageData.introduction_audio}}" class="audio">
+      <view bind:tap="audioPlay" class="audio-icon">
+        <image wx:if="{{audioData.playing}}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABJUlEQVRoQ+1Z7Q0BQRScqQAdUQEl6AAV0AE6UIIOKOlUMLJxEjkr+05wuZhN7s/e3vveudl9RM8He24//ssBSTMAizprR5L7T2RQ0hLAtJa1J3mMyg1nQNIGwLohOClLyt8eknYPQbnLWZFM88XRxoEKwKApkWRYRs4aScrMVyRHReuB+B54oSjpmJA8R5Q110gaAzjlvo0GJhw9O5AJszPgPXArC29io1AEww2jhtF8nfhPbBg1mYtgKADDqGHUMJo9u5qN+kwcRFHD6Is7IV+rmI2ajZqNBnHUbNRs1GzUbPSpBtwfaNkf+GWT70JyGEH4NlwotVO3DaH9abMmw+tG970vfCB5iESptEbSHEB60th9pdFdMqKr9+ES6srAkt7eO3AFQMp+QAx/t4cAAAAASUVORK5CYII="
+        />
+        <image wx:else src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5ElEQVRoQ+2Z61HDQAyEdzugE+gA6IAOCB2EDpIOkg5IB6ED6AA6gA6ggsss42M8GTux76lj0P84+k67ks4mGg82nj/+LoBz7gLAPYAbAHuSO4vVGq2Ac+6pA/B5fwB4JLm3BHIKwI0k+tKBvFkACQHweW8ArEl+1QSJAVDeSn5FclsLIhag748HkpJX0UgF4JMWgEBk+CKRGsAnvQKwLeGPXADeH8vc8yMngK+G2q3mRxZ/lADwIBqAAknqj5IAXlaaH8n8URqg33Y1P6L3q1oA/baraR7sj9oAHkSLo/wxey2xAvDrD5LrORPQEkDQ2m4RoO8Pyerk2m4ZYNLa3gKAQFSF2yGTtwIgCA2/5bHBWwLYkVy0CvCttyNDhm6hAp8A7sa6kWUAnfqGpC5Ho2EVQEueLkNnVwtrAK9d4pPfOVkBkM61XmupmxW1AX503mn9rFyGyGoCSOc69agrZg2A907nwZeYfiVKAkgu6iyzdW6hjeqSop4epPOaAM/dqUfpvAaA2uIi5rI+tZem9oB0rs6i1lgkUgLoG4GST67z3BKaPf5TliamAtK52mLVj34hAJPW3JSnHCohTcrrox9PXnMtAFwB0NS8BKB+rkGUZPynhBuVUMo/yfmsf4Ccpzvl2QcWd/sxQNmsCgAAAABJRU5ErkJggg=="
+        />
+      </view>
+      <view class="audio-right">
+        <view class="audio-name">
+          <text>{{pageData.introduction_audio.title}}</text>
+        </view>
+        <view class="audio-progress-box">
+          <view style="{{'width: ' + audioData.progress}}" class="audio-progress"></view>
+        </view>
+        <view class="audio-time">
+          <text>{{audioData.time}}</text>
+          <text>{{pageData.introduction_audio && pageData.introduction_audio.total_time ? pageData.introduction_audio.total_time : audioData.total}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="side-padding intro-wrap">
+    <view class="wrap-head">
+      <text class="txt-l txt-bold">公司视频简介</text>
+    </view>
+    <!-- 视频 需要的话可以封成组件 -->
+    <video class="myVideo" src="{{pageData.video_url}}" enable-danmu danmu-btn controls></video>
+  </view>
+  <!-- 印象标签 -->
+  <view wx:if="{{pageData.tags}}" class="side-padding intro-wrap">
+    <view class="wrap-head">
+      <text class="txt-l txt-bold">我的印象标签</text>
+    </view>
+    <view class="flex-row tags">
+      <view id="{{index}}" wx:key="index" wx:for="{{pageData.tags}}" class="tag">
+        <text class="tag-title">{{item.name}}</text>
+        <!--<text class="txt-l tag-num">{{item.count}}</text>-->
+      </view>
+    </view>
+  </view>
+  <!-- 我的业务 -->
+  <view class="photos-wrap">
+    <view class="wrap-head">
+      <text class="txt-l txt-bold">我的业务</text>
+    </view>
+    <block wx:if="{{pageData.photos}}" wx:key="index" wx:for="{{pageData.photos}}">
+      <image class="photo" mode="widthFix" src="{{item}}" />
+    </block>
+  </view>
+  <!-- share panel -->
+  <view wx:if="{{showSharePanel}}" class="mask-transparent">
+    <view bind:tap="toggleSharePanel" class="mask"></view>
+    <view class="share-panel">
+      <view class="flex-row panel-main">
+        <button open-type="share" class="flex-row sp-item">
+          <image src="../../assets/img/i-wechat.png" />
+          <text class="txt-s">微信好友</text>
+        </button>
+        <view bind:tap="navToPoster" class="flex-row sp-item">
+          <image src="../../assets/img/i-timelines.png" />
+          <text class="txt-s">名片海报</text>
+        </view>
+      </view>
+      <view bind:tap="toggleSharePanel" class="txt-center sp-cancel">
+        <text class="txt-s">取消</text>
+      </view>
+    </view>
+  </view>
+  <!-- 沟通 -->
+  <view wx:if="{{openTalk == 1}}">
+    <view class="getPhone_container txt-center i-message-box">
+      <button class='getPhone_button' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{phoneNumber == 'null'}}">
+        {{phoneNumber}}
+      </button>
+      <image src="../../assets/img/message.png" bindtap='gotoMessage'></image>
+      <text class="txt-s tc-9" bindtap='gotoMessage'>沟通</text>
+    </view>
+
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,highLightIndex:highLightIndex}}"></template>

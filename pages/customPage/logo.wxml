@@ -1,0 +1,11 @@
+  <view class="header-box">
+    <view class="header gridXb">
+    <view class="menu-btn tc" catchtap="navShow">
+        <text class="iconfont icon-apps f18" style='color: {{__wechat_main_color}};'></text>
+      </view>      
+      <!--logo-->
+      <view class="logo">
+        <image src="{{setting.logo}}" alt="logo" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>

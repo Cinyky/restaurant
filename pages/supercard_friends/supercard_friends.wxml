@@ -1,0 +1,70 @@
+<!--pages/timelines/timelines.wxml-->
+<view bindtap="pageClick" class="page-wrapper">
+  <!-- 一条动态 -->
+  <view wx:for="{{pageData}}" wx:key="id || {{index}}" class="flex-r state-item">
+    <image lazy-load class="s-avatar" mode="aspectFill" src="{{item.photo}}"></image>
+    <view class="s-right">
+      <view class="flex-r s-top">
+        <text class="t-h2 tc1">{{item.name}}</text>
+        <view class="flex-r t-sub st-right">
+          <text class="t-s tc-l s-mark">{{item.tag}}</text>
+          <button open-type="share" id="btnShare{{index}}" size="mini" class="tc1 t-sub sbtn-share">转发</button>
+        </view>
+      </view>
+      <view bindtap="sClick" id="sContent{{index}}" class="flex-r t-m s-content">
+        <image lazy-load class="sc-img" mode="aspectFill" src="{{item.content.img}}"></image>
+        <text>{{item.content.text}}</text>
+      </view>
+      <view class="flex-r t-sub tc-l s-below">
+        <text>{{item.time}}</text>
+        <!-- 点击出现【赞、评论】面板 -->
+        <text catchtap="showOperate" id="opEntry{{index}}" class="iconfont icon-liuyan t-h2 tc1"></text>
+        <view class="flex-r t-s tc-f op-box {{showOperate === index ? 'op-box-show' : ''}}">
+          <view catchtap="bindSupport" class="op-item">
+            <text class="iconfont icon-xin"></text>
+            <text>赞</text>
+          </view>
+          <view catchtap="iWantComment" class="op-item">
+            <text class="iconfont icon-pinglun"></text>
+            <text>评论</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{item.supports.length > 0 || item.comments.length > 0}}" class="t-m tc1 s-extras">
+        <block wx:if="{{item.supports.length > 0}}">
+          <view class="s-support">
+            <text class="iconfont icon-xin"></text>
+            <block wx:for="{{item.supports}}" wx:for-item="support" wx:for-index="sptIndex" wx:key="{{sptIndex}}">
+              <text>{{sptIndex > 0 ? ('，' + support) : support}}</text>
+            </block>
+          </view>
+          <view class="s-hr"></view>
+        </block>
+        <block wx:if="{{item.comments.length > 0}}">
+          <view wx:for="{{item.comments}}" wx:for-item="comment" wx:for-index="comtIndex" wx:key="{{comtIndex}}" class="s-comment">
+            <view class="sc-item">
+              <text>{{comment.name}}：</text>
+              <text class="tc-0">{{comment.content}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- loading -->
+  <view class="t-center sideline">
+    <view class="t-m tc-l sideline-m">
+      <text wx:if="{{lText}}"> {{lText}} </text>
+      <view wx:else class="sideline-dot"></view>
+    </view>
+  </view>
+</view>
+<!-- 评论框 -->
+<view wx:if="{{showCommentInput}}" class="bs ci-container">
+  <form bindsubmit="bindComment">
+    <view class="flex-r ci-box">
+      <input name="comment" focus="{{comtInputFocus}}" value="{{commentInputValue}}" class="comment-input" />
+      <button catchtap="" size="mini" type="primary" form-type="submit">发送</button>
+    </view>
+  </form>
+</view>

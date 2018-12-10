@@ -1,0 +1,92 @@
+@import "../../../__wuBaseWxss__/2.wxss";
+
+@import "../../../__wuBaseWxss__/0.wxss";
+
+.top-bar {
+    background-color: #fff;
+    position: relative;
+    padding-left: 22rpx;
+}
+
+.bar-list {
+    width: 50%;
+}
+
+.bar-item {
+    padding: 24rpx 0;
+}
+
+.item-active {
+    border-bottom-width: 1rpx;
+    border-bottom-style: solid;
+}
+
+.edit-box {
+    position: absolute;
+    top: 24rpx;
+    right: 30rpx;
+}
+
+.complete {
+    display: none;
+}
+
+.item-outter-box {
+    position: relative;
+    background-color: #fff;
+}
+
+.edit-icon-box {
+    position: absolute;
+    top: calc(50% - 11px);
+    left: 22rpx;
+    z-index: 100;
+}
+
+.estate-list {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.checked-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1rpx solid #d5d5d5;
+}
+
+.item-traslate {
+    transition: transform 0.3s linear;
+    transition: transform 0.3s linear,-webkit-transform 0.3s linear;
+    transform: translate(60rpx);
+}
+
+.estate-item {
+    position: relative;
+    z-index: 10;
+}
+
+.price-cou-unt {
+    position: absolute;
+    bottom: 24rpx;
+    right: 30rpx;
+    z-index: 50;
+}
+
+.cancel-box {
+    position: fixed;
+    bottom: 0;
+    padding-left: 30rpx;
+    background-color: #fff;
+}
+
+.check-all {
+    align-items: center;
+}
+
+.cancel-btn {
+    width: 30%;
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #fff;
+}

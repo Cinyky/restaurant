@@ -1,0 +1,242 @@
+<block wx:if="{{empty_cart}}">
+  <!--暂无内容提示 start-->
+  <view class="no-content tc">
+    <text class="no-content-icon iconfont icon-yemianwuneirong"></text>
+    <view class="no-content-font">购物车暂无商品</view>
+  </view>
+  <!--暂无内容提示 end-->
+</block>
+<block wx:else>
+  <!--地址选择（wm类型才选择地址）-->
+  <block wx:if="{{type==1}}">
+    <block wx:if="{{address}}">
+      <view class="adress line gridXb" bindtap="select_address_bind">
+        <view>
+          <text class="red mr10 iconfont icon-peoplefill"></text> {{address.userName}}
+          <text class="ml15">{{address.telNumber}}</text>
+        </view>
+        <view class="grey">
+          <text class="red mr10 f16 iconfont icon-locationfill"></text>
+          <text>{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</text>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="addadress gridXb" bindtap="select_address_bind">
+        <text class="red f16 mr10 iconfont icon-add"></text>
+        <text>选择收货地址</text>
+      </view>
+    </block>
+  </block>
+  <!--菜品列表-->
+  <view class="ress-c mt10 clearfix">
+    <view class="ress-c-i flex gridXb">
+      <view class="ress-cl f16 sub">
+        <text class="iconfont icon-shop green" style="color:{{main_color}}"></text> 菜品列表
+      </view>
+      <view class="ress-cr linght"></view>
+    </view>
+    <block wx:for="{{cart}}" wx:for-item="cart_item">
+      <view class="ress-c-i flex gridXb">
+        <view class="ress-cl f16">
+          <view>{{cart_item.prod.name}}</view>
+          <view class="linght f12">{{cart_item.sp.name}}</view>
+        </view>
+        <view class="ress-cc sub">
+          <text class="iconfont icon-close linght"></text> {{cart_item.num}}
+        </view>
+        <view class="ress-cr linght">￥{{cart_item.sp.price*cart_item.num}}</view>
+      </view>
+    </block>
+  </view>
+  <!--备注信息输入-->
+  <view class="ress-c mt10">
+    <view class="ress-c-i flex">
+      <view class="ress-name f16">
+        <text>备注：</text>
+      </view>
+      <view class="sub">
+        <textarea value="{{remark}}" class="ress-c-tt f16" auto-height name="post_info" bindinput="input_beizhu"/>
+      </view>
+    </view>
+  </view>
+  <view class="ress-c mt10 clearfix">
+    <view class="ress-c-i flex gridXb">
+      <view class="ress-cl green f18 sub">
+      </view>
+      <view class="ress-cr">
+        总计：￥{{cart_price}}
+      </view>
+    </view>
+    <view class="mt10 mb10 f12">
+      <block wx:if="{{type==1}}">
+        <view class="juan-list flex">
+          <text class="redbg write mr5">餐</text>
+          <text class="grey sub">打包费</text>
+          <text class="red f14">+￥{{total_pkg_price}}</text>
+        </view>
+        <view class="juan-list flex">
+          <text class="redbg write mr5">配</text>
+          <text class="grey sub">配送费</text>
+          <text class="red f14">+￥{{wm_price}}</text>
+        </view>
+      </block>
+      <block wx:if="{{first_discount}}">
+        <view class="juan-list flex">
+          <text class="greenbg write mr5">新</text>
+          <text class="grey sub">新用户首单</text>
+          <text class="red f14">-￥{{first_discount_price}}</text>
+        </view>
+      </block>
+      <block wx:if="{{full_discount}}">
+        <view class="juan-list flex">
+          <text class="orangebg write mr5">满</text>
+          <text class="grey sub">{{full_discount_name}}</text>
+          <text class="red f14">-￥{{full_discount_price}}</text>
+        </view>
+      </block>
+      <view class="juan-list flex" bindtap="go_select_dai_bind">
+        <text class="redbg write mr5">劵</text>
+        <text class="grey sub">优惠券</text>
+        <text class="red f14">{{coupon_name}}{{coupon_discount>0?' -￥'+coupon_discount:''}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 浮动购物车 start-->
+  <view class="ress-c-b">
+    <view class="ress-float gridXt flex">
+      <view class="float-price sub">
+        <view class="price-count f20 red" style="color:{{main_color}}">
+          <text>￥{{total_price2}}</text>
+        </view>
+      </view>
+      <view class="float-btn">
+        <view class='order_show_payMethod' bindtap='show_payMethod'>
+          立即支付
+        </view>
+        <!-- <form bindsubmit="formSubmit" report-submit="{{true}}">
+        <button type="primary" class="float-btn-s" formType="submit" style="background: {{main_color}};">立即支付</button>
+        </form> -->
+      </view>
+    </view>
+  </view>
+  <!-- 浮动购物车 end-->
+
+  <!-- 支付方式 -->
+  <view class='order_fixed_payMethod_container' wx:if="{{show_payMethod}}" bindtap='hide_payMethod'>
+    <view class='order_fixed_payMethod_content'>
+      <view class='order_payMethod_money_content' wx:if="{{setting.pay_ye==1}}">
+        <form bindsubmit="payMethod_Submit" report-submit="{{true}}">
+          <button hover-class='button-hover-bg-h' type="primary" formType="submit">余额支付</button>
+          <!-- <text class='order_payMethod_money_text' bindtap='payMethod_Submit'></text> -->
+        </form>
+      </view>
+      <view class='order_payMethod_wechat_content' wx:if="{{setting.pay_wx==1 || setting.pay_ye!=1 && setting.pay_wx!=1}}">
+        <form bindsubmit="formSubmit" report-submit="{{true}}">
+          <button hover-class='button-hover-bg-h' type="primary" formType="submit">微信支付</button>
+        </form>
+      </view>
+    </view>
+  </view>
+
+  <!-- 支付方式 -->
+
+  <!--支付方式选择 start-->
+  <view class="floatBox fbox" wx:if="{{select_pay_type}}">
+    <view class="fxz">
+      <view class="f18 tc">请选择支付方式
+        <view class="f18 mt20 red">￥
+          <text class="f36">{{all_g_price}}</text>
+        </view>
+      </view>
+      <radio-group class="mt15 f16" name="dish_pay_type" bindchange="radioChange">
+        <block wx:for="{{food_payn}}" wx:for-index="p_idx" wx:for-item="p_item">
+          <label class="fxz-item gridXb">
+            <radio value="{{p_idx}}"></radio>
+            <text class="ml10">{{p_item}}</text>
+          </label>
+        </block>
+      </radio-group>
+      <input type="text" name="dish_table_id" value="{{this_table_id}}" style="display:none;"/>
+      <button type="primary" class="mt20" disabled="{{btn_submit_disabled}}" loading="{{submitIsLoading}}" catchtap='rightpayfo'>立即支付</button>
+    </view>
+    <view class="fbg" bindtap="go_select_paytype_bind"></view>
+  </view>
+  <!--支付方式选择 end-->
+  <!--选择代金券-->
+  <view wx:if="{{is_show_quan_layer}}">
+    <scroll-view class="daijinjuan" scroll-y="true">
+      <view class="zh-title-box">
+        <view class="zh-title tc gridXb">
+          <text>请选择代金券</text>
+          <text class="fr grey f16 iconfont icon-roundclose" bindtap="go_select_dai__hide_bind"></text>
+        </view>
+      </view>
+      <view class="nonsue tc" bindtap="quan_select_one_bind" data-id="0">
+        <label> 不使用代金券
+          <radio></radio>
+        </label>
+      </view>
+      <!--暂无内容提示 start-->
+      <block wx:if="{{couponList.length==0}}">
+        <view class="no-content tc">
+          <text class="no-content-icon iconfont icon-yemianwuneirong"></text>
+          <view class="no-content-font">暂无可用代金券</view>
+        </view>
+      </block>
+      <!--暂无内容提示 end-->
+      <block wx:else>
+        <block wx:for="{{couponList}}" wx:for-item="cp">
+          <block wx:if="{{cp.coupon.min_price<=cart_price}}">
+            <view class="canuse">
+              <view class="dollar-item" bindtap="quan_select_one_bind" data-id="{{cp.id}}" data-price="{{cp.coupon.coupon_discount}}" data-name="{{cp.coupon.name}}">
+                <view class="top write">
+                  <view class="status tc f18">{{cp.coupon.name}}</view>
+                  <view class="money-msg f16 fr">¥
+                    <text class="money">{{cp.coupon.coupon_discount}}</text>
+                  </view>
+                </view>
+                <view class="bottom flex">
+                  <view class="grey sub">
+                    <view>
+                      <text class="iconfont icon-time mr10 linght"></text> 有效期至：{{cp.endtime}}
+                    </view>
+                    <view>
+                      <text class="iconfont icon-info mr10 linght linetext"></text> 满{{cp.coupon.min_price}}元可用
+                    </view>
+                  </view>
+                  <view class="status-usebtn tc fr">使用</view>
+                </view>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="canuse">
+              <view class="dollar-item not_use">
+                <view class="top write">
+                  <view class="status tc f18">{{cp.coupon.name}}</view>
+                  <view class="money-msg f16 fr">¥
+                    <text class="money">{{cp.coupon.coupon_discount}}</text>
+                  </view>
+                </view>
+                <view class="bottom flex">
+                  <view class="grey sub">
+                    <view>
+                      <text class="iconfont icon-time mr10 linght"></text> 有效期至：{{cp.endtime}}
+                    </view>
+                    <view>
+                      <text class="iconfont icon-info mr10 linght linetext"></text> 满{{cp.coupon.min_price}}元可用
+                    </view>
+                  </view>
+                  <view class="status-usebtn tc fr">不可用</view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </block>
+      </block>
+    </scroll-view>
+    <view class="floatBox floatBoxBg" style="display:block;" bindtap="go_select_dai__hide_bind"></view>
+  </view>
+</block>

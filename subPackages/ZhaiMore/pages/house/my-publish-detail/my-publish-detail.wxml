@@ -1,0 +1,22 @@
+<view class="top-pic">
+    <image mode="aspectFill" src="../../../images/2.jpg"></image>
+</view>
+<view class="estate-desc">
+    <view class="estate-feature">市政府旁地铁房双学区房</view>
+    <view class="estate-position grey f12">
+        <text class="estate-name mr10">奥林清华</text>
+        <text class="estate-address">东区吴江市—松陵</text>
+    </view>
+    <view class="estate-price mt10">
+        <text class="price-count red mr5">185</text>
+        <text class="price-unit grey f12">万元</text>
+        <text class="grey f14 fr">{{10}}分钟前</text>
+    </view>
+</view>
+<view class="footerBox flex gridXt">
+    <button plain class="counter-btn gridFourRadio" size="mini" type="warn">置顶</button>
+    <button plain class="counter-btn gridFourRadio" size="mini" type="warn">刷新</button>
+    <button plain class="counter-btn gridFourRadio" size="mini" type="warn">修改</button>
+    <button plain class="counter-btn gridFourRadio" size="mini" type="warn">删除</button>
+    <button plain class="counter-btn gridFourRadio" size="mini" type="warn">更多</button>
+</view>

@@ -1,0 +1,31 @@
+<view class="page_wrapper">
+  <view class="order_item" wx:for="{{orderList}}" wx:for-item="order" wx:for-index="orderIdx" wx:key="{{order.id}}">
+    <view class="order_header">{{order.kf.name}}</view>
+    <view class="order_body">
+      <view class="order_left">
+        <view class="order_tc_name">{{order.tc_name}}</view>
+        <view>
+          {{order.num}}间，可住{{order.kf.volume}}人|{{order.kf.area}}m²{{order.kf.have_window==1&&order.kf.show_window==1?'|有窗':''}}{{order.kf.have_zc==1&&order.kf.show_zc==1?'|含早':''}}{{order.kf.have_wifi==1&&order.kf.show_wifi==1?'|wifi':''}}
+        </view>
+        <view>预定时间：{{order.sdate}} 至 {{order.edate}}</view>
+        <view>{{order.is_ruzhu==0?'未入住':(order.is_ruzhu==1?'已入住':'已退房')}}</view>
+      </view>
+      <view class="order_right">
+        <view class="order_price" style="color: {{__wechat_main_color}};">￥{{order.total_price}}</view>
+        <view class="pay_status" style="color: {{__wechat_main_color}};">
+          {{order.is_refund==1?'已退款':(order.is_pay==1)?'已支付':'未支付'}}
+        </view>
+      </view>
+    </view>
+    <view class="order_foot">
+      <button data-id="{{order.id}}" bindtap="payOrder" wx:if="{{order.is_pay==0}}">支付</button>
+      <button data-id="{{order.id}}" bindtap="delOrder" wx:if="{{order.is_pay==0}}">删除订单</button>
+      <button data-id="{{order.id}}" bindtap="doRefund" wx:if="{{order.is_pay==1 && order.is_ruzhu==0 && order.is_refund==0}}">
+        取消预定
+      </button>
+      <button data-id="{{order.id}}" bindtap="doComment" wx:if="{{order.is_pay==1 && order.is_ruzhu!=0 && !order.is_comment}}">
+        评价
+      </button>
+    </view>
+  </view>
+</view>

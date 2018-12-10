@@ -1,0 +1,16 @@
+page {
+  background-color: #F7F7F7;
+}
+.my-canvas {
+  margin: 0 auto;
+  background-color: #F7F7F7;
+}
+button {
+  font-size: 32rpx;
+  width: 660rpx;
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  left: 45rpx;
+  bottom: 10px;
+}

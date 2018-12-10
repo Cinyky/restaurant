@@ -1,0 +1,42 @@
+.article-01{display: flex; flex-direction: row;flex-wrap:wrap; padding:  10rpx}
+.article-01 .article-item{width: 100%; }
+.article-01 .article-item image{width:100%}
+.article-01 .article-item .article-item-inner{margin: 8rpx; border: 1px solid #ececec; overflow: hidden}
+.article-01 .tit{font-size: 13px; color: #4a4a4a; height: 28px; padding: 10rpx;overflow: hidden;display: block}
+.article-01 .mon{padding: 0px 5px; padding-bottom: 6px; font-size: 14px; color: #4a4a4a;display: block}
+.article-01 .DListT_1{display:none}
+
+.article-02{display: flex; flex-direction: column}
+.article-02 .article-item{margin:0 15rpx}
+.article-02 .article-item-inner{padding: 20rpx 0rpx; margin: 0 18rpx; height: 160rpx; border-bottom:1px solid #b2b2b2;}
+.article-02 image{width: 249rpx;height: 160rpx;  float: right; margin-left: 10rpx;}
+.article-02 .tit{font-size: 13px; color: #333;display: block;line-height:20px;height:22px;overflow: hidden;}
+.article-02 .mon{display: block;height:55px;overflow: hidden; bottom:40rpx; right: 180rpx;font-size: 12px; color: #4a4a4a;}
+
+.article-03{display: flex; flex-direction: column}
+.article-03 .article-item{margin:0 15rpx}
+.article-03 .article-item-inner{padding: 20rpx 0rpx; margin: 0 18rpx; height: 160rpx; position: relative;border-bottom:1px solid #b2b2b2;}
+.article-03 image{width: 249rpx;height: 160rpx;  float: left; margin-right: 10rpx;}
+.article-03 .tit{font-size: 13px; color: #333;display: block;line-height:20px;height:22px;overflow: hidden;}
+.article-03 .mon{display: block;height:55px;overflow: hidden; bottom:40rpx; font-size: 12px; color: #4a4a4a;}
+
+.article-04{display: flex; flex-direction: row;flex-wrap:wrap; padding:  10rpx; }
+.article-04 .article-item{width: 50%; }
+ .article-04 .article-item image{width:100%} 
+.article-04 .article-item .article-item-inner{margin: 8rpx;  overflow: hidden;position: relative}
+.article-04 .tit{font-size: 13px;color: #fff; height: 10px; padding: 10rpx; padding-top:6px; overflow: hidden;display: block; text-align: left}
+.article-04 .mon{padding: 0px 5px; font-weight: bold; padding-top: 4px;padding-bottom: 4px; font-size: 14px; color: #fff;display: block ;text-align: left;width:100%;}
+.article-04 .article-item-inner view{overflow: hidden;position: absolute;bottom: 0; height: 25px; background: rgba(0,0,0,.5);width:100%;}
+.article-04 .DListM_4{display:none}
+
+.article-05{overflow:hidden;width:99%}
+.article-05 .article-item{float:left;display:inline-block;width:99%;-webkit-box-sizing:border-box;background:#fff;border-bottom: 1px dashed #ccc;padding:0 5px}
+.article-05 .DListT_6{float:left;width:99%;}
+.article-05 .tit{font-size:12px;color:#4a4a4a;line-height:22px;height:22px;overflow:hidden;overflow:hidden}
+.article-05 .DLiR_6{line-height:22px;height:22px;font-size:12px;color:#4a4a4a;display:none;text-align:right;overflow:hidden;width:25%}
+
+.article-06{overflow:hidden;width:99%}
+.article-06 .article-item{float:left;display:inline-block;width:99%;-webkit-box-sizing:border-box;background:#fff;border-bottom: 1px dashed #ccc;}
+.article-06 .DListT_6{float:left;width:70%;padding: 0 5px}
+.article-06 .tit{font-size:12px;color:#4a4a4a;line-height:22px;height:22px;overflow:hidden;overflow:hidden}
+.article-06 .DLiR_6{line-height:22px;height:22px;font-size:12px;color:#4a4a4a;display:block;text-align:right;overflow:hidden;width:25%}

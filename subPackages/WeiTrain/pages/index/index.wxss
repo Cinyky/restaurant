@@ -1,0 +1,149 @@
+@import "/tpl/template-menu/template-menu.wxss";
+
+/*.my{*/
+
+/*margin-right: 2%;*/
+
+/*border:1rpx;*/
+
+/*height: 100rpx;*/
+
+/*width: 100rpx;*/
+
+/*border-radius:50%;*/
+
+/*display: flex;*/
+
+/*justify-content: center;*/
+
+/*align-items: center;*/
+
+/*background: #312E43;*/
+
+/*color: white;*/
+
+/*z-index: 100;*/
+
+/*position: fixed;*/
+
+/*margin-left:80%;*/
+
+/*margin-top:1000rpx;*/
+
+/*}*/
+
+/*轮播图*/
+
+.pics {
+  margin: 2%;
+}
+
+.pics image {
+  width: 100%;
+}
+
+/*地点*/
+
+.addr {
+  height: 150rpx;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  margin-top: 4%;
+  margin-left: 2%;
+}
+
+.right {
+  margin-top: 4%;
+}
+
+.add {
+  font-size: 25rpx;
+  color: #adadad;
+}
+
+/*菜单*/
+
+.iconView {
+  padding: 0 2%;
+  height: 200rpx;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  font-size: 30rpx;
+}
+
+/*四图标*/
+
+.icon1, .icon2, .icon3, .icon4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*精品课程*/
+
+.lessonView {
+  margin: 40rpx 2% 20rpx 2%;
+}
+
+.daohang {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 30rpx;
+  margin: 2% 0;
+}
+
+/*单课程*/
+
+.singleView {
+  padding: 2%;
+  background: white;
+  display: flex;
+  justify-content: left;
+  margin-bottom: 2%;
+}
+
+.detailText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.yuyueView text {
+  padding: 10rpx;
+  background: #1ca27e;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  margin-left: 270rpx;
+  color: white;
+}
+
+/*视频实录*/
+
+.videoView {
+  margin: 40rpx 2% 20rpx 2%;
+}
+
+/*单视频*/
+
+.singleVideo {
+  background: white;
+  width: 100%;
+  font-size: 30rpx;
+}
+
+.videoCenter video {
+  width: 100%;
+  height: 500rpx;
+}
+
+.videoText {
+  margin-left: 15rpx;
+  margin-bottom: 10rpx;
+}

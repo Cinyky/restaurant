@@ -1,0 +1,27 @@
+.zhct_wrapper{
+  display: flex;
+  padding: 20rpx;
+  background: #fff;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.zhct_wrapper view{
+  width: 100rpx;
+  height: 100rpx;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.zhct_ct{
+  background: #ff6666;
+}
+.zhct_dc{
+  background: #ffc341;
+}
+.zhct_wm{
+  background: #09bb07;
+}

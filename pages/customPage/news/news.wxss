@@ -1,0 +1,18 @@
+@import "/tpl/template-menu/template-menu.wxss";
+@import "/utils/customPage.wxss";
+@import "../header.wxss";
+
+/****新闻******/
+.section-News .section-tit{padding: 50rpx 0rpx 20rpx}
+.section-News .setction-img{width:200rpx;height:200rpx;padding-bottom:0; position: relative;}
+.section .setction-img image{display: block;position: absolute;top: 0rpx;left: 0rpx;}
+
+.section-News .setction-title{display:block;font-weight: bold;font-size: 34rpx;}
+.section-News .section-text{display:-webkit-box;-webkit-box-align: center;}
+.section-News .section-empty{width: 100%;}
+.section-News .section-li{width: 100%;margin-left: 0%;}
+.section-News .section-li:active{background: rgba(0,0,0,0.03);}
+.section-News .section-li:last-child::before{ display: none;}
+.section-News .setction-info{padding-top: 10rpx; line-height: 140%;}
+.section-News .setction-time{color:#d3d2d2;padding-top: 16rpx;display: inline-block;}
+.section-News .section-item .section-text{padding: 0rpx 0rpx 0rpx 30rpx;}

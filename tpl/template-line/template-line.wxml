@@ -1,0 +1,11 @@
+<template name="line_01">
+  <view class="line-container line-01" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'> </view>
+</template>
+
+<template name="line_02">
+  <image src='http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/line-02.png' class='line-02' style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'></image>
+</template>
+
+<template name="line_03">
+  <view class="line-container line-03" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'> </view>
+</template>

@@ -1,0 +1,94 @@
+@import "/tpl/template-menu/template-menu.wxss";
+@import "/utils/my_iconfont.wxss";
+
+page{
+  height: 100%;
+  background: #fff;
+  font-size: 30rpx;
+  color: #000;
+  overflow: hidden;
+}
+.page_wrapper{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+}
+.btn_return{
+  background: rgba(0,0,0,0.3);
+  width: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80rpx;
+  border-bottom-right-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+}
+.userinfo_box{
+  margin-top: 50rpx;
+  text-align: center;
+}
+.head_img{
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+}
+.user_nickname{
+  margin-top: 30rpx;
+  font-size: 38rpx;
+}
+.action_box{
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 30rpx;
+}
+.restart_box{
+  position: relative;
+}
+.restart_btn{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100rpx;
+  border-radius: 50rpx;
+}
+.tip_text{
+  margin-left: 50rpx;
+  margin-top: 10rpx;
+  font-size: 26rpx;
+}
+.btn_group{
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+}
+.btn_group button{
+  width: 50%;
+  margin: 10rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  background: none;
+  color: #fff;
+  height: 80rpx;
+  border-radius: 40rpx;
+  border: 1rpx solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_group button::after{
+  display: none;
+}
+.num_badge{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  background: -webkit-gradient(linear,0 0 , 0 bottom,from(#fc7373),to(#f35251));
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  top: -20rpx;
+  right: -20rpx;
+}

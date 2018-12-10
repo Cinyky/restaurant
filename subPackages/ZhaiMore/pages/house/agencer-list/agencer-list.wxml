@@ -1,0 +1,22 @@
+<import src="/wxParse/wxParse.wxml" />
+<view class="" wx:if="{{agentList != ''}}">
+    <view catchtap="navigateTo" class="agencer-box flex mt15" data-id="{{item.id}}" wx:for="{{agentList}}" wx:key="{{item.id}}" style="display: flex">
+        <image class="agencer-avator mr10" mode="aspectFill" src="{{item.pic}}"></image>
+        <view class="agencer-info  sub gridYr">
+            <view>{{item.nickname}}</view>
+            <!--<view class="grey lineText2 f14">-->
+                <!--<template is="wxParse" data="{{wxParseData:info.nodes}}" />-->
+            <!--</view>-->
+        </view>
+        <view catchtap="makePhoneCall" class="tel tc" data-mobile="{{item.phone}}" style="display:flex;justify-content: center;flex-direction: column;align-items: center">
+            <view class="iconfont icon-dianhua1"></view>
+            <text class="f14">电话咨询</text>
+        </view>
+    </view>
+</view>
+<view wx:else>
+    <include src="../template/nodata.wxml"></include>
+</view>
+<view hidden="{{!isShowLoading}}">
+    <include src="../template/loading.wxml"></include>
+</view>

@@ -1,0 +1,19 @@
+.topic-01{height: 220rpx; display: flex;flex-direction:row }
+.topic-01 image{height: 220rpx; width: 450rpx;}
+.topic-01 .topic-font{width:450rpx;position: relative}
+.topic-01 .topic-font text{display: block!important; position: absolute; padding: 30rpx; color: #333; font-size: 14px; line-height: 1.5; top: 50%; transform:translateY(-50%); }
+
+.topic-02{height: 220rpx; display: flex;flex-direction:row }
+.topic-02 image{height: 220rpx; width: 300rpx;}
+.topic-02 .topic-font{width:450rpx;position: relative}
+.topic-02 .topic-font text{display: block!important; position: absolute; padding: 30rpx; color: #333; font-size: 14px; line-height: 1.5; top: 50%; transform:translateY(-50%); }
+
+.topic-03{height: 220rpx; display: flex;flex-direction:row-reverse }
+.topic-03 image{height: 220rpx; width: 300rpx;}
+.topic-03 .topic-font{width:450rpx;position: relative;background: #ff5367}
+.topic-03 .topic-font text{display: block!important; position: absolute; padding: 30rpx; color: #fff; font-size: 14px; line-height: 1.5; top: 50%; transform:translateY(-50%); }
+
+.topic-04{height: 220rpx; display: flex;flex-direction:row ;background-color:#fff;}
+.topic-04 image{height: 220rpx; width: 300rpx;}
+.topic-04 .topic-font{width:450rpx;position: relative; background: #dee0df;}
+.topic-04 .topic-font text{display: block!important; position: absolute; padding: 30rpx;  font-size: 14px; line-height: 1.5; top: 50%; transform:translateY(-50%); }

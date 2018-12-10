@@ -1,0 +1,249 @@
+@import "../../../__wuBaseWxss__/2.wxss";
+
+@import "../../../__wuBaseWxss__/0.wxss";
+
+
+/*加入按钮*/
+.livein{
+    margin-right: 2%;
+    border:1rpx;
+    height: 100rpx;
+    width: 100rpx;
+    border-radius:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #312E43;
+    color: white;
+    z-index: 100;
+    position: fixed;
+    margin-left:80%;
+}
+
+.search-box {
+    padding: 20rpx;
+}
+
+.search-box-inner {
+    background-color: #fff;
+    align-items: center;
+    border-radius: 6rpx;
+    overflow: hidden;
+}
+
+.picker {
+    color: #666;
+    padding: 0 24rpx;
+    white-space: nowrap;
+}
+
+.search-box-inner>.search-input {
+    height: 80rpx;
+    padding-left: 16rpx;
+    border-left: 1rpx solid #ededed;
+}
+
+.search-box-inner>.icon-search {
+    color: #fff;
+    font-size: 50rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 0 6rpx 6rpx 0;
+    padding: 0 30rpx;
+}
+
+.search-box-inner>.icon-search::after {
+    display: none;
+}
+
+.tab-list {
+    color: #666;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 40rpx 24rpx;
+    display: flex;
+}
+
+.tab-item {
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.tab-item image {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+}
+
+.shade_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+}
+
+.whiteShade_bg {
+    position: fixed;
+    bottom: -2rpx;
+    padding-top: 50rpx;
+    padding-bottom: 50rpx;
+    z-index: 200;
+    width: 100%;
+    background-color: #fff;
+}
+
+.tanBox {
+    width: auto;
+    margin: 0 15%;
+}
+
+.tanItem {
+    display: inline-block;
+    width: 40%;
+    margin: 30rpx 5%;
+    padding-top: 18rpx;
+}
+
+.tanItemIcon {
+    width: 100rpx;
+    height: 100rpx;
+    margin-bottom: 10rpx;
+}
+
+.tanItem:active {
+    background-color: rgba(243,81,80,0.3);
+}
+
+.closeBtn {
+    position: absolute;
+    top: 20rpx;
+    right: 30rpx;
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+}
+
+.closeBtn::before,.closeBtn::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40rpx;
+    height: 4rpx;
+    background-color: #666;
+}
+
+.closeBtn::before {
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+
+.closeBtn::after {
+    transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+.closeBtn:active {
+    background-color: rgba(243,81,80,0.3);
+}
+
+.show {
+    animation: show 0.3s linear forwards;
+}
+
+@-webkit-keyframes show {
+    0% {
+        transform: translatY(0%);
+    }
+
+    1% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: translatY(0%);
+    }
+
+    1% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.houList {
+    background-color: #fff;
+}
+
+.houItem {
+    padding: 30rpx;
+}
+
+.itemLf {
+    position: relative;
+    width: 180rpx;
+    height: 180rpx;
+}
+
+.houPic {
+    width: 100%;
+    height: 100%;
+}
+
+.houLabel {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 60%;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10rpx;
+    color: #fff;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.itemRg {
+    position: relative;
+    margin-top: -8rpx;
+}
+
+.houTit {
+    color: #333;
+}
+
+.houDesc {
+    line-height: 32rpx;
+}
+
+.houTyp {
+    color: #999;
+    justify-content: space-between;
+}
+
+.houTyp .gridFour {
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 10rpx;
+}
+
+.houTyp .gridFour::before {
+    border-color: #999;
+}
+
+.itemRg .htRg {
+    text-align: right;
+}

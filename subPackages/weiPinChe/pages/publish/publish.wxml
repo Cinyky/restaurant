@@ -1,0 +1,186 @@
+<view class="page">
+  <!--导航按钮-->
+  <view class="mgt30">
+    <view class="btn-group">
+      <view class="btn-container width80">
+        <view class="radius-left {{tabIndex==0?'bg-active':''}}" style="{{tabIndex==0?'background:'+__wechat_main_color+';':''}}" bindtap="toggleTab" data-index="0">人找车</view>
+        <view class="radius-right {{tabIndex==1?'bg-active':''}}" style="{{tabIndex==1?'background:'+__wechat_main_color+';':''}}" bindtap="toggleTab" data-index="1">车找人</view>
+      </view>
+    </view>
+  </view>
+  <!--人找车/车找人-->
+  <view class="mgt20">
+    <!--表单-->
+    <view>
+      <view class="weui-cells">
+        <!--出发地-->
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text class="badge bg-active" style="background: {{__wechat_main_color}};">起</text>
+              出发地
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="选择出发地址" bindtap="chooseLocation" data-key="start_place" value="{{formData.start_place}}" />
+          </view>
+        </view>
+        <!--目的地-->
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+               <text class="badge bg-danger">终</text>
+              目的地
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="选择到达地址" bindtap="chooseLocation" data-key="end_place" value="{{formData.end_place}}"  />
+          </view>
+        </view>
+        <!--出发时间-->
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label" >
+              <text class="badge bg-active" style="background: {{__wechat_main_color}};">
+                <text class="iconfont icon-clock"></text>
+              </text>
+              <text>出发时间</text>
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <view style="display: flex;">
+              <view style="flex-grow: 1">
+                <picker mode="date" value="{{date}}" start="2017-10-01" end="2099-12-31" bindchange="bindDateChange">
+                  <view class="weui-input">{{formData.date}}</view>
+                </picker>
+              </view>
+              <view style="flex-grow: 1">
+                <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
+                  <view class="weui-input">{{formData.time}}</view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="mgt20"></view>
+      <view class="weui-cells">
+        <!--姓名-->
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text class="iconfont icon-user-circle"></text>
+              姓名
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请填写真实姓名" bindinput="formInput" data-key="user_name" value="{{formData.user_name}}" />
+          </view>
+        </view>
+        <!--性别-->
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text class="iconfont icon-transgender"></text>
+              性别
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <view style="display: flex;justify-content: flex-end">
+              <view bindtap="genderChange" data-value="{{true}}">
+                <label style="display: flex;">
+                  <view>
+                    <icon class="weui-icon-checkbox_circle" type="circle" size="15" wx:if="{{!formData.gender}}"></icon>
+                    <icon class="weui-icon-checkbox_success" type="success" size="15" wx:if="{{formData.gender}}"></icon>
+                  </view>
+                  <view>男</view>
+                </label>
+              </view>
+              <view bindtap="genderChange" data-value="{{false}}">
+                <label style="display: flex;">
+                  <view>
+                    <icon class="weui-icon-checkbox_circle" type="circle" size="15" wx:if="{{formData.gender}}"></icon>
+                    <icon class="weui-icon-checkbox_success" type="success" size="15" wx:if="{{!formData.gender}}"></icon>
+                  </view>
+                  <view>女</view>
+                </label>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!--手机号-->
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text class="iconfont icon-phone"></text>
+              手机号
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请填写您的手机号" bindinput="formInput" data-key="phone" value="{{formData.phone}}" />
+          </view>
+        </view>
+        <!--车子型号-->
+        <view class="weui-cell weui-cell_input" wx:if="{{tabIndex==1}}">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text class="iconfont icon-car"></text>
+              车子型号
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请填写您的车子型号" bindinput="formInput" data-key="car_type" value="{{formData.car_type}}" />
+          </view>
+        </view>
+      </view>
+      <view class="mgt20"></view>
+      <view class="weui-cells">
+        <!--人数空位-->
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text class="iconfont icon-users"></text>
+              人数/空位
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="formInput" data-key="people_num" value="{{formData.people_num}}" />
+          </view>
+          <view class="weui-cell__ft">人</view>
+        </view>
+        <!--乘车费用-->
+        <view class="weui-cell weui-cell_input" wx:if="{{tabIndex==1}}">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <text class="iconfont icon-users"></text>
+              乘车费用
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="formInput" data-key="price" value="{{formData.price}}" />
+          </view>
+          <view class="weui-cell__ft">元</view>
+        </view>
+        <!--备注信息-->
+        <view class="weui-cell" wx:if="{{tabIndex==0}}">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea text-left" placeholder="备注信息" style="height: 100rpx" bindinput="formInput" data-key="remark" value="{{formData.remark}}" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--提交按钮-->
+  <view style="margin: 30rpx auto">
+    <view class="text-center" bindtap="publish">
+      <view class="mbtn-primary width80" style="background: {{__wechat_main_color}};">
+        发布约车
+      </view>
+    </view>
+  </view>
+</view>
+
+<include src="../menuBtn.wxml"/>
+
+<import src="/tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

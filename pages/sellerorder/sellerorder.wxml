@@ -1,0 +1,56 @@
+<view class="m-product-all">
+  <view class="m-tab">
+    <view class="m-navbar">
+      <view class="m-navbar-item {{tabIndex==1?'m-navbar-item-on':''}}" bindtap="changeTab" data-tab-index="1">
+        全部订单
+      </view>
+      <view class="m-navbar-item {{tabIndex==2?'m-navbar-item-on':''}}" bindtap="changeTab" data-tab-index="2">
+        待发货
+      </view>
+      <view class="m-navbar-item {{tabIndex==5?'m-navbar-item-on':''}}" bindtap="changeTab" data-tab-index="5">
+        已发货
+      </view>
+      <view class="m-navbar-item {{tabIndex==3?'m-navbar-item-on':''}}" bindtap="changeTab" data-tab-index="3">
+        待收货
+      </view>
+      <view class="m-navbar-item {{tabIndex==4?'m-navbar-item-on':''}}" bindtap="changeTab" data-tab-index="4">
+        已完成
+      </view>
+    </view>
+  </view>
+  <scroll-view scroll-y="true" class="m-orderlist" bindscrolltolower="scrollBottom" style="margin-bottom:100rpx">
+    <view wx:for="{{orderList}}" wx:for-item="items" class="m-panel m-panel-access" wx:key="{{items.id}}">
+      <view class="m-panel-hd">订单编号：{{items.OrderNo}}
+        <label>{{items.StrOrderStatus}}</label>
+      </view>
+      <view class="m-product-list">
+        <navigator url="/pages/goods/goods?id={{item.ProductId}}" wx:for="{{items.items}}" wx:for-item="item" class="m-product-item">
+          <view class="m-product-img">
+            <image src="{{item.ImageUrl}}" mode="aspectFill"/>
+          </view>
+          <view class="m-product-info">
+            <view class="m-product-name">
+              <label>{{item.Name}}</label>
+              <label class="m-min-name" style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">{{item.Description==null?"":item.Description}}</label>
+            </view>
+            <view class="m-product-price">
+              <label>￥</label>{{item.Price}}
+              <text>x{{item.Count}}</text>
+            </view>
+          </view>
+        </navigator>
+      </view>
+      <view class="m-total-info">
+        实付款：<label class="m-total-price">￥{{items.payAmount}}</label>
+      </view>
+      <view class="m-total-btn">
+        <navigator url="/pages/sellerdelivery/sellerdelivery?orderid={{items.id}}" class="u-link-btn" wx:if="{{items.showDelivery}}">
+          发货
+        </navigator>
+        <navigator url="/pages/sellerorderdetail/sellerorderdetail?orderid={{items.id}}" class="u-link-btn">查看详情</navigator>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

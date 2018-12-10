@@ -1,0 +1,30 @@
+@import "../../../__wuBaseWxss__/2.wxss";
+
+.top-pic image {
+    width: 100%;
+    height: 375rpx;
+}
+
+.estate-desc {
+    padding: 30rpx;
+    position: relative;
+    background-color: #fff;
+}
+
+.estate-feature {
+    font-weight: bold;
+}
+
+.footerBox {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 30rpx 0;
+    background-color: #fff;
+}
+
+.counter-btn {
+    line-height: 60rpx;
+    font-size: 28rpx;
+    box-shadow: 0rpx 4rpx 16rpx rgba(242,81,80,0.28);
+}

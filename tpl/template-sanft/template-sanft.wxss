@@ -1,0 +1,17 @@
+.sanft-01{width:750rpx;height:373rpx;overflow: hidden}
+.sanft-010{height:374rpx;float: left;}
+.sanft-010 image{width: 375rpx; height: 374rpx}
+.sanft-011{height: 188rpx;float:left;}
+.sanft-011 image{width: 374rpx; height: 188rpx;}
+.sanft-012{height: 188rpx;float:left}
+.sanft-012 image{width: 374rpx; height: 188rpx;}
+
+.sift-02 {width:750rpx; height: 747rpx;overflow: hidden}
+.sanft-020{width:499rpx;float: left;}
+.sanft-020 image{width: 500rpx; height: 750rpx}
+.sanft-021{height: 250rpx;float:left;}
+.sanft-021 image{width: 250rpx; height: 250rpx;}
+.sanft-022{height: 250rpx;float:left;}
+.sanft-022 image{width: 250rpx;height: 250rpx;}
+.sanft-023{height: 250rpx;float:left;}
+.sanft-023 image{width: 250rpx; height: 250rpx;}

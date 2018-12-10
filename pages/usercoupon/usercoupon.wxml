@@ -1,0 +1,58 @@
+<view class="m-tab">
+  <view class="m-navbar">
+    <view class="m-navbar-item {{tapindex==0?'m-navbar-item-on':''}}" bindtap="neverused">
+      未使用({{numNeverUsed}})
+    </view>
+    <view class="m-navbar-item {{tapindex==1?'m-navbar-item-on':''}}" bindtap="alreadyused">
+      已使用({{numAlreadyused}})
+    </view>
+    <view class="m-navbar-item {{tapindex==2?'m-navbar-item-on':''}}" bindtap="outdated">
+      已过期({{numOutdated}})
+    </view>
+  </view>
+</view>
+<scroll-view class="m-scrollBox" scroll-y="true" bindscrolltolower="scrollbottom">
+<block wx:if="{{UserCoupon.length>0}}">
+    <view  class="m-coupon-item" wx:for="{{UserCoupon}}" wx:for-item="item">
+        <image src="{{tapindex==0?'http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/coupon_red.png':'http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/coupon_gray.png'}}" class="item-bg"></image>
+        <view class="coupon-item-left">
+            <view class="item-left-top">￥<label>{{item.DiscountMoney}}</label></view>
+            <view class="item-left-bottom">{{item.MoneyLimitDesc}}</view>
+        </view>
+        <view class="coupon-item-right">
+            <view class="item-title {{tapindex==0?'item-title-black':''}}">{{item.Name}}</view>
+            <view class="item-middle">
+                <lable class="item-time">{{item.StrValidateStart}}~{{item.StrValidateEnd}}</lable>
+                <label class="item-usenow" wx:if="{{tapindex==0}}" bindtap="usenow" data-id="{{item.id}}" data-all="{{item.all}}">立即使用</label>
+            </view>
+            
+            <view class="item-desc">{{item.CouponUserDesc}}</view>
+        </view>
+        <label class="iconfont {{tapindex==2?'icon-yiguoqi':'icon-yishiyong'}} " wx:if="{{tapindex==1 || tapindex==2}}"></label>
+    </view>
+</block>
+  <view class="m-nullcontent" wx:else>
+    <view class="m-nullpage-middle">
+      <label class="iconfont icon-meiyougengduo"></label>
+      <view class="m-null-tip">
+        <text>亲~什么都没有</text>
+        <text>赶快去领券中心吧</text>
+      </view>
+    </view>
+  </view>
+  <view class="m-loading-box">
+    <block wx:if="{{ispage}}">
+      <view class="u-loadmore">
+        <lael class="u-loading"></lael>
+        <text class="u-loadmore-tips">正在加载</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="u-loadmore u-loadmore-line">
+        <text class="u-loadmore-tips">没有更多数据啦！</text>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

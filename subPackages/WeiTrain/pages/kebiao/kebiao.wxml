@@ -1,0 +1,32 @@
+<view class="page">
+  <!--我的课程-->
+  <view class="whiteview" style="margin-top: 40rpx">
+    <view class="demoView">
+      <view style="margin-bottom: 40rpx;color: #46B396;font-weight: bold;">
+        <text>我的课程</text>
+      </view>
+    </view>
+  </view>
+  <view class="singleView" wx:for="{{lesson.buy_lesson}}">
+    <view class="detailText">
+      <text>{{item.name}}</text>
+      <text style="font-size: 30rpx;color: gray">开课时间:{{item.stime}}</text>
+      <view class="lookView" bindtap="bindToLessonDetail" data-id="{{item.id}}"><text>查看详情</text></view>
+    </view>
+  </view>
+  <!--我的预约-->
+  <view class="whiteview" style="margin-top: 40rpx">
+    <view class="demoView">
+      <view style="margin-bottom: 40rpx;color: #46B396;font-weight: bold;">
+        <text>我的预约</text>
+      </view>
+    </view>
+  </view>
+  <view class="singleView" wx:for="{{lesson.yuyue_lesson}}">
+    <view class="detailText">
+      <text>{{item.name}}</text>
+      <text style="font-size: 30rpx;color: gray">开课时间:{{item.stime}}</text>
+      <view class="lookView" bindtap="bindToLessonDetail" data-id="{{item.id}}"><text>查看详情</text></view>
+    </view>
+  </view>
+</view>

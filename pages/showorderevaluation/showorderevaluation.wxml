@@ -1,0 +1,40 @@
+<view class="m-product-all">
+  <scroll-view scroll-y="true" class="m-orderlist">
+    <view wx:for="{{products}}" wx:for-item="item" class="product-box">
+      <view class="m-product-item">
+        <view class="m-product-img">
+          <image src="{{item.ImageUrl}}" mode="aspectFill"/>
+        </view>
+        <view class="m-product-info">
+          <view class="m-product-name">
+            <label>{{item.Name}}</label>
+            <label class="m-min-name" style="overflow:hiddentext-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">{{item.Description==null?"":item.Description}}</label>
+          </view>
+          <view class="m-product-price">
+            <label>￥</label>{{item.Price}}
+            <text>x{{item.Count}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="star-box">
+        <text wx:for="{{starNum}}" wx:for-item="starIndex">
+          <text wx:if="{{item.evaluation.star>=starIndex}}" class="iconfont icon-star"></text>
+          <text wx:if="{{item.evaluation.star<starIndex}}" class="iconfont icon-star1"></text>
+        </text>
+      </view>
+      <view class="evaluation-box">
+        <view class="evaluation-to">
+          您的评价：{{item.evaluation.content}}
+        </view>
+        <view class="evaluation-re" wx:if="{{item.evaluation.reply_content}}">
+          商家回复：{{item.evaluation.reply_content}}
+        </view>
+        <view class="evaluation-re" wx:else>
+          暂无商家回复，请耐心等待
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+</view>
+		

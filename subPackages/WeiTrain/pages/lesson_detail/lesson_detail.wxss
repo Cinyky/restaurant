@@ -1,0 +1,107 @@
+@import "../../__wuBaseWxss__/3.wxss";
+@import "../../__wuBaseWxss__/0.wxss";
+/*.page{*/
+	/*margin: 2%;*/
+/*}*/
+
+.callView{
+	height: 140rpx;
+	width: 100%;
+	background: white;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	z-index: 100;
+	position: fixed;
+	color: black;
+	bottom: 0;
+	left: 0;
+}
+/*.shareView{*/
+	/*display: flex;*/
+	/*flex-direction: column;*/
+	/*justify-content: center;*/
+	/*align-items: center;*/
+	/*background: black;*/
+	/*font-size: 30rpx;*/
+	/*width: 20%;*/
+/*}*/
+/*.shareView button::after{*/
+	/*border:none;*/
+/*}*/
+.phoneView{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/*background: yellow;*/
+	font-size: 30rpx;
+	width: 20%;
+	height: 140rpx;
+}
+.baomingView{
+	background: #F48D4F;
+	width: 40%;
+	height: 140rpx;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.yuyueView{
+	background: #1CA27E;
+	width: 40%;
+	height: 140rpx;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.whiteview{
+	width: 100%;
+	background: white;
+}
+/*课程信息*/
+.baseInfo{
+	padding-top: 25rpx;
+	margin-left: 25rpx;
+	margin-right: 25rpx;
+	padding-bottom: 10rpx;
+	display: flex;
+	flex-direction: column;
+}
+.timeView{
+	margin-top: 10rpx;
+	color:#9A9A9A;
+	font-size: 25rpx;
+}
+.priceView{
+	margin-top: 10rpx;
+	font-size: 33rpx;
+	display: flex;
+	justify-content: space-between;
+}
+/*课程简介*/
+.demoView{
+	padding-left: 25rpx;
+	padding-top: 25rpx;
+}
+.teacherView image{
+	border: 1rpx;
+	border-radius: 50%;
+	margin-right: 20rpx;
+}
+.teacherView{
+	display: flex;
+	align-items: center;
+	color:#9A9A9A;
+	padding-bottom: 25rpx;
+}
+
+.lesson_detail_banner_container{
+
+}
+.lesson_detail_banner_container image{
+  width: 100%;
+  display: block;
+}

@@ -1,0 +1,103 @@
+<view class="m-tab">
+  <view class="m-navbar">
+    <view class="m-navbar-item {{tabIndex==0?'m-navbar-item-on':''}}" bindtap="productList">
+      秒杀列表
+    </view>
+    <view class="m-navbar-item {{tabIndex==1?'m-navbar-item-on':''}}" bindtap="orderList">
+      我的订单
+    </view>
+  </view>
+</view>
+<!--商品列表-->
+<scroll-view class="m-scrollBox" scroll-y="true" bindscrolltolower="scrollbottom" wx:if="{{tabIndex==0}}">
+  <block wx:if="{{productList.length>0}}">
+    <view class="m-coupon-item" wx:for="{{productList}}" wx:for-item="item" style="background: #fff;">
+      <image src="{{item.pic}}" style="width: 250rpx;height: 200rpx;"></image>
+      <view class="coupon-item-right">
+        <view class="item-title">
+          <view>{{item.name}}</view>
+          <view wx:if="{{item.num==0}}">库存不足</view>
+          <block wx:else>
+            <view wx:if="{{item.is_start}}" style="color: red;">已开始</view>
+            <view wx:else>即将开始</view>
+          </block>
+        </view>
+        <view class="item-middle">
+          <lable class="item-time">
+            <text style="color: red;">￥{{item.price}}</text>
+            <text style="text-decoration: line-through;margin-left: 10rpx;">￥{{item.oprice}}</text>
+          </lable>
+          <label class="item-usenow" bindtap="goToDetail" data-id="{{item.id}}" data-index="{{index}}">立即秒杀</label>
+        </view>
+        <view class="item-desc">{{item.ms}}</view>
+      </view>
+    </view>
+  </block>
+  <view class="m-nullcontent" wx:else>
+    <view class="m-nullpage-middle">
+      <label class="iconfont icon-meiyougengduo"></label>
+      <view class="m-null-tip">
+        <text>亲~什么都没有</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<!--订单列表-->
+<scroll-view style="margin-bottom: 50px;" class="m-scrollBox" scroll-y="true" bindscrolltolower="scrollbottom" wx:if="{{tabIndex==1}}">
+  <block wx:if="{{orderList.length>0}}">
+    <view wx:for="{{orderList}}" wx:for-item="item" class="m-panel m-panel-access">
+      <view class="m-panel-hd" style="white-space:nowrap;">订单编号：{{item.order_no}}</view>
+      <view class="m-product-list">
+        <view  class="m-product-item">
+          <view class="m-product-img">
+            <image src="{{item.product.pic}}" mode="aspectFill"/>
+          </view>
+          <view class="m-product-info" style="width: auto;">
+            <view class="m-product-name">
+              <label>{{item.product.name}}</label>
+              <label class="m-min-name" style="overflow:hiddentext-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">{{item.product.ms}}</label>
+            </view>
+            <view class="m-product-price">
+              <label>￥</label>{{item.price}}
+              <text> x {{item.num}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="m-total-info" style="display: flex;align-items: stretch;justify-content: space-between;padding: 10rpx;">
+        <view style="font-size: 26rpx;display: flex;align-items:center;">
+          实付款：<label class="m-total-price">￥{{item.total_price}}</label>
+        </view>
+        <view>
+          <view wx:if="{{item.status[0]==1}}" class='u-link-btn QR_code_right' bindtap='show_qrcode' data-code="3_{{item.order_no}}">
+            核销二维码
+          </view>
+          <block wx:if="{{item.status[0]==0}}">
+            <view data-order-id="{{item.id}}" data-order-index="{{index}}"  class="u-link-btn" bindtap="cancelOrder" style="border-color: #666666;color: #666666;margin-right: 10rpx;">删除订单</view>
+            <view data-order-id="{{item.id}}" data-order-index="{{index}}"  class="u-link-btn" bindtap="payOrder" >立即支付</view>
+          </block>
+          <view data-order-id="{{item.id}}" data-order-index="{{index}}"  class="u-link-btn" wx:if="{{item.status[0]==1}}">待发货</view>
+        <view data-order-id="{{item.id}}" data-order-index="{{index}}"  class="u-link-btn" bindtap="receive" wx:if="{{item.status[0]==2}}">确认收货</view>
+          <view data-order-id="{{item.id}}" data-order-index="{{index}}"  class="u-link-btn" wx:if="{{item.status[0]==3}}">已收货</view>
+          <view data-order-id="{{item.id}}" data-order-index="{{index}}"  class="u-link-btn" wx:if="{{item.status[0]==4}}">已退款</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="m-nullcontent" wx:else>
+    <view class="m-nullpage-middle">
+      <label class="iconfont icon-meiyougengduo"></label>
+      <view class="m-null-tip">
+        <text>亲~什么都没有</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class='qrcode_fixed_container' wx:if="{{qrcode_bg}}" bindtap='hide_qrcode'>
+  <view class='qrcode_main_content'>
+    <image src='{{qrcode_url}}'></image>
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

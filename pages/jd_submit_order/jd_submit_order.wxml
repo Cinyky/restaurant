@@ -1,0 +1,58 @@
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">{{kf.name}}</view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">
+      <view style="color: {{__wechat_main_color}};">{{tc.name}}</view>
+      <view style="color:#898989;font-size: 26rpx;">{{sdate}}到{{edate}}共{{dateDiff}}晚</view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-cells">
+  <view class="weui-cell weui-cell_select">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">房间数</view>
+    </view>
+    <view class="weui-cell__bd">
+      <picker bindchange="bindNumChange" value="{{numIndex}}" range="{{numList}}">
+        <view class="weui-select weui-select_in-select-after">{{numList[numIndex]}}</view>
+      </picker>
+    </view>
+  </view>
+</view>
+<view class="weui-cells">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">姓名</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="请输入姓名" bindinput="bindTextInput" data-name="name" value="{{name}}"/>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">手机号</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="请输入联系方式" bindinput="bindTextInput" data-name="phone" value="{{phone}}"/>
+    </view>
+  </view>
+</view>
+<view style="color: #898989;padding: 10rpx;">
+  <view wx:if="{{tc.cancel==2}}">不可取消</view>
+  <view wx:if="{{tc.cancel==1}}">18点前可取消</view>
+  <view wx:if="{{tc.cancel==0}}">随时取消</view>
+</view>
+
+<view class="footer">
+  <view style="color: {{__wechat_main_color}};font-size: 40rpx;padding-left: 20rpx;">
+    ￥{{price}}元
+  </view>
+  <view>
+    <form report-submit="{{true}}" bindsubmit="bindSubmitOrder">
+      <button formType="submit" style="color: #fff;border-radius: 0;background: {{__wechat_main_color}};">立即预定</button>
+    </form>
+  </view>
+</view>

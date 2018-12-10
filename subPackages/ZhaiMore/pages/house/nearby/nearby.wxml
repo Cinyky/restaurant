@@ -1,0 +1,27 @@
+<view class="nearbr-y-box">
+    <map showLocation bindmarkertap="markertap" class="page-map {{isAli?'page-map-ali':''}}" id="map" latitude="{{info.latitude}}" longitude="{{info.longitude}}" markers="{{marker}}" scale="16" style="width: 100%;"></map>
+    <view class="{{isAli?'hidden':''}}">
+        <view class="footer-bar flex">
+            <view class="sub tc">
+                <view class="iconfont icon-gongjiao map-bottom-icon"></view>
+                <view bindtap="setmark" class="f14" data-name="公交">公交</view>
+            </view>
+            <view class="sub tc">
+                <view class="iconfont icon-dtyx-copy-copy-copy-copy map-bottom-icon"></view>
+                <view bindtap="setmark" class="f14" data-name="地铁">地铁</view>
+            </view>
+            <view class="sub tc">
+                <view class="iconfont icon-shuben map-bottom-icon"></view>
+                <view bindtap="setmark" class="f14" data-name="学校">学校</view>
+            </view>
+            <view class="sub tc">
+                <view class="iconfont icon-yiyuan map-bottom-icon"></view>
+                <view bindtap="setmark" class="f14" data-name="医院">医院</view>
+            </view>
+            <view class="sub tc">
+                <view class="iconfont icon-yinxing map-bottom-icon"></view>
+                <view bindtap="setmark" class="f14" data-name="银行">银行</view>
+            </view>
+        </view>
+    </view>
+</view>

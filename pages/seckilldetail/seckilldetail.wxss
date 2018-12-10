@@ -1,0 +1,822 @@
+@import "/wxParse/wxParse.wxss";
+
+/** app.wxss **/
+
+/********************************* common **************************/
+
+page {
+  font-family: "微软雅黑";
+  overflow: scroll;
+}
+
+page::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+  color: transparent;
+}
+
+navigator:hover, .navigator-hover {
+  background: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20 rpx 0;
+  box-sizing: border-box;
+}
+
+.pageWrapper {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+}
+
+.floatR {
+  float: right;
+}
+
+.textAlignR {
+  text-align: right;
+}
+
+.pd10 {
+  padding: 10px;
+}
+
+.pd15 {
+  padding: 15px;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+/* 删除线 */
+
+.line-delete {
+  text-decoration: line-through;
+  font-size: 12px;
+  color: #999;
+}
+
+.borTop {
+  border-top: 1px solid #f5f5f5;
+}
+
+.bgeee {
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+.color999 {
+  color: #999;
+}
+
+.purple {
+  color: purple;
+}
+
+.bgWhite {
+  background: #fff;
+}
+
+.big-Red {
+  font-size: 16px;
+  color: red;
+}
+
+button.save-edit {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 16px;
+  color: #fff;
+  background: #1aad19;
+  margin-top: 20px;
+}
+
+.red {
+  color: red;
+}
+
+button.bg-red {
+  background: red;
+}
+
+/********************************* tab bottom **************************/
+
+.tab-Wrapper {
+  width: 100%;
+  padding: 5px 0px 0px 0px;
+  position: fixed;
+  bottom: 0px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  background: #fff;
+  font-size: 14px;
+}
+
+.tab-Wrapper .tab-item {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+
+.tab-item image {
+  width: 25px;
+  height: 25px;
+}
+
+.tab-item text {
+  display: block;
+}
+
+/* order-info common */
+
+.order-info {
+  background: #fff;
+  height: 80px;
+}
+
+.order-info view {
+  float: left;
+}
+
+.order-info image {
+  width: 150px;
+}
+
+.order-info view:nth-child(1) {
+  width: 23%;
+}
+
+.order-info view:nth-child(2) {
+  width: 70%;
+  padding: 15px 10px;
+}
+
+.order-info view text {
+  line-height: 25px;
+}
+
+.order-info view text:first-child {
+  display: block;
+}
+
+.order-info view text:last-child {
+  color: #999;
+  font-weight: bold;
+}
+
+/*Jeffrey*/
+
+.mgl-5 {
+  margin-left: 5px;
+}
+
+.mgl-10 {
+  margin-left: 10px;
+}
+
+.mgl-15 {
+  margin-left: 15px;
+}
+
+.mgr-5 {
+  margin-left: 5px;
+}
+
+.mgr-10 {
+  margin-left: 10px;
+}
+
+.mgr-15 {
+  margin-left: 15px;
+}
+
+/* pages/pintuan/details/details.wxss */
+
+page {
+  font: 14px/15px 微软雅黑;
+  background: #f5f5f5;
+}
+
+image {
+  width: 100%;
+}
+
+swiper {
+  width: 100%;
+  height: 200px;
+}
+
+swiper image {
+  width: 100%;
+}
+
+.shop-info {
+  padding: 10px;
+  font-size: 14px;
+  background: #fff;
+}
+
+.nowPrice {
+  color: red;
+}
+
+.haved {
+  font-size: 12px;
+  color: #999;
+}
+
+.shop-info .price text:not(:first-child) {
+  margin-left: 10px;
+}
+
+.shop-info .price text.priceCutDown {
+  background: red;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.shop-info .title {
+  clear: both;
+  padding-top: 10px;
+  line-height: 25px;
+}
+
+.title .title-tip {
+  font-size: 12px;
+  color: #999;
+}
+
+/* 正在开团 */
+
+.con_left {
+  width: 50%;
+  float: left;
+  display: flex;
+}
+
+.con_right {
+  width: auto;
+  position: relative;
+  text-align: right;
+  display: flex;
+}
+
+.con_left view {
+  margin-left: 10px;
+}
+
+.con_right view {
+  width: 65%;
+  text-align: right;
+}
+
+.con_right .join {
+  position: absolute;
+  right: 0px;
+  margin: 12.5px 4px;
+  padding: 0px 5px;
+  height: 25px;
+  line-height: 25px;
+  background: red;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.tuan .con {
+  height: 50px;
+  overflow: hidden;
+  font-size: 12px !important;
+}
+
+.tuan .con image {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+.tuan .con text:last-child {
+  display: block;
+}
+
+/* 拼团玩法&&正在开团 */
+
+.shop-play, .tuan {
+  margin-top: 10px;
+  background: #fff;
+}
+
+.shop-play .title, .tuan .title {
+  padding: 10px;
+}
+
+.shop-play .menu {
+  width: 94%;
+  border-top: 1px solid #f5f5f5;
+  display: inline-block;
+  margin-left: 3%;
+}
+
+.shop-play .menu view {
+  width: 20%;
+  margin: 2px 2.5%;
+  float: left;
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+}
+
+.shop-play .menu view image {
+  width: 25px;
+  height: 25px;
+  margin: 2px auto;
+  display: block;
+  text-align: center;
+}
+
+/* 商品详情&&评价&&正在开团 */
+
+.shop-detail .con, .shop-access .con, .tuan .con {
+  width: 94%;
+  margin: 0 auto;
+  border-top: 1px solid #f5f5f5;
+  padding: 10px 0px;
+  line-height: 25px;
+  font-size: 14px;
+}
+
+.shop-detail {
+  margin-bottom: 100px;
+}
+
+/* .shop-access {
+  margin-bottom: 80px;
+} */
+
+.fixedBottom {
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+}
+
+.fixedBottom view {
+  float: left;
+  padding: 10px 0px;
+  font-size: 12px;
+  height: 30px;
+}
+
+.fixedBottom view text {
+  display: block;
+}
+
+.fixedBottom view.home {
+  width: 20%;
+  text-align: center;
+  background: #fff;
+}
+
+.fixedBottom view.home image {
+  width: 20px;
+  height: 20px;
+  margin: -1px auto;
+}
+
+.fixedBottom view.btn-buy {
+  width: 80%;
+  text-align: center;
+  color: #fff;
+}
+
+.not-start {
+  background: #f9a825;
+}
+
+.is-start {
+  background: red;
+}
+
+/* 底部弹出层 */
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.8;
+  z-index: 1000;
+  color: #fff;
+}
+
+.commodity_attr_box {
+  width: 100%;
+  /* overflow: hidden; */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding-top: 20rpx;
+}
+
+.commodity_attr_box .header {
+  width: 100%;
+  height: auto;
+  position: relative;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.commodity_attr_box .header image {
+  position: absolute;
+  width: 150rpx;
+  left: 10px;
+  border-radius: 5px;
+}
+
+.header-imgBox {
+  width: 25%;
+  min-height: 55px;
+  max-height: 100px;
+  float: left;
+}
+
+.header-infoBox {
+  width: 75%;
+  float: left;
+}
+
+.header-infoBox text {
+  display: block;
+  line-height: 25px;
+  letter-spacing: 2px;
+}
+
+.count {
+  clear: both;
+  padding: 20px;
+}
+
+.count-control {
+  margin-top: -15px;
+}
+
+.count-control button {
+  display: inline;
+}
+
+.count-control text {
+  display: inline-block;
+  padding: 3.5px 14px;
+  vertical-align: 10%;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.submit {
+  clear: both;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.submit button[type="submit"] {
+  background: #f35150;
+  color: #fff;
+}
+
+/* 加减 */
+
+/*主容器*/
+
+.stepper {
+  width: 80px;
+  height: 26px;
+  /*给主容器设一个边框*/
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 0 auto;
+}
+
+/*加号和减号*/
+
+.stepper text {
+  width: 19px;
+  line-height: 26px;
+  text-align: center;
+  float: left;
+}
+
+/*数值*/
+
+.stepper input {
+  width: 40px;
+  height: 26px;
+  float: left;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 12px;
+  /*给中间的input设置左右边框即可*/
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+/*普通样式*/
+
+.stepper .normal {
+  color: black;
+}
+
+/*禁用样式*/
+
+.stepper .disabled {
+  color: #ccc;
+}
+
+.clock {
+  background: #fff;
+  padding: 20rpx;
+  margin: 20rpx 0;
+}
+
+/* H start */
+
+.bargaindetail_price_container {
+  background: #ee4f4f;
+  display: flex;
+  color: #fff;
+}
+
+.bargaindetail_price_content_public {
+  flex: 1.5;
+  padding: 10rpx 30rpx;
+  margin: 10rpx 0;
+}
+
+.bargaindetail_price_content_public_first {
+  border-right: 1px dashed #fff;
+}
+
+.bargaindetail_price_content_public_last {
+  margin-top: 5rpx;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.bargaindetail_price_time_content {
+  flex: 2.5;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20rpx 0rpx;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.bargaindetailPrice_up {
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+}
+
+.bargaindetailPrice_up text {
+  font-size: 26rpx;
+}
+
+.bargaindetailPrice_down {
+  font-size: 30rpx;
+}
+
+.bargaindetailOriginal_up {
+  font-size: 26rpx;
+  text-align: center;
+  background: #fff;
+  color: #f56a6a;
+  margin: 0 20% 10rpx 20%;
+  padding: 5rpx 4px;
+}
+
+.bargaindetailOriginal_down {
+  font-size: 34rpx;
+  text-align: center;
+  overflow: hidden;
+}
+
+.bargaindetailOriginal_down text {
+  font-size: 26rpx;
+}
+
+.bargaindetail_price_time_content view {
+  overflow: visible;
+}
+
+.bargaindetailTime_up {
+  font-size: 28rpx;
+}
+
+.bargaindetailTime_down {
+  font-size: 26rpx;
+}
+
+.bargaindetail_title_container {
+  background: #fff;
+  padding: 20rpx 30rpx 30rpx 30rpx;
+  display: flex;
+}
+
+.bargaindetail_title_content {
+  line-height: 46rpx;
+  flex: 4;
+  font-size: 30rpx;
+  color: #000;
+  padding-right: 20rpx;
+  display: -webkit-box;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+}
+
+.bargaindetailStock_content {
+  flex: 1;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+  color: #000;
+  border-left: 1px solid #eee;
+  padding: 0 20rpx;
+}
+
+.bargaindetailStock_content view {
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 30rpx;
+}
+
+.bargaindetailStock_content view:first-child {
+  font-size: 34rpx;
+  margin-bottom: 10rpx;
+  font-weight: bold;
+}
+
+.bargaindetail_tip_container {
+  background: #fff;
+}
+
+.bargaindetail_tip_content_public {
+  background: #fff;
+  margin: 0 30rpx;
+  border-top: 1px solid #eee;
+  overflow: hidden;
+  padding: 30rpx 0;
+}
+
+.bargaindetail_tip_pay_container image {
+  float: left;
+  width: 36rpx;
+  height: 36rpx;
+  display: block;
+  margin-right: 30rpx;
+}
+
+.bargaindetail_tip_pay_container text {
+  float: left;
+  color: #666;
+  line-height: 36rpx;
+  font-size: 28rpx;
+}
+
+.bargaindetail_tip_public_leftText {
+  float: left;
+  color: #666;
+  line-height: 36rpx;
+  font-size: 28rpx;
+}
+
+.bargaindetail_tip_public_rightText {
+  float: right;
+  color: #ee4f4f;
+  line-height: 36rpx;
+  font-size: 28rpx;
+}
+
+.bargaindetail_check_container {
+  margin-top: 20rpx;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bargaindetail_check_content_public {
+  flex: 1;
+  border-right: 1px dashed #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20rpx 0;
+}
+
+.bargaindetail_check_content_public:last-child {
+  border: none;
+}
+
+.bargaindetail_check_content_public text:first-child {
+  color: #ef5d5d;
+  font-size: 34rpx;
+  margin-bottom: 15rpx;
+}
+
+.bargaindetail_check_content_public text:last-child {
+  color: #000;
+  font-size: 28rpx;
+}
+
+/* 底部导航 */
+
+.bargaindetail_navBottom_container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 110rpx;
+  border-top: 1px solid #f5f5f5;
+  box-shadow: 0px 0px 5px #eee;
+}
+
+.bargaindetail_navBottom_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110rpx;
+}
+
+.bargaindetail_navBottom_left_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 110rpx;
+  background: #fff;
+}
+
+.bargaindetail_navBottom_left_container image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.bargaindetail_navBottom_left_container text {
+  font-size: 30rpx;
+  color: #515151;
+  line-height: 42rpx;
+}
+
+.bargaindetail_navBottom_left_container button {
+  font-size: 30rpx;
+  color: #515151;
+  line-height: 42rpx;
+  border: none;
+  background: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+button[class="con_listbox_h"]::after {
+  border: 0;
+}
+
+.bargaindetail_navBottom_right_container {
+  flex: 2.4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110rpx;
+}
+
+.bargaindetail_navBottom_orange_container {
+  background: #fe8535;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+.bargaindetail_navBottom_red_container {
+  background: #ee4f4f;
+  color: #fff;
+  font-size: 30rpx;
+}
+
+/* H end */

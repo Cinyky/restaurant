@@ -1,0 +1,83 @@
+<view class="class-tab">
+  <text bindtap="tabClick" data-index="0" class="{{tabClasss[0]}}">进行中</text>
+  <text bindtap="tabClick" data-index="1" class="{{tabClasss[1]}}">待评价</text>
+  <text bindtap="tabClick" data-index="2" class="{{tabClasss[2]}}">已失效</text> 
+</view>
+
+<view class="parent" wx:if="{{tab == 0}}" wx:for="{{data}}" wx:for-item="v" wx:key="">
+    <view class='list'>
+      <view class='list_s'>
+        <view  style='width:40%;margin-left:5%; font-size:32rpx;'>
+          <view style='line-height:70rpx;margin-top:60rpx;'>{{v.ServiceName}}  {{v.number}}人</view>
+          <view >{{v.reserveTitle}}</view>
+        </view>
+        <view class='name' bindtap='del' data-id='{{v.id}}'>
+          <view style='margin-top:60rpx;'>
+            <image src='http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/delete.png'  style='width:60rpx; height:60rpx;'/>
+          </view>
+          <view style='font-size: 30rpx;'>取消订单</view>
+        </view>
+      </view>
+      <view class='list_x' style='margin:0;height: 60rpx;'>
+        <view style='width: 50%;margin-left: 50rpx; color:#dd4ecc;float: left;font-size: 30rpx;'>{{v.times}}</view>
+        <view class='list_x_t'>
+          {{v.explain}}
+
+        </view>
+      </view>
+    </view>
+</view>
+
+<!--评价-->
+<view class="parent" wx:if="{{tab == 1}}" wx:for="{{data}}" wx:for-item="v" wx:key="">
+    <view class='list'>
+      <view class='list_s'>
+        <view  style='width:40%;margin-left:5%; font-size:32rpx;'>
+          <view style='line-height:70rpx;margin-top:60rpx;'>{{v.ServiceName}}  {{v.number}}人</view>
+          <view >{{v.reserveTitle}}</view>
+        </view>
+         <view class='name'>
+          <view style='margin-top:60rpx;'>
+            <image src='http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/atm.png'  style='width:130rpx; height:130rpx;'/>
+          </view>
+          <!-- <view style='font-size: 30rpx;'>取消订单</view> -->
+        </view> 
+      </view>
+      <view class='list_x' style='margin:0;height: 60rpx;'>
+        <view style='width: 50%;margin-left: 50rpx; color:#dd4ecc;float: left;font-size: 30rpx;'>{{v.times}}</view>
+        <view class='list_x_t'>
+        <block wx:if="{{v.evaluate != null}}">
+           {{v.evaluate}}
+        </block>
+        <block wx:else>
+          <picker data-name='{{num[key]}}' data-id='{{v.id}}'  bindchange="num" range="{{num}}">
+           立即评论
+          </picker>
+        </block>
+        </view>
+      </view>
+    </view>
+</view>
+
+<view class="parent" wx:if="{{tab == 2}}" wx:for="{{data}}" wx:for-item="v" wx:key="">
+    <view class='list'>
+      <view class='list_s' style='background:#c2c2c4;'>
+        <view  style='width:40%;margin-left:5%; font-size:32rpx;'>
+          <view style='line-height:70rpx;margin-top:60rpx;'>{{v.ServiceName}}  {{v.number}}人</view>
+          <view >{{v.reserveTitle}}</view>
+        </view>
+        <view class='name' bindtap='del' data-id='{{v.id}}'>
+          <view style='margin-top:60rpx;'>
+            <image src='http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/delete.png'  style='width:60rpx; height:60rpx;'/>
+          </view>
+          <view style='font-size: 30rpx;'>取消订单</view>
+        </view>
+      </view>
+      <view class='list_x' style='margin:0;height: 60rpx;'>
+        <view style='width: 50%;margin-left: 50rpx; color:#c2c2c4;float: left;font-size: 30rpx;'>{{v.times}}</view>
+        <view class='list_x_t'>已失效</view>
+      </view>
+    </view>
+</view>
+
+

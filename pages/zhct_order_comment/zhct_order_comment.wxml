@@ -1,0 +1,12 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="r-comm">
+    <view class="rc-comm">
+      <view class="text-a">
+        <textarea class="gridFourRadio teS" name="post_content" placeholder="写下对商家的评价吧（至少8个字）" bindinput="bind_input_comment" />
+      </view>
+    </view>
+  </view>
+  <view class="od-f">
+    <button type="primary" style="background: {{main_color}}" hover-class="none" form-type="submit" disabled="{{!canSubmit}}" class="od-f-btn">提交评价</button>
+  </view>
+</form>

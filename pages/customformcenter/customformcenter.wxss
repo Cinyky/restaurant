@@ -1,0 +1,55 @@
+@import "../../utils/weui.wxss";
+page{
+  background: #f5f5f5 !important;
+}
+.item_box{
+  background: #fff;
+  margin: 10rpx 0;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+.item_left{
+  flex-grow:1;
+}
+.item_right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.item_l1{
+  font-size: 35rpx;
+  color: #222222;
+}
+.item_l2{
+  font-size: 30rpx;
+  color: #666666;
+}
+
+.Return_H_container {
+  position: fixed;
+  right: 30rpx;
+  bottom: 150rpx;
+  border-radius: 50%;
+  background: rgba(111, 179, 255, 0.79);
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.Return_H_content {
+  display: flex;
+  width: 110rpx;
+  height: 110rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .Return_H_content image {
+  width: 48rpx;
+  height: 48rpx;
+} */
+
+.Return_H_content text {
+  color: #fff;
+  font-size: 32rpx;
+}

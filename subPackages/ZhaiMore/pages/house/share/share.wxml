@@ -1,0 +1,73 @@
+<view class="top-box flex" style="display: flex">
+    <view class="house-pic-box">
+        <image class="house-pic" mode="aspectFill" src="{{zushouList.pics[0]}}"></image>
+    </view>
+    <view class="top-box-rg sub ml10 flex" style="display: flex">
+        <view class="lineText3">
+            <text>{{zushouList.desc}}</text>
+        </view>
+        <view class="tag-box f12">
+            <view class="tag-btn tc sell-btn mr20" wx:if="{{zushouList.type==2}}">房屋出售</view>
+            <view class="tag-btn tc rent-btn" wx:if="{{zushouList.type==1}}">房屋出租</view>
+        </view>
+    </view>
+</view>
+<view class="mid-box">
+    <view class="house-info-box f14">
+        <view class="flex name gridXt gridXb " style="display: flex;justify-content: space-between">
+            <view class="para-box lineText" style="width: 40%">
+                <text class="grey">小区：</text>
+                <text class="">{{zushouList.xiaoqu.area}}</text>
+            </view>
+            <view class="para-box lineText" wx:if="{{zushouList.type==2}}" style="width: 40%">
+                <text class="grey">价格：</text>
+                <text class="">{{zushouList.shoujia}}万元</text>
+            </view>
+            <view class="para-box lineText" wx:if="{{zushouList.type==1}}" style="width: 40%">
+                <text class="grey">房租：</text>
+                <text class="">{{zushouList.zujin}}元/月</text>
+            </view>
+        </view>
+        <view class="flex huxing gridXb " style="display: flex;justify-content: space-between">
+            <view class="para-box lineText" style="width: 40%">
+                <text class="grey">区域：</text>
+                <text class="">{{zushouList.area.area}}</text>
+            </view>
+            <view class="para-box lineText" style="width: 40%">
+                <text class="grey">面积：</text>
+                <text class="">{{zushouList.mianji}}m^2</text>
+            </view>
+        </view>
+        <view class="flex chaoxiang gridXb" style="display: flex;justify-content: space-between">
+            <view class="para-box lineText" style="width: 40%">
+                <text class="grey">户型：</text>
+                <text class="">{{zushouList.huxing}}</text>
+            </view>
+            <view class="para-box lineText" style="width: 40%">
+                <text class="grey">年代：</text>
+                <text class="">{{zushouList.niandai}}年</text>
+            </view>
+        </view>
+        <view class="flex age" style="display: flex;justify-content: space-between">
+            <view class="para-box lineText" style="width: 40%">
+                <text class="grey">装修：</text>
+                <text class="">{{zushouList.zhuangxiu.name}}</text>
+            </view>
+            <view class="para-box lineText" style="width: 40%">
+                <text class="grey">楼层：</text>
+                <text class="">{{zushouList.louceng}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<!--<view class="footer-box mt10">-->
+    <!--<view class="qr-code-box {{isAli?'qr-code-box-ali':''}}">-->
+        <!--<image class="qr-code-pic" src="{{zushouList..qrcode_url}}"></image>-->
+    <!--</view>-->
+    <!--<view class="tc grey mt5">长按识别图中二维码关注{{xiaochengxuName||info.public_name}}!</view>-->
+<!--</view>-->
+<view catchtap="hideZhezhao" class="zhezhao tc {{zhezhaoDisplay}}" data-zhezhao-display="{{zhezhaoDisplay}}">
+    <view class="shareTo" style="display: flex;justify-content: center;align-items: center;font-size: 40rpx;">
+        <text>截屏分享给好友</text>
+    </view>
+</view>

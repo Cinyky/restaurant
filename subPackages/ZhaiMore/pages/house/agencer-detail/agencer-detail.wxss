@@ -1,0 +1,49 @@
+.agencer-detail-info {
+    color: #fff;
+    padding: 50rpx 30rpx 40rpx 30rpx;
+}
+
+.agencer-avator {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    box-shadow: 0 0 0 6rpx #fff;
+}
+
+.agencer-name {
+    font-size: 34rpx;
+}
+
+.agencer-intru {
+    padding: 0 60rpx;
+}
+
+.some-icon {
+    width: 60%;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.some-icon .gridFour {
+    height: 70rpx;
+    line-height: 70rpx;
+    width: 40%;
+    border-radius: 6rpx;
+}
+
+.some-icon .gridFour:active {
+    background: #fff;
+    color: #f35051;
+}
+
+.some-icon .gridFour text {
+    font-size: 50rpx;
+}
+
+.estate-box {
+    background-color: #fff;
+}
+
+@import "../../../__wuBaseWxss__/2.wxss";
+
+@import "../../../__wuBaseWxss__/0.wxss";

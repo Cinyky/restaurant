@@ -1,0 +1,35 @@
+.page{
+	margin: 2%;
+}
+.detailText{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.singleView{
+	padding: 2%;
+	background: white;
+	display: flex;
+	justify-content: left;
+	margin-bottom: 2%;
+}
+.lookView text{
+	padding: 10rpx;
+	background: #1CA27E;
+	border-radius: 20rpx;
+	font-size: 30rpx;
+	margin-left: 520rpx;
+	color:white;
+}
+
+.whiteview{
+	width: 100%;
+	background: white;
+}
+.demoView{
+	 padding-left: 25rpx;
+	 padding-top: 25rpx;
+	margin-bottom: 2%;
+	display: flex;
+	align-items: center;
+ }

@@ -1,0 +1,201 @@
+<import src="/wxParse/wxParse.wxml" />
+<view class="page_wrapper">
+  <!--商户声明-->
+  <view class="notice">
+    <view>
+      加入注意事项：
+      <view>
+        <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+      </view>
+    </view>
+    <view class="notice_lxfs">
+      <text>电话：{{phone}}</text>
+      <text>QQ：{{ms_qq}}</text>
+      <text>后台地址：{{adminUrl}}</text>
+    </view>
+  </view>
+  
+  <!--具体填写信息-->
+  <view class="weui-cells">
+    <!--商家名称-->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label label_required">商家名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input type="text" class="weui-input" placeholder="请输入商家名称" name="shopname" bindblur="bindShopName"/>
+      </view>
+    </view>
+    
+    <!--商家电话-->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label label_required">商家电话</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入商家电话" bindblur="bindShopPhone"/>
+      </view>
+    </view>
+    
+    <!--商家QQ-->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">QQ</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入QQ" bindblur="bindShopQq"/>
+      </view>
+    </view>
+    
+    <!--商家logo-->
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title label_required">logo上传</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__input-box">
+              <view class="weui-uploader__input" bindtap="chooseLogo"></view>
+            </view>
+            <view class="weui-uploader__files" id="uploaderFiles">
+              <!--<block wx:for="{{logurl}}" wx:key="*this">-->
+                <view class="weui-uploader__file" bindtap="previewLogo" id="{{item}}">
+                  <image class="weui-uploader__img" src="{{logourl}}" mode="aspectFill"/>
+                </view>
+              <!--</block>-->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  
+    <!--省市区选择器-->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label label_required">商家地址</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker weui-input">
+            {{region[0]}}，{{region[1]}}，{{region[2]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+   
+    <!--经纬度选择-->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label label_required">商家坐标</view>
+      </view>
+      <view class="weui-cell__bd weui-input" bindtap="openLocation">
+        <view wx:if="{{latitude}}">
+          ({{latitude}},{{longitude}})
+        </view>
+        <view wx:else>
+          请选择坐标
+        </view>
+      </view>
+    </view>
+  
+    <!--商家地址-->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label label_required">详细地址</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入详细地址" bindblur="bindShopAddr"/>
+      </view>
+    </view>
+    
+    <!--营业时间-->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label label_required">开门时间</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="time" value="{{times}}" start="00:00" end="23:59" bindchange="bindTimeChanges">
+          <view class="weui-input">
+            {{times}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label label_required">关门时间</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker mode="time" value="{{timee}}" start="00:00" end="23:59" bindchange="bindTimeChangee">
+          <view class="weui-input">
+            {{timee}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    
+    <!--商家实景-->
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">商家实景(建议尺寸750*375px,首张为封面图)</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__input-box">
+              <view class="weui-uploader__input" bindtap="chooseReally"></view>
+            </view>
+            <view class="weui-uploader__files" id="uploaderFiles">
+              <block wx:for="{{reallyImg}}" wx:key="*this">
+              <view class="weui-uploader__file" bindtap="previewReally" id="{{item}}">
+                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill"/>
+              </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!--资质证书-->
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <view class="weui-uploader">
+          <view class="weui-uploader__hd">
+            <view class="weui-uploader__title">资质证书</view>
+          </view>
+          <view class="weui-uploader__bd">
+            <view class="weui-uploader__input-box">
+              <view class="weui-uploader__input" bindtap="chooseCertificate"></view>
+            </view>
+            <view class="weui-uploader__files" id="uploaderFiles">
+              <block wx:for="{{certificateImg}}" wx:key="*this">
+                <view class="weui-uploader__file" bindtap="previewCertificate" id="{{item}}">
+                  <image class="weui-uploader__img" src="{{item}}" mode="aspectFill"/>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  
+    <!--提供服务-->
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">提供服务</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="空格分割，如：wifi 停车" bindblur="bindShopProvide"/>
+      </view>
+    </view>
+  
+
+  </view>
+  <!--提交-->
+  <view class="sub" bindtap="bindSub">
+    <text>提交</text>
+  </view>
+
+</view>

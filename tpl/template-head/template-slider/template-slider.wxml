@@ -1,0 +1,58 @@
+<template name="slider_01">
+  <view class="swiper-container slider-01">
+    <swiper class="swiper" autoplay="{{true}}" indicator-color="#fff" indicator-active-color="#757575" indicator-dots="{{true}}"   current="0"  style='height:{{bannerHeight}}rpx'>
+      <block wx:for="{{setData.dataList}}" wx:key="slider"> 
+        <swiper-item>
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}" class="slider-img" mode='{{mod[1]}}' bindload='imageLoad' style='height:{{bannerHeight}}rpx'></image>
+            </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</template>
+
+<template name="slider_03">
+  <view class="swiper-container slider-03">
+    <swiper class="swiper" autoplay="{{true}}" indicator-dots="{{true}}" indicator-color="#fff" indicator-active-color="#757575"  current="0">
+      <block wx:for="{{setData.dataList}}" wx:key="slider">
+        <swiper-item>
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}" class="slider-img"></image>
+            </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</template>
+
+<template name="slider_04">
+  <view class="swiper-container slider-04">
+    <swiper class="swiper" autoplay="{{true}}" indicator-color="#fff" indicator-active-color="#ff5366"   current="0">
+      <block wx:for="{{setData.dataList}}" wx:key="slider">
+        <swiper-item>
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}" class="slider-img"></image>
+            </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</template>
+
+<template name="slider_05">
+  <view class="swiper-container slider-05">
+    <swiper class="swiper" autoplay="{{true}}" indicator-dots="{{true}}" indicator-color="#fff" indicator-active-color="#ff5366"   current="0">
+      <block wx:for="{{setData.dataList}}" wx:key="slider">
+        <swiper-item>
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}" class="slider-img"></image>
+            </navigator>
+        </swiper-item>
+      </block>
+      <view class="dots">
+
+      </view>
+    </swiper>
+  </view>
+</template>

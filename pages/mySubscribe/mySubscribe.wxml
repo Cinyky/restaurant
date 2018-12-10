@@ -1,0 +1,34 @@
+<block wx:for="{{dataList_h}}">
+  <view class="mySubscribe_container">
+    <view class="mySubscribe_container_h3" style='color:{{__wechat_main_color}}'>电脑维修</view>
+    <view class="mySubscribe_line_content_public">
+      <view class="mySubscribe_block_content_public">
+        <text class="block_first_span_width">预约姓名</text>
+        <text>{{item.name}}</text>
+      </view>
+      <view class="mySubscribe_block_content_public">
+        <text>预约电话</text>
+        <text>{{item.phone}}</text>
+      </view>
+    </view>
+    <view class="mySubscribe_line_content_public">
+      <view class="mySubscribe_block_content_public">
+        <text class="block_first_span_width">服务人员</text>
+        <text>{{item.service}}</text>
+      </view>
+      <view class="mySubscribe_block_content_public">
+        <text>服务时间</text>
+        <text>{{item.mtime}}</text>
+      </view>
+    </view>
+    <view class="mySubscribe_other_line">
+      <text class="block_first_span_width">备注</text>
+      <text>{{item.comtent}}</text>
+    </view>
+  </view>
+</block>
+
+
+
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

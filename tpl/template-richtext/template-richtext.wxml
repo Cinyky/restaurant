@@ -1,0 +1,5 @@
+<template name="richtext">
+  <view class="richtext" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <rich-text nodes='{{setData.content}}'></rich-text>
+  </view>
+</template>

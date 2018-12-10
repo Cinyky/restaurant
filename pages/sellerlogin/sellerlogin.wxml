@@ -1,0 +1,33 @@
+<view class="main">
+    <image class="bgimg" src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/bj1@2x.png"></image>
+    <view class="headwz">商户登录</view>
+    <image class="hdimg ab" mode="widthFix" src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/bj2@2x.png"></image>
+    <form bindsubmit="loginSubmit"><view class="resite border1">
+        <view class="ab udlr">
+            <view class="resite_one">
+                <view class="text">
+                    <view class="rel">
+                        <image class="ab udlr" src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/account.png"></image>
+                    </view>
+                    <view>
+                        <input name="username" placeholder="请输入账号" placeholderStyle="font-size:30rpx;"></input>
+                    </view>
+                </view>
+            </view>
+            <view class="resite_one">
+                <view class="text">
+                    <view class="rel">
+                        <image class="ab udlr" src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/password.png"></image>
+                    </view>
+                    <view>
+                        <input name="password" password="{{true}}" placeholder="请输入密码"></input>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <button  formType="submit"style="background-color:{{__wechat_main_color}}">登录</button>
+    </view>
+     </form>
+
+</view>
+

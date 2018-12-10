@@ -1,0 +1,19 @@
+.swiper-container{position:relative}
+.dots{position:absolute;display:flex;justify-content:center;right:0}
+.wx-swiper-dot{width:15rpx!important;height:15rpx!important}
+.slider-04 .wx-swiper-dots.wx-swiper-dots-horizontal{margin-bottom:310rpx;width:91%!important;display:inline-flex!important;justify-content:flex-end!important}
+.slider-05 .wx-swiper-dots.wx-swiper-dots-horizontal{width:91%!important;margin-bottom:-2rpx;display:inline-flex!important;justify-content:flex-end!important}
+.slider-05 .wx-swiper-dot{border-radius:0!important}
+.slider-01 swiper{width:750rpx;}
+.slider-01 swiper-swiper-item{width:750rpx;}
+.slider-01 .slider-img{width:750rpx;}
+.slider-03 swiper{width:750rpx;}
+.slider-03 swiper-swiper-item{width:750rpx;}
+.slider-03 .slider-img{width:710rpx;height:340rpx;border:20rpx solid #fff}
+.slider-04 swiper{width:750rpx;}
+.slider-04 swiper-swiper-item{width:750rpx;}
+.slider-04 .slider-img{width:730rpx;height:360rpx;border:10rpx solid #fff}
+.slider-05 swiper{width:750rpx;}
+.slider-05 swiper-item{width:750rpx;}
+.slider-05 .slider-img{width:750rpx;}
+.slider-05 .dots{left:0;right:0;bottom:0;height:24px;background:rgba(0,0,0,.5)}

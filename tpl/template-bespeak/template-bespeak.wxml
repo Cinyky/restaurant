@@ -1,0 +1,33 @@
+<template name="articleList_03">
+    <view class="article-container article-03">
+      <block wx:for="{{setData.dataList}}" wx:key="bespeak"> 
+        <view class="article-item">
+          <view class="article-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}"></image>
+            <view>
+              <text class="tit  DListT_3">{{item.title}}</text>
+              <text class="mon  DListT_3">{{item.ms}}</text>
+            </view>
+            </navigator>
+          </view>
+        </view> 
+       </block> 
+    </view>
+</template>
+<template name="articleList_04">
+    <view class="article-container article-04">
+      <block wx:for="{{setData.dataList}}" wx:key="bespeak"> 
+        <view class="article-item">
+          <view class="article-item-inner">
+            <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+            <image src="{{item.img}}"></image>
+            <view>
+              <text class="tit DListT_4">{{item.title}}</text>
+            </view>
+            </navigator>
+          </view>
+        </view>
+       </block> 
+    </view>
+</template>

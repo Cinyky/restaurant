@@ -1,0 +1,52 @@
+<template name="title_01">
+  <view class="title-container title-01" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <view class="title-inner">
+        <text class="tit">{{setData.title}}</text>
+        <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+        <text class="more">{{setData.more}}</text>
+        </navigator>
+      </view>
+  </view>
+</template>
+
+<template name="title_02">
+  <view class="title-container title-02" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <view class="title-inner">
+        <text class="tit">{{setData.title}}</text>
+        <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+        <text class="more">{{setData.more}}</text>
+        </navigator>
+      </view>
+  </view>
+</template>
+
+<template name="title_03">
+  <view class="title-container title-03" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <view class="title-inner">
+        <text class="tit">{{setData.title}}</text> 
+        <view class="tline"></view>
+      </view>
+  </view>
+</template>
+
+<template name="title_04">
+  <view class="title-container title-04" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <view class="title-inner">
+        <text class="tit">{{setData.title}}</text>
+        <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+        <text class="more">{{setData.more}}</text>
+        </navigator>
+      </view>
+  </view>
+</template>
+
+<template name="title_05">
+  <view class="title-container title-05" style='padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <view class="title-inner" style='background: {{setData.bgcolor}};'>
+        <text class="tit">{{setData.title}}</text>
+        <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+        <text class="more">{{setData.more}}</text>
+        </navigator>
+      </view>
+  </view>
+</template>

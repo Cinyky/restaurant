@@ -1,0 +1,25 @@
+<!--pages/cards/cards.wxml-->
+<view class="side-padding page-wrap">
+  <view wx:for="{{pageData}}" wx:key="{{item.id}}" class="li" id="{{item.card_id}}" bind:tap="gotoCardDetail">
+    <view class="ellipsis">
+      <text class="txt-l tc-9">{{item.update_time}} 来自{{item.recommender}}的推荐</text>
+    </view>
+    <view class="flex-row li-card">
+      <view class="txt-s lc-left">
+        <view><text class="tc-7 txt-bigger">{{item.company}}</text></view>
+        <view class="ellipsis lc-name"><text>{{item.name}}</text></view>
+        <view><text class="tc-3 txt-s">{{item.job_title}}</text></view>
+        <view class="lc-line lc-space"><text class="txt-s tc-7">{{item.cellphone}}</text></view>
+        <view class="lc-line"><text class="txt-s tc-7">{{item.smail}}</text></view>
+        <view><text class="txt-l tc-green">No.{{item.card_id}}</text></view>
+      </view>
+      <image class="lc-right" mode="aspectFill" src="{{item.avatar}}"></image>
+      <view class="lc-btns">
+        <view catchtap="shieldCard" id="{{item.id}}" class="txt-s tc-9 lc-btn">屏蔽</view>
+      </view>
+      <image wx:if="{{item.star_status}}" class="lc-star" src="../../assets/img/star.png"></image>
+    </view>
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,highLightIndex:highLightIndex}}"></template>

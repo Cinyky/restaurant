@@ -1,0 +1,93 @@
+@import "../../assets/common.wxss";
+
+page,.page {
+  background: #f5f5f5;
+}
+
+.head{
+  height: 400rpx;
+  width: 100%;
+}
+.banner {
+  width: 100%;
+  height: 100%;
+}
+
+.shop_info {
+  width: 700rpx;
+  margin-left: 25rpx;
+  height: 100rpx;
+  background: #ffffff;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.logo {
+  width: 200rpx;
+  height: 200rpx;
+  position: relative;
+  top:-100rpx;
+  box-sizing: border-box;
+}
+.info_box{
+  width: 500rpx;
+  height: 100rpx;
+  box-sizing: border-box;
+  font-size: 35rpx;
+  display: flex;
+  padding: 20rpx;
+  align-items: center;
+}
+.main_btn_group{
+  box-sizing: border-box;
+  width: 700rpx;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10rpx;
+  margin-left: 25rpx;
+  padding: 20rpx;
+  background: #ffffff;
+
+}
+.main_btn_item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.main_btn_group .iconfont_dec{
+  font-size: 80rpx;
+  color: #4e5366;
+}
+.main_btn_group .main_btn_name{
+  font-size: 30rpx;
+  color: #888888;
+}
+.anli_box{
+  width: 700rpx;
+  box-sizing: border-box;
+  margin-left: 25rpx;
+  margin-top: 20rpx;
+}
+.zx_list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.zx_list_item{
+  width: 345rpx;
+}
+.zx_img_wrapper{
+  width: 345rpx;
+  height: 400rpx;
+}
+.zx_img_wrapper > image{
+  width: 100%;
+  height: 100%;
+}
+.zx_line1,.zx_line2{
+  box-sizing: border-box;
+  width: 325rpx;
+}

@@ -1,0 +1,87 @@
+<!--<view class="my" bindtap="bind_my" style="background: {{__wechat_main_color}};">-->
+  <!--<text>我的</text>-->
+<!--</view>-->
+<view class="page">
+  <!--轮播图-->
+  <view class="pics">
+    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+      <block wx:for="{{setting.pics}}" wx:for-index="index">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" mode="aspectFill"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--地点-->
+  <view class="addr">
+    <!--左边-->
+    <view class="left">
+      <view class="type">
+        <text>{{setting.type}}</text>
+      </view>
+      <view class="add">
+        <text>{{setting.addr}}</text>
+      </view>
+    </view>
+    <!--右边-->
+    <view class="right" bindtap="getMap">
+      <image src="../../image/daohang.png" mode="widthFix" style="width: 150rpx;"/>
+    </view>
+  </view>
+  <view wx:if="{{flag}}">
+    <map style='width: 100%;' id="myMap" latitude="{{lat}}" longitude="{{lng}}" markers="{{markers}}" show-location />
+  </view>
+  <!--菜单-->
+  <view class="iconView">
+    <view class="icon1" bindtap="bindToLesson">
+      <image src="../../image/jingpinkecheng.png" mode="widthFix" style="width: 120rpx"/>
+      <text>精品课程</text>
+    </view>
+    <view class="icon2" bindtap="bindToKebiao">
+      <image src="../../image/peixunkebiao.png" mode="widthFix" style="width: 120rpx"/>
+      <text>培训课表</text>
+    </view>
+    <view class="icon3" bindtap="bindTeacher">
+      <image src="../../image/shoukelaoshi.png" mode="widthFix" style="width: 120rpx"/>
+      <text>授课老师</text>
+    </view>
+    <view class="icon4" bindtap="bindToVideo">
+      <image src="../../image/shipinshilu.png" mode="widthFix" style="width: 120rpx"/>
+      <text>视频实录</text>
+    </view>
+  </view>
+  <!--精品课程-->
+  <view class="lessonView">
+    <!--导航栏-->
+    <view class="daohang">
+      <text>精品课程</text>
+      <text style="color: #ADADAD" bindtap="bindToLesson">更多></text>
+    </view>
+    <!--单个课程-->
+    <view class="singleView" wx:for="{{lesson.show_lesson}}">
+      <image src="{{item.pic}}"  style="width: 260rpx;height: 200rpx;"/>
+      <view class="detailText">
+        <text>{{item.name}}</text>
+        <view class="yuyueView" bindtap="bindToLessonDetail" data-id="{{item.id}}"><text>预约试听</text></view>
+      </view>
+    </view>
+  </view>
+  <!--视频实录-->
+  <view class="videoView">
+    <!--导航栏-->
+    <view class="daohang">
+      <text>视频实录</text>
+      <text style="color: #ADADAD" bindtap="bindToVideo">更多></text>
+    </view>
+    <!--单个视频-->
+    <view class="singleVideo" wx:for="{{videos.show_video}}">
+      <view class="videoCenter">
+        <video src="{{item.video}}"></video>
+      </view>
+      <view class="videoText">
+        <text>{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+

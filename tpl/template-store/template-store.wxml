@@ -1,0 +1,22 @@
+<template name="store">
+  <view style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <view class="" style='display:flex'>
+      <image class='store-img mar-r' src='{{setData.logoImg}}'></image>
+      <view>
+        <view class='fs-14'>{{setData.storeName||'暂未填写'}}</view>
+        <view class='fs-12 mar-t' wx:if="{{setData.checkTime == '1'}}">营业时间：
+          <text class='store-time'>{{setData.times}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='store-bottom'>
+      <view class='bottom-left' bindtap='map' data-lat="{{setData.lat}}" data-lng="{{setData.lng}}" data-name="{{setData.storeName}}" data-address="{{setData.address}}">
+        <image class='store-addimg mar-r' src='http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/address.png'></image>
+        <view class='store-address mar-r'>{{setData.address}}</view>
+        <view class='store-address-leftRange'>距离{{setData.distance}}</view>
+      </view>
+      <view wx:if="{{setData.checkPhone=='1'}}">|</view>
+      <image wx:if="{{setData.checkPhone=='1'}}" bindtap='phone' data-phone="{{setData.tel}}" class='store-phone' src='http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/phone.png'></image>
+    </view>
+  </view>
+</template>

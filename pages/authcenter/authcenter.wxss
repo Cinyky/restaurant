@@ -1,0 +1,20 @@
+page {
+	background: #f5f5f5;
+    font-size: 30rpx;
+}
+
+.head{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 300rpx;
+    padding: 50rpx;
+}
+.desc{
+    color: #888;
+    text-align: center;
+    padding: 30rpx;
+}
+.login_btn{
+}

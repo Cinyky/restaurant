@@ -1,0 +1,32 @@
+<form bindsubmit='paysubmit'>
+	<view class="m-cells m-cells-form">
+	  <view class="m-cell">
+	    <view class="m-cell-hd"><label class="u-label">消费金额</label></view>
+	    <view class="m-cell-bd">
+	      <input type="text" value="{{spendMoney}}" name="spendmoney" placeholder="请询问商家后输入" bindblur="inputMoney"/>
+	    </view>
+	  </view>
+		
+	</view>
+	<view class="remind">
+		<text>提示：具体消费金额请询问店家</text>
+	</view>
+	<view class="m-cells m-cells-form">
+		<view class="m-cell">
+			<view class="m-cell-hd"><label class="u-label">实付金额</label></view>
+			<view class="m-cell-bd">
+				<input class="payinput" placeholder-class="psection" type="text" value="{{reallyMoney}}元" name="reallymoney" placeholder="0元" disabled/>
+			</view>
+		</view>
+	</view>
+	<!--判断商家是否已经设置了转账页面信息-->
+	<view wx:if="{{setInfo['buttontext']}}">
+		<button class="u-btn u-btn-default" form-type="submit">{{setInfo['buttontext']}}</button>
+	</view>
+	<view wx:else>
+		<button class="u-btn u-btn-default" form-type="submit">转账</button>
+	</view>
+
+</form>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

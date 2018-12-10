@@ -1,0 +1,141 @@
+button[type="warn"][plain] {
+    color: #f35150;
+}
+
+button[type="warn"][plain]::before {
+    border-color: #f35150;
+}
+
+button[type="warn"][plain]:active {
+    background: #f35150;
+}
+
+.search-box {
+    background-color: #465362;
+}
+
+.search-box-inner>.icon-search {
+    background-color: #f35150;
+}
+
+.actice-style {
+    background-color: #f35150;
+}
+
+.estate-item .estate-advantage>.gridFourRadio {
+    color: #f35150;
+}
+
+.estate-item .estate-advantage>.gridFourRadio::before {
+    border-color: #f35150;
+}
+
+.price-cou-unt {
+    color: #f35150;
+}
+
+.agencer-box .tel {
+    color: #f35150;
+}
+
+.estate-name-panel .search-house {
+    background-color: #f35150;
+}
+
+.panel-content-head {
+    color: #f35150;
+    border-bottom-color: #f35150;
+}
+
+.submit-btn {
+    background-color: #f35150;
+}
+
+.top-bg-red {
+    background-color: #f35150;
+}
+
+.count-result .top-line,.right-line {
+    border-color: rgba(251,98,97,1);
+}
+
+.counter-btn {
+    color: #f35150;
+}
+
+.counter-active-color {
+    color: #f35150;
+}
+
+.estate-price .price-count {
+    color: #f35150;
+}
+
+.house-resouce-title {
+    color: #f35150;
+}
+
+.nearby-peitao-sheshi {
+    color: #f35150;
+}
+
+.detail-page-footer-icon {
+    color: #f35150;
+}
+
+.buttombar-box-right {
+    background-color: #f35150;
+}
+
+.agencer-detail-info {
+    background-color: #f35150;
+}
+
+.item-active {
+    color: #f35150;
+    border-bottom-color: #f35150;
+}
+
+.cancel-btn {
+    background-color: #f35150;
+}
+
+.shop-tel .icon-dianhua1,.shop-address-detail .icon-btnmap {
+    color: #f35150;
+}
+
+.shop-item .shop-tel .f12 {
+    color: #f35150;
+}
+
+.save-pic-btn {
+    background-color: #f35150;
+}
+
+.houTyp .htRg {
+    color: #f35150;
+}
+
+.apVal {
+    color: #f35150;
+}
+
+.secTit {
+    color: #f35150;
+}
+
+.addrDetail .iconfont {
+    color: #f35150;
+}
+
+.footerBtn {
+    background-color: #f35150;
+}
+
+.tanItem:active {
+    background-color: rgba(243,81,80,0.3);
+}
+
+.closeBtn:active {
+    background-color: rgba(243,81,80,0.5);
+}

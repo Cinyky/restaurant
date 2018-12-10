@@ -1,0 +1,81 @@
+<view class="m-coupon-list" wx:if="{{ispage}}">
+  <block wx:if="{{CenterCoupon.length>0}}">
+
+    <view class="m-coupon-item" wx:for="{{CenterCoupon}}">
+      <view wx:if="{{item.IsCanReceive == -1}}">
+        <view class="m-coupon-info">
+          <view class="m-coupon-text">
+            <label style="color:#888">{{item.Name}}</label>
+            <text>{{item.CouponUserDesc}}</text>
+            <text>有效日期至：{{item.StrValidateEnd}}</text>
+          </view>
+          <view class="m-coupon-price">
+            <view class="price-content-box {{item.IsCanReceive == -1 ? 'btn-coupon-gray':''}}">
+              <label>￥</label>{{item.DiscountMoney}}</view>
+          </view>
+        </view>
+        <view class="m-coupon-btn" >
+          <label class="btn-coupon btn-coupon-gray">{{item.IsCanReceive == 0 ? '立即领取':'已经领取' }}</label>
+        </view>
+      </view>
+      <view wx:else>
+          <view class="m-coupon-info">
+          <view class="m-coupon-text">
+            <label >{{item.Name}}</label>
+            <text>{{item.CouponUserDesc}}</text>
+            <text>有效日期至：{{item.StrValidateEnd}}</text>
+          </view>
+          <view class="m-coupon-price">
+            <view class="price-content-box ">
+              <label>￥</label>{{item.DiscountMoney}}</view>
+          </view>
+        </view>
+        <view class="m-coupon-btn" bindtap="receivenow" data-id="{{item.Id}}" data-isreceive="{{item.IsCanReceive}}">
+          <label class="btn-coupon">{{item.IsCanReceive == 0 ? '立即领取':'已经领取' }}</label>
+        </view>
+      </view>
+    </view>
+
+  </block>
+  <view class="m-nullcontent" wx:else>
+    <view class="m-nullpage-middle">
+      <label class="iconfont icon-meiyougengduo"></label>
+      <view class="m-null-tip">
+        <text>亲~什么都没有</text>
+        <text>没有可领的优惠券~</text>
+      </view>
+    </view>
+	<view class="u-top">
+     <navigator url="/pages/index/index" open-type="switchTab" hover-class="changestyle" class="u-go-home">
+    <view class="iconfont icon-shouyeshouye"></view>
+  </navigator>
+	</view>
+
+  </view>
+</view>
+<view class="msk1" wx:if="{{!flag}}" bindtap="outertouch">
+  <view class="m-coupon-box" catchtap="innertouch">
+    <view class="m-coupon-box-top">
+
+    </view>
+    <view class="m-coupon-box-content">
+
+      <view class="m-coupon-box-title">
+        优惠券领取成功
+        <view class="m-coupon-box-tip">点击右上角分享给好友</view>
+      </view>
+      <scroll-view scroll-y="true" class="m-coupon-box-list">
+        <view class="m-coupon-box-item" wx:for="{{Coupons}}">
+          <label>{{item.DiscountMoney}}元</label>
+          <text>{{item.Name}}</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="m-coupon-box-bottom">
+
+    </view>
+    <view class="u-close-btn" catchtap="outertouch">✕</view>
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

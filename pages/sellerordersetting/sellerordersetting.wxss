@@ -1,0 +1,30 @@
+@import "../../font.wxss";
+@import "../../utils/weui.wxss";
+/*@import "../../utils/fontawesome.wxss";*/
+
+.brand{
+  position: relative;
+}
+.btn-logout{
+  position: absolute;
+  right: 10rpx;
+  top: -20rpx;
+  background: none !important;
+  border: 1rpx solid #fff;
+  color: #fff !important;
+}
+.btn-logout::after{
+  display: none;
+}
+.btn-setting{
+  text-align: center;
+}
+.setting-box{
+  padding: 10rpx 0;
+  background: #fff;
+  margin: 10rpx 0;
+}
+.btn-setting:first-child{
+  box-sizing: border-box;
+  border-right: 1px solid #eee;
+}

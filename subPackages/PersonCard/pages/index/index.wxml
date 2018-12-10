@@ -1,0 +1,56 @@
+<view class="noView" wx:if="{{flag == 0}}">
+  <image src="../../image/no_card.png" mode="widthFix" style="width: 100%"/>
+  <view class="buttonView" bindtap="bindAdd">
+    <text>创建我的专属名片</text>
+  </view>
+</view>
+<view wx:else class="quan">
+  <!--上部分-->
+    <view class="zhezhao">
+      <view class="topView">
+        <image src="{{cardInfo.pic}}" mode="widthFix"/>
+        <view class="nameView">
+          <text style="color: white;font-size: 40rpx">{{cardInfo.name}}</text>
+          <text style="color: #DAD9D5;font-size: 25rpx">{{cardInfo.job}}</text>
+        </view>
+      </view>
+      <view class="infoView">
+        <view class="demoView">
+          <text style="color: white;">电话：{{cardInfo.phone}}</text>
+        </view>
+        <view class="demoView">
+          <text style="color: white;">公司：{{cardInfo.company_name}}</text>
+        </view>
+        <view class="demoView">
+          <text style="color: white;">邮箱：{{cardInfo.email}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="m-animate-warp" style="background:url({{cardInfo.pic}});background-size: cover;">
+      <view class="m-animate-img" style="background:url({{cardInfo.pic}});background-size: cover;"></view>
+    </view>
+    <!--中部分-->
+    <!--<view class="zhongView">-->
+      <!--<view class="zhongdemo">-->
+        <!--<text>人气：0</text>-->
+        <!--<text class="iconfont icon-yanjing" style="color: green;"></text>-->
+      <!--</view>-->
+      <!--<view class="zhongdemo">-->
+        <!--<text>点赞：0</text>-->
+        <!--<text class="iconfont icon-zan" style="color: red;"></text>-->
+      <!--</view>-->
+    <!--</view>-->
+  
+    <!--下部分-->
+  <view wx:if="{{is_other == 0}}">
+    <view class="diView">
+      <button open-type="share">递名片</button>
+    </view>
+    <view class="editView" bindtap="bindEdit">
+      <button>编辑</button>
+    </view>
+    <!--<view class="dianView">-->
+      <!--<text>点我生成图片分享给好友</text>-->
+    <!--</view>-->
+  </view>
+</view>

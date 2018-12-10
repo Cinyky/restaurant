@@ -1,0 +1,15 @@
+<view class="page">
+  <!--单个老师-->
+  <view wx:for="{{teacherInfo}}" class="singleView" bindtap="bindToTeacherDetail" data-id="{{item.id}}">
+    <view class="picView">
+      <image src="{{item.pic}}" mode="widthFix" style="width: 160rpx;"/>
+    </view>
+    <view class="nameView">
+      <text style="font-size: 25rpx;color: #696969">{{item.name}}</text>
+      <text style="font-size: 30rpx;">{{item.type}}</text>
+    </view>
+    <view>
+        <text style="color: #696969">></text>
+    </view>
+  </view>
+</view>

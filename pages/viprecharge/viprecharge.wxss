@@ -1,0 +1,75 @@
+@import "/tpl/template-menu/template-menu.wxss";
+@import "/utils/weui.wxss";
+.menu-item02 text{
+  margin-top:-10px
+}
+.brand {
+  background: #DB384C;
+  padding: 40rpx;
+  text-align: center;
+  color: #fff;
+}
+
+.brand_title {
+  font-size: 80rpx;
+}
+
+.brand_desc1_box {
+  margin: 20rpx auto;
+  font-size: 30rpx;
+}
+
+.card_form {
+  margin-top: 20rpx;
+  background: #ffffff;
+}
+
+#btn_get_phone::after {
+  display: none;
+  background: none;
+  content: none;
+}
+
+.rule {
+  padding: 20rpx;
+  margin-top: 5rpx;
+  background: #fff;
+}
+
+.rule_info {
+  padding: 20rpx 30rpx;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.rule_title {
+  color: #666;
+  font-size: 50rpx;
+}
+
+.money-box {
+  margin: 30rpx 0 -10rpx 0;
+  border-top: 1rpx solid #fff;
+  padding-top: 10rpx;
+  color: #eee;
+}
+
+.money-box > view:first-child {
+  border-right: 1rpx solid #fff;
+}
+
+.recharge_box {
+  padding: 10rpx;
+}
+
+.btn-mark {
+  line-height: unset;
+  padding: 10rpx 20rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 20rpx;
+  border: 1rpx solid #eee;
+  border-radius: 10rpx;
+  color: #fff;
+  background: #DB384C;
+}

@@ -1,0 +1,15 @@
+@import "/tpl/template-menu/template-menu.wxss";
+.m-product-item{position: relative;overflow: hidden}
+.u-del{width: 150rpx;background-color: #DB384C;float: right;height: 100%;color: #fff;font-size: 28rpx;text-align: center;line-height: 212rpx;}
+.m-item-c{position: absolute;height: 100%;width: 900rpx;}
+.del{-webkit-animation: mdel .2s  1;animation: mdel .2s  1;left: -150rpx;}
+.m-addCart{float: right;color: #888;font-size: 38rpx !important;margin-right: 40rpx;}
+@-webkit-keyframes mdel {
+  0% {left: 0;}
+  100% {left: -150rpx;}
+}
+@keyframes mdel {
+  0% {left: 0;}
+  100% {left: -150rpx}
+}
+.u-pa .m-product-list {padding: 0;}

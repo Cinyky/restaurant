@@ -1,0 +1,110 @@
+@import "/utils/iconfont.wxss";
+@import "/utils/my_iconfont.wxss";
+@import "/tpl/template-menu/template-menu.wxss";
+
+page{
+	height: 100%;
+	width: 100%;
+	background: #fff;
+}
+
+/*加入按钮*/
+.livein{
+	margin-right: 2%;
+	border:1rpx;
+	height: 100rpx;
+	width: 100rpx;
+	border-radius:50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #312E43;
+	color: white;
+	z-index: 100;
+	position: fixed;
+	margin-left:80%;
+	margin-top:900rpx;
+}
+/*搜索框*/
+.search{
+	height:90rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30rpx;
+	background: #f5f5f5;
+}
+.sou{
+	background: rgb(255,255,255);
+	width: 570rpx;
+}
+/*分类列表栏目*/
+.list{
+	background: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	color: grey;
+	font-size: 33rpx;
+	border-bottom: 1rpx solid #eeeeee;
+}
+.list>view{
+	box-sizing: border-box;
+	padding: 20rpx;
+}
+/*列表具体*/
+.list-d{
+	background: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	/*margin: 0 2%;*/
+}
+.shops{
+	background: white;
+	height: 230rpx;
+	width: 700rpx;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 10rpx;
+	border-bottom: 1rpx solid #eeeeee;
+}
+.tupian{
+	width:220rpx;
+	height: 220rpx;
+}
+.slide-image{
+	width: 100%;
+}
+.wenzi{
+	margin-left: 2%;
+}
+.list_three{
+	width:450rpx;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 6%;
+}
+.loc-btn{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	background: #eee;
+	margin-right: 20rpx;
+	margin-left: 30rpx;
+	border:none;
+}
+.list-s{
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 4rpx solid #eee;
+}

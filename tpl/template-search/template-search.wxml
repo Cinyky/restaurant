@@ -1,0 +1,40 @@
+<template name="search_01">
+   <!--<view class="search-container search-01">-->
+      <!--<view class="search-inner">-->
+          <!--<navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">-->
+          <!--<input  placeholder-style="#fff" confirm-type="search" placeholder="搜索你想要的" />-->
+          <!--<image src="/assets/searchbg01.png"></image>-->
+          <!--</navigator>-->
+      <!--</view>    -->
+   <!--</view>-->
+  <view class="m-search-box" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <navigator class="u-input-search" url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+      <label class="iconfont icon-sousuo-sousuo"></label>
+      <input type="text" bindinput="startinput" focus="{{false}}" bindconfirm="search" placeholder="请输入搜索关键字"/>
+      <view class="u-btn" bindtap="search">搜索</view>
+    </navigator>
+  </view>
+</template>
+
+<template name="search_02">
+   <view class="search-container search-02" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <view class="search-inner">
+          <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+          <input  placeholder-style="#999" confirm-type="search" placeholder="搜索你想要的" />
+          <image src="/assets/searchbg02.png"></image>
+          </navigator>
+      </view>
+   </view>
+</template>
+
+<template name="search_03">
+   <view class="search-container search-03" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+      <image src='/assets/searchinnerbg032.png'  mode='scaleToFill' class='bj-img'></image>
+      <view class="search-inner3">
+          <navigator url="{{setData.linkurl}}" open-type="{{setData.open_type}}">
+          <input  placeholder-style="#999" confirm-type="search" placeholder="搜索你想要的" />
+          <image src="/assets/searchbg03.png"></image>
+          </navigator>
+      </view>   
+   </view>
+</template>

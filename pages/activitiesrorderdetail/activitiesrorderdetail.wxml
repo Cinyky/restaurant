@@ -1,0 +1,100 @@
+<view>
+  <view class="m-cells">
+    <view class="m-cell ">
+      <view class="m-cell-bd">
+        <text>订单编号：{{dataList.order_no}}</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">{{dataList.status[1]}}</view>
+    </view>
+  </view>
+
+  <view class="m-product-all">
+    <view class="m-product-list">
+      <navigator url="/pages/goods/goods?id={{item.ProductId}}" class="m-product-item">
+        <view class="m-product-img">
+          <image src="{{dataList.product_pic}}" mode="aspectFill" />
+        </view>
+        <view class="m-product-info">
+          <view class="m-product-name">
+            <label>{{dataList.product_name}}</label>
+            <!-- <label class="m-min-name" style="overflow:hiddentext-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1">{{item.SpecStr==null?"":item.SpecStr}}</label> -->
+          </view>
+          <view class="m-product-price">
+            <label>￥</label>{{dataList.price}}
+            <text>x{{dataList.num}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <!-- <view>
+    <view class="m-cells-title">备注</view>
+    <view class="m-cells m-cells-form">
+      <view class="m-cell">
+        <view class="m-cell-bd">
+          备注内容
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <view class="m-cells total-info">
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <text>用户名称</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">{{dataList.nickname}}</view>
+    </view>
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <text>活动项目</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">{{activities}}</view>
+    </view>
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <text>商品原价</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">￥{{dataList.product_price}}</view>
+    </view>
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <text>商品单价</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">￥{{dataList.price}}</view>
+    </view>
+    <view class="m-cell">
+      <view class="m-cell-bd">
+        <text>商品数量</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">{{dataList.num}}</view>
+    </view>
+
+    <view class="m-cell" wx:if="{{activitiesType!= 2}}">
+      <view class="m-cell-bd">
+        <text>运费</text>
+      </view>
+      <view class="m-cell-ft m-order-typetxt">+￥{{dataList.trans_price}}</view>
+    </view>
+    <view class="m-cell ">
+      <view class="m-cell-bd">
+      </view>
+      <view class="m-cell-ft m-total-info">
+        实付款：
+        <label class="m-total-price">￥{{dataList.total_price}}</label>
+        <view class="m-total-time">下单时间：{{dataList.createtime}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='activities_button_container'>
+  <view class='activities_button_content' style='background-color:{{__wechat_main_color}}' bindtap='confirm_qrcode'>
+    点击核销
+  </view>
+</view>
+<!-- <navigator url="/pages/orderlist/orderlist?type=1&sl=1" redirect="true" class="m-nullpage" wx:else>
+  <view class="m-nullpage-middle">
+    <view class="m-null-tip">
+      <text>订单不存在</text>
+    </view>
+  </view>
+</navigator> -->

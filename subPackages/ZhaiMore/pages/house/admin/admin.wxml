@@ -1,0 +1,28 @@
+<view class="estate-list">
+  <view catchtap="navigateTo" class="estate-item gridXb flex" data-id="{{item.id}}" wx:for="{{zushouList}}" wx:key="{{item.id}}" style="display: flex;">
+    <image class="estate-pic  mr10" mode="aspectFill" src="{{item.pics[0]}}"></image>
+    <view class="item-content sub flex flexC" style="display: flex;flex-direction: column;margin-left: 10rpx;width:500rpx;">
+      <view class="estate-feature lineText2">
+        <text>{{item.name}}--{{item.type==2?'出售':'出租'}}</text>
+      </view>
+      <view class="estate-na-add lineText">
+        <text class="estate-name mr10">{{item.xiaoqu}}　</text>
+        <text class="estate-address">{{item.area}}</text>
+      </view>
+      <view class="estate-advantage">
+        <text class="gridFourRadio" wx:for="{{item.biaoqian}}" wx:key="*this" style="border: 1rpx solid red">{{item}}</text>
+      </view>
+      <view class="estate-price f14" style="display: flex;justify-content: space-between;align-items: center">
+        <text class="estate-contain mr10">{{item.huxing}}</text>
+        <text class="estate-area">{{item.mianji}}m²</text>
+        <view class="price-cou-unt mr10">
+          <text class="price-count mr5">{{item.type==2?item.shoujia:item.zujin}}</text>
+          <text class="price-unit">{{item.type==2?'万元':'元/月'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view hidden="{{zushouList==''?false:true}}">
+  <include src="../template/nodata.wxml"></include>
+</view>

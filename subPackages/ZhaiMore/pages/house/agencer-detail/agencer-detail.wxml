@@ -1,0 +1,51 @@
+<import src="/wxParse/wxParse.wxml" />
+<view class="">
+    <view class="agencer-detail-info tc " style="display: flex;flex-direction: column;align-items: center">
+        <image class="agencer-avator" mode="aspectFill" src="{{agentInfo.pic}}"></image>
+        <view class="agencer-name mt10 mb5 " style="margin-top: 15rpx">{{agentInfo.nickname}}</view>
+        <view class="agencer-intru tc" style="font-size: 28rpx;margin-top: 10rpx;margin-bottom: 10rpx;">
+            <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+        </view>
+        <view class="mt20">
+            <view class="some-icon mt20 flex" style="display: flex;justify-content: space-around;width: 500rpx">
+                <view catchtap="navigateToAgentList" class="gridFour" style="display: flex;justify-content: center;align-items: center;border: 1rpx white solid;">
+                    <text class="iconfont  icon-shouye"></text>
+                </view>
+                <view catchtap="makePhoneCall" class="gridFour" data-mobile="{{agentInfo.phone}}" style="display: flex;justify-content: center;border: 1rpx white solid;">
+                    <text class="iconfont icon-dianhua1"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="estate-list">
+        <view catchtap="navigateTo" class="estate-item gridXb flex" data-id="{{item.id}}" wx:for="{{AgentFangList}}" wx:key="{{item.id}}" style="display: flex;">
+            <image class="estate-pic  mr10" mode="aspectFill" src="{{item.pics[0]}}"></image>
+            <view class="item-content sub flex flexC" style="display: flex;flex-direction: column;margin-left: 10rpx;width:500rpx;">
+                <view class="estate-feature lineText2">
+                    <text>{{item.name}}--{{item.type==2?'出售':'出租'}}</text>
+                </view>
+                <view class="estate-na-add lineText">
+                    <text class="estate-name mr10">{{item.xiaoqu}}　</text>
+                    <text class="estate-address">{{item.area}}</text>
+                </view>
+                <view class="estate-advantage">
+                    <text class="gridFourRadio" wx:for="{{item.biaoqian}}" wx:key="*this" style="border: 1rpx solid red">{{item}}</text>
+                </view>
+                <view class="estate-price f14" style="display: flex;justify-content: space-between;align-items: center">
+                    <text class="estate-contain mr10">{{item.huxing}}</text>
+                    <text class="estate-area">{{item.mianji}}m²</text>
+                    <view class="price-cou-unt mr10">
+                        <text class="price-count mr5">{{item.type==2?item.shoujia:item.zujin}}</text>
+                        <text class="price-unit">{{item.type==2?'万元':'元/月'}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view hidden="{{AgentFangList==''?false:true}}">
+        <include src="../template/nodata.wxml"></include>
+    </view>
+    <view hidden="{{!isShowLoading}}">
+        <include src="../template/loading.wxml"></include>
+    </view>
+</view>

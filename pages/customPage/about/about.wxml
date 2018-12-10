@@ -1,0 +1,19 @@
+<!--pages/me/me.wxml-->
+<import src="/wxParse/wxParse.wxml"/>
+
+<!-- <view class="call1"></view> -->
+<view class="index3">
+<text>{{setting.about.title1}}</text>
+<text>{{setting.about.title2}}</text>
+</view>
+<view class="me1">
+<image src="{{setting.about.banner}}" mode="aspectFit"></image>
+</view>
+<view class="me2">
+<view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
+</view>
+
+<import src="../../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

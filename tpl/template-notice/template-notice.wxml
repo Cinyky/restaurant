@@ -1,0 +1,5 @@
+<template name="text_01">
+    <view class="text-container text-01">
+        <text>{{setData.content}}</text>
+    </view>
+</template>

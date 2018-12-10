@@ -1,0 +1,138 @@
+<view style="padding-bottom: 100rpx;">
+  <!--标题区域-->
+  <!--<view class="brand">-->
+    <!--{{form.title}}-->
+  <!--</view>-->
+  <!--字段区域-->
+  <view wx:for="{{fields}}" wx:for-item="field" wx:key="{{field.id}}" wx:for-index="fieldIdx">
+    <!--根据不同类型渲染不同的组件-->
+    <!--单行/多行文本类-->
+    <view wx:if="{{field.type=='text' || field.type=='num' || field.type=='email' || field.type=='idcard' || field.type=='phone' || field.type=='multitext'}}" data-type="{{field.type}}" data-id="{{field.id}}" class="field_box">
+      <view class="field_title {{field.attr.required==1?'field_required':''}}">{{field.title}}</view>
+      <view class="field_desc">{{field.desc}}</view>
+      <view class="input_box_textarea">
+        <input type="text" class="input_text" wx:if="{{field.type!='multitext'}}" bindinput="bindInput" data-type="{{field.type}}" data-id="{{field.id}}" type="{{(field.type=='num' || field.type=='idcard')?field.type:'text'}}"/>
+        <textarea class="input_textarea" wx:if="{{field.type=='multitext'}}" bindinput="bindInput" data-type="{{field.type}}" data-id="{{field.id}}"/>
+      </view>
+    </view>
+    <!--分割线-->
+    <view wx:if="{{field.type=='line'}}" data-type="{{field.type}}" data-id="{{field.id}}" style="background: white">
+      <view class="field_title align_{{field.attr.title_align}}" style="margin-left: 3%;margin-right:3%;">{{field.title}}</view>
+      <view style="border-top: 1rpx solid #cccccc;width: 94%;margin-left: 3%;margin-right: 3%"></view>
+      <view class="field_desc align_{{field.attr.desc_align}}" style="margin-left: 3%;margin-right:3%;">{{field.desc}}</view>
+    </view>
+    <!--选择菜单-->
+    <view wx:if="{{field.type=='menu'}}" class="field_box">
+      <view class="field_title {{field.attr.required==1?'field_required':''}}">{{field.title}}</view>
+      <view class="field_desc">{{field.desc}}</view>
+      <view class="input_box_input">
+        <picker bindchange="bindMenuChange" range="{{field.attr.options}}" data-type="{{field.type}}" data-id="{{field.id}}" data-idx="{{fieldIdx}}">
+          <view class="picker">
+            {{formData[field.id] || '请选择'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <!--单选-->
+    <view wx:if="{{field.type=='oneselect'}}" class="field_box">
+      <view class="field_title {{field.attr.required==1?'field_required':''}}">{{field.title}}</view>
+      <view class="field_desc">{{field.desc}}</view>
+      <view class="input_box_radio">
+        <radio-group class="radio-group" bindchange="bindRadioChange" data-type="{{field.type}}" data-id="{{field.id}}">
+          <view wx:for="{{field.attr.options}}" wx:for-item="option">
+            <label class="radio">
+              <radio value="{{option}}" checked="{{option.checked}}"/>
+              <text>{{option}}</text>
+            </label>
+          </view>
+        </radio-group>
+      </view>
+    </view>
+    <!--多选-->
+    <view wx:if="{{field.type=='multiselect'}}" class="field_box">
+      <view class="field_title {{field.attr.required==1?'field_required':''}}">{{field.title}}</view>
+      <view class="field_desc">{{field.desc}}</view>
+      <view class="input_box">
+        <checkbox-group bindchange="bindCheckboxChange" data-type="{{field.type}}" data-id="{{field.id}}">
+          <view wx:for="{{field.attr.options}}" wx:for-item="option">
+            <label class="checkbox">
+              <checkbox value="{{option}}"/>
+              {{option}}
+            </label>
+          </view>
+        </checkbox-group>
+      </view>
+    </view>
+    <!--日期-->
+    <view wx:if="{{field.type=='date'}}" class="field_box">
+      <view class="field_title {{field.attr.required==1?'field_required':''}}">{{field.title}}</view>
+      <view class="field_desc">{{field.desc}}</view>
+      <view class="input_box_input">
+        <picker mode="date" bindchange="bindDateChange" fields="{{field.attr.date_format=='Y-m-d'?'day':'month'}}" data-type="{{field.type}}" data-id="{{field.id}}">
+          <view class="picker">
+            {{formData[field.id] || '请选择日期'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <!--省市区-->
+    <view wx:if="{{field.type=='addr'}}" class="field_box">
+      <view class="field_title {{field.attr.required==1?'field_required':''}}">{{field.title}}</view>
+      <view class="field_desc">{{field.desc}}</view>
+      <view class="input_box_input">
+        <picker mode="region" bindchange="bindAddrChange" data-type="{{field.type}}" data-id="{{field.id}}">
+          <view class="picker">
+            {{formData[field.id]?formData[field.id][0]+formData[field.id][1]+formData[field.id][2]:'请选择地址'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <!--图片-->
+    <view wx:if="{{field.type=='img'}}" data-type="{{field.type}}" data-id="{{field.id}}">
+      <view style='width:750rpx;overflow:hidden;padding:0;margin:0 auto;background: #f5f5f5;'>
+        <!--普通图片-->
+           <image mode="widthFix" src="{{field.attr.src}}" wx:if="{{!field.attr.url}}" style='width:750rpx;overflow:hidden;padding:0;margin:0 auto;display: block;'></image>
+        <block wx:else>
+        <!--小程序内链接-->
+        <navigator url="{{field.attr.url}}" wx:if="{{field.attr.url[0]=='/'}}">
+          <image mode="widthFix" src="{{field.attr.src}}" style='width:750rpx;overflow:hidden;padding:0;margin:0 auto'></image>
+        </navigator>
+        <!--网页链接-->
+        <navigator url="/pages/webView/webView?url={{field.attr.url}}" wx:if="{{field.attr.url[0]!='/'}}">
+          <image mode="widthFix" src="{{field.attr.src}}" style='width:750rpx;overflow:hidden;padding:0;margin:0 auto'></image>
+        </navigator>
+        </block>
+      </view>
+      <view class="field_desc align_{{field.attr.desc_align}}">{{field.desc==null?'':field.desc}}</view>
+    </view>
+    <!--文检上传-->
+    <view wx:if="{{field.type=='file'}}" class="field_box">
+      <view class="field_title {{field.attr.required==1?'field_required':''}}">{{field.title}}</view>
+      <view class="field_desc">{{field.desc}}</view>
+      <view class="input_box flex_box">
+        <block wx:for="{{formData[field.id]}}" wx:for-item="img" wx:for-index="imgIdx">
+          <image src="{{img}}" mode="scaleToFill" data-type="{{field.type}}" data-id="{{field.id}}" data-idx="{{imgIdx}}" bindlongpress="bindRemoveImg" class="uploaded_img"></image>
+        </block>
+        <view class="upload-btn" bindtap="bindUploadFile" data-type="{{field.type}}" data-id="{{field.id}}" data-idx="{{fieldIdx}}">
+          <text decode="{{true}}">选择图片\n</text>
+          <text style="font-size: 40rpx;">+</text>
+          <text decode="{{true}}">\n长按删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--提交按钮区域-->
+  <view class="submit-btn-box" style="text-align: center">
+    <button bindtap="submitForm" style="background:{{form.submit_btn.bgcolor}};color:{{form.submit_btn.fontcolor}};font-size: {{form.submit_btn.fontsize}}px;">{{form.submit_btn.text || '提交'}} {{form.need_pay==1?'需支付￥'+form.price+'元':''}}</button>
+  </view>
+
+  <!-- <view class='Return_H_container' bindtap='Return_H'>
+    <view class='Return_H_content'>
+      <text>首页</text>
+    </view>
+  </view> -->
+
+</view>
+
+<import src="../../tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

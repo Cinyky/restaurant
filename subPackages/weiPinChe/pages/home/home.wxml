@@ -1,0 +1,68 @@
+<view class="page">
+  <!--用户信息部分-->
+  <view>
+    <navigator url="xxx" wx:if="userInfo" class="row bg-white" style="justify-content: space-between;padding: 30rpx">
+      <view>
+        <!--头像昵称-->
+        <view class="row" style="justify-content: flex-start;align-items: center">
+          <view>
+            <image src="{{userInfo.avatarUrl}}" class="avatar-img" />
+          </view>
+          <view class="avatar-text">
+            <text>{{userInfo.nickName}}</text>
+          </view>
+        </view>
+        <!--按钮-->
+        <!--<view class="row" style="justify-content: flex-end;align-items: center;">-->
+        <!--<view>-->
+        <!--<text class="lnr lnr-cloud-sync" style="font-size: 50rpx"></text>-->
+        <!--</view>-->
+        <!--</view>-->
+      </view>
+    </navigator>
+  </view>
+  <!--折叠菜单-->
+  <view class="bg-white mgt20">
+    <view class="list-title flex-row" style="justify-content: space-between" bindtap="collapseGroup">
+      <view>
+        <text class="iconfont icon-car"></text>
+        我的
+      </view>
+      <view class="text-right">
+        <text class="iconfont2 icon-menudown" wx:if="{{groupIsShow}}"></text>
+        <text class="iconfont2 icon-menuup" wx:if="{{!groupIsShow}}"></text>
+      </view>
+    </view>
+    <!--列表组-->
+    <view wx:if="{{groupIsShow}}">
+      <navigator class="list-item" url="{{config.pathPrefix}}pages/published/published">
+        <view>
+          <text class="iconfont2 icon-menuright"></text>
+          我的发布
+        </view>
+      </navigator>
+      <!--<navigator class="list-item" url="/pages/home/verify/verify">-->
+        <!--<view>-->
+          <!--<text class="iconfont2 icon-menuright"></text>-->
+          <!--司机审核-->
+        <!--</view>-->
+      <!--</navigator>-->
+    </view>
+  </view>
+  <!--单个菜单-->
+  <!--<view>-->
+    <!--<navigator url="/pages/home/setting/setting" class="list-title bg-white mgt20">-->
+      <!--<view>-->
+        <!--<view>-->
+          <!--<text class="iconfont icon-cogs"></text>-->
+          <!--我的设置-->
+        <!--</view>-->
+      <!--</view>-->
+    <!--</navigator>-->
+  <!--</view>-->
+</view>
+
+<include src="../menuBtn.wxml"/>
+
+<import src="/tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

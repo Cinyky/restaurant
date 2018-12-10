@@ -1,0 +1,18 @@
+<template name="sanft_01">
+    <view class="pic-container sanft-01" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+        <block wx:for="{{setData.dataList}}"> 
+         <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}"><view class="sanft-01{{index}}"><image src="{{item.img}}"></image></view></navigator>
+        </block>
+    </view>
+</template>
+
+<template name="sift_01">
+    <view class="pic-container sift-02" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+         <block wx:for="{{setData.dataList}}"> 
+         <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}"><view class="sanft-02{{index}}"><image src="{{item.img}}"></image></view></navigator>
+        </block>
+    </view>
+</template>
+ 
+ 
+ 

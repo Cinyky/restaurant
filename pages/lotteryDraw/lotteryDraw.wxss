@@ -1,0 +1,670 @@
+@import "../../dzp.wxss";
+
+/* pages/errand/lotteryDraw/lotteryDraw.wxss */
+
+page {
+  background: #6200c6;
+}
+
+.luckPage {
+  background: linear-gradient(#6807cc, #6200c6);
+}
+
+.drawBg {
+  position: relative;
+  width: 100%;
+  height: 1300rpx;
+  overflow: hidden;
+}
+
+.subColor {
+  color: #ffd900;
+}
+
+/*消耗几个积分每次  */
+
+.xhjifen {
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  top: 18.5%;
+  transform: translateX(-50%);
+  color: #e2c6ff;
+  font-size: 32rpx;
+}
+
+/*背景图片  */
+
+.drawBgPic {
+  width: 100%;
+  height: 100%;
+}
+
+/*背景点缀  */
+
+.adornBox {
+  position: absolute;
+  z-index: 39;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.titleLf {
+  position: absolute;
+  left: 40rpx;
+  top: 26rpx;
+  width: 100rpx;
+  height: 250rpx;
+  animation: toRg 6s linear infinite;
+}
+
+@keyframes toRg {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(6rpx, -10rpx);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  75% {
+    transform: translate(6rpx, 10rpx);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.titleLfPic {
+  width: 100%;
+  height: 100%;
+}
+
+.titleRg {
+  position: absolute;
+  right: 20rpx;
+  top: 12rpx;
+  width: 100rpx;
+  height: 250rpx;
+  animation: toLf 6s linear infinite;
+}
+
+@keyframes toLf {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-6rpx, 10rpx);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  75% {
+    transform: translate(-6rpx, -10rpx);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.titleRgPic {
+  width: 100%;
+  height: 100%;
+}
+
+.titleBot {
+  position: absolute;
+  top: 740rpx;
+  right: 30rpx;
+  width: 200rpx;
+  height: 350rpx;
+  animation: toTop 6s linear infinite;
+}
+
+@keyframes toTop {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(0rpx, 20rpx);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.titleBotPic {
+  width: 100%;
+  height: 100%;
+}
+
+/*圆盘和底座  */
+
+.turnArea {
+  position: absolute;
+  top: 300rpx;
+  z-index: 40;
+  width: 700rpx;
+  left: 25rpx;
+  text-align: center;
+}
+
+.turnBox {
+  position: absolute;
+  left: 45rpx;
+  z-index: 50;
+  width: 610rpx;
+  height: 610rpx;
+  /* border: 1px solid black; */
+}
+
+/*转子背景照片  */
+
+.turn {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 5rpx solid transparent;
+  box-sizing: border-box;
+}
+
+/*奖品框 包含奖品列表和灯  */
+
+.awardBox {
+  position: absolute;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: transform 3s ease-out;
+}
+
+/*圆盘上的灯光  */
+
+.lightList {
+  position: absolute;
+  z-index: 70;
+  top: 30rpx;
+  left: 32rpx;
+  width: 540rpx;
+  height: 540rpx;
+  border-radius: 50%;
+}
+
+.lightItem {
+  position: absolute;
+  left: calc(50% - 8rpx);
+  top: 0;
+  width: 14rpx;
+  height: 536rpx;
+}
+
+.lightItem::before, .lightItem::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.smaLight::before, .smaLight::after {
+  width: 10rpx;
+  height: 10rpx;
+  animation: changeBig 500ms linear infinite;
+}
+
+.smaLight::before {
+  top: -16rpx;
+}
+
+.smaLight::after {
+  bottom: -28rpx;
+}
+
+.bigLight::before, .bigLight::after {
+  width: 20rpx;
+  height: 20rpx;
+  animation: changeSma 500ms linear infinite;
+}
+
+.bigLight::before {
+  top: -24rpx;
+}
+
+.bigLight::after {
+  bottom: -28rpx;
+}
+
+.lightTwo {
+  transform: translate(8rpx, 6rpx) rotate(22.5deg);
+}
+
+.lightThree {
+  transform: translate(18rpx, 14rpx) rotate(45deg);
+}
+
+.lightFour {
+  transform: translate(4rpx, 2rpx) rotate(67.5deg);
+}
+
+.lightFive {
+  transform: translateX(10rpx) rotate(90deg);
+}
+
+.lightSix {
+  transform: translate(6rpx, 8rpx) rotate(112.5deg);
+}
+
+.lightSeven {
+  transform: translate(2rpx, 16rpx) rotate(135deg);
+}
+
+.lightEight {
+  transform: translate(-2rpx, 10rpx) rotate(157.5deg);
+}
+
+@keyframes changeBig {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(2, 2);
+    background-color: #ff0;
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes changeSma {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(0.7, 0.7);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.zhecir {
+  position: absolute;
+  z-index: 65;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 50rpx #e48503 inset;
+}
+
+.zhecirinner {
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 36rpx #ff9503 inset;
+}
+
+/*奖品 列表 */
+
+.awardlist {
+  position: absolute;
+  z-index: 80;
+  top: 30rpx;
+  left: 30rpx;
+  width: 540rpx;
+  height: 540rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.awardItem {
+  position: absolute;
+  width: 150rpx;
+  overflow: hidden;
+}
+
+.awardItem:nth-child(1) {
+  top: 20rpx;
+  left: 200rpx;
+}
+
+.awardItem:nth-child(2) {
+  top: 116rpx;
+  right: 40rpx;
+  transform: rotate(60deg);
+}
+
+.awardItem:nth-child(3) {
+  top: 300rpx;
+  right: 36rpx;
+  transform: rotate(120deg);
+}
+
+.awardItem:nth-child(4) {
+  bottom: 20rpx;
+  left: 200rpx;
+  transform: rotate(180deg);
+}
+
+.awardItem:nth-child(5) {
+  top: 292rpx;
+  left: 40rpx;
+  transform: rotate(240deg);
+}
+
+.awardItem:nth-child(6) {
+  top: 112rpx;
+  left: 46rpx;
+  transform: rotate(300deg);
+}
+
+.awardName {
+  font-size: 28rpx;
+  color: #ff980a;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.awardPic {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+/*开始按钮  */
+
+.startBtn {
+  position: absolute;
+  z-index: 90;
+  top: 240rpx;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 94rpx;
+  height: 126rpx;
+}
+
+.startPic {
+  width: 100%;
+  height: 100%;
+}
+
+/*底座图片  */
+
+.dizuo {
+  position: absolute;
+  z-index: 15;
+  top: 480rpx;
+  left: 25rpx;
+  width: 650rpx;
+  height: 380rpx;
+}
+
+/*   */
+
+.commonBox {
+  color: #fff;
+}
+
+/*中奖纪录   分享  */
+
+.zfBlock {
+  transform: translateY(-80rpx);
+}
+
+.getChance {
+  color: #b281ec;
+}
+
+.zfBtn {
+  width: 200rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #fff;
+  line-height: 70rpx;
+  border-radius: 50rpx;
+  background: linear-gradient(to right, #af40bd, #e28446);
+  box-shadow: 0rpx 4rpx 30rpx rgba(179, 69, 180, 0.38);
+}
+
+.zfBtn::after {
+  border: none;
+}
+
+.zfBtn:active {
+  opacity: 0.85;
+}
+
+/*中奖名单  */
+
+.cell {
+  width: auto;
+  margin: 0 50rpx;
+}
+
+.titleBox {
+  justify-content: center;
+}
+
+.titleIcon {
+  width: 30rpx;
+  height: 56rpx;
+}
+
+.luckerList {
+  width: 86.66666666667%;
+  max-height: 300rpx;
+  background-color: #9d4cee;
+  margin-top: -24rpx;
+  padding: 30rpx 50rpx;
+  border-radius: 16rpx;
+}
+
+.luckName {
+  display: inline-block;
+  max-width: 150rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+/*活动规则  */
+
+.ruleBox {
+  margin-top: 100rpx;
+}
+
+.ruleList {
+  padding: 30rpx 50rpx;
+  border: 4rpx solid #9d4cee;
+  border-radius: 16rpx;
+}
+
+/*活动声明  */
+
+.shengBox {
+  margin-top: 100rpx;
+  padding-bottom: 30rpx;
+}
+
+.jishiquan {
+  color: #e4cbff;
+  letter-spacing: 2rpx;
+}
+
+/*弹窗  */
+
+.shade_bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.70);
+  overflow: hidden;
+}
+
+/*中奖  */
+
+.luckBox {
+  position: relative;
+  display: inline-block;
+  width: 640rpx;
+  height: 680rpx;
+  margin-top: 25%;
+  color: #fff;
+}
+
+.luckPic {
+  position: absolute;
+  z-index: 1010;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.myAwardBox {
+  position: absolute;
+  z-index: 1050;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.myAwardPic {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.myAwardName {
+  font-size: 34rpx;
+  margin-top: 30rpx;
+}
+
+.chakan {
+  margin-top: 20rpx;
+  opacity: 0.65;
+}
+
+/*未中奖  */
+
+.unluckBox {
+  display: inline-block;
+  position: relative;
+  width: 650rpx;
+  height: 660rpx;
+  margin-top: 25%;
+  color: #fff;
+}
+
+.unluckPic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tipBox {
+  position: absolute;
+  z-index: 1050;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  font-size: 34rpx;
+  opacity: 0.85;
+}
+
+/*关闭按钮  */
+
+.closeBox {
+  position: relative;
+  width: 82rpx;
+  height: 82rpx;
+  border: 4rpx solid #fff;
+  border-radius: 50%;
+  margin-top: 40rpx;
+  margin-left: calc(50% - 45rpx);
+}
+
+.close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44rpx;
+  height: 4rpx;
+  background-color: #fff;
+}
+
+.shunshi {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.nishi {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* 活动结束 */
+
+.no-content {
+  padding: 50px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.no-content-img {
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+}
+
+.xyyxBtn {
+  position: absolute;
+  z-index: 1100;
+  left: 50%;
+  bottom: 56rpx;
+  transform: translateX(-50%);
+  line-height: 76rpx;
+  width: 330rpx;
+  height: 76rpx;
+  border-radius: 100rpx;
+  background-color: transparent;
+}
+
+.xyyxBtn::after {
+  border: none;
+}
+
+.lotteryDraw_getPhone_button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 9999;
+}

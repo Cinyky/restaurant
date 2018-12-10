@@ -1,0 +1,37 @@
+<include src="../header.wxml"/>
+<view class="box {{navshow?'active':''}}" bindtap="navHide">
+  <include src="../logo.wxml"/>
+  <!--详情-->
+  <view class="section">
+    <view class="section-tit pb50">
+      <view class="section-h2">{{content.title}}</view>
+      <view class="section-p linght">{{content.ctime}}</view>
+    </view>
+    <view class="section-Min f18">
+      <!--<view wx:if="{{content.video}}" class="setcion-video">-->
+      <!--<video src="{{content.video}}" autoplay="true"></video>-->
+      <!--</view>-->
+      <view class="setction-img">
+        <image src="{{content.img}}" mode="aspectFit"></image>
+      </view>
+      <!--<view class="tabs flex tc grey gridXb">-->
+      <!--<block wx:for="{{mark}}" wx:key="*this">-->
+      <!--<view id="{{item.id}}" data-index="{{index}}" class="sub {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">-->
+      <!--<view class="items">{{item.mark_name}}</view>-->
+      <!--</view>-->
+      <!--</block>-->
+      <!--<view wx:if="{{mark}}" class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>-->
+      <!--</view>-->
+      <view class="detail-box">
+        <view>
+          <import src="/wxParse/wxParse.wxml"/>
+          <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<import src="../../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

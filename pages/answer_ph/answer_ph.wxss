@@ -1,0 +1,78 @@
+@import "/tpl/template-menu/template-menu.wxss";
+@import "/utils/my_iconfont.wxss";
+
+page{
+  height: 100%;
+  background: #fff;
+  font-size: 30rpx;
+  color: #000;
+}
+.page_wrapper{
+  height: 100%;
+  width: 100%;
+  color: #fff;
+}
+.phbg_img{
+  width: 100%;
+  height: 400rpx;
+  display: block;
+}
+.ans_info{
+  width: 100%;
+  text-align: center;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+.abs_center{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.tab_list{
+  margin-top: 2rpx;
+  font-size: 40rpx;
+}
+.tab_list>view{
+  width: 50%;
+  box-sizing: border-box;
+  padding: 40rpx;
+}
+.tab_list>view:first-child{
+  border-right: 1rpx solid #fff;
+}
+.active{
+  font-weight: 600;
+}
+.fa{
+  margin-right: 10rpx;
+}
+.badge{
+  position:absolute;top: 0;right: 0;background: #fff;color: #888888;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 40rpx;
+  height: 30rpx;
+  border-radius: 10rpx;
+  margin: 5rpx;
+}
+.user_item{
+  display: flex;
+  /*justify-content: space-between;*/
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.head_img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  display: block;
+}
+.hl_txt{
+  background: #fff;
+  color: #555;
+  padding: 0 6rpx;
+  margin: 0 6rpx;
+}

@@ -1,0 +1,22 @@
+<!--pages/me/me.wxml-->
+<import src="/wxParse/wxParse.wxml"/>
+
+<!-- <view class="call1"></view> -->
+<view class="index3">
+  <text>{{content.title}}</text>
+  <text>产品详情</text>
+</view>
+<view wx:if="{{content.video}}" class="setcion-video">
+  <video src="{{content.video}}" autoplay="true"></video>
+</view>
+<view class="me1">
+  <image src="{{content.img}}" mode="aspectFit"></image>
+</view>
+<view class="me2">
+  <view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>
+
+<import src="../../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

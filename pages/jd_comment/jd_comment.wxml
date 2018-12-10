@@ -1,0 +1,16 @@
+<form bindsubmit="bindSubmitComment" report-submit="{{true}}">
+  <view class="page_wrapper">
+    <view class="star-box">
+      <text wx:for="{{5}}" wx:for-item="starNum" bindtap="selectStar" data-val="{{starNum+1}}">
+        <text wx:if="{{starNum+1<=star}}" class="iconfont icon-star"></text>
+        <text wx:if="{{starNum+1>star}}" class="iconfont icon-star1"></text>
+      </text>
+    </view>
+    <view class="comment_box">
+      <textarea class="comment_input" name="content" placeholder="请输入您的评价"></textarea>
+    </view>
+    <view class="box-button">
+      <button class="btn-submit" formType="submit" style="background: {{__wechat_main_color}};border-radius: 0;">提交评价</button>
+    </view>
+  </view>
+</form>

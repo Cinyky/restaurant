@@ -1,0 +1,152 @@
+@import "../../../__wuBaseWxss__/2.wxss";
+
+@import "../../../__wuBaseWxss__/0.wxss";
+
+.white_bg {
+    background-color: #fff;
+}
+
+.tlvBox {
+    padding: 30rpx;
+}
+
+.houTit {
+    color: #333;
+    line-height: 40rpx;
+}
+
+.label {
+    padding: 0 20rpx;
+    line-height: 18px;
+    margin-right: 20rpx;
+}
+
+.label::before {
+    border-color: #888;
+}
+
+.averPri {
+    font-size: 30rpx;
+    color: #888;
+}
+
+.apVal {
+    font-size: 34rpx;
+}
+
+.estInfoBox,.estmsBox {
+    padding: 0 0 30rpx 0;
+}
+
+.abInfoBox {
+    font-size: 30rpx;
+}
+
+.abInfoHead {
+    color: #888;
+}
+
+.lesp3 {
+    letter-spacing: 11rpx;
+}
+
+.downBox,.upBox {
+    padding: 30rpx 0;
+}
+
+.downBox:active,.upBox:active {
+    background: rgba(0,0,0,0.03);
+}
+
+.down,.up {
+    display: inline-block;
+    transform: translateY(-2rpx);
+    border-left: 12rpx solid transparent;
+    border-right: 12rpx solid transparent;
+    margin-left: 14rpx;
+}
+
+.down {
+    border-top: 16rpx solid #999;
+}
+
+.up {
+    border-bottom: 14rpx solid #999;
+}
+
+.maxHei {
+    max-height: 300rpx;
+    overflow: hidden;
+}
+
+.estmsBox {
+    line-height: 36rpx;
+}
+
+.addrDetail {
+    align-items: center;
+}
+
+.addrDetail .iconfont {
+    font-size: 36rpx;
+    width: 80rpx;
+    text-align: center;
+}
+
+.esDesCon {
+    line-height: 40rpx;
+}
+
+.esGallery,.esInfo {
+    padding: 0 30rpx;
+}
+
+.secTit {
+    padding: 20rpx 0;
+}
+
+.srcollView {
+    width: 100%;
+    white-space: nowrap;
+    padding: 0 0 130rpx 0;
+}
+
+.subScrBox {
+    position: relative;
+    display: inline-block;
+    margin-right: 30rpx;
+    border-radius: 6rpx;
+    overflow: hidden;
+}
+
+.gallPic {
+    width: 280rpx;
+    height: 280rpx;
+}
+
+.gallName {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+    width: 280rpx;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #fff;
+    padding: 0 20rpx;
+    text-align: left;
+}
+
+.footerBtn {
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 98rpx;
+    color: #fff;
+}
+
+.footerBtn .icon-dianhua1 {
+    font-size: 50rpx;
+    margin-right: 15rpx;
+}

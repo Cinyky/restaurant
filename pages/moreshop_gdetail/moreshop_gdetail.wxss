@@ -1,0 +1,64 @@
+@import "/tpl/template-menu/template-menu.wxss";
+@import "/utils/iconfont.wxss";
+/*@import "/utils/fontawesome.wxss";*/
+.m-tab{position: fixed;width: 100%;top: 0;z-index: 2;}
+.m-navbar-item {padding: 20rpx 0;font-size: 24rpx;}
+.m-navbar-item:after {border: none;}
+.m-navbar-item.m-navbar-item-on {background-color: white;color: #DB384C;}
+.m-navbar-item.m-navbar-item-on::before {content: " ";position: absolute;left: 0;bottom: 0;right: 0;height: 6rpx;border-bottom: 6rpx solid #DB384C;color: #CCCCCC;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);z-index: 3;}
+.m-scrollBox{
+	/*padding:80rpx 10rpx 0rpx;*/
+	position: absolute;
+	top:0;
+	left:0;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	background: #FFFFFF;
+}
+/*商品详情*/
+.goodinfoview{
+	margin: 5rpx 20rpx;
+}
+.nameview{
+	font-weight: bold;
+	font-size: 40rpx;
+}
+.priceview{
+	margin-top: 10rpx;
+	font-size: 30rpx;
+}
+.numandbuy{
+	display: flex;
+	justify-content: space-between;
+	margin: 5rpx 40rpx 20rpx 20rpx;
+
+}
+.numview{
+	margin-top: 10rpx;
+	font-size: 30rpx;
+	color: #C6C6C6;
+}
+.buynowview{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80rpx;
+	width: 200rpx;
+	border-radius: 40rpx;
+	color: white;
+	font-size: 35rpx;
+}
+.introview{
+	border-top: 10px solid #F5F5F5;
+	margin-top: 40rpx;
+}
+.introview text{
+	margin-left: 20rpx;
+	font-weight: bold;
+}
+.introdetal{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

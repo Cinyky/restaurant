@@ -1,0 +1,42 @@
+.onlinebooking_header_container {
+  background: #ff9726;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+  padding: 15rpx 0;
+}
+.onlinebooking_list_content {
+  display: flex;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 15rpx 20rpx;
+}
+
+.onlinebooking_list_content text {
+  flex: 1.8;
+  font-size: 30rpx;
+  line-height: 50rpx;
+}
+
+.onlinebooking_list_content input {
+  flex: 4;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  color: #777;
+}
+.onlinebooking_list_content picker{
+  flex: 4;
+  font-size: 30rpx;
+  line-height: 50rpx;
+}
+.onlinebooking_button_container{
+  margin: 20rpx 60rpx;
+  text-align: center;
+  background: #ff9726;
+  border-radius: 5px;
+  color: #fff;
+  padding: 15rpx 0;
+  font-size: 30rpx;
+}
+.ServicePersonalPicker{
+  color: #777;
+}

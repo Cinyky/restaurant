@@ -1,0 +1,14 @@
+<template name="telephone">
+  <view class='iconfont icon-dianhua tel' style='color:{{setData.tbcolor}};background:{{setData.bjcolor}}' bindtap='phone' data-phone="{{setData.phone}}" wx:if="{{!setData.img || setData.img==''}}"></view>
+  <view class='tel' bindtap='phone' data-phone="{{setData.phone}}" wx:else>
+    <image mode="scaleToFill" src="{{setData.img}}" style="width: 100%;height: 100%;border-radius: 50%;"></image>
+  </view>
+</template>
+<template name="kefu">
+  <button open-type="contact" session-from="weapp" style=''>
+    <view class='iconfont icon-kefu-copy kefu' style='color:{{setData.tbcolor}};background:{{setData.bjcolor}}' wx:if="{{!setData.img || setData.img==''}}"></view>
+    <view wx:else class="kefu">
+      <image mode="scaleToFill" src="{{setData.img}}" style="width: 100%;height: 100%;border-radius: 50%;"></image>
+    </view>
+  </button>
+</template>

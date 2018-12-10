@@ -1,0 +1,99 @@
+<import src="/wxParse/wxParse.wxml" />
+<!--底部-->
+<view class="callView" >
+  <!--<view class="shareView">-->
+    <!--<image src="../../image/fenxiang.png" mode="widthFix" style="width: 80rpx"/>-->
+    <!--<button open-type="share" style="font-size: 30rpx;border-radius: 0;background: white">分享</button>-->
+  <!--</view>-->
+  <view bindtap="startPhone" data-phone="{{teacherDetail.phone}}" class="phoneView">
+    <image src="../../image/zixun.png" mode="widthFix" style="width: 80rpx;padding-top: 0"/>
+    <view>
+      <text>电话咨询</text>
+    </view>
+  </view>
+  <view class="baomingView" catchtap="nav" data-id="{{lesson.id}}">
+    <text>报名购买</text>
+  </view>
+  <view class="yuyueView" catchtap="toBaoming">
+    <text>预约试听</text>
+  </view>
+</view>
+<!--预约弹窗-->
+<view class="shade_bg {{is_yuyue==1?'':'display_hide'}}">
+  <view class="besInpBox white_bg bounce">
+    <view catchtap="closeYuyue" class="closeBtn"></view>
+    <form bindsubmit="formSubmit" reportSubmit="true">
+      <view>
+        <view class="besTit">预约信息</view>
+        <view class="f14">
+          <input class="inp mb10" name="username" placeholder="请填写姓名" value="{{username}}" style="margin-bottom: 10rpx"></input>
+          <input class="inp mb10" name="phone" placeholder="请填写手机号" type="number" value="{{phone}}" style="margin-bottom: 10rpx"></input>
+          <!--<view class="inp flex flexCCen " wx:if="{{is_yy==0}}">-->
+            <!--<input name="phone_code" placeholder="请输入验证码" type="number" value="{{phone_code}}"></input>-->
+            <!--<button bindtap="send_phone_code_bind" class="getCode mainColor" disabled="{{yzm_btn_disabled}}" hoverClass="none">{{yzm_btn_text}}</button>-->
+          <!--</view>-->
+        </view>
+        <input hidden class="" name="lessonid" value="{{lesson.id}}"></input>
+        <!--<input hidden class="" name="sid" value="{{data.sid}}"></input>-->
+        <view class="gtBox f12 grey mt10">
+          <text class="gtIcon mr5 iconfont icon-tixing"></text>
+          <text>请正确填写预约信息，商家稍后将会联系您！</text>
+        </view>
+      </view>
+      <button class="tanbesBtn mainColor_bg" formType="submit">预约试听</button>
+    </form>
+  </view>
+</view>
+
+
+<view class="page">
+  <!--图片-->
+  <view class='lesson_detail_banner_container'>
+    <image src="{{lesson.pic}}" mode="widthFix"/>
+  </view>
+  <!--课程名称，时间，价格-->
+  <view class="whiteview">
+    <view class="baseInfo">
+      <view>
+        <text>{{lesson.name}}</text>
+      </view>
+      <view class="timeView">
+        <text>开课：{{lesson.stime}}</text>
+      </view>
+      <view class="priceView">
+        <text style="color: red">¥{{lesson.price}}</text>
+        <text style="color: #46B396">{{lesson.pay_num}}人报名</text>
+      </view>
+    </view>
+  </view>
+  <!--课程简介-->
+  <view class="whiteview" style="margin-top: 40rpx">
+    <view class="demoView">
+      <view style="margin-bottom: 40rpx;color: #46B396;font-weight: bold;">
+        <text>课程简介</text>
+      </view>
+      <template is="wxParse" data="{{wxParseData:lesson_desc.nodes}}" />
+    </view>
+  </view>
+  <!--授课老师-->
+  <view class="whiteview" style="margin-top: 40rpx">
+    <view class="demoView">
+      <view style="margin-bottom: 40rpx;color: #46B396;font-weight: bold;">
+        <text>授课老师</text>
+      </view>
+      <view class="teacherView" bindtap="bindToTeacherDetail" data-id="{{teacherDetail.id}}">
+        <image src="{{teacherDetail.pic}}" mode="widthFix" style="width: 100rpx;"/>
+        <text>{{teacherDetail.name}}</text>
+      </view>
+    </view>
+  </view>
+  <!--报课须知-->
+  <view class="whiteview" style="margin-top: 40rpx">
+    <view class="demoView" style="padding-bottom: 80rpx;">
+      <view style="margin-bottom: 40rpx;color: #46B396;font-weight: bold;">
+        <text>报课须知</text>
+      </view>
+      <template is="wxParse" data="{{wxParseData:lesson_notice.nodes}}" />
+    </view>
+  </view>
+</view>

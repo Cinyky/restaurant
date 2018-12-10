@@ -1,0 +1,18 @@
+@import "/tpl/template-menu/template-menu.wxss";
+.topbg {background-color: #DB384C;padding-bottom: 20rpx;}
+.topinfo {display: inline-block;width: 100%;text-align: center;color: white;font-size: 14px;margin-top: 56rpx;position: relative;}
+.topinfo label {font-size: 56px;}
+.m-t-text{float: right;position: relative;margin-right: 40rpx;}
+.m-t-text::after {content:" ";display:inline-block;height:12rpx;width:12rpx;border-width:4rpx 4rpx 0 0;border-color:#fff;border-style:solid;-webkit-transform:matrix(0.71, 0.71, -0.71, 0.71, 0, 0);transform:matrix(0.71, 0.71, -0.71, 0.71, 0, 0);position:relative;position:absolute;top: 50%;margin-top: -6rpx;}
+
+.menu_list{display: -webkit-box;margin-top: 40rpx;}
+.menu_item{color: white;float: left;-webkit-box-flex: 1;box-sizing: border-box;text-align: center;
+position: relative;}
+.menu_item text{font-size: 14px;}
+.menu_item:nth-child(1):before {content: "";border-right: 1rpx solid white;height: 1.5rem;position: absolute;right: 0;bottom: 0;}
+.m-cells{font-size: 28rpx;background-color: #fff;}
+.m-cell-bd{color: #333;}
+.m-text-box{font-size: 24rpx;box-sizing: border-box;padding: 20rpx;color: #888;line-height: 40rpx;}
+.m-text-box label{padding-right: 10rpx;}
+.m-cell-bd{line-height: 50rpx;}
+.m-btn-box{padding-bottom: 40rpx;}

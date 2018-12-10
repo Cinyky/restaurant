@@ -1,0 +1,41 @@
+<view class="">
+  <textarea placeholder="请输入要发布的内容" name="textinput" maxlength="6144" bindinput="bindInputContent"/>
+</view>
+
+<!--图片-->
+<view class="img mt10">
+  <image class="mr5 mb5" src="{{item}}" mode="aspectFill" wx:for="{{img}}" data-index="{{index}}" catchlongpress="bindDeleteImg" catchtap="bindPreviewImg"></image>
+  <text class="add-img tc grey iconfont icon-add" catchtap="bindSelectImg"></text>
+</view>
+<view class="ml10 mr10 f12 grey">温馨小提示：长按可以删除图片哦~</view>
+
+<view class="massage mt10">
+  <view class="flex green list gridXb" catchtap="bindSelectAddress">
+    <text class="mr5 grey iconfont icon-locationfill"></text>
+    <text class="sub grey arrowR">{{address?address:'请选择地址'}}</text>
+  </view>
+</view>
+<view class="massage mt10" wx:if="{{setting.is_open_top==1}}">
+  <view class="list">
+    <text class="sub">我要置顶</text>
+    <switch class="fr" type="switch" bindchange="onIsTopChange"/>
+  </view>
+  <block wx:if="{{is_top}}">
+    <view class="list flex gridXt">
+      <text class="sub">选择置顶时间</text>
+      <picker class="grey" bindchange="bindSelectTopTime" mode="selector" range="{{setting.top_setting}}" range-key="top_time">{{top_time}} 天</picker>
+    </view>
+    <view class="list flex gridXt">
+      <text class="sub">价格</text>
+      <text class="red">￥{{top_money}}</text>
+    </view>
+  </block>
+</view>
+<view class="m20">
+  <view class="mb5 grey tr" wx:if="{{cate.price!=0}}">此分类发帖
+    <text class="red">{{cate.price}}元</text>/条
+  </view>
+  <form bindsubmit="bindPublish" report-submit="true">
+    <button hover-class="none" form-type="submit">立即发布</button>
+  </form>
+</view>

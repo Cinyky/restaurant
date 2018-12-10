@@ -1,0 +1,15 @@
+<template name="music">
+  <view class="tpl_music_wrapper" style="background: {{setData.bgcolor}};color:{{setData.textcolor}}">
+    <view class="tpl_img_box">
+      <image mode="scaleToFill" src="{{setData.img}}"></image>
+    </view>
+    <view class="tpl_main_box">
+      <view>{{setData.music_name}}</view>
+      <view>{{musicHandle[setData.id].curr_time}}/{{musicHandle[setData.id].total_time}}</view>
+    </view>
+    <view class="tpl_control_box" bindtap="bindMusicControl" data-id="{{setData.id}}">
+      <text class="iconfont2 icon-playcircleoutline" wx:if="{{!musicHandle[setData.id].is_play}}"></text>
+      <text class="iconfont2 icon-pausecircleoutline" wx:else></text>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,83 @@
+<template name="list">
+  <view class="msg-list flex mt10" wx:for="{{msgList}}" catchtap="bindRedirectToDetail" data-id="{{item.id}}" style="{{styles[item.cid].list_item}}">
+    <!--发布人详情-->
+    <image class="left-img" src="{{item.user.headimg}}" mode="aspectFill"></image>
+    <view class="sub right-content ml15">
+      <view class="flex blue" style="white-space: nowrap;">
+        <text class="sub">{{item.user.name}}</text>
+        <!--<text class="red mr15" wx:if="{{item.status==0}}">正在审核</text>-->
+        <view>
+          <text style="white-space: nowrap;" class="f12 mr15 contant gridFour green transition-duration-150 active-bg" data-id="{{item.id}}" catchtap="bindFav" data-index="{{index}}">
+            <text class="mr5 iconfont icon-favor{{item.is_fav==1?'fill':''}}"></text>
+            <!--<text>{{item.fav}}</text>-->
+          </text>
+          <text style="white-space: nowrap;" class="f12 mr15 contant gridFour green transition-duration-150 active-bg" data-tel="{{item.user.tel}}" wx:if="{{item.user.tel}}" catchtap="onCallTap">联系Ta</text>
+          <text style="white-space: nowrap;" class="btn-pay f12 mr15 transition-duration-150 active-bg" wx:if="{{show_pay_btn==1 && item.is_pay!=1}}" data-id="{{item.id}}" catchtap="onPayTap">支付</text>
+          <text style="white-space: nowrap;" class="classify f12" data-postId="{{item.ca_id}}" data-name="{{item.ca_idname}}">{{item.cate.name}}</text>
+          <text class="vip-top f12 write ml5" style="white-space: nowrap;" wx:if="{{item.is_top>0}}">置顶</text>
+        </view>
+      </view>
+      <!--发布内容-->
+      <view class="user-content mt10">{{item.content}}</view>
+      <!--图片-->
+
+      <view class="content-img mt5">
+        <image class="img-list mt5 mr5" catchtap="bindPreviewImg" data-url="{{img}}" src="{{img}}" mode="aspectFill" wx:for="{{item.img}}" data-index="{{index}}" wx:for-item="img"></image>
+
+      </view>
+      <!--位置-->
+      <view class="place flex mt10 grey f12">
+        <text class="sub blue">
+          <text class="iconfont icon-locationfill"></text>
+          <text>{{item.address}}</text>
+        </text>
+        <!--<text>离您6米</text>-->
+      </view>
+      <view class="grey flex mb10">
+        <!--时间-->
+        <view class="sub f12">
+          <text>{{item.ctime}}</text>
+        </view>
+        <!--评论点赞-->
+        <view class="f16 linght">
+          <text class="mr15" wx:if="{{setting.show_read==1}}">
+            <text class="mr5 iconfont icon-attentionfill"></text>
+            <text class="f14">{{item.read_num}}</text>
+          </text>
+          <text class="mr15" catchtap="onShowCommentTap" data-id="{{item.id}}" data-index="{{index}}" data-nickname="{{item.user.name}}" wx:if="{{setting.show_comment==1}}">
+            <text class="mr5 iconfont icon-commentfill"></text>
+            <text class="f14">{{item.comment_num}}</text>
+          </text>
+          <text class="mr15" catchtap="onGoodTap" data-index="{{index}}" data-id="{{item.id}}" wx:if="{{setting.show_up==1}}">
+            <text class="mr5 iconfont icon-appreciatefill {{item.is_up?'green':''}}"></text>
+            <text class="f14">{{item.up_num}}</text>
+          </text>
+        </view>
+      </view>
+      <!--评论内容-->
+      <view class="comment" wx:if="{{item.comment.length && setting.show_comment==1}}" catchtap="onShowCommentTap" data-index="{{index}}" data-id="{{item.id}}">
+        <view wx:for="{{item.comment}}" wx:for-index="in_id" wx:key="{{comment.id}}">
+          <!--<text class="blue" data-reply-id="{{item.id}}" data-uid="{{item.uid}}"  data-comment-index="{{comment_index}}" data-nickname="{{item.comment_nickname}}">{{item.comment_nickname}}:</text>-->
+          <!--<text>{{item.co_content}}</text>-->
+
+          <!--<view class="ml10" wx:for="{{item.comment}}" wx:for-item="com" wx:key="{{com.id}}">-->
+          <text class="blue" data-reply-id="{{item.reply_id}}" data-uid="{{item.uid}}" data-comment-index="{{comment_index}}" data-nickname="{{item.nickname}}">{{item.user.name}}:</text>
+          <!--<text>回复</text>-->
+          <!--<text class="blue" data-reply-id="{{item.reply_id}}" data-uid="{{item.reply_uid}}" data-comment-index="{{comment_index}}" data-nickname="{{item.reply_nickname}}">{{item.reply_nickname}}:</text>-->
+          <text>{{item.content}}</text>
+          <!--</view>-->
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--评论输入框-->
+  <view class="popup" wx:if="{{show_comment}}" catchtap="onHideCommentTap">
+    <form report-submit="true" bindsubmit="onCommentSubmit">
+      <view class="pinglun-input" catchtap="onEmptyTap">
+        <input class="mr10" name="content" focus="true"/>
+        <button form-type="submit">发送</button>
+      </view>
+    </form>
+  </view>
+</template>

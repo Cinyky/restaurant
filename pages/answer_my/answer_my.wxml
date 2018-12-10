@@ -1,0 +1,55 @@
+<view class="page_wrapper" style="background: {{__wechat_main_color}}">
+  <!--返回首页按钮-->
+  <view>
+    <view class="btn_return" bindtap="returnHome">
+      <text class="iconfont icon-0401zhuye"></text>
+      <text> 返回首页</text>
+    </view>
+  </view>
+  <!--用户信息盒子-->
+  <view class="userinfo_box">
+    <view class="head_img_box">
+      <image src="{{head_img_url}}" mode="scaleToFill" class="head_img"></image>
+    </view>
+    <view class="user_nickname">
+      <text>{{nickname}}</text>
+    </view>
+  </view>
+  <!--带padding的一个盒子，主要是一堆按钮-->
+  <view class="action_box">
+    <!--分数&用时-->
+    <view class="score_and_time">
+      <view class="score_line">
+        <text class="iconfont icon-pie"></text>
+        <text> 分数：</text>
+        <text>{{answer.info.score}}</text>
+      </view>
+      <view class="score_line">
+        <text class="iconfont icon-clock"></text>
+        <text> 用时：</text>
+        <text>{{answer.info.used_time}}</text>
+        <text>秒</text>
+      </view>
+    </view>
+    <!--重新开始按钮-->
+    <view class="restart_box">
+      <button style="color: {{__wechat_main_color}};" class="restart_btn" bindtap="bindStartAnswer">
+        <text class="iconfont icon-refresho"></text>
+        <text> 重新回答</text>
+      </button>
+      <view class="tip_text">每邀请一个好友，可增加一次dati机会</view>
+      <view class="num_badge">{{answer.info.join_count}}</view>
+    </view>
+    <!--排行榜和分享按钮-->
+    <view class="btn_group">
+      <button bindtap="gotoPh">
+        <text class="iconfont icon-bar-chart"></text>
+        <text style="margin-left: 10rpx;">排行榜</text>
+      </button>
+      <button open-type="share">
+        <text class="iconfont icon-share"></text>
+        <text style="margin-left: 10rpx;">呼朋唤友</text>
+      </button>
+    </view>
+  </view>
+</view>

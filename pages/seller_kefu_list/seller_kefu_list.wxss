@@ -1,0 +1,40 @@
+@import "../../utils/weui.wxss";
+.user_item_box{
+  background: #fff;
+  margin: 10rpx 0;
+}
+.user_item{
+  display: flex;
+}
+.head_img_box{
+  padding: 10rpx;
+}
+.head_img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.info_box{
+  padding: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.user_msg{
+  color: #999999;
+  width: 600rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.user_name_box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.user_msg{
+  font-size: 30rpx;
+}
+.bdg-success{
+  background: #0bb20c;
+}

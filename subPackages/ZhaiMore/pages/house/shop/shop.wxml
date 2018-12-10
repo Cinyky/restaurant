@@ -1,0 +1,27 @@
+<view class="shop-list" wx:if="{{list != ''}}">
+    <view bindtap="toshopdetail" class="shop-item gridXb flex" data-id="{{item.id}}" wx:for="{{list}}" wx:key="{{index}}" style="display: flex;justify-content: space-between">
+        <view style="display: flex;">
+            <image class="shop-pic mr15" mode="aspectFill" src="{{item.pic}}"></image>
+            <view class="shop-item-content sub" style="margin-left: 20rpx;">
+                <view class="estate-feature lineText f14 mb5">
+                    <text>{{item.name}}</text>
+                </view>
+                <view class="shop-address f12 ">
+                    <text class="lineText2 grey">{{item.addr}}</text>
+                </view>
+            </view>
+        </view>
+        <view catchtap="makePhoneCall" class="shop-tel tc  ml10 flex f24" data-mobile="{{item.phone}}" style="display: flex;flex-direction: column;justify-content: center;align-items: center">
+            <view class="iconfont icon-dianhua1"></view>
+            <view class="f12">电话咨询</view>
+        </view>
+    </view>
+</view>
+<view class="nodata flex" wx:else style="display: flex;">
+    <view class="">
+        <text class="iconfont icon-kongbaiyemian"></text>
+    </view>
+    <view class="">
+        <text>暂时没有数据</text>
+    </view>
+</view>

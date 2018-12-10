@@ -1,0 +1,39 @@
+<form bindsubmit='paysubmit'>
+	<view class="bai">
+		<view class="head">
+			<image src="{{setInfo.shopOwnerInfo.logo}}" style="width: 125rpx;height: 125rpx;margin-top: 75rpx;"/>
+			<text style="margin-top: 50rpx;margin-bottom: 75rpx;">{{setInfo.shopOwnerInfo.name}}</text>
+		</view>
+		<text style="color: black">转账金额</text>
+		<!--<view class="m-cells m-cells-form" >-->
+		  <!--<view class="m-cell">-->
+		<view style="border-bottom:1rpx solid grey">
+			<view style="display: flex;font-size: 100rpx;">
+		    <view class="m-cell-hd" style="margin-right: 20rpx;display: flex;align-items: center"><label>¥</label></view>
+		    <view class="m-cell-bd" style="display: flex;align-items: center">
+			   <input type="text" value="{{spendMoney}}" name="spendmoney" placeholder="" bindblur="inputMoney" style="height: 80%;"/>
+		    </view>
+		  </view>
+		</view>
+		<!--<view class="remind">-->
+			<!--<text>提示：具体消费金额请询问店家</text>-->
+		<!--</view>-->
+		<!--<view class="m-cells m-cells-form">-->
+			<!--<view class="m-cell">-->
+				<!--<view class="m-cell-hd"><label class="u-label">实付金额</label></view>-->
+				<!--<view class="m-cell-bd">-->
+					<!--<input class="payinput" placeholder-class="psection" type="text" value="{{reallyMoney}}元" name="reallymoney" placeholder="0元" disabled/>-->
+				<!--</view>-->
+			<!--</view>-->
+		<!--</view>-->
+		<!--判断商家是否已经设置了转账页面信息   转账-->
+		<view wx:if="{{setInfo['buttontext']}}">
+			<button class="u-btn u-btn-default" form-type="submit">{{setInfo['buttontext']}}</button>
+		</view>
+		<view wx:else>
+			<button class="u-btn u-btn-default" form-type="submit" style="background: {{__wechat_main_color}}">转账</button>
+		</view>
+	</view>
+</form>
+<import src="/tpl/template-menu/template-menu.wxml"/>
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

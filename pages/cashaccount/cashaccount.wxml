@@ -1,0 +1,55 @@
+<view class="topbg" style="background: {{__wechat_main_color}}">
+  <view class="topinfo">
+    <view>
+      <label>{{CashData.CashBalance}}</label>
+    </view>
+    <view>总财富(元)</view>
+    <navigator url="/pages/applycash/applycash?price={{CashData.CashBalance}}" class="m-t-text">申请提现</navigator>
+  </view>
+  <view class="menu_list">
+    <navigator url="/pages/profitlist/profitlist?tp=1" class="menu_item">
+      <view>{{CashData.MonthBonuses}}</view>
+      <text>本月预估收益(元)</text>
+    </navigator>
+    <navigator url="/pages/fanslist/fanslist" class="menu_item">
+      <view>{{CashData.MonthFansNum}}</view>
+      <text>本月新增粉丝(个)</text>
+    </navigator>
+  </view>
+</view>
+<view class="m-cells">
+  <navigator url="/pages/fanslist/fanslist" class="m-cell m-cell-access">
+    <view class="m-cell-bd">
+      <label>我的粉丝</label>
+    </view>
+    <view class="m-cell-ft">{{CashData.TotalFansNum}}</view>
+  </navigator>
+  <navigator url="/pages/profitlist/profitlist" class="m-cell m-cell-access">
+    <view class="m-cell-bd">
+      <label>历史总收益</label>
+    </view>
+    <view class="m-cell-ft">{{CashData.TotalBonuses}}</view>
+  </navigator>
+  <navigator url="/pages/cashdetaillist/cashdetaillist" class="m-cell m-cell-access">
+    <view class="m-cell-bd">
+      <label>资金明细</label>
+    </view>
+    <view class="m-cell-ft"></view>
+  </navigator>
+  <navigator url="/pages/applycashdetail/applycashdetail" class="m-cell m-cell-access">
+    <view class="m-cell-bd">
+      <label>提现记录</label>
+    </view>
+    <view class="m-cell-ft"></view>
+  </navigator>
+</view>
+<view class="m-text-box">
+  <view bindtap="showTip">
+    <label class="iconfont icon-14052218"></label>代言规则
+  </view>
+</view>
+<view class="m-btn-box">
+  <navigator url="/pages/endorsement/endorsement" class="u-btn u-btn-default" style="background: {{__wechat_main_color}}">我要代言</navigator>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

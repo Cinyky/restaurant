@@ -1,0 +1,41 @@
+<view class="body">
+  <view class="header">
+    <view class="header-top">
+      <image src="{{VendorInfo.BackGroundPath}}"></image>
+    </view>
+    <view class="header-bottom">
+      <text>{{VendorInfo.ShopName}}</text>
+    </view>
+    <view class="logo">
+      <image src="{{VendorInfo.WapLogoPath}}"></image>
+    </view>
+  </view>
+  <view class="introduce">
+    <view class="title"></view>
+    <view class="text">{{VendorInfo.VendorInfo||" "}}</view>
+  </view>
+  <view class="message">
+    <view class="title">联系方式</view>
+    <view class="companyname aboutUs">
+      <view>名\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n称：</view>
+      <label>{{VendorInfo.ShopName}}</label>
+    </view>
+    <view class="tel aboutUs" bindtap="call">
+      <view>联系方式：</view>
+      <image src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/call.png" style="width:30rpx;height:30rpx;margin-right:10rpx"></image>
+      <label style="color:#17abe3">{{VendorInfo.LegalNumber}}</label>
+    </view>
+    <view class="address aboutUs">
+      <view>公司地址：</view>
+      <label>{{VendorInfo.LegalAdress}}</label>
+    </view>
+  </view>
+  
+   <view wx:if="{{markers[0].longitude}}"> 
+    <view class="introduce">
+      <map id="map"  longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" scale="14"  bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap"  bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
+    </view>
+  </view>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

@@ -1,0 +1,201 @@
+@import "/utils/iconfont.wxss";
+@import "/utils/my_iconfont.wxss";
+
+page{
+	height: 100%;
+	width: 100%;
+	background: #fff;
+}
+/*订单按钮*/
+.myorder{
+	margin-right: 2%;
+	border:1rpx;
+	height: 100rpx;
+	width: 100rpx;
+	border-radius:50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #312E43;
+	color: white;
+	z-index: 100;
+	position: fixed;
+	margin-left:80%;
+	margin-top:1000rpx;
+}
+
+/*顶部大图*/
+.pic_one image{
+	height:500rpx;
+	width: 100%;
+}
+/*logo及标题*/
+.shop_name{
+	display: flex;
+	/*justify-content: center;*/
+	align-items: center;
+	margin-left: 240rpx;
+	margin-top: 25rpx;
+}
+
+.pic_two image{
+	border:1rpx;
+	height: 150rpx;
+	width: 150rpx;
+	border-radius:50%;
+	z-index: 100;
+	margin-left: 50rpx;
+	margin-top: -120rpx;
+}
+/*提供服务*/
+.helpview{
+	height:30px;
+	display: flex;
+	/*justify-content: center;*/
+	/*align-items: center;*/
+}
+
+.help{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 5px;
+	background: #F5F5F6;
+	height: 20px;
+	width: 40px;
+	border-radius: 12rpx;
+}
+.help text{
+	font-size: 25rpx;
+	margin: 0 2px;
+	color: #6B6978;
+}
+.timeview{
+	display: flex;
+	height: 30px;
+	align-items: center;
+	margin: 10px 10px 0 10px;
+}
+.timeview text{
+	font-size: 35rpx;
+	margin-right: 10px;
+	color: #363636;
+}
+
+.addrview{
+	display: flex;
+	justify-content: space-between;
+	height: 30px;
+	align-items: center;
+	margin: 0 10px;
+}
+.addrview text{
+	font-size: 35rpx;
+	margin-right: 10px;
+	color: #363636;
+}
+.buycheapview{
+	height: 40px;
+	margin: 15px 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20rpx;
+	color: white;
+}
+
+/*.couponview{*/
+	/*border-bottom: 10px solid #F5F5F5;*/
+	/*height: 35px;*/
+	/*margin-top: 15px;*/
+	/*!*background: red;*!*/
+	/*display: flex;*/
+	/*justify-content: space-between;*/
+	/*align-items: center;*/
+/*}*/
+/*.couponview text{*/
+	/*margin: 0px 20px;*/
+	/*font-size: 35rpx;*/
+/*}*/
+
+.goodslist{
+	height: 35px;
+	border-bottom: 10px solid #F5F5F5;
+	/*background: red;*/
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.goodslist text{
+	margin: 0px 20px;
+	font-size: 35rpx;
+	font-weight: bold;
+}
+
+.textview{
+	height: 35px;
+	/*background: red;*/
+	margin: 0px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid #F5F5F5;
+}
+.textview text{
+	font-size: 35rpx;
+	font-weight: bold;
+	
+}
+
+.introtext{
+	margin: 30rpx 50rpx;
+	font-size: 30rpx;
+}
+
+.intropics{
+	margin: 10rpx 30rpx;
+}
+.intropic{
+	width: 550rpx;
+	margin: 0 70rpx;
+}
+/*.leavewordsview{*/
+	/*border-bottom: 10px solid #F5F5F5;*/
+/*}*/
+/*.leavewords{*/
+	/*height: 35px;*/
+	/*margin: 15px 25px;*/
+	/*display: flex;*/
+	/*justify-content: center;*/
+	/*align-items: center;*/
+	/*border-radius: 20rpx;*/
+	/*color: white;*/
+/*}*/
+
+.words{
+	border-top: 10px solid #F5F5F5;
+}
+.words text{
+	margin: 0 20rpx;
+	font-size: 35rpx;
+}
+.word{
+	margin: 30rpx;
+	border-bottom: 2px solid #F5F5F5;
+}
+.name{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20rpx;
+}
+.name text{
+	font-size: 25rpx;
+}
+.content{
+	margin: 0 20rpx;
+	
+}
+.content text{
+	font-size: 30rpx;
+	color: #6B6978;
+}

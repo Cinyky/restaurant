@@ -1,0 +1,86 @@
+<!--index.wxml-->
+<view class="msgs-wrapper">
+  <view wx:for="{{msgs}}" wx:key="index" class="msg-item {{item.isSend ? 'msg-self' : ''}}">
+    <!-- 不是自己发的居左 -->
+    <image wx:if="{{!item.isSend}}" mode="aspectFill" class="msg-avatar" src="{{card_info.avatar}}"></image>
+    <!-- 欢迎语 -->
+    <view wx:if="{{item.type === 'welcome'}}" class="msg-content">
+      <text>hello,我是{{card_info.name}}欢迎查看我的名片:</text>
+      <view class="tips">
+        <text class="tips">通过我的名片你还可以:</text>
+      </view>
+      <navigator open-type="navigateBack" url="" class="msg-bar">
+        <text class="iconfont icon-mingpian icon" style="color: #53A938"></text>
+        <text class="main">进入我的名片</text>
+        <text class="iconfont icon-arrow-r"></text>
+      </navigator>
+      <navigator open-type="navigate" url="/pages/index/index" class="msg-bar">
+      <text class="iconfont icon-guanwang icon" style="color: #EB5405"></text>
+      <text class="main">查看我们公司官网</text>
+      <text class="iconfont icon-arrow-r"></text>
+      </navigator>
+      <navigator open-type="navigate" url="/pages/category/category" class="msg-bar">
+        <text class="iconfont icon-chanpin icon" style="color: #FABD00"></text>
+        <text class="main">查看我们公司商品</text>
+        <text class="iconfont icon-arrow-r"></text>
+      </navigator>
+      <navigator open-type="navigate" url="/pages/supercard_friends/supercard_friends" class="msg-bar">
+        <text class="iconfont icon-pengyouquan icon" style="color: #2493C8"></text>
+        <text class="main">查看我的动态</text>
+        <text class="iconfont icon-arrow-r"></text>
+      </navigator>
+      <view bindtap="callUp" class="msg-bar">
+        <text class="main">拨打我的电话</text>
+        <text class="iconfont icon-dianhua" style="color: #EB5405"></text>
+      </view>
+      <view bindtap="addWechat" class="msg-bar">
+        <text class="main">添加我的微信</text>
+        <text class="iconfont icon-weixin" style="color: #53A938"></text>
+      </view>
+    </view>
+    <!-- 正常消息 -->
+    <view wx:else class="msg-content">
+      <!-- 以节点渲染此条消息 -->
+      <block wx:if="{{item.elems}}">
+        <block wx:for="{{item.elems}}" wx:key="elemIdx" wx:for-index="elemIdx" wx:for-item="elem">
+          <!-- 表情 -->
+          <image wx:if="{{elem.type === 'FACE'}}" class="msg-emoji" src="{{elem.data}}"></image>
+          <!-- 文本 -->
+          <text wx:elif="{{elem.type === 'TEXT'}}">{{elem.data}}</text>
+          <!-- 图片 -->
+          <image wx:elif="{{elem.type === 'IMAGE'}}" mode="widthFix" lazy-load 
+            src="{{elem.data[2]}}"
+            data-large="{{elem.data[1]}}"
+            data-origin="{{elem.data[0]}}"></image>
+        </block>
+      </block>
+      <!-- 以纯内容渲染 -->
+      <text wx:else>{{item.content}}</text>
+    </view>
+    <!-- 自己发的居右 -->
+    <image wx:if="{{item.isSend}}" mode="aspectFill" class="msg-avatar" src="{{userInfo.photo}}"></image>
+  </view>
+</view>
+
+<view class="input-section">
+  <form bindsubmit="bindConfirm" report-submit="true">
+    <view class="input-form">
+      <input type="text" name="msg"
+        confirm-hold
+        adjust-position
+        bindconfirm="bindConfirm"
+        bindinput="bindInput"
+        bindfocus="bindFocus"
+        value="{{msgContent}}"
+        placeholder="请输入您的问题" />
+      <view bindtap="toggleEmojis" class="iconfont icon-biaoqing"></view>
+      <button wx:if="{{showSendBtn}}" formType="submit"  class="btn-send">发送</button>
+      <view wx:else bindtap="choosePic" class="iconfont icon-picture"></view>
+    </view>
+  </form>
+  <view wx:if="{{showEmojis}}" class="emoji-wrapper">
+    <block wx:for="{{emojis}}" wx:key="{{index}}">
+      <text bindtap="emojiClick" data-index="{{index}}" class="emoji-item">{{item}}</text>
+    </block>
+  </view>
+</view>

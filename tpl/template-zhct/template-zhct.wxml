@@ -1,0 +1,10 @@
+<template name="zhct">
+  <view class="zhct_wrapper">
+    <view class="zhct_ct" bindtap="zhct_goto_ct">
+      <text>店铺</text>
+    </view>
+    <view class="zhct_wm" bindtap="zhct_goto_wm">
+      <text>{{editData_h.waimai}}</text>
+    </view>
+  </view>
+</template>

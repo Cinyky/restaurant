@@ -1,0 +1,160 @@
+<template name="pic_01">
+  <view class="pic-container pic-01" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <block wx:for="{{setData.dataList}}">
+      <view bindtap='phone' wx:if="{{item.linkurl=='tel'}}">
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item.content?'inline-block':'none'}}">{{item.content}}</text>
+      </view>
+      <view wx:elif="{{item.linkurl=='map'}}" bindtap='map'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item.content?'inline-block':'none'}}">{{item.content}}</text>
+      </view>
+      <view wx:elif="{{item.linkurl=='facilitator'}}" style='position:relative'>
+        <button open-type="contact" session-from="weapp"></button>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item.content?'inline-block':'none'}}">{{item.content}}</text>
+      </view>
+      <view wx:elif="{{item.checkId=='-1'}}" bindtap='program' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item.content?'inline-block':'none'}}">{{item.content}}</text>
+      </view>
+      <view wx:elif="{{item.checkId=='-2'}}" bindtap='web' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item.content?'inline-block':'none'}}">{{item.content}}</text>
+      </view>
+      <view wx:else>
+        <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+          <image src="{{item.img}}" mode="widthFix"></image>
+          <text style="display:{{item.content?'inline-block':'none'}};">{{item.content}}</text>
+        </navigator>
+      </view>
+    </block>
+  </view>
+</template>
+<template name="pic_02">
+  <view class="pic-container pic-02" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <block wx:for="{{setData.dataList}}">
+      <view bindtap='phone' wx:if="{{item.linkurl=='tel'}}">
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+      </view>
+
+      <view wx:elif="{{item.linkurl=='map'}}" bindtap='map'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+      </view>
+      <view wx:elif="{{item.linkurl=='facilitator'}}" style='position:relative'>
+        <button open-type="contact" session-from="weapp"></button>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+      </view>
+      <view wx:elif="{{item.checkId=='-1'}}" bindtap='program' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+      </view>
+      <view wx:elif="{{item.checkId=='-2'}}" bindtap='web' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+      </view>
+      <view wx:else>
+        <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+          <image src="{{item.img}}" mode="widthFix"></image>
+          <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+        </navigator>
+      </view>
+    </block>
+  </view>
+</template>
+<template name="pic_03">
+  <view class="pic-container pic-03" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <block wx:for="{{setData.dataList}}">
+      <view bindtap='phone' wx:if="{{item.linkurl=='tel'}}">
+        <image src="{{item.img}}" mode="widthFix"></image>
+      </view>
+      <view wx:elif="{{item.linkurl=='map'}}" bindtap='map'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+      </view>
+      <view wx:elif="{{item.linkurl=='facilitator'}}" style='position:relative'>
+        <button open-type="contact" session-from="weapp"></button>
+        <image src="{{item.img}}" mode="widthFix"></image>
+      </view>
+      <view wx:elif="{{item.checkId=='-1'}}" bindtap='program' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+      </view>
+      <view wx:elif="{{item.checkId=='-2'}}" bindtap='web' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+      </view>
+      <view wx:else>
+        <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+          <image src="{{item.img}}" mode="widthFix"></image>
+        </navigator>
+      </view>
+    </block>
+  </view>
+</template>
+<template name="pic_09">
+  <view class="pic-container pic-09" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <block wx:for="{{setData.dataList}}">
+      <view bindtap='phone' wx:if="{{item.linkurl=='tel'}}">
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+      </view>
+      <view wx:elif="{{item.linkurl=='map'}}" bindtap='map'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+      </view>
+      <view wx:elif="{{item.linkurl=='facilitator'}}" style='position:relative'>
+        <button open-type="contact" session-from="weapp"></button>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+      </view>
+      <view wx:elif="{{item.checkId=='-1'}}" bindtap='program' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+      </view>
+      <view wx:elif="{{item.checkId=='-2'}}" bindtap='web' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text>{{item['content'+(index+1)]||''}}</text>
+      </view>
+      <view wx:else>
+        <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+          <image src="{{item.img}}" mode="widthFix"></image>
+          <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]}}</text>
+        </navigator>
+      </view>
+    </block>
+  </view>
+</template>
+<template name="pic_16">
+  <view class="pic-container pic-16" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <block wx:for="{{setData.dataList}}">
+      <view bindtap='phone' wx:if="{{item.linkurl=='tel'}}">
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]||''}}</text>
+      </view>
+      <view wx:elif="{{item.linkurl=='map'}}" bindtap='map'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text>{{item['content'+(index+1)]||''}}</text>
+      </view>
+      <view wx:elif="{{item.linkurl=='facilitator'}}" style='position:relative'>
+        <button open-type="contact" session-from="weapp"></button>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]||''}}</text>
+      </view>
+      <view wx:elif="{{item.checkId=='-1'}}" bindtap='program' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]||''}}</text>
+      </view>
+      <view wx:elif="{{item.checkId=='-2'}}" bindtap='web' data-data='{{item.linkurl}}'>
+        <image src="{{item.img}}" mode="widthFix"></image>
+        <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]||''}}</text>
+      </view>
+      <view wx:else>
+        <navigator url="{{item.linkurl}}" open-type="{{item.open_type}}">
+          <image src="{{item.img}}" mode="widthFix"></image>
+          <text style="display:{{item['content'+(index+1)]?'inline-block':'none'}}">{{item['content'+(index+1)]||''}}</text>
+        </navigator>
+      </view>
+    </block>
+  </view>
+</template>

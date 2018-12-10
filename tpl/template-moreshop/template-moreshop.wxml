@@ -1,0 +1,12 @@
+<template name="moreshop">
+  <view class="m-coupon-items" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <image src="{{setData.pic}}" style="flex:1;height:100%;display:inline-block"></image>
+    <view class="coupon-item-right">
+      <view class="item-title">{{setData.shopName}}</view>
+      <view class="item-middle">
+        <lable class="item-time">评价数{{setData.comment_num}}</lable>
+        <navigator class="item-usenow" url='/pages/moreshop_shopdetail/moreshop_shopdetail?id={{setData.shopid}}'>立即进入</navigator>
+      </view>
+    </view>
+  </view>
+</template>

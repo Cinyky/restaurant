@@ -1,0 +1,38 @@
+<view class="top-bar">
+    <view class="bar-list flex">
+        <view catchtap="setretal" class="bar-item sub tc {{retal?'item-active':''}}">租房</view>
+        <view catchtap="setsell" class="bar-item sub tc {{sell?'item-active':''}}">买房</view>
+    </view>
+    <view class="edit-box f14 grey"></view>
+</view>
+<view class="estate-box  mt15" wx:if="{{info}}">
+    <view class="estate-list">
+        <view catchtap="navigateToResource" class="estate-item gridXb flex" data-id="{{item.id}}" wx:for="{{info}}">
+            <image class="estate-pic clearfix mr10" mode="aspectFill" src="{{item.house_icon_url}}"></image>
+            <view class="item-content sub">
+                <view class="estate-feature lineText">
+                    <text>{{item.house_name}}</text>
+                </view>
+                <view class="estate-na-add">
+                    <text class="estate-name mr10">{{item.vill_name}}</text>
+                    <text class="estate-address">{{item.vill_cityarea_name}}</text>
+                </view>
+                <view class="estate-price f14">
+                    <text class="estate-contain mr10">{{item.house_type}}</text>
+                    <text class="estate-area">{{item.house_area}}m²</text>
+                    <view class="price-cou-unt mr10">
+                        <text class="price-count mr5">{{item.is_sell==1?item.house_total:item.house_rental}}</text>
+                        <text class="price-unit">{{item.is_sell==1?'万元':'元/月'}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="cancel-box flex gridXt" wx:else>
+    <view class="check-all sub flex">
+        <icon class="checked-icon" color="#fff" size="18" type="success"></icon>
+        <text class="ml10 f16">全选</text>
+    </view>
+    <view class="cancel-btn tc f16">删除</view>
+</view>

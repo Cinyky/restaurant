@@ -1,0 +1,89 @@
+@import "/tpl/template-menu/template-menu.wxss";
+@import "/utils/customPage.wxss";
+@import "../header.wxss";
+/****轮番图******/
+.swiper{width:100%;height: 375rpx;}
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal{margin-bottom: 2rpx;}
+.swiper-box .wx-swiper-dot{width:16rpx;display: inline-flex;height: 12rpx;justify-content:space-between;}
+.swiper-box .wx-swiper-dot::before{content: '';flex-grow: 1; background: rgba(0,0,0,0.6);border-radius:20rpx;}
+.swiper-box .wx-swiper-dot-active{ width: 28rpx;}
+.swiper-box .wx-swiper-dot-active::before{ background: #fff;}
+
+/****分类******/
+.class{padding:0 10rpx; width: auto;}
+.class .navigator{padding:30rpx 0;}
+.class .icon{position: relative; width:60%; padding-bottom:60%; display: inline-block;}
+.class .icon image{position: absolute;top:0;left:0;display: block; border-radius: 50%; overflow: hidden;}
+.class .navigator:active{ background: rgba(0, 0, 0, 0.05);}
+
+.main-box .section:nth-child(2n+1){ background: #f5f5f5;}
+.section-btn{ padding:30rpx 0 50rpx;}
+/****产品展示******/
+.section .section-h2{line-height: 110%; font-size:48rpx;position: relative;display: inline-block; font-weight: bold;}
+.section .section-tit .icon{float: right; padding: 0 30rpx; width:92rpx;height: 92rpx;}
+.section .section-tit .icon:active{ background: rgba(0, 0, 0, 0.05);}
+.section .section-item {flex-wrap: wrap;}
+.section .section-li{width:44%;margin-left: 4%;}
+.section .section-text{padding:20rpx 0rpx 30rpx;}
+.section .setction-img{width:100%;padding-bottom:66.676%;position: relative;}
+.section .setction-img image{display: block;position: absolute;top: 0rpx;left: 0rpx;}
+.section .setction-tit,.section .setction-caseTit{font-size: 32rpx; font-weight: bold;}
+.section .navigator-hover{width:50%;height:80rpx;line-height: 80rpx; display: inline-block;border-radius:100px; background: none; opacity: 1;}
+/* .section .navigator-hover::before{ border-color:#09bb07;} */
+.section .navigator-hover:active{ background: #09bb07; color: #fff;}
+ 
+/****关于******/
+.section-about .setction-img{padding-bottom:50.728%;}
+.section-about .section-text{line-height: 50rpx; padding: 0; margin:30rpx 0rpx}
+
+
+/****新闻******/
+.section-News .section-tit{padding: 50rpx 0rpx 20rpx}
+.section-News .setction-img{width:200rpx;height:200rpx;padding-bottom:0;}
+
+.section-News .setction-title{display:block;font-weight: bold;font-size: 34rpx;}
+.section-News .section-text{display:-webkit-box;-webkit-box-align: center;}
+.section-News .section-empty{width: 100%;}
+.section-News .section-li{width: 100%;margin-left: 0%;}
+.section-News .section-li:active{background: rgba(0,0,0,0.03);}
+.section-News .section-li:last-child::before{ display: none;}
+.section-News .setction-info{padding-top: 10rpx; line-height: 140%;}
+.section-News .setction-time{color:#d3d2d2;padding-top: 16rpx;display: inline-block;}
+.section-News .section-item .section-text{padding: 0rpx 0rpx 0rpx 30rpx;}
+
+/****联系我们******/
+.h-maps{ padding-bottom: 50%; background: #ccc;}
+.phone-item{ width: 50%;display: inline-block;}
+.phone-item:active{ color: #fff;}
+.phone-item:nth-child(n+3){ margin-top: 5px;}
+.section-cactact .section-h2{ color: rgba(0, 0, 0, 0.6);}
+.section-cactact .section-tit .section-p{font-size: 24rpx;text-transform: uppercase;}
+.section-cactact .section-item{padding-left: 30rpx;padding-right: 30rpx;}
+.section-cactact .section-text{padding: 30rpx 0 20rpx;}
+.section-cactact .section-name{font-size: 46rpx; padding: 20rpx 0;}
+.section-cactact .section-text .section-p{ margin:20rpx 0; }
+.section-cactact .sub{ margin-left: 100rpx; text-align: right; overflow: visible;}
+
+/****留言板******/
+.section-Leaving .section-tit{padding: 50rpx 0rpx 20rpx 0rpx}
+.section-Leaving .section-li{width: 100%; margin-left:0;}
+.section-li input,.section-li textarea{ -webkit-transition: all 0.3s ease; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 3px;}
+.section-Leaving .section-li:nth-child(n+2){ margin-top:25rpx;}
+.section-inpt{ padding:30rpx;}
+.section-inpt .section-li input{padding-left:20rpx; height:80rpx;}
+.section-inpt .section-li textarea{width: 100%;height:200rpx;padding:20rpx;}
+.section-inpt .section-li:last-child{border: none;padding: 0rpx;}
+.section-inpt .section-li button{font-size: 32rpx;}
+
+.ad-tit{ min-width: 80rpx; opacity: 0.6;}
+
+.section-Leaving .ifocus{ background: #fff; box-shadow:0 0 25px rgba(9, 187, 7, 0.2); border-color: #09bb07; color: #09bb07;}
+
+
+
+
+
+
+
+
+

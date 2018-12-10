@@ -1,0 +1,112 @@
+<import src="/wxParse/wxParse.wxml" />
+<!--规则弹出-->
+<view class="popView" bindtap="closeguize" wx:if="{{flag}}" catchtouchmove="move">
+  <view class="popViews" catchtap="kong">
+      <template is="wxParse" data="{{wxParseData:info.nodes}}" />
+  </view>
+</view>
+<view id="body">
+  <!--获奖图-->
+  <view class="pic_border">
+    <view class="prize_pic">
+      <image src="{{gameInfo.prize_pic}}" alt=""></image>
+    </view>
+  </view>
+  <!--奖品名称-->
+  <view class="prize_name">
+    <text>{{gameInfo.prize_name}}</text>
+  </view>
+  <!--集字方框-->
+  <view class="wordsbody">
+    <view class="game_time">
+      <text>{{gameInfo.stime}}　-　{{gameInfo.etime}}</text>
+    </view>
+    <!--字-->
+    <view class="words">
+      <view wx:for="{{gameInfo.words}}">
+        <view class="one">
+          <view class="word">
+            <text>{{item}}</text>
+          </view>
+          <!--第一次抽默认为0-->
+          <view wx:if="{{myInfo.words_info}}">
+            <view wx:for="{{myInfo.words_info}}" wx:for-index="zi" wx:for-item="v">
+              <view wx:if="{{item == zi}}">
+                <text class="num">{{v}}</text>
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <text class="num">0</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--抽奖按钮-->
+    <view wx:if="{{helpid}}">
+      <view class="drawbutton" bindtap="helpchou">
+        <text>助力抽字</text>
+      </view>
+    </view>
+    <view wx:else>
+      <view class="drawbutton" bindtap="chou">
+        <text>抽字</text>
+      </view>
+    </view>
+    <!--抽奖按钮-->
+    <view class="guize" bindtap="game_guize">
+      <text>活动规则</text>
+    </view>
+    <!--三个列表-->
+    <view class="list">
+      <view class="list-s" bindtap="list_one" style="background: {{bcolor_one}}">
+        <text>抽字记录</text>
+      </view>
+      <view class="list-s" bindtap="list_two" style="background: {{bcolor_two}}">
+        <text>助力榜单</text>
+      </view>
+      <view class="list-s" bindtap="list_three" style="background: {{bcolor_three}}">
+        <text>获奖记录</text>
+      </view>
+    </view>
+    <!--列表具体内容-->
+    <view class="list-d">
+      <view wx:if="{{listflag == 1}}">
+        <!--抽字记录-->
+        <view wx:for="{{myInfo.game_time}}" wx:for-item="arr">
+          <view wx:for="{{arr}}">
+           <text style="color:red">"{{index}}"</text>
+            <text>　:　{{item}}</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{listflag == 2}}">
+        <!--助力记录-->
+        <view wx:for="{{helps}}" wx:for-item="arr">
+          <view wx:for="{{arr}}">
+            <text>用户"{{index}}"获得助力</text>
+            <text style="color:red">{{item}}</text>
+            <text>次</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{listflag == 3}}">
+        <!--获奖记录-->
+        <view wx:for="{{prizearr}}" wx:for-item="arr">
+          <view wx:for="{{arr}}">
+            <text>用户</text>
+            <text style="color:red">"{{index}}"</text>
+            <text>　:　{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--兑奖码-->
+    <view class="dui" wx:if="{{myInfo.prize_num}}">
+      <view wx:if="{{otheropenid == ''}}">
+        <text>兑奖码：</text>
+        <text>{{myInfo.prize_num}}</text>
+      </view>
+    </view>
+  </view>
+</view>

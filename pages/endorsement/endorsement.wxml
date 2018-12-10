@@ -1,0 +1,65 @@
+<view class="m-endorsementBox">
+  <view class="m-endorsementBox-bg">
+  </view>
+  <view class="m-userinfo">
+    <view class="m-photo">
+      <image src="{{UserInfo.photo}}"></image>
+    </view>
+    <view class="m-text">
+      <label>我是{{UserInfo.NickName}}</label>
+      <text>我为{{ShopName}}代言</text>
+    </view>
+  </view>
+</view>
+<view class="u-toptip" wx:if="{{ProductInfo!=null}}">
+  <view class="u-loadmore u-loadmore-line">
+    <text class="u-loadmore-tips">为您推荐</text>
+  </view>
+</view>
+<view class="m-product-list" wx:if="{{ProductInfo!=null}}">
+  <navigator open-type="redirect" url="/pages/goods/goods?id={{ProductInfo.pid}}&uid={{UserInfo.Id}}" class="m-product-item">
+    <view class="m-product-img">
+      <image src="{{ProductInfo.ppic}}" mode="aspectFill" />
+    </view>
+    <view class="m-product-info">
+      <view class="m-product-name">
+        <label>{{ProductInfo.pname}}</label>
+      </view>
+      <view class="m-product-price">
+        <label>￥</label>{{ProductInfo.pprice}}
+        <button class="u-btn u-btn-default">去购买</button>
+      </view>
+    </view>
+  </navigator>
+</view>
+
+<image wx:if="{{ProductInfo==null}}" src="{{User.RepresentQRCode}}" class="QRCodeBOx" mode="widthFix"></image>
+
+<view  class="m-text-box">
+  <view bindtap="showTip">
+    <label class="iconfont icon-14052218"></label>推广规则
+  </view>
+  <view>
+    <view>当你的粉丝在店铺内支付订单后，订单中的所有商品，都有相应的收益比例：一级粉丝<label style="color:red">{{Level1Discount}}%</label>，二级粉丝<label style="color:red">{{Level2Discount}}%</label>（以店铺设置为准）。将支付订单金额和收益比例相乘后，累计计算出你此单的总收益。
+* 注：
+-  不计算收益的内容：运费、优惠券、关税，以及收益比例为0的商品；
+- 如果发生了退货退款，需要按照实际退货数量对收益进行相应的扣除；
+- 按照国家法律规定，当你的月累计收入达到相关税金起征点后，商家会为你代缴税款，你的收益将是税后收入；
+    </view>
+  </view>
+</view>
+<navigator wx:if="{{ProductInfo==null && isShowBtn}}" class="u-btn u-btn-default" bindtap="share" >我也要代言</navigator>
+<navigator class="u-btn u-btn-default" bindtap="share" wx:if="{{ProductInfo!=null &&isShowBtn}}">我也要推广</navigator>
+<label class="u-tip-text">点击右上角分享给朋友</label>
+
+<view class="u-tap-btn">
+  <navigator url="/pages/index/index" open-type="reLaunch" class="u-go-home">
+    <view class="iconfont icon-shouyeshouye"></view>
+  </navigator>
+</view>
+
+<view class="m-msk" wx:if="{{isShowMag}}" bindtap="closeMsk">
+  <image mode="widthFix" src="http://wapxiaochengxu.oss-cn-beijing.aliyuncs.com/assets/bg1.png"></image>
+</view>
+<import src="../../tpl/template-menu/template-menu.wxml" />
+<template is="{{menuInfo.name}}" data="{{setData:menuInfo,xcx_menu_height,highLightIndex:highLightIndex}}"></template>

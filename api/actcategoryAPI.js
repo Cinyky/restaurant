@@ -1,0 +1,1 @@
+var cf = require("../config.js"); module.exports = { GetCategorylist: { url: cf.config.configUrl + "shopWebService/GetactCategorylist.html", post: { wid: cf.config.wid, fatherCategoryId: "?" } } };

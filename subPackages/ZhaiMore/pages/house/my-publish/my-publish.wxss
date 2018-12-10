@@ -1,0 +1,175 @@
+@import "../../../__wuBaseWxss__/2.wxss";
+
+.topBox {
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx;
+    background-color: #fff;
+}
+
+.purBtn[plain] {
+    margin-right: 0;
+    line-height: 54rpx;
+    font-size: 28rpx;
+    color: #555;
+    border-color: #888;
+}
+
+.pulishItem {
+    padding: 30rpx;
+    background-color: #fff;
+}
+
+.itemTop {
+    justify-content: space-between;
+}
+
+.itemTit {
+    font-weight: bold;
+    line-height: 40rpx;
+    color: #777;
+}
+
+.status {
+    width: 160rpx;
+    text-align: right;
+    margin-top: -6rpx;
+}
+
+.itemMid {
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #888;
+}
+
+.itemBot {
+    padding: 10rpx;
+}
+
+.itemBot .iconfont {
+    color: #666;
+}
+
+.itemBot::before {
+    border-color: #666;
+}
+
+.btn {
+    position: relative;
+    height: 50rpx;
+    line-height: 50rpx;
+    background-color: #fff;
+    font-size: 30rpx;
+}
+
+.btn::after {
+    border: none;
+}
+
+.btn:active {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.itemBot .btn:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2rpx;
+    height: 100%;
+    background-color: #666;
+    transform: scale(1,0.6);
+}
+
+.orange {
+    color: #f8ac59;
+}
+
+.oliver {
+    color: #1ab394;
+}
+
+.shade_bg {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.dialogBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    background-color: #fff;
+    border-radius: 12rpx;
+    padding: 50rpx 30rpx;
+    box-shadow: 2rpx 2rpx 30rpx rgba(0,0,0,0.15);
+}
+
+.submit-btn {
+    width: 50%;
+    line-height: 64rpx;
+    font-size: 32rpx;
+}
+
+.submit-btn::after {
+    border: none;
+}
+
+.submit-btn:active {
+    opacity: 0.85;
+}
+
+.moreBox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #666;
+    background-color: #fff;
+    transform: translateY(100%);
+    animation: popup 500ms linear forwards;
+}
+
+.moreCell {
+    padding: 24rpx;
+}
+
+.moreCell:active {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.cancel {
+    padding: 24rpx;
+    background-color: #eee;
+}
+
+.cancel:active {
+    background-color: #fff;
+}
+
+@-webkit-keyframes popup {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes popup {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}

@@ -1,0 +1,19 @@
+<template name="seckill">
+  <view class="m-coupon-items" style='background: {{setData.bgcolor}}; padding: {{setData.sxSpacing}}px {{setData.zySpacing}}px; margin-top: {{setData.dbwSpacing}}px;'>
+    <image src="{{setData.pic}}" style="flex:1;height:100%;display:inline-block"></image>
+    <view class="coupon-item-rights">
+      <view class="item-title">{{setData.goodsName}}</view>
+      <view class="item-middles">
+        <lable class="item-price">￥{{setData.price}}</lable>
+        <navigator class="item-usenows" url='/pages/seckilldetail/seckilldetail?id={{setData.seckillId}}'>立即秒杀</navigator>
+      </view>
+      <text style='margin-left:15rpx;'>开始时间：{{setData.times||'暂无填写'}}</text>
+      <view class="item-descs">
+        <text>商品原价：￥{{setData.oprice||'暂无填写'}}</text>
+      </view>
+    </view>
+    <!-- <view class='right-btn'> 
+           <navigator class="item-usenows" url='/pages/seckill/seckill'>立即秒杀</navigator>
+       </view>  -->
+  </view>
+</template>
