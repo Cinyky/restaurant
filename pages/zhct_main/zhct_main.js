@@ -572,6 +572,91 @@ Page(Object.assign({}, {
       url: '/pages/zhct_notice/zhct_notice'
     });
   },
+
+  //提交订单并支付
+  formSubmit: function (e) {
+    let t = this, td = t.data;
+    // 收集提交订单所需的参数
+    let api = zhctApi.submitOrder;
+    let form_id = e.detail.formId;
+    let formData = {
+      wid: api.data.wid,
+      openid: app.globalData.UserInfo.WeiXinOpenId,
+      type: td.type,
+      remark: td.remark,
+      form_id: form_id,
+      cart: td.cart,
+      coupon_id: td.coupon_id
+    };
+    if (td.type == 0) {
+      formData.tableId = td.tableId;
+    } else if (td.type == 1) {
+      if (!td.address) {
+        t.select_address_bind();
+        return false;
+      }
+      formData.address = td.address;
+      formData.lat = td.lat;
+      formData.lng = td.lng;
+      formData.wm_price = td.wm_price;
+    }
+    // 发送请求
+    console.log(formData);
+    wx.showLoading({
+      title: '正在提交...',
+      mask: true,
+    });
+    wx.request({
+      url: api.url,
+      method: api.method,
+      data: formData,
+      success(res) {
+        let r = res.data, payObj = r.data;
+        if (r.status == 'success') {
+          wx.removeStorageSync('zhct_cart');
+          wx.removeStorageSync('zhct_cart_num');
+          wx.removeStorageSync('zhct_cart_price');
+          if (payObj.need_pay==false) {
+            // 直接跳转到订单页面
+            console.log('支付成功');
+            wx.redirectTo({url: '/pages/zhct_orderlist/zhct_orderlist'});
+            return true;
+          }
+          payObj.success = function (res) {
+            console.log(res);
+            // redirect跳转到订单页面
+            wx.redirectTo({url: '/pages/zhct_orderlist/zhct_orderlist'});
+          };
+          payObj.fail = function () {
+            // redirect跳转到订单页面
+            wx.showModal({
+              title: '提示',
+              content: '支付失败，请重新支付',
+              showCancel: false,
+              success() {
+                wx.redirectTo({url: '/pages/zhct_orderlist/zhct_orderlist'});
+              }
+            });
+          };
+          wx.requestPayment(payObj);
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: r.msg,
+            showCancel: false,
+          });
+        }
+      }, fail() {
+        wx.showModal({
+          title: '错误',
+          content: '网络错误',
+          showCancel: false,
+        });
+      }, complete() {
+        wx.hideLoading();
+      }
+    });
+  },
   //下单
   bind_submit_order: function() {
     // 跳转到订单提交页面
